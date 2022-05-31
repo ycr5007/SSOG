@@ -8,7 +8,7 @@
         src="/resources/img/geo.png"
         usemap="#image-map"
         class="geomap"
-        style="display: block; margin: 0 auto; width: 711px; height: 634px"
+        style="max-width: 100%; height: auto; align-content: center"
       />
     </div>
     <map name="image-map">
