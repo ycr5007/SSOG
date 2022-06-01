@@ -44,7 +44,7 @@
             <!-- 사이드바 - 내 마켓 보기 -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-bookmark"></i>
                     <span>내 장터</span>
                 </a>
             </li>
@@ -52,7 +52,7 @@
             <!-- 사이드바 - 내 마켓 참여자 보기 -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>장터 참여자</span>
                 </a>
             </li>
@@ -60,7 +60,7 @@
             <!-- 사이드바 - 내 마켓 참여 신청자 보기 -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-folder"></i>
+                    <i class="fas fa-fw fa-edit"></i>
                     <span>장터 참여 신청</span>
                 </a>
             </li>
@@ -68,7 +68,7 @@
             <!-- 사이드바 - 내 마켓 한 줄 리뷰 -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
+                    <i class="fas fa-fw fa-star"></i>
                     <span>장터 후기</span>
                 </a>
             </li>
