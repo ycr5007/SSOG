@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<title>쏠마켓</title>
+  <head>
+    <title>쏠마켓</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -17,26 +17,17 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap"
     />
     <link rel="stylesheet" href="/resources/css/fontawesome.min.css" />
-
-    <!-- jquery cdn -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- bootstrap cdn -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-      crossorigin="anonymous"
-    ></script>
+    
     <style>
       div {
         text-align: center;
       }
+      /* .card {
+          min-width: 550px;
+      } */
+      
     </style>
-</head>
+  </head>
 <body>
 	<!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
