@@ -43,7 +43,7 @@
 
 			<!-- 사이드바 - 내 마켓 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market_detail">
+				<a class="nav-link" href="/market/market_detail">
 					<i class="fas fa-fw fa-bookmark"></i>
 					<span>내 장터</span>
 				</a>
