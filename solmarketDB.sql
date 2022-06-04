@@ -1,6 +1,6 @@
 -- 테이블 변경 --
 ALTER TABLE market MODIFY market_rate NUMBER DEFAULT 0.0; -- 평점 실수형으로 변경
-
+ALTER TABLE myUser ADD user_phone VARCHAR2(20) NOT NULL; -- 회원 연락처 추가
 
 -- 테이블 변경 --
 
