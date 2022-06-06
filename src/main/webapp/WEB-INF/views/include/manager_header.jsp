@@ -1,11 +1,13 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<!-- Font - googleapis -->
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 	<!-- Icon - fontawesome cdn -->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 	<!-- Style -->
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	<title>관리자 메인 페이지</title>
@@ -41,7 +43,10 @@
 			<!-- 구분선 -->
 			<hr class="sidebar-divider">
 
-			<!-- 사이드바 - 내 마켓 보기 -->
+			<!-- 등록된 장터가 없는 경우 사이드바 장터 메뉴 이용 불가 -->
+			<!-- alert('장터 등록 후 이용 가능합니다.') 후 market_register로 이동 -->
+
+			<!-- 사이드바 - 내 장터 보기 -->
 			<li class="nav-item">
 				<a class="nav-link" href="/market/market_detail">
 					<i class="fas fa-fw fa-bookmark"></i>
@@ -49,33 +54,41 @@
 				</a>
 			</li>
 
-			<!-- 사이드바 - 내 마켓 참여자 보기 -->
+			<!-- 사이드바 - 내 장터 참여자 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="/market/market_myseller">
 					<i class="fas fa-fw fa-users"></i>
-					<span>장터 참여자</span>
+					<span>장터 판매 상품 목록</span>
 				</a>
 			</li>
 
-			<!-- 사이드바 - 내 마켓 참여 신청자 보기 -->
+			<!-- 사이드바 - 내 장터 참여 신청자 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="/market/market_receive">
 					<i class="fas fa-fw fa-edit"></i>
-					<span>장터 참여 신청</span>
+					<span>장터 참여 신청 목록</span>
+				</a>
+			</li>
+			
+			<!-- 사이드바 - 참여 승인 상품 보기 -->
+			<li class="nav-item">
+				<a class="nav-link" href="/market/market_accept">
+					<i class="fas fa-fw fa-check-square"></i>
+					<span>참여 승인 목록</span>
 				</a>
 			</li>
 
-			<!-- 사이드바 - 내 마켓 한 줄 리뷰 -->
+			<!-- 사이드바 - 내 장터 한 줄 리뷰 -->
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="/market/market_review">
 					<i class="fas fa-fw fa-star"></i>
 					<span>장터 후기</span>
 				</a>
 			</li>
 
-			<!-- 사이드바 - 내 마켓 공지 및 이벤트 -->
+			<!-- 사이드바 - 내 장터 공지 및 이벤트 -->
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="/market/market_notice">
 					<i class="fas fa-fw fa-table"></i>
 					<span>장터 공지</span>
 				</a>
