@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>쏠마켓</title>
     <meta charset="utf-8" />
@@ -22,21 +22,21 @@
       div {
         text-align: center;
       }
-      /* .card {
-          min-width: 550px;
-      } */
+      .card {
+          max-width: 500px;
+      }
       
     </style>
   </head>
-<body>
-	<!-- Header -->
+  <body>
+    <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
       <div class="container d-flex justify-content-between align-items-center">
         <a class="navbar-brand text-success logo" href="index.html">
           <img
             src="/resources/img/ssol_logo.png"
             class="market_logo"
-            style="display: block; margin: 0 auto; width: 116px; height: 55px"
+            style="display: block; margin: 0 auto; width: auto; height: auto"
           />
         </a>
 
@@ -118,7 +118,7 @@
       </div>
     </nav>
     <!-- Close Header -->
-    
+
     <!-- Modal -->
     <div
       class="modal fade bg-white"
@@ -148,7 +148,7 @@
               class="form-control"
               id="inputModalSearch"
               name="q"
-              placeholder="검색할 상품을 입력해주세요"
+              placeholder="Search ..."
             />
             <button
               type="submit"

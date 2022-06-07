@@ -88,6 +88,21 @@
     <script src="/resources/js/templatemo.js"></script>
     <script src="/resources/js/custom.js"></script>
     <!-- /bootstrap Script -->
-   
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.2/jquery.maphilight.min.js"></script>
+    <script>
+      $(document).ready(function(e) {
+        $.fn.maphilight.defaults = {
+          fill: true,  //이미지맵 링크에 마우스가 올라오면 색을 넣을 건지 여부
+          fillColor: '000000',  // 색상지정
+          fillOpacity: 1,  // 투명도 지정 0~1
+          stroke: true,    // border를 넣을건지 여부 false로 설정하면 이하 옵션 무시됨
+          strokeColor: '000000',  //border 색상
+          strokeOpacity: 1,  //border 투명도
+          strokeWidth: 5  //border 폭
+        }
+        $('img[usemap]').maphilight();
+      });
+    </script>
   </body>
 </html>

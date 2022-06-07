@@ -225,138 +225,46 @@
       <!-- col end -->
       <div class="col-lg-6 mt-5">
           <div class="card">
-              <div class="card-body">
-            <!-- <h1 class="h2">Active Wear</h1>
-            <p class="h3 py-2">$25.00</p>
-            <p class="py-2">
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-warning"></i>
-              <i class="fa fa-star text-secondary"></i>
-              <span class="list-inline-item text-dark"
-                >Rating 4.8 | 36 Comments</span
-              >
-            </p>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <h6>Brand:</h6>
-              </li>
-              <li class="list-inline-item">
-                <p class="text-muted"><strong>Easy Wear</strong></p>
-              </li>
-            </ul>
-
-            <h6>Description:</h6>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-              do eiusmod temp incididunt ut labore et dolore magna aliqua.
-              Quis ipsum suspendisse. Donec condimentum elementum convallis.
-              Nunc sed orci a diam ultrices aliquet interdum quis nulla.
-            </p>
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <h6>Avaliable Color :</h6>
-              </li>
-              <li class="list-inline-item">
-                <p class="text-muted"><strong>White / Black</strong></p>
-              </li>
-            </ul>
-
-            <h6>Specification:</h6>
-            <ul class="list-unstyled pb-3">
-              <li>Lorem ipsum dolor sit</li>
-              <li>Amet, consectetur</li>
-              <li>Adipiscing elit,set</li>
-              <li>Duis aute irure</li>
-              <li>Ut enim ad minim</li>
-              <li>Dolore magna aliqua</li>
-              <li>Excepteur sint</li>
-            </ul>
-
-            <form action="" method="GET">
-              <input
-                type="hidden"
-                name="product-title"
-                value="Activewear"
-              />
-              <div class="row">
-                <div class="col-auto">
-                  <ul class="list-inline pb-3">
-                    <li class="list-inline-item">
-                      Size :
-                      <input
-                        type="hidden"
-                        name="product-size"
-                        id="product-size"
-                        value="S"
-                      />
-                    </li>
-                    <li class="list-inline-item">
-                      <span class="btn btn-success btn-size">S</span>
-                    </li>
-                    <li class="list-inline-item">
-                      <span class="btn btn-success btn-size">M</span>
-                    </li>
-                    <li class="list-inline-item">
-                      <span class="btn btn-success btn-size">L</span>
-                    </li>
-                    <li class="list-inline-item">
-                      <span class="btn btn-success btn-size">XL</span>
-                    </li>
+            <div class="card-body" style="overflow:auto; width:auto; height:420px;">
+            <div class="col-lg-12">
+                  <h1 class="h4 pb-4">장터리스트</h1>
+                  <ul class="list-unstyled templatemo-accordion">
+                      <li class="pb-3">
+                          <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                              오픈중
+                              <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                          </a>
+                          <ul class="collapse show list-unstyled pl-3">
+                              <li><a class="text-decoration-none" href="#">감남플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">강서플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">홍대플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">성동플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">감남플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">강서플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">홍대플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">성동플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">감남플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">강서플리마켓</a></li>
+                          </ul>
+                      </li>
+                      <li class="pb-3">
+                          <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                              오픈예정
+                              <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                          </a>
+                          <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                              <li><a class="text-decoration-none" href="#">홍대플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">성동플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">감남플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">강서플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">홍대플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">성동플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">감남플리마켓</a></li>
+                              <li><a class="text-decoration-none" href="#">강서플리마켓</a></li>
+                          </ul>
+                      </li>
                   </ul>
-                </div>
-                <div class="col-auto">
-                  <ul class="list-inline pb-3">
-                    <li class="list-inline-item text-right">
-                      Quantity
-                      <input
-                        type="hidden"
-                        name="product-quanity"
-                        id="product-quanity"
-                        value="1"
-                      />
-                    </li>
-                    <li class="list-inline-item">
-                      <span class="btn btn-success" id="btn-minus">-</span>
-                    </li>
-                    <li class="list-inline-item">
-                      <span class="badge bg-secondary" id="var-value"
-                        >1</span
-                      >
-                    </li>
-                    <li class="list-inline-item">
-                      <span class="btn btn-success" id="btn-plus">+</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div> -->
-        <table class="table">
-          <thead>
-            <th>
-              <td>
-                날짜
-              </td>
-              <td>
-                장터명
-              </td>
-            </th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                2022.06.02
-              </td>
-              <td>
-                홍대장터
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
+              </div>   
       </div>
     </div>
   </div>
