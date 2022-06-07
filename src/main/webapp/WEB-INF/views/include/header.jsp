@@ -23,7 +23,7 @@
         text-align: center;
       }
       .card {
-          max-width: 500px;
+        max-width: 500px;
       }
       
     </style>

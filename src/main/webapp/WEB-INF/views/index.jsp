@@ -234,9 +234,14 @@
                               오픈중
                               <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                           </a>
-                          <ul class="collapse show list-unstyled pl-3">
-                              <li><a class="text-decoration-none" href="#">감남플리마켓</a></li>
-                              <li><a class="text-decoration-none" href="#">강서플리마켓</a></li>
+                          <ul class="collapse show list-unstyled pl-3" id="openmarket">
+                              <!-- select market_no as marketNo, market_loc as marketLoc, market_name as MarketName from market where market_sd > sysdate ( 에정 )
+                              select market_no as marketNo, market_loc as marketLoc, market_name as MarketName from market where market_ed < sysdate ( 종료 )
+                              select market_no as marketNo, market_loc as marketLoc, market_name as MarketName from market where BETWEEN market_sd and market_ed ( 진행중 ) -->
+                              <!-- <c:forEach items="List" var="item">
+                                <li><a class="text-decoration-none" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName }</a></li>
+                              </c:forEach> -->
+                              <li><a class="text-decoration-none" href="#" data-gu="강서구">강서플리마켓</a></li>
                               <li><a class="text-decoration-none" href="#">홍대플리마켓</a></li>
                               <li><a class="text-decoration-none" href="#">성동플리마켓</a></li>
                               <li><a class="text-decoration-none" href="#">감남플리마켓</a></li>

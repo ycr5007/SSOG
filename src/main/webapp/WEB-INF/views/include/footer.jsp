@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <!-- Start Footer -->
     <footer class="bg-light" id="tempaltemo_footer">
       <div class="container">
@@ -102,6 +101,35 @@
           strokeWidth: 5  //border 폭
         }
         $('img[usemap]').maphilight();
+      });
+    </script>
+    <script>
+      $(function(){
+
+        let area = $("area");
+
+        $("#openmarket li a").hover(function(){
+          console.log($(this).html());
+          let gu = $(this).data("gu");
+           $(area).each(function(idx, element) {
+            let title = $(element).attr("title");
+            if(gu==title){    
+              $(element).trigger("mouseenter");                
+            }             
+          });
+        });
+          
+        $("#openmarket li a").mouseleave(function(){                   
+          console.log($(this).html());
+          let gu = $(this).data("gu");       
+
+           $(area).each(function(idx, element) {
+             let title = $(element).attr("title");
+            if(gu==title){                 
+              $(element).trigger("mouseleave");                
+             }         
+          });
+       });
       });
     </script>
   </body>
