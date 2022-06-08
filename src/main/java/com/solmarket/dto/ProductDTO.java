@@ -1,5 +1,7 @@
 package com.solmarket.dto;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +18,5 @@ public class ProductDTO {
 	private int productQN; // 판매 수량
 	private int productPrice; // 판매가
 	private int productStatus; // 상품 등록 상태
-	// 상품 등록일 추가 필요
+	private Date productDate; // 상품 등록일 추가 필요
 }
