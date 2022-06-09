@@ -16,4 +16,5 @@ public class ReviewDTO {
 	private String reviewContent; // 리뷰 내용
 	private Date reviewDate; // 작성일 
 	private int reviewRate; // 평점 ( 1 ~ 5 ) 
+	private int reviewStatus; // 리뷰 상태 ( 1:show / 0:hidden )
 }
