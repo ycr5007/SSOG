@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.MemberMapper">
+	<!-- 회원가입 -->
+	<insert id="insert">
+		insert into myuser(user_no, user_id, user_pw, user_name, user_phone, user_mail,
+		user_profile,user_pf, user_pfsize)
+		values(myUser_seq.nextval, #{userId},#{userPw},#{userName},#{userPhone},#{userMail},#{userProfile, jdbcType=VARCHAR},0,0)
+	</insert>
+	
+	<!-- 로그인 : userId, 비밀번호 : userPw -->
+	<select id="login" resultType="com.solmarket.dto.AuthDTO">
+		select user_id as userId, user_name as userName from myuser where user_id=#{userId} and user_pw=#{userPw}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="update">
+		update myuser set user_pw=#{userConfirmPw} where user_id=#{userId}
+	</update>
+	
+	<!--  회원탈퇴 -->
+	<delete id="delete">
+		delete from myuser where user_id=#{userId} and user_pw=#{userPw}
+	</delete>
+	
+	<!-- ID 중복검사 -->
+	<select id="dupId" resultType="java.lang.String">
+		select user_id as userId from myuser where user_id=#{userId}
+	</select>
+	
+	<!-- ID 찾기 -->
+	<select id="searchId" resultType="com.solmarket.dto.AuthDTO">
+		select user_id as userId from myuser where user_name=#{userName} and user_mail=#{userMail}
+	</select>
+	
+	<!-- PW 찾기 -->
+	<select id="searchPw" resultType="com.solmarket.dto.AuthDTO">
+		select user_pw as userPw from myuser where user_id=#{userId} and user_mail=#{userMail}
+	</select>
+</mapper>
