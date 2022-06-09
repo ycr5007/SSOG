@@ -15,6 +15,7 @@ public class ProductDTO {
 	private int marketNo; // 장터 번호 ( market 테이블 참조 )
 	private int categoryNo; // 품목 ( category 테이블 참조 )
 	private String productName; // 품명
+	private String productContent; // 상품 설명
 	private int productQN; // 판매 수량
 	private int productPrice; // 판매가
 	private int productStatus; // 상품 등록 상태
