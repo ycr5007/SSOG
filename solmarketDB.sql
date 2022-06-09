@@ -1,8 +1,11 @@
 -- 테이블 변경 --
 ALTER TABLE market MODIFY market_rate NUMBER DEFAULT 0.0; -- 평점 실수형으로 변경
 ALTER TABLE myUser ADD user_phone VARCHAR2(20) NOT NULL; -- 회원 연락처 추가
-
--- 테이블 변경 --
+ALTER TABLE myUser ADD UNIQUE(user_id); -- 회원 ID 중복 불가 제약조건 추가
+ALTER TABLE notice ADD notice_status NUMBER(2) DEFAULT 0; -- 공지사항 상태 (승인 전/후) 추가
+ALTER TABLE product ADD product_date DATE DEFAULT SYSDATE; -- 상품 등록일 추가
+ALTER TABLE review ADD review_status NUMBER(2) DEFAULT 1; -- 장터 한 줄 리뷰 상태 추가
+ALTER TABLE product ADD product_content NVARCHAR2(512) NOT NULL; -- 상품 설명 컬럼 추가
 
 -- 테이블 생성 --
 

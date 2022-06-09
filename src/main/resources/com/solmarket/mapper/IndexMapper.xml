@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.IndexMapper">
+
+	<select id="list" resultType="com.solmarket.dto.MarketDTO">
+		<![CDATA[
+			select market_no as marketNo, market_status as marketStatus, market_loc as marketLoc, market_name as MarketName from market
+		]]>
+	</select>
+	
+	<!-- 
+	<select id="list" resultType="com.solmarket.dto.MarketDTO">
+		<![CDATA[
+			select market_no as marketNo, market_loc as marketLoc, market_name as MarketName from market where market_status=2	
+		]]>
+	</select>
+	
+	<select id="list" resultType="com.solmarket.dto.MarketDTO">
+			select market_no as marketNo, market_loc as marketLoc, market_name as MarketName from market where market_status=3
+	</select> 	 -->
+
+</mapper>

@@ -16,4 +16,7 @@ public class NoticeDTO {
 	private String noticeContent; // 내용
 	private Date noticeDate; // 작성일
 	private String noticeCategory; // 공지 구분
+	private int noticeStatus; // 공지 상태
+	
+	private String dummy; // Join 활용 추가 데이터
 }

@@ -18,7 +18,7 @@
 
 	<logger name="org.springframework.context" level="info" />
 	<logger name="org.springframework.jdbc" level="debug" />
-	<logger name="com.study.mapper" level="debug" />
+	<logger name="com.solmarket.mapper" level="debug" />
 
 	<root level="info">
 		<appender-ref ref="FILE" />
