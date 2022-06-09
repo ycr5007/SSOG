@@ -247,7 +247,7 @@
                               오픈예정
                               <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                           </a>
-                          <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                          <ul class="collapse show list-unstyled pl-3" id="willopenmarket">
                               <c:forEach items='${list}' var="item" varStatus="">
                               	<c:if test="${item.marketStatus==2}">
                                 	<li><a class="text-decoration-none" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>

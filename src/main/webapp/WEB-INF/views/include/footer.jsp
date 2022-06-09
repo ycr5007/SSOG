@@ -129,7 +129,32 @@
               $(element).trigger("mouseleave");                
              }         
           });
-       });
+       	});
+        
+        
+        $("#willopenmarket li a").hover(function(){
+            console.log($(this).html());
+            let gu = $(this).data("gu");
+             $(area).each(function(idx, element) {
+              let title = $(element).attr("title");
+              if(gu==title){    
+                $(element).trigger("mouseenter");                
+              }             
+            });
+          });
+            
+         $("#willopenmarket li a").mouseleave(function(){                   
+            console.log($(this).html());
+            let gu = $(this).data("gu");       
+
+             $(area).each(function(idx, element) {
+               let title = $(element).attr("title");
+              if(gu==title){                 
+                $(element).trigger("mouseleave");                
+               }         
+            });
+         });
+        
       });
     </script>
   </body>
