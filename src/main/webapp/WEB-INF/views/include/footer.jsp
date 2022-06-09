@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
+	<!-- Start Footer -->
+    <footer class="bg-light" id="tempaltemo_footer">
+      <div class="container">
+        <div class="row">
+           <img
+             src="../resources/img/footerbg.jpg"
+           />
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
 
     <!-- jquery cdn -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
