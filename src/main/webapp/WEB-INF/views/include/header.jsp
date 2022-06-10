@@ -111,9 +111,9 @@
                 <i class="fa fa-fw fa-user text-dark mr-3"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">회원가입</a>
-                <a class="dropdown-item" href="#">로그인</a>
-                <a class="dropdown-item" href="#">마이페이지</a>
+                <a class="dropdown-item" href="/member/signUp1">회원가입</a>
+                <a class="dropdown-item" href="/member/signIn">로그인</a>
+                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
               </div>
             </div>
           </div>

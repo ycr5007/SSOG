@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.ProductMapper">
+
+	<!-- 상품등록 -->
+	<insert id="insert">
+	<!-- 쿼리문 -->
+	<!-- db컬럼명 as 별칭== DTO/ -->
+	insert into product
+		(product_no, user_no, market_no, category_no, product_name, product_qn, product_price)
+	values(product_seq.nextval,#{userNo},#{marketNo},#{categoryNo},#{productName},#{productQn},#{productPrice})
+	</insert>
+	
+	<!-- 판매자 이름 가져오기 -->
+	<select id="userName" resultType="string">
+	select user_name from myuser where user_no = #{userNo}
+	</select>
+
+
+	<!-- 상품 수정 : 상품 번호가 일치한다면 상품 수량, 내용, 가격 수정 -->
+	<update id="update">
+		update product
+		set product_qn=#{productQn}, product_content=#{productContent}, product_price=#{productPrice}
+		where product_no=#{productNo}
+	</update>
+
+	<!-- 상품 삭제 -->
+	<delete id="delete">
+		delete from product
+		where product_no=#{productNo}
+	</delete>
+
+
+	<!-- 상품 조회 -->
+	<select id="select" resultType="com.solmarket.dto.ProductDTO">
+		select 
+			product_no as productNo, market_no as marketNo,
+			product_name as productName, product_price as productPrice,
+			product_content as productContent
+		
+		from product where product_no>=0 order by product_no desc
+	</select>
+
+
+</mapper>
