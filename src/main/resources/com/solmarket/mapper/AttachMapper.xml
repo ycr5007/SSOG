@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.AttachMapper">
+	
+	<!-- ====================== 장터 등록 시 장터 이미지 삽입 ====================== --> 
+	<insert id="insertImg">
+		INSERT INTO market_img(market_no, market_img, market_imgsize) VALUES(#{marketNo}, #{marketImg}, #{marketImgSize})
+	</insert>
+	
+	<!-- ================= 장터 이미지 불러오기 ================= -->
+	<select id="selectMarketImg" resultType="com.solmarket.dto.AttachDTO">
+		SELECT market_img as marketImg FROM market_img WHERE market_no = #{marketNo}
+	</select>
+	
+	<!-- ================= 상품 이미지 불러오기 ================= -->
+	<select id="selectProductImg" resultType="com.solmarket.dto.AttachDTO">
+		SELECT product_img as productImg FROM product_img WHERE product_no = #{productNo}
+	</select>
+	
+</mapper>

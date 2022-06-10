@@ -1,63 +1,89 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags"
-	prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/manager_header.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">Board Register</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">Board Register Page</div>
-			<!-- /.panel-heading -->
-			<div class="panel-body">
-				<form action="" method="post" role="form">
+<div class="container-fluid">
+
+	<h2 class="mb-3 text-gray-800">장터 등록</h2>
+	
+	<div class="row justify-content-center">
+		<div class="card shadow mb-4 col-xl-7">
+			<div class="card-body">
+				
+				<form action="" method="post">
 					<div class="form-group">
-						<label>Title</label> <input class="form-control" name="title">
+						<label>장터 이름</label>
+						<input class="form-control" name="marketName">
 					</div>
 					<div class="form-group">
-						<label>Content</label>
-						<textarea class="form-control" rows="3" name="content"></textarea>
+						<label>장터 위치</label>
+						<div id="map" class="form-control" style="height: 200px"></div>
 					</div>
 					<div class="form-group">
-						<label>Writer</label> <input class="form-control" name="writer"
-							value='<sec:authentication property="principal.username"/>'
-							readonly>
+						<label>장터 시작일</label>
+						<input class="form-control" type="datetime-local" name="marketSD"/>
 					</div>
-					<input type="hidden" value="1" name="pageNum" /> <input
-						type="hidden" value="10" name="amount" /> <input type="hidden"
-						value="${criteria.type}" name="type" /> <input type="hidden"
-						value="${criteria.keyword}" name="keyword" /> <input
-						type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					<button type="submit" class="btn btn-default">Submit</button>
-					<button type="reset" class="btn btn-default">reset</button>
+					<div class="form-group">
+						<label>장터 종료일</label>
+						<input class="form-control" type="datetime-local" name="marketED"/>
+					</div>
+					<div class="form-group">
+						<label>파일 첨부 (셀러 모집-소개 순으로)</label><br>
+						<input type="file" name="marketImg" multiple />
+					</div>
+					<div class="row justify-content-center">
+						<button type="submit" class="btn btn-primary m-2">등록</button>
+						<button type="reset" class="btn btn-secondary m-2">취소</button>
+					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">파일첨부</div>
-			<div class="panel-body">
-				<div class="form-group uploaddiv">
-					<input type="file" name="uploadFile" id="" multiple />
-				</div>
-				<div class="uploadResult">
-					<ul>
-						<!-- 첨부파일 정보 -->
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+<!-- 네이버 지도 API Script -->
+<!-- <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i"></script> -->
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i&submodules=geocoder"></script>
+<script>
+/* naver.maps.Service.geocode({ address: '종각역' }, function(status, response) {
+    if (status === naver.maps.Service.Status.ERROR) {
+        return alert('Something wrong!');
+    }
+    var new_position = new naver.maps.LatLng(response.v2.addresses[0].y, response.v2.addresses[0].x)
+    map.setCenter(new_position);
+
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(response.v2.addresses[0].y, response.v2.addresses[0].x),
+        map: map
+    });
+}); */
+	/* naver.maps.Service.geocode({ address: '종각역' }, function(status, response) {
+	    if (status === naver.maps.Service.Status.ERROR) {
+	        return alert('Something wrong!');
+	    }
+	    var mapOptions = {
+    		center : new naver.maps.LatLng(response.v2.addresses[0].y, response.v2.addresses[0].x),
+    		zoom : 10,
+    	};
+    	var map = new naver.maps.Map("map", mapOptions);
+    	var markerOptions = {
+    		position: new naver.maps.LatLng(response.v2.addresses[0].y, response.v2.addresses[0].x),
+    		map: map
+    	};
+    	var marker = new naver.maps.Marker(markerOptions);
+	}); */
+	var mapOptions = {
+		center : new naver.maps.LatLng(37.3595704, 127.105399),
+		zoom : 10,
+	};
+	var map = new naver.maps.Map("map", mapOptions);
+	var markerOptions = {
+		position: new naver.maps.LatLng(37.3595704, 127.105399),
+		map: map
+	};
+	var marker = new naver.maps.Marker(markerOptions);
+</script>
 
 <%@ include file="../include/manager_footer.jsp"%>

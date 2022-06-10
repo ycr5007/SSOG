@@ -7,6 +7,7 @@
 		<div class="container-fluid">
 		
 			<!-- 등록된 장터가 없는 경우 장터 등록 버튼이 보이도록 (장터 상태가 0 or 3인 경우) -->
+			<!-- SELECT * FROM market WHERE market_status = 3 OR NULL -->
 			<div class="col-xl-12 col-lg-7">
 				<div class="card mb-4">
 					<div class="card-body">
@@ -17,6 +18,7 @@
 			</div>
 			
 			<!-- 장터 승인 전인 경우, 승인 요청 중이라는 문구가 뜨도록 -->
+			<!-- SELECT * FROM market WHERE market_status = 0 -->
 			<div class="col-xl-12 col-lg-7">
 				<div class="card mb-4">
 					<div class="card-body">
@@ -46,7 +48,7 @@
 					<div class="card mb-4">
 						<!-- header -->
 						<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-							<h6 class="m-0 font-weight-bold text-primary text-gray-800">장터 참여 접수</h6>
+							<h6 class="m-0 font-weight-bold text-primary text-gray-800">참여 신청 목록</h6>
 							<a href="/market/market_receive">more</a>
 						</div>
 						<!-- body -->
@@ -109,5 +111,5 @@
 	
 	</div>
 	<!-- End of Main Content -->
-
+	
 <%@ include file="./include/manager_footer.jsp"%>

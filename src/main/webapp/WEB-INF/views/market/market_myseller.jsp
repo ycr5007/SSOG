@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="../include/manager_header.jsp"%>
 
 <div class="container-fluid">
@@ -18,14 +18,16 @@
 							<th>번 호</th>
 							<th>상품명</th>
 							<th>판매자</th>
+							<th>등록일</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="product" items="${list}">
+						<c:forEach var="product" items="${product}" varStatus="status">
 							<tr>
-								<td>${product.productNo}</td>
-								<td><a href="${product.productNo}" class="move">${product.productName}</a></td>
-								<td>${product.userNo.userName}</td>
+								<td>${status.count}</td>
+								<td>${img}&nbsp;${product.productName}</td>
+								<td>${product.userName}</td>
+								<td><fmt:formatDate value="${product.productDate}" pattern="yyyy-MM-dd HH:mm" /></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -50,14 +52,18 @@
 						</c:if>
 					</ul>
 				</div>
-				<!-- end Pagination -->
+				<!-- 페이징 끝 -->
+				
 			</div>
 			<!-- end panel-body -->
 		</div>
 		<!-- end panel -->
+		
 	</div>
 </div>
 <!-- /.row -->
+
+<input type="hidden" name="marketNo" />
 
 <!-- 페이지 링크 처리 form -->
 <form action="/board/list" id="actionForm">

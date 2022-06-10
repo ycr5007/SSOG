@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ include file="../include/manager_header.jsp"%>
 
 <div class="container-fluid">
@@ -12,7 +12,7 @@
 		<div class="card-body">
 		
 			<!-- 공지 작성 버튼 -->
-			<a href="#" class="btn btn-primary btn-icon-split btn-sm mb-3">
+			<a href="/market/market_noticeForm" class="btn btn-primary btn-icon-split btn-sm mb-3">
 				<span class="text">공지 작성하기</span>
 			</a>
 			
@@ -23,17 +23,17 @@
 						<tr class="text-gray-800">
 							<th>번 호</th>
 							<th>제 목</th>
+							<th>내 용</th>
 							<th>작성일</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="notice" items="${list}">
+						<c:forEach var="notice" items="${notice}" varStatus="status">
 							<tr>
-								<td>${notice.noticeNo}</td>
-								<td><a href="${notice.noticeNo}" class="move">${notice.noticeTitle}</a></td>
-								<td>${notice.noticeDate}</td>
-								<%-- <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-										value="${product.productDate}" /></td> --%>
+								<td>${status.count}</td>
+								<td>${notice.noticeTitle}</td>
+								<td style="overflow: hidden;">${notice.noticeContent}</td>
+								<td><fmt:formatDate value="${notice.noticeDate}" pattern="yyyy-MM-dd HH:mm" /></td>
 							</tr>
 						</c:forEach>
 					</tbody>
