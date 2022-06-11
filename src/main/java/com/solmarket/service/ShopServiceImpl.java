@@ -2,19 +2,20 @@ package com.solmarket.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.ProductDTO;
 import com.solmarket.dto.UserDTO;
-import com.solmarket.mapper.ProductMapper;
+import com.solmarket.mapper.ShopMapper;
 
 @Service
 public class ShopServiceImpl implements ShopService{
 	
 	@Autowired
-	private ProductMapper mapper;
+	private ShopMapper mapper;
 	
 	@Override
 	public List<String> getCategory() {
