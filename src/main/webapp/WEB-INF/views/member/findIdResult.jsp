@@ -25,6 +25,5 @@
         <button type="button" class="btn btn-third w-100" onclick="location.href='/member/signIn'">로그인</button>
       </div>
     </div>
-    
   </div>
 </section>

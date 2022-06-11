@@ -6,7 +6,9 @@ ALTER TABLE notice ADD notice_status NUMBER(2) DEFAULT 0; -- 공지사항 상태
 ALTER TABLE product ADD product_date DATE DEFAULT SYSDATE; -- 상품 등록일 추가
 ALTER TABLE review ADD review_status NUMBER(2) DEFAULT 1; -- 장터 한 줄 리뷰 상태 추가
 ALTER TABLE product ADD product_content NVARCHAR2(512) NOT NULL; -- 상품 설명 컬럼 추가
-
+ALTER TABLE myUser ADD user_address NVARCHAR2(128) NOT NULL; 
+delete from myUser;
+select * from myUser;
 -- 테이블 생성 --
 
 CREATE TABLE myuser (

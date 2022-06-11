@@ -44,3 +44,11 @@
 	  </div>
 	</section>
 </form>
+<script>
+ $(function(){
+	 let error = '${error}';
+		if(error!=''){
+		alert(error);
+		}
+ })
+</script>

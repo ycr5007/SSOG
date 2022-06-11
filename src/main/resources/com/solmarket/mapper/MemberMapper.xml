@@ -4,8 +4,8 @@
 	<!-- 회원가입 -->
 	<insert id="insert">
 		insert into myuser(user_no, user_id, user_pw, user_name, user_phone, user_mail,
-		user_profile,user_pf, user_pfsize)
-		values(myUser_seq.nextval, #{userId},#{userPw},#{userName},#{userPhone},#{userMail},#{userProfile, jdbcType=VARCHAR},0,0)
+		user_profile,user_pf, user_pfsize, user_address)
+		values(myUser_seq.nextval, #{userId},#{userPw},#{userName},#{userPhone},#{userMail},#{userProfile, jdbcType=VARCHAR},0,0,#{userAddress})
 	</insert>
 	
 	<!-- 로그인 : userId, 비밀번호 : userPw -->

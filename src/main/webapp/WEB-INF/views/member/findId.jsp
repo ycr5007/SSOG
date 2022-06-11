@@ -6,12 +6,12 @@
 	$(function(){
 		$('form').submit(function(){
 			var nameLength = $('#userName').val().length;
-			var emailLength = $('#userMail').val().length;
+			var mailLength = $('#userMail').val().length;
 			if(nameLength == 0) {
 				alert('이름을 입력해주세요.');
 				return false;
 			}
-			if(emailLength == 0) {
+			if(mailLength == 0) {
 				alert('이메일을 입력해주세요.');
 				return false;
 			}
@@ -34,7 +34,14 @@
         <button type="submit" class="btn btn-third w-100">아이디 찾기</button>
       </div>
     </div>
-    
   </div>
 </section>
+<script>
+$(function(){
+	let error = '${error}';
+	if(error!=''){
+	alert(error);
+	}
+})
+</script>
 </form>
