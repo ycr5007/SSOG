@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.ProductMapper">
+	
+	<select id="getCategory" resultType="string">
+		select category_name as categoryName from category
+	</select>
+	
+	<select id="getProduct" resultType="com.solmarket.dto.ProductDTO">
+		<![CDATA[ 
+		
+		
+		select product_no as productNo, product_name as productName, product_price as productPrice
+		from(select /*+INDEX_DESC(product pk_product)*/ rownum rn, product_no, product_name, product_price
+			 from product
+			 where rownum <= (#{pageNum} * #{amount}))
+		where rn > (#{pageNum} - 1) * #{amount}
+		
+		]]>
+		
+	</select>
+	
+	<select id="totalCnt" resultType="int">
+		select count(*) from product where product_no > 0
+	</select>
+	
+	
+	<select id="getDetail" resultType="com.solmarket.dto.ProductDTO">
+		<!-- select p.product_name as productName, p.product_price as productPrice, u.user_name as dummy from 
+		product p left outer join (select user_name, user_no from myUser) u on p.user_no = u.user_no
+		where product_no = #{productNo} -->
+		
+		select p.product_no as productNo, p.product_name as productName, p.product_price as productPrice, u.user_name as dummy
+		from product p left outer join myUser u on p.user_no = u.user_no
+		where product_no = #{productNo}
+	</select>
+	
+	<!-- order 페이지 구매자정보, 상품정보 sql  -->
+	<select id="getOrderUser" resultType="com.solmarket.dto.UserDTO">
+		select user_name as userName, user_mail as userMail, user_address as userAddress
+		from myUser
+		where user_no = #{userNo}
+	</select>
+	<select id="getOrderCart" resultType="com.solmarket.dto.CartDTO">
+		select cart_no as cartNo, cart_qn as cartQN, cart_pay as cartPay,
+	</select>
+	
+	
+	
+	
+	<!-- <select id="getOrderProduct" resultType="com.solmarket.dto.ProductDTO">
+		select product_no as productNo, product_name as productName, product_qn as productQN
+		from product
+		where product_no = #{productNo}
+	</select> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</mapper>
