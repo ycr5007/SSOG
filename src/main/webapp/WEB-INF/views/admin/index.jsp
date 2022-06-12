@@ -50,7 +50,7 @@
 							<tr>
 								<td>${status.count }</td>
 								<td>${noticeDTO.noticeTitle }</td>
-								<td>${noticeDTO.noticeDate }</td>
+								<td><fmt:formatDate value="${noticeDTO.noticeDate }" pattern="yyyy-MM-dd"/></td>
 								<td>${noticeDTO.dummy }</td>
 							</tr>
 						</c:forEach>
@@ -112,8 +112,51 @@
 	let [user, seller, manager] = ratio.split("/");
 	
 	// Area Chart 데이터
-	let visitDay = ["06-01", "06-02", "06-03", "06-04", "06-05", "06-06", "06-07", "06-08", "06-09", "06-10", "06-11", "06-12"];
-	let visitors = [15, 47, 66, 39, 89, 172, 153, 122, 230, 221, 470, 365];
-</script>
+	if(!Date.prototype.adjustDate){
+	    Date.prototype.adjustDate = function(days){
+	        var date;
 
-<%@ include file="../include/admin_footer.jsp"%>
+	        days = days || 0;
+
+	        if(days === 0){
+	            date = new Date( this.getTime() );
+	        } else if(days > 0) {
+	            date = new Date( this.getTime() );
+
+	            date.setDate(date.getDate() + days);
+	        } else {
+	            date = new Date(
+	                this.getFullYear(),
+	                this.getMonth(),
+	                this.getDate() - Math.abs(days),
+	                this.getHours(),
+	                this.getMinutes(),
+	                this.getSeconds(),
+	                this.getMilliseconds()
+	            );
+	        }
+	
+	        this.setTime(date.getTime());
+
+	        return this;
+	    };
+	}
+	let visitDay = [];
+	for(let i = -12; i < 0; i++){
+		var date_subtract = new Date().adjustDate(i);
+		let month = date_subtract.getMonth() + 1
+		if(month < 10){
+			month = "0" + month;
+		}
+		let day = date_subtract.getDate();
+		if(day < 10){
+			day = "0" + day;
+		}
+		visitDay.push(month + "-" + day);
+	}
+	
+	let visitors = ${visitTotal };
+</script>
+<script src="/resources/js/admin/chart-pie-demo.js"></script>
+<script src="/resources/js/admin/chart-area-demo.js"></script>
+<%@ include file="../include/manager_footer.jsp"%>
