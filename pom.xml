@@ -89,6 +89,14 @@
 		    <artifactId>ojdbc8</artifactId>
 		    <version>21.5.0.0</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <!-- Spring 버전과 맞추는 것이 좋음 -->
+		    <version>5.3.19</version>
+		</dependency>
 		<!-- ========================================== Database ========================================== -->
 
 		<!-- ========================================== Util ========================================== -->

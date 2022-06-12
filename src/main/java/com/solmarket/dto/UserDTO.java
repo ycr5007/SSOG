@@ -1,5 +1,7 @@
 package com.solmarket.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +23,6 @@ public class UserDTO {
 	private int userStatus; // 회원 상태 ( 0 / 1 / 2 )
 	private String userAuth; // 권한 ( USER, SELLER, MARKET, ADMIN )
 	private String userAddress; // 주소 (추가)
+	private boolean enabled;
+	private List<AuthDTO> authorities;;
 }

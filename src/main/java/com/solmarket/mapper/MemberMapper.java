@@ -9,7 +9,7 @@ import com.solmarket.dto.UserDTO;
 public interface MemberMapper {
 	public int insert(UserDTO register);
 	
-	public AuthDTO login(@Param("userId") String userId, @Param("userPw") String userPw);
+	//public AuthDTO login(@Param("userId") String userId, @Param("userPw") String userPw);
 	
 	public String dupId(String userId);
 	
@@ -28,4 +28,6 @@ public interface MemberMapper {
 	public int myPage(UserDTO userDto);
 	
 	public String myPagePwCheck(String userPw);
+	
+	public UserDTO read(String userId);
 }

@@ -9,6 +9,7 @@ ALTER TABLE product ADD product_content NVARCHAR2(512) NOT NULL; -- 상품 설�
 ALTER TABLE myUser ADD user_address NVARCHAR2(128) NOT NULL; 
 delete from myUser;
 select * from myUser;
+ALTER TABLE myUser ADD enabled char(1) DEFAULT '1';
 -- 테이블 생성 --
 
 CREATE TABLE myuser (
