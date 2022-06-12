@@ -1,5 +1,6 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,7 +10,10 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 	<!-- Style -->
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
-	
+	<!-- MetisMenu CSS -->
+   <link href="/resources/vendor/metisMenu/metisMenu.min.css" rel="stylesheet"> 
+	<script src="/resources/vendor/chart.js/Chart.min.js"></script>
+	<script src="/resources/js/jquery.min.js"></script>
 	<title>쏠장터 사이트 관리자</title>
 </head>
 

@@ -10,6 +10,26 @@ ALTER TABLE myUser ADD user_address NVARCHAR2(128) NOT NULL;
 delete from myUser;
 select * from myUser;
 ALTER TABLE myUser ADD enabled char(1) DEFAULT '1';
+
+-- 테이블 추가 --
+create table visitor(
+	visit_id number,
+	visit_time date default sysdate,
+	session_id varchar2(100) not null
+);
+
+alter table visitor add constraint PK_VISITOR primary key(visit_id);
+
+
+create table visitor_total(
+    visit_date Date not null,
+    visit_total number(8) not null
+);
+
+
+-- 시퀀스 추가 --
+create sequence visitor_seq;
+
 -- 테이블 생성 --
 
 CREATE TABLE myuser (
@@ -45,6 +65,7 @@ CREATE TABLE notice (
 );
 
 ALTER TABLE notice ADD CONSTRAINT PK_NOTICE PRIMARY KEY (notice_no);
+ALTER TABLE notice ADD CONSTRAINT FK_NOTICE_MARKET FOREIGN KEY(market_no) REFERENCES market(market_no);
 
 CREATE TABLE notice_img (
 	notice_no	NUMBER NOT NULL,

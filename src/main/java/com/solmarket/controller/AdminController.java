@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.NoticeDTO;
+import com.solmarket.dto.PageDTO;
 import com.solmarket.dto.UserDTO;
 import com.solmarket.service.AdminService;
 
@@ -29,18 +31,21 @@ public class AdminController {
 		String userRatio = adminService.getUserRatio();
 		List<MarketDTO> marketList = adminService.getRequestMarketList();
 		List<NoticeDTO> noticeList = adminService.getRequestNoticeList();
-		
-		
+		List<Integer> visitTotal = adminService.getVisitorTotal();
+
+		model.addAttribute("visitTotal", visitTotal);
 		model.addAttribute("marketList", marketList);
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("userRatio", userRatio);
 	}
 
 	@GetMapping("/user")
-	public void reqManager(Model model) {
+	public void reqManager(Criteria cri, Model model) {
 		log.info("[GET] <<<<< ADMIN User 관리 페이지 요청 >>>>>");
-		List<UserDTO> userList = adminService.getUserList();
+		List<UserDTO> userList = adminService.getUserList(cri);
+		int total = adminService.getUserCount(cri);
 		
+		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("list", userList);
 	}
 	
