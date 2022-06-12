@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.VisitorMapper">
+	<select id="dupSession" resultType="string">
+		select session_id from visitor where session_id = #{sessionId }
+	</select>
+	
+	<select id="getVisitorTotal" resultType="Integer">
+		select visit_total from visitor_total where visit_date between sysdate - 12 and sysdate - 1 order by visit_date asc
+	</select>
+	
+	<select id="getTodayVisitorCount" resultType="Integer">
+		select count(*) from visitor
+	</select>
+	
+	<insert id="visitTotalInsert">
+		insert into visitor_total(visit_date, visit_total) values (sysdate - 1, #{total })
+	</insert>
+	
+	<delete id="visitorDeleteAll">
+		delete from visitor
+	</delete>
+	
+	<!-- 사이트 방문자 -->
+	<insert id="visitInsert" parameterType="com.solmarket.dto.VisitorVO">
+		INSERT INTO VISITOR(VISIT_ID, VISIT_TIME, SESSION_ID) 
+		VALUES(VISITOR_SEQ.NEXTVAL, SYSDATE, #{sessionId})
+	</insert>	
+</mapper>
