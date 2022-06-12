@@ -24,9 +24,9 @@ $(function(){
 			// 카테고리
 			let category = $("select").val();
 			//상품수량
-			let qn = $("input[name='qn']:checked").val();	
+			let qn = $("input[name='productQN']:checked").val();	
 			//상품명 
-			let productname = $("input[name='productname']").val();
+			let productname = $("input[name='productName']").val();
 			
 			str = ""
 			
@@ -44,6 +44,9 @@ $(function(){
 		index++;
 		
 		
+	})
+	$(".btn-warnig").click(function(e){
+		e.preventDefault();
 	})
 	// 스크립트 동작 후 tbody안에 값이 생성 되면 버튼 기능 활성화.
 	$(tbody).on("click","#removeBtn",function(){

@@ -8,7 +8,7 @@
 	<div class="container">
 	<div class="row">
 	  <div class="col-lg-12 pl-2" >
-	    <h1 class="page-header">상품 목록</h1>
+	    <h1 class="page-header">오픈 예정 장터 목록</h1>
 	  </div>
 	  <!-- /.col-lg-12 -->
 	</div>
@@ -19,7 +19,7 @@
 	  <div class="col-lg-12">
 	    <div class="panel panel-default">
 	      <div class="panel-heading">
-	        Product List Page
+	        Market List Page
 	      </div>
 	     <!-- /.panel-heading 종료-->
       
@@ -28,27 +28,25 @@
           <thead>
             <tr>
               <th>번 호</th>
-              <th>판매장터</th>
-              <th>상품명</th>
-              <th>가 격</th>
-              <th>등록일</th>
-              <th>상품 상태</th>
+              <th>장터명</th>
+              <td>장터 시작일</td>
+              <td>장터 종료일</td>
+              <td>장터 위치</td>
             </tr>
           </thead>
           <!-- thead 종료 -->
           
          <tbody>
           <!-- 게시판 리스트 반복문 -->
-          	<c:forEach var="dto" items="${list}" varStatus="status">
+          	<c:forEach var="dto" items="${marketList}" varStatus="status">
          	 <tr>
           		<td>${status.count}</td>          		
-          		<td>${dto.dummy}</td>
           		<td>
-          			<a href="${dto.productNo}" class="move">${dto.productName}</a>
+          			<a href="${dto.marketNo}" class="move">${dto.marketName}</a>
          	 	</td>
-          		<td>${dto.productPrice}</td>
-          		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}"/></td>
-          		<td>${dto.productStatus}</td>
+          		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.marketSD}"/></td>
+          		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.marketED}"/></td>
+          		<td>${dto.marketLoc}</td>
          	 </tr>
           	</c:forEach>
           </tbody>
@@ -105,7 +103,7 @@
 </div>
 
 	<%--페이지 링크 처리할 폼 --%>
-	<form action="/product/product_list" id="actionForm">
+	<form action="/product/product_market_list" id="actionForm">
 		<!-- pageNum, amount, type, keyword 값을 부를 때
 			①pageDto(pageDto.cri.pageNum)
 			②cri(criteria.pageNum( @ModelAttribute가 사용 안된 경우), cri.pageNum)
@@ -121,5 +119,5 @@
 
 
 
-<script src="/resources/js/product_list.js"></script>
+<script src="/resources/js/product_paging.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

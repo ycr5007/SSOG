@@ -24,32 +24,35 @@
 					<label>판매자</label>
 					<input class="form-control" name="seller" value=<%-- '<sec:authentication property="principal.username"/>' --%>"${userName}"	readonly>
 				</div>
-				
+				<div class="form-group"">
+					<label>장터</label>
+					<input class="form-control" name="market" value=<%-- '<sec:authentication property="principal.username"/>' --%>"${marketName}"	readonly>
+				</div>
 				
 				<div class="form-group"">
-				<div class="custom-form">
-					<label>상품 카테고리</label>
-					<select class="category1" name="categoryNo">
-						<option value="">----</option>
-						<option value="1">패션잡화</option>
-						<option value="2">의류</option>
-						<option value="3">푸드</option>
-						<option value="4">캔들/디퓨저/방향제</option>
-						<option value="5">문구/팬시</option>
-						<option value="6">향수/화장품/뷰티</option>
-						<option value="7">기타</option>
-					</select> 
+						<div class="custom-form">
+							<label>상품 카테고리</label>
+							<select class="category1" name="categoryNo">
+								<option value="">----</option>
+								<option value="1">패션잡화</option>
+								<option value="2">의류</option>
+								<option value="3">푸드</option>
+								<option value="4">캔들/디퓨저/방향제</option>
+								<option value="5">문구/팬시</option>
+								<option value="6">향수/화장품/뷰티</option>
+								<option value="7">기타</option>
+							</select> 
+						</div>
+						
+						<div class="custom-form">
+							<label>상품 수량</label>
+							
+							<input type="radio" name="productQN" value="50" checked/>50&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="productQN" value="100"/>100&nbsp;&nbsp;&nbsp;
+							<input type="radio" name="productQN" value="150"/>150
+						</div>
+						<button type="button" class="btn btn-primary" id="addProductBtn">상품 추가</button>
 				</div>
-				
-				<div class="custom-form">
-					<label>상품 수량</label>
-					
-					<input type="radio" name="productQn" value="50" checked/>50&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="productQn" value="100"/>100&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="productQn" value="150"/>150
-				</div>
-				<button type="button" class="btn btn-primary" id="addProductBtn">상품 추가</button>
-			</div>
 
 			<div class="form-group">
 				<label>상품명</label>
@@ -82,14 +85,27 @@
 					</div>
 				</div>
 			</div>		
+			<div class="row">
+			<div class="col-lg-12">
 			<!-- 상품 추가시 추가되는 테이블 -->
-			<table style="display:none">
+			
+			<table class="table table-bordered" style="display:none">
+				<thead>
+				    <tr>
+				      <th scope="col">카테고리</th>
+				      <th scope="col">상품 수량</th>
+				      <th scope="col">상품명</th>
+				      <th scope="col"> # </th>
+				    </tr>
+			  	</thead>
 				<tbody>
 				<!-- 스크립트 동작 -->
 				</tbody>	
-			</table>	
-			<input type="hidden" name="marketNo" value="1" />
-			<input type="hidden" name="userNo" value="4" />
+			</table>
+			</div><!--  -->	
+			</div><!-- table 감싸기 -->
+			<input type="hidden" name="marketNo" value="${marketNo}" />
+			<input type="hidden" name="userNo" value="${userNo }"/>
 			
 			<button type="submit" class="btn btn-warning" id="registerBtn">등록</button>
 			<button type="button" class="btn btn-danger" id="deleteBtn">취소</button>
@@ -97,8 +113,13 @@
 	</div>
 </div>						
 <!-- content 종료 -->
-
-
+<script>
+$(function(){
+	$(".btn-danger").click(function(){
+		location.href="/product/product_list";
+	})
+})
+</script>
 
 
 
