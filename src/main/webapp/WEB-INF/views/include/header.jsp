@@ -29,6 +29,27 @@
         max-width: 500px;
       }
       
+      #marketlist {
+          overflow: auto;
+      }
+ 
+      
+      #marketlist::-webkit-scrollbar {
+          width: 5px; /*스크롤바의 너비*/
+      }
+      
+      #marketlist::-webkit-scrollbar {
+          width: 5px; /*스크롤바의 너비*/
+      }
+
+      #marketlist::-webkit-scrollbar-thumb {
+          background-color: black; /*스크롤바의 색상*/
+      }
+
+      #marketlist::-webkit-scrollbar-track {
+          background-color: yellow; /*스크롤바 트랙 색상*/
+      }
+      
     </style>
   </head>
   <body>
@@ -39,7 +60,7 @@
           <img
             src="/resources/img/ssol_logo.png"
             class="market_logo"
-            style="display: block; margin: 0 auto; width: auto; height: auto"
+            style="display: block; margin: 20px auto; width: auto; height: auto"
           />
         </a>
 
