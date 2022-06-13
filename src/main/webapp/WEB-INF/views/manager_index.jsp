@@ -112,4 +112,13 @@
 	</div>
 	<!-- End of Main Content -->
 	
+<script>
+$(function() {
+	if(${marketNo} == null) {
+		alert('장터 등록 후 이용해주세요.');
+		location.href = "/market/market_register";
+	}
+})
+</script>
+	
 <%@ include file="./include/manager_footer.jsp"%>

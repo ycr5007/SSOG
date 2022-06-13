@@ -29,8 +29,13 @@ public class MarketServiceImpl implements MarketService {
 
 	/* ================= 장터 참여 신청 목록 보기 ================= */
 	@Override
-	public List<ProductDTO> showReceive(int marketNo) {
-		return mapper.selectReceive(marketNo);
+	public List<ProductDTO> showReceive(int marketNo, Criteria criteria) {
+		return mapper.selectReceive(marketNo, criteria);
+	}
+	
+	@Override
+	public int TotalReceive(int marketNo) {
+		return mapper.selectTotalReceive(marketNo);
 	}
 	
 	/* ================= 장터 참여 신청 상품 상세 ================= */
@@ -52,8 +57,13 @@ public class MarketServiceImpl implements MarketService {
 
 	/* ================= 장터 참여 승인 목록 보기 ================= */
 	@Override
-	public List<ProductDTO> showProductAcceptList(int marketNo) {
-		return mapper.selectAcceptList(marketNo);
+	public List<ProductDTO> showProductAcceptList(int marketNo, Criteria criteria) {
+		return mapper.selectAcceptList(marketNo, criteria);
+	}
+	
+	@Override
+	public int TotalAccept(int marketNo) {
+		return mapper.selectTotalAccept(marketNo);
 	}
 
 	/* ====================== 장터 오픈 ====================== */
@@ -75,8 +85,13 @@ public class MarketServiceImpl implements MarketService {
 	
 	/* ====================== 장터 공지 목록 보기 ====================== */
 	@Override
-	public List<NoticeDTO> showNoticeList(int marketNo) {
-		return mapper.selectNoticeList(marketNo);
+	public List<NoticeDTO> showNoticeList(int marketNo, Criteria criteria) {
+		return mapper.selectNoticeList(marketNo, criteria);
+	}
+	
+	@Override
+	public int TotalNotice(int marketNo) {
+		return mapper.selectTotalNotice(marketNo);
 	}
 
 	/* ====================== 장터 공지 등록 ====================== */
@@ -87,8 +102,13 @@ public class MarketServiceImpl implements MarketService {
 	
 	/* ================== 장터 판매 상품 목록 보기 ================== */
 	@Override
-	public List<ProductDTO> ProductList(int marketNo) {
-		return mapper.selectProductList(marketNo);
+	public List<ProductDTO> ProductList(int marketNo, Criteria criteria) {
+		return mapper.selectProductList(marketNo, criteria);
+	}
+	
+	@Override
+	public int TotalProduct(int marketNo) {
+		return mapper.selectTotalProduct(marketNo);
 	}
 
 	/* ====================== 장터 종료 ====================== */
@@ -104,7 +124,7 @@ public class MarketServiceImpl implements MarketService {
 
 	/* ====================== 첨부 파일 ====================== */
 	@Override
-	public List<AttachDTO> MarketImg(int marketNo) {
+	public AttachDTO MarketImg(int marketNo) {
 		return attachMapper.selectMarketImg(marketNo);
 	}
 	
@@ -118,13 +138,23 @@ public class MarketServiceImpl implements MarketService {
 
 	/* ====================== 장터 후기 ====================== */
 	@Override
-	public List<ReviewDTO> ReviewList(int marketNo) {
-		return mapper.selectReviewList(marketNo);
+	public List<ReviewDTO> ReviewList(int marketNo, Criteria criteria) {
+		return mapper.selectReviewList(marketNo, criteria);
+	}
+	
+	@Override
+	public int TotalReview(int marketNo) {
+		return mapper.selectTotalReview(marketNo);
 	}
 	
 	@Override
 	public double MarketRate(int marketNo) {
 		return mapper.selectMarketRate(marketNo);
+	}
+	
+	@Override
+	public boolean findReveiwer(int marketNo, int userNo) {
+		return mapper.selectReveiwer(marketNo, userNo) >= 0 ? true : false;
 	}
 
 	@Override

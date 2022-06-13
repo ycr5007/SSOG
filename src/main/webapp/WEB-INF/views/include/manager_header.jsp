@@ -10,7 +10,8 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 	<!-- Style -->
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
-	<script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/market_pagination.js"></script>
 	<title>관리자 메인 페이지</title>
 </head>
 
@@ -49,7 +50,7 @@
 
 			<!-- 사이드바 - 내 장터 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_detail">
+				<a class="nav-link" href="/market/market_detail?marketNo=${marketNo}">
 					<i class="fas fa-fw fa-bookmark"></i>
 					<span>내 장터</span>
 				</a>
@@ -57,7 +58,7 @@
 
 			<!-- 사이드바 - 내 장터 참여자 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_myseller">
+				<a class="nav-link" href="/market/market_myseller?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-users"></i>
 					<span>장터 판매 상품 목록</span>
 				</a>
@@ -65,7 +66,7 @@
 
 			<!-- 사이드바 - 내 장터 참여 신청자 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_receive">
+				<a class="nav-link" href="/market/market_receive?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-edit"></i>
 					<span>장터 참여 신청 목록</span>
 				</a>
@@ -73,7 +74,7 @@
 			
 			<!-- 사이드바 - 참여 승인 상품 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_accept">
+				<a class="nav-link" href="/market/market_accept?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-check-square"></i>
 					<span>참여 승인 목록</span>
 				</a>
@@ -81,7 +82,7 @@
 
 			<!-- 사이드바 - 내 장터 한 줄 리뷰 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_review">
+				<a class="nav-link" href="/market/market_review?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-star"></i>
 					<span>장터 후기</span>
 				</a>
@@ -89,7 +90,7 @@
 
 			<!-- 사이드바 - 내 장터 공지 및 이벤트 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_notice">
+				<a class="nav-link" href="/market/market_notice?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-table"></i>
 					<span>장터 공지</span>
 				</a>
@@ -139,12 +140,12 @@
 							</a>
 							<!-- 프로필 드롭다운 -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#">
+								<a class="dropdown-item" href="/member/myPage">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									마이페이지
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+								<a class="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									로그아웃
 								</a>
