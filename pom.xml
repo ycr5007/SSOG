@@ -89,6 +89,14 @@
 		    <artifactId>ojdbc8</artifactId>
 		    <version>21.5.0.0</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <!-- Spring 버전과 맞추는 것이 좋음 -->
+		    <version>5.3.19</version>
+		</dependency>
 		<!-- ========================================== Database ========================================== -->
 
 		<!-- ========================================== Util ========================================== -->
@@ -99,6 +107,14 @@
 		    <version>1.18.24</version>
 		    <scope>provided</scope>
 		</dependency>			
+		
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<!-- Converter :: JAVA 객체를 JSON 으로 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.13.2.2</version>
+		</dependency>
 		<!-- ========================================== Util ========================================== -->
 
 		<!-- Spring -->

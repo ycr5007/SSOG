@@ -94,7 +94,7 @@
                 <a class="nav-link" href="about.html">커뮤니티</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">재고상점</a>
+                <a class="nav-link" href="/shop/index">재고상점</a>
               </li>
             </ul>
           </div>
@@ -135,9 +135,15 @@
                 <i class="fa fa-fw fa-user text-dark mr-3"></i>
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <c:if test="${empty login }">
                 <a class="dropdown-item" href="/member/signUp1">회원가입</a>
-                <a class="dropdown-item" href="/member/signIn">로그인</a>
+                <a class="dropdown-item" href="/member/login">로그인</a>
                 <a class="dropdown-item" href="/member/myPage">마이페이지</a>
+              </c:if>
+              <c:if test="${!empty login}">
+               	<a class="dropdown-item" href="/member/logout">로그아웃</a>
+                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
+              </c:if>
               </div>
             </div>
           </div>

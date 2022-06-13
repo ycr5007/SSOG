@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 	<!-- Style -->
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
+	<script src="/resources/js/jquery.min.js"></script>
 	<title>판매자 메인 페이지</title>
 </head>
 
@@ -20,7 +21,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- 사이드바 - 메인 -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/product_index">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/product/product_index">
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-fw fa-cog"></i>
                 </div>
@@ -43,16 +44,16 @@
             
             <!-- 사이드바 - 현재 오픈된 장터 정보 -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/product/product_market_list?userNo=${userNo}&pageNum=${pageNum}&amount=${amount}">
                     <i class="fas fa-fw fa-map-marker-alt"></i>
-                    <span>현재 오픈된 장터</span>
+                    <span>현재 오픈 예정 장터</span>
                 </a>
             </li>
 
 			 
              <!--사이드바 - 마켓에 신청, 신청시 상품등록 같이-->
             <li class="nav-item">
-                <a class="nav-link" href="/product/product_register">
+                <a class="nav-link" href="/product/product_register?userNo=${userNo}&marketNo=${marketNo}">
               	  <i class="fas fa-fw fa-marker"></i>
                     <span>장터 참여 신청</span>
                 </a>
@@ -70,7 +71,7 @@
 
             <!-- 사이드바 - 상품 관리 -->
             <li class="nav-item">
-                <a class="nav-link" href="/product/product_list">
+                <a class="nav-link" href="/product/product_list?userNo=${userNo}&pageNum=${pageNum}&amount=${amount}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>상품 목록</span>
                 </a>

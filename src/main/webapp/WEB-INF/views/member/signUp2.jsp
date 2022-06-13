@@ -15,7 +15,6 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/y.css">
 
-    <link rel="stylesheet" href="/resources/css/y.css">
     <!-- validation 사용자 작성 코드 삽입-->
     <script src="/resources/js/register.js"></script>
   </head>
@@ -98,6 +97,7 @@ pageEncoding="UTF-8"%>
               id="userMail"
               class="mail_input"
               placeholder="example@gmail.com"
+              required
             />
             <small id="userMail" class="text-info"></small>
           </div>
@@ -114,10 +114,14 @@ pageEncoding="UTF-8"%>
 					<div class="clearfix"></div>
 						<span id="mail_check_input_box_warn"></span>
 				</div>
-				
 		</div>
+		 <div class="d-flex justify-content-end">
+		<!--  <button type="button" class="btn btn-info" onClick="location.href='/member/jusoPopup'" >주소 검색</button>  -->
+		  <button type="button" class="btn btn-info" onClick="goPopup();" >주소검색</button>
+        </div>
+        <input type="text" name="userAddress" id="userAddress" class="form-control" placeholder="Enter Address" required readonly>
         <div class="form-group text-center">
-          <button type="submit" class="btn btn-primary">가입하기</button>
+          <button type="submit" class="btn btn-primary send-data">가입하기</button>
           <button type="reset" class="btn btn-secondary">취소</button>
         </div>
      </form>
@@ -167,11 +171,23 @@ $(".mail_check_input").blur(function(){
 		checkResult.attr("class","incorrect");
 	}
 	
+	console.log(checkResult.attr("class"));
+	if(checkResult.attr("class")=="incorrect"){
+		$(".send-data").attr("disabled","disabled");
+	}
 });
-
-
 </script>
-
+<script>
+    function goPopup(){
+    	// 주소검색을 수행할 팝업 페이지를 호출합니다.
+    	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+    	var pop = window.open("/member/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+    }
+    function jusoCallBack(roadFullAddr){
+    	var addr = document.querySelector("#userAddress");
+    	addr.value = roadFullAddr;
+    }
+</script>
 </body>
 
 </html>

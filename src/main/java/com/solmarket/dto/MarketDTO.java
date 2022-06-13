@@ -1,10 +1,7 @@
 package com.solmarket.dto;
 
-import java.util.Date;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.*;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +15,8 @@ public class MarketDTO {
 	private Date marketED; // 종료일
 	private double marketRate; // 총 평점
 	private int marketStatus; // 장터 상태
+	
+	private List<AttachDTO> attachList; // 첨부파일
 	
 	private String dummy; // Join 활용 추가 데이터
 }

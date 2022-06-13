@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.solmarket.dto.Criteria;
+import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.ProductDTO;
 import com.solmarket.mapper.ProductMapper;
 
@@ -31,9 +33,47 @@ public class ProductServiceImpl implements ProductService {
 
 	//리스트 보여주기
 	@Override
-	public List<ProductDTO> getList() {
+	public List<ProductDTO> getList(Criteria cri, int userNo) {	
+		return mapper.select(cri, userNo);
+	}
+
+	// 리스트에서 상품명 클릭시
+	@Override
+	public ProductDTO getRow(int productNo) {
+		return mapper.read(productNo);
+	}
+
+	// 리스트 페이징 처리
+	@Override
+	public int getTotalCnt(int userNo) {
+		return mapper.totalCnt(userNo);
+	}
+
+	// 상품 수정 
+	@Override
+	public boolean update(ProductDTO updateDto) {
 		
-		return mapper.select();
+		return mapper.update(updateDto)==1?true:false;
+	}
+
+	// 장터 이름 가져오기
+	@Override
+	public String marketName(int marketNo) {
+		return mapper.marketName(marketNo);
+	}
+
+	// 장터 리스트 보여주기
+	@Override
+	public List<MarketDTO> marketList(Criteria cri, int userNo) {
+		
+		return mapper.marketList(cri, userNo);
+	}
+
+	// 장터 리스트 페이징
+	@Override
+	public int marketTotal(Criteria cri) {
+		
+		return mapper.marketTotal(cri);
 	}
 
 

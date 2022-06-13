@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.solmarket.mapper.MemberMapper">
+	
 	<!-- 회원가입 -->
 	<insert id="insert">
 		insert into myuser(user_no, user_id, user_pw, user_name, user_phone, user_mail,
-		user_profile,user_pf, user_pfsize)
-		values(myUser_seq.nextval, #{userId},#{userPw},#{userName},#{userPhone},#{userMail},#{userProfile, jdbcType=VARCHAR},0,0)
+		user_profile,user_pf, user_pfsize, user_address)
+		values(myUser_seq.nextval, #{userId},#{userPw},#{userName},#{userPhone},#{userMail},#{userProfile, jdbcType=VARCHAR},0,0,#{userAddress})
 	</insert>
 	
 	<!-- 로그인 : userId, 비밀번호 : userPw -->
-	<select id="login" resultType="com.solmarket.dto.AuthDTO">
-		select user_id as userId, user_name as userName from myuser where user_id=#{userId} and user_pw=#{userPw}
+	<resultMap type="com.solmarket.dto.UserDTO" id="myUser">
+		<id property="userId" column="user_id"/>
+		<result property="userPw" column="user_pw"/>
+		<result property="enabled" column="enabled"/>
+	</resultMap>
+	<select id="read" resultMap="myUser">
+		select user_id as userId, user_pw as userPw, enabled from myUser where user_id=#{userId}
 	</select>
 	
 	<!-- 비밀번호 변경 -->

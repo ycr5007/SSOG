@@ -22,18 +22,20 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
+	
 	@Inject
 	JavaMailSenderImpl MailSender;
 	
 	@Override
 	public boolean register(UserDTO register) {
+		
 		return mapper.insert(register)==1?true:false;
 	}
 
-	@Override
-	public AuthDTO login(String userId, String userPw) {
-		return mapper.login(userId, userPw);
-	}
+	//@Override
+	//public AuthDTO login(String userId, String userPw) {
+	//	return mapper.login(userId, userPw);
+	//}
 
 	/*
 	 * @Override public boolean changePwd(ChangeDTO changeDto) { return
@@ -100,6 +102,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String myPagePwCheck(String userPw) {
 		return mapper.myPagePwCheck(userPw);
+	}
+
+	@Override
+	public AuthDTO login(String userId, String userPw) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

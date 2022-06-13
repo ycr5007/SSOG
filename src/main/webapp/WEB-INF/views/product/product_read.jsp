@@ -2,50 +2,76 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ include file="../include/product_header.jsp"%>
+
+<div class="container-fluid">
 <!-- 상세페이지 -->
 		<div class="form-group">
-				<form action="" method="post" role="form">
+			<form action="" method="post" role="form">
 					
-			<div class="form-group"">
-					<label>상품명</label>
-					<input class="form-control" name="product" value='<sec:authentication property="principal.username"/>'	readonly>
-			</div>
+				<div class="form-group"">
+						<label>상품명</label>
+						<input class="form-control" name="product" value="${dto.productName}"<%-- '<sec:authentication property="principal.username"/>' --%>	readonly>
+				</div>
 
-			<div class="custom-form">
-				<label>상품 수량</label> <input type="radio" name="" id="" value="10" />50&nbsp;&nbsp;&nbsp;
-				<input type="radio" name="" id="" value="20" />100&nbsp;&nbsp;&nbsp;
-				<input type="radio" name="" id="" value="30" />150
-			</div>
-
-			<div class="form-group">
-				<label>상품설명</label>
-				<textarea class="form-control" rows="5" name="content"
-					style="resize: none"></textarea>
-			</div>
-
-			<div class="form-group">
-				<label>상품가격</label> <input type="text" name="title" id="title"
-					class="form-control" />
-			</div>
-			
-			
-			<!-- 파일첨부 -->
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">파일첨부</div>
-						<div class="panel-body">
-							<div class="form-group uploaddiv">
-								<input type="file" name="uploadFile" id="" multiple />
+				<div class="custom-form">
+					<label>상품 수량</label>					
+						<input type="radio" ${dto.productQN==50 ? 'checked': ''} name="productQN" value="50" onclick="return(false);"/>50&nbsp;&nbsp;&nbsp;
+						<input type="radio" ${dto.productQN==100 ? 'checked': ''} name="productQN" value="100" onclick="return(false);"/>100&nbsp;&nbsp;&nbsp;
+						<input type="radio" ${dto.productQN==150 ? 'checked': ''} name="productQN" value="150" onclick="return(false);"/>150
+				</div>
+	
+				<div class="form-group">
+					<label>상품설명</label>
+					<textarea class="form-control" rows="5" name="productcontent" style="resize: none" readonly>${dto.productContent}</textarea>
+				</div>
+	
+				<div class="form-group">
+					<label>상품가격</label>
+					<input type="text" name="productprice" value="${dto.productPrice}"class="form-control" readonly />
+				</div>
+				
+				<div class="form-group">
+					<label>상품상태</label>
+					<input type="text" name="productStatus" id="productStatus" class="form-control" value="${dto.productStatus}" readonly />
+				</div>
+				
+				
+				<!-- 파일첨부 -->
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">파일첨부</div>
+							<div class="panel-body">
+								<div class="form-group uploaddiv">
+									<input type="file" name="uploadFile" id="" multiple />
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<button type="button" class="btn btn-warning" id="registerBtn">목록</button>
-			<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
-			<button type="button" class="btn btn-danger" id="deleteBtn">삭제</button>
-			</form>
-			</div>
+			
+					<button type="button" class="btn btn-info" id="registerBtn">목록</button>
+					<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
+			
+		</form>
+	</div>
+</div>
 
+
+
+<%-- 수정 버튼 클릭시 이동할 폼 --%>
+<form action="/product/product_modify" id="operForm">
+	<input type="hidden" value="${userNo}" name="userNo" />
+	<input type="hidden" value="${dto.productNo}" name="productNo" />
+	<input type="hidden" value="${pageNum}" name="pageNum" />
+	<input type="hidden" value="${amount}" name="amount" />
+</form>
+
+
+
+
+
+
+
+<script src="/resources/js/product_read.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

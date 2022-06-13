@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../include/header.jsp" %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 <script>
@@ -20,10 +21,9 @@
 		});
 	});
 </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="/resources/css/y.css">
-<form class="col" action="" method="POST">
+<form class="col" action="/login" method="post">
 	<section>
 	  <div class="row">
 	    <div class="col d-flex flex-column align-items-center justify-content-center">
@@ -38,9 +38,22 @@
 	     	   </div>
 	  
 		      <div class="btn-group-vertical mt-3">
-		        <button type="submit" class="btn btn-third w-100">로그인</button><br>
+		        <button type="submit" class="btn btn-third w-100">로그인</button>
+		        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				<div class="error-message">
+					<span>${loginError}</span>
+				</div>
 		      </div>
 	    </div>    
 	  </div>
 	</section>
 </form>
+<!--  <script>
+ $(function(){
+	 let error = '${error}';
+		if(error!=''){
+		alert(error);
+		}
+ })
+</script>  -->
+<%@ include file="../include/footer.jsp" %>

@@ -4,16 +4,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.solmarket.dto.UserDTO;
-import com.solmarket.service.MemberService;
 //import com.solmarket.dto.ChangeDTO;
 import com.solmarket.dto.AuthDTO;
+import com.solmarket.dto.UserDTO;
+import com.solmarket.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,28 +54,32 @@ public class MemberController {
 		return "/member/signUp2";
 	}
 	
-	// signIn 보여주는 컨트롤러
-	@GetMapping("/signIn")
-	public void signIn() {
+	// login 보여주는 컨트롤러
+	@GetMapping("/login")
+	public void login() {
 		log.info("로그인 페이지 요청");
 	}
 	
-	@PostMapping("/signIn")
-	public String signInPost(String userId, String userPw,HttpSession session) {
-		log.info(""+userId+" userPw" +userPw);
-		
-		AuthDTO authDto = service.login(userId, userPw);
-		
-		if(authDto==null) {
-			return "redirect:/member/signIn"; // 로그인 실패시 다시 로그인 페이지를 보여줘야함
-		}
-		//SessionAttribute : Model 에 담은 객체를 session 유지
-		//HttpSession : 
-		session.setAttribute("login", authDto);
-		return "redirect:/";
+	@GetMapping("/login-error")
+	public String loginError(Model model) {
+		model.addAttribute("loginError", "아이디나 비밀번호를 확인하세요");
+		return "/member/login";
 	}
+
+	/*
+	 * @PostMapping("/signIn") public String signInPost(String userId, String
+	 * userPw,HttpSession session, RedirectAttributes rttr) {
+	 * log.info(""+userId+" userPw" +userPw);
+	 * 
+	 * AuthDTO authDto = service.login(userId, userPw);
+	 * 
+	 * if(authDto==null) { rttr.addFlashAttribute("error",
+	 * "아이디 또는 비밀번호가 일치하지 않습니다."); return "redirect:/member/signIn"; // 로그인 실패시 다시
+	 * 로그인 페이지를 보여줘야함 } //SessionAttribute : Model 에 담은 객체를 session 유지 //HttpSession
+	 * : session.setAttribute("login", authDto); return "redirect:/"; }
+	 */
 	
-	// logout + get => session 해제 후 index 이동
+		// logout + get => session 해제 후 index 이동
 		@GetMapping("/logout")
 		public String logout(HttpSession session) {
 			log.info("로그아웃");
@@ -163,24 +168,22 @@ public class MemberController {
 			AuthDTO authDto = service.findId(userName, userMail);
 			
 			if(authDto!=null) {
-				rttr.addAttribute("userName", userName);
-				rttr.addAttribute("userMail", userMail);
+			//	model.addAttribute("userName", userName);
+			//	model.addAttribute("userMail", userMail);
 				rttr.addFlashAttribute("userId", authDto.getUserId());
 				log.info(""+userName);
 				log.info(""+userMail);
 				log.info(""+authDto.getUserId());
 				return "redirect:/member/findIdResult";
 			}else {
-				rttr.addFlashAttribute("error", "입력값을 다시 확인해주세요");
-				log.info(""+userName);
-				log.info(""+userMail);
+				rttr.addAttribute("error", "확인해주세요");
 				return "redirect:/member/findIdResult";
 				
 			}
 		}
 		
 		@GetMapping("/findIdResult")
-		public void findIdGet(String userName, String userEmail) {
+		public void findIdGet(String userName, String userMail) {
 		}
 		
 		// 비밀번호 찾기
@@ -189,37 +192,28 @@ public class MemberController {
 			log.info("비밀번호 찾기 폼 요청");
 		}
 		
-		@PostMapping("/findPw")
-		public String findPwPost(String userId, String userMail, RedirectAttributes rttr) {
-			log.info("비밀번호 찾기");
-			log.info(""+userId);
-			log.info(""+userMail);
-			
-			AuthDTO authDto = service.findPw(userId, userMail);
-			
-			if(authDto!=null) {
-				rttr.addAttribute("userId", userId);
-				rttr.addAttribute("userMail", userMail);
-				rttr.addFlashAttribute("userPw", authDto.getUserPw());
-				log.info(""+userId);
-				log.info(""+userMail);
-				log.info(""+authDto.getUserPw());
-				return "redirect:/member/findPwResult";
-			}else {
-				rttr.addFlashAttribute("error", "입력값을 다시 확인해주세요");
-				log.info(""+userId);
-				log.info(""+userMail);
-				return "redirect:/member/findPw";
-				
-			}
-		}
+		/*
+		 * @PostMapping("/findPw") public String findPwPost(String userId, String
+		 * userMail, RedirectAttributes rttr) { log.info("비밀번호 찾기");
+		 * log.info(""+userId); log.info(""+userMail);
+		 * 
+		 * AuthDTO authDto = service.findPw(userId, userMail);
+		 * 
+		 * if(authDto!=null) { rttr.addAttribute("userId", userId);
+		 * rttr.addAttribute("userMail", userMail); rttr.addFlashAttribute("userPw",
+		 * authDto.getUserPw()); log.info(""+userId); log.info(""+userMail);
+		 * log.info(""+authDto.getUserPw()); return "redirect:/member/findPwResult";
+		 * }else { return "redirect:/member/findPwResult";
+		 * 
+		 * }
+		 */
+		//}
 		
 		@GetMapping("/findPwResult")
 		public void findPwResultGet(String userId, String userMail) {
 			
 		}
 
-		
 		// 메일인증
 		@GetMapping("/mailCheck")
 		@ResponseBody
@@ -235,5 +229,15 @@ public class MemberController {
 			return authkey;
 		}
 		
+		// 주소
+		@GetMapping("/jusoPopup")
+		public void jusoPopupGet() {
+			log.info("주소 팝업 요청");
+		}
+		
+		@PostMapping("/jusoPopup")
+		public void jusoPopupPost() {
+			log.info("주소 팝업 요청;");
+		}
 		
 }
