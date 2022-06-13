@@ -15,7 +15,7 @@ public class ReviewDTO {
 	private int marketNo; // 장터번호 ( market 테이블 참조 )
 	private String reviewContent; // 리뷰 내용
 	private Date reviewDate; // 작성일 
-	private int reviewRate; // 회원평점 ( 1 ~ 5 ) 
+	private int reviewRate; // 회원평점 ( 1 ~ 5 )
 	private int reviewStatus; // 리뷰 상태 ( 1:show / 0:hidden )
 	
 	private String userName; // 회원 이름 ( myUser 테이블 )
