@@ -36,4 +36,10 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.select();
 	}
 
+
+	@Override
+	public List<ProductDTO> getSearchList(String productName) {
+		return mapper.search(productName);
+	}
+
 }

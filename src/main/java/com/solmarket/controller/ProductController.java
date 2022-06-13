@@ -72,6 +72,23 @@ public class ProductController {
 		return "redirect:/product/product_list";
 	}
 	
+	//검색 폼 보여주기
+	@GetMapping("/product_search")
+	public void search() {
+		log.info("상품 정보 검색");
+	}
+	
+	//상품 검색 요청
+	@PostMapping("/product_search")
+	public String searchPost(String productName, Model model) {
+		log.info("상품 검색 요청"+productName);
+		
+		List<ProductDTO> list = service.getSearchList(productName);
+		model.addAttribute("list",list);
+		
+		return "/product/product_list"; 
+	}
+	
 	
 
 }

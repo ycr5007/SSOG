@@ -11,6 +11,8 @@ public interface ProductService {
 	public String userName(int userNo);
 	// 리스트보여주기
 	public List<ProductDTO> getList(); 
+	// 검색
+	public List<ProductDTO> getSearchList(String productName);
 	
 
 }

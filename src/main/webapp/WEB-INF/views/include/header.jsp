@@ -47,7 +47,7 @@
       }
 
       #marketlist::-webkit-scrollbar-track {
-          background-color: yellow; /*스크롤바 트랙 색상*/
+          background-color: skyblue; /*스크롤바 트랙 색상*/
       }
       
     </style>
@@ -86,6 +86,9 @@
             >
               <li class="nav-item">
                 <a class="nav-link" href="index.html">홈</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="notice.html">공지사항</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">커뮤니티</a>
