@@ -11,15 +11,15 @@
 	<div class="card shadow mb-4">
 		<div class="card-body">
 			
-			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-					<thead style="text-align: center">
+			<div class="table-responsive container-fluid">
+				<table class="table table-bordered mt-3" id="dataTable" width="100%" cellspacing="0" style="text-align: center">
+					<thead>
 						<tr class="text-gray-800">
-							<th>번 호</th>
-							<th>내 용</th>
-							<th>작성자</th>
-							<th>작성일</th>
-							<th>삭 제</th>
+							<th class="col-lg-1">번 호</th>
+							<th class="col-lg-5">내 용</th>
+							<th class="col-lg-2">작성자</th>
+							<th class="col-lg-3">작성일</th>
+							<th class="col-lg-1">삭 제</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,8 +29,8 @@
 								<td>${review.reviewContent}</td>
 								<td>${review.userName}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.reviewDate}" /></td>
-								<td class="row justify-content-center">
-									<a href="/market/market_review" class="btn btn-danger btn-circle btn-sm">
+								<td>
+									<a href="/market/market_review?marketNo=${marketNo}&reviewNo=${review.reviewNo}" class="btn btn-danger btn-circle btn-sm">
 										<i class="fas fa-trash"></i>
 									</a>
 								</td>
@@ -40,24 +40,36 @@
 				</table>
 
 				<!-- 페이징 -->
-				<%-- <div class="text-center">
-					<ul class="pagination">
-						<c:if test="${pageDTO.prev}">
-							<li class="paginate_button previous"><a
-								href="${pageDTO.startPage-1}">Previous</a></li>
-						</c:if>
-						<c:forEach var="index" begin="${pageDTO.startPage}"
-							end="${pageDTO.endPage}">
-							<li
-								class="paginate_button ${pageDTO.criteria.pageNum == index ? 'active' : ''}"><a
-								href="${index}">${index}</a></li>
-						</c:forEach>
-						<c:if test="${pageDTO.next}">
-							<li class="paginate_button next"><a
-								href="${pageDTO.endPage+1}">Next</a></li>
-						</c:if>
-					</ul>
-				</div> --%>
+				<div class="row justify-content-center align-items-center container-fluid">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<c:if test="${pageDTO.prev}"> <!-- prev가 true면 이전 버튼 활성화 -->
+								<li class="paginate_button previous">
+									<a class="page-link" href="${pageDTO.startPage-1}" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+									</a>
+								</li>
+							</c:if>
+	
+							<c:forEach var="idx" begin="${pageDTO.startPage}" end="${pageDTO.endPage}">
+								<!-- 선택한 페이지 번호 색 채우기 -->
+								<li class="page-item ${pageDTO.criteria.pageNum==idx?'active':''}">
+									<a class="page-link" href="${idx}">${idx}</a>
+								</li>
+							</c:forEach>
+	
+							<c:if test="${pageDTO.next}"> <!-- next가 true면 다음 버튼 활성화 -->
+								<li class="paginate_button next">
+									<a class="page-link" href="${pageDTO.endPage+1}" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">Next</span>
+									</a>
+								</li>
+							</c:if>
+						</ul>
+					</nav>
+				</div>
 				
 			</div>
 			<!-- end panel-body -->
@@ -67,29 +79,20 @@
 </div>
 <!-- /.row -->
 
-<!-- 페이지 링크 처리 form -->
+<!-- URL + 페이징 처리 -->
 <form action="/market/market_review" id="actionForm">
-	<!--
-		pageNum, amount, type, keyword 값을 부를 때
-		1) pageDTO 사용 - pageDTO.criteria.pageNum
-		2) criteria에서 가져다 사용 - criteria.pageNum
-	-->
-	<input type="hidden" name="pageNum" value="${criteria.pageNum }" /> <input
-		type="hidden" name="amount" value="${criteria.amount }" /> <input
-		type="hidden" name="type" value="${criteria.type }" /> <input
-		type="hidden" name="keyword" value="${criteria.keyword }" />
+	<input type="hidden" name="marketNo" value="${marketNo}" />
+	<input type="hidden" name="pageNum" value="${criteria.pageNum }" />
+	<input type="hidden" name="amount" value="${criteria.amount }" />
 </form>
 
 <script>
-	$('.btn-danger').click(function(e) {
-		e.preventDefault();
+	$('.btn-circle').click(function() {		
+		let del = confirm("삭제하시겠습니까?");
 		
-		let delete = confirm("삭제하시겠습니까?");
-		
-		if(delete) {
-			location.href="/market/market_reviewDelete";
-		}else {
-			return;
+		if(del) {
+			$(this).attr("marketNo", ${marketNo});
+			location.href="/market/market_review";
 		}
 	})
 </script>

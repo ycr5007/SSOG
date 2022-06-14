@@ -13,7 +13,7 @@
 			<div class="card-body">
 
 				<!-- 공지 작성 form -->
-				<form action="" method="post">
+				<form action="/market/market_noticeForm" method="post">
 					<div class="form-group">
 						<label>카테고리</label> <select name="category" id="category">
 							<option value="공지">공지</option>
@@ -45,12 +45,10 @@
 						</div>
 					</div>
 					
-					<input type="hidden" name="marketNo" value="${marketNo}" />
-					
 					<!-- 버튼 -->
 					<div class="row justify-content-center">
 						<button type="submit" class="btn btn-primary m-2">등록</button>
-						<button type="reset" class="btn btn-secondary m-2">취소</button>
+						<button type="button" class="btn btn-secondary m-2">취소</button>
 					</div>
 				</form>
 				<!-- form 종료 -->
@@ -58,11 +56,27 @@
 			</div>
 		</div>
 	</div>
-	
 </div>
 
+<!-- URL + 페이징 처리 -->
+<form action="/market/market_noticeForm" id="actionForm">
+	<input type="hidden" name="marketNo" value="${marketNo}" />
+	<input type="hidden" name="pageNum" value="${criteria.pageNum }" />
+	<input type="hidden" name="amount" value="${criteria.amount }" />
+</form>
+
 <script>
+let marketNo = ${marketNo};
+
+$(function() {
+	$("[type='submit']").click(function(e) {
+		e.preventDefault();
+	})
 	
+	$(".btn-secondary").click(function() {		
+		location.href = "/market/market_notice?marketNo=" + ${marketNo};
+	})
+})
 </script>
 
 <%@ include file="../include/manager_footer.jsp"%>

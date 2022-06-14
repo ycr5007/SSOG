@@ -1,70 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- Start Footer -->
-    <footer class="bg-light" id="tempaltemo_footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 pt-5">
-            <h3 class="h3 text-success border-bottom pb-3 border-light logo">
-              쏠마켓
-            </h3>
-            <ul class="list-unstyled text-dark footer-link-list">
-              <li>
-                <i class="fas fa-map-marker-alt fa-fw"></i>
-                서울시 중구
-              </li>
-              <li>
-                <i class="fa fa-phone fa-fw"></i>
-                <a
-                  class="text-decoration-none text-dark"
-                  href="tel:010-020-0340"
-                  >010-020-0340</a
-                >
-              </li>
-              <li>
-                <i class="fa fa-envelope fa-fw"></i>
-                <a
-                  class="text-decoration-none text-dark"
-                  href="mailto:info@company.com"
-                  >info@company.com</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-md-4 pt-5">
-            <h3 class="h3 text-dark border-bottom pb-3 border-light">
-              커뮤니티
-            </h3>
-            <ul class="list-unstyled text-dark footer-link-list">
-              <li>
-                <a class="text-decoration-none text-dark" href="#">공지사항</a>
-              </li>
-              <li>
-                <a class="text-decoration-none text-dark" href="#">게시판</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-md-4 pt-5">
-            <h3 class="h3 text-dark border-bottom pb-3 border-light">
-              문의사항
-            </h3>
-            <ul class="list-unstyled text-light footer-link-list">
-              <li>
-                <a class="text-decoration-none text-dark" href="#"
-                  >마켓등록문의</a
-                >
-              </li>
-              <li>
-                <a class="text-decoration-none text-dark" href="#">회원문의</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+	<!-- Start Footer -->
+	<section>
+	    <footer class="bg-light" id="tempaltemo_footer" style="width:auto; height:auto;">
+	      <div class="container">
+	        <div class="row">
+	           <img
+	             src="../resources/img/footerimg.png"
+	           />
+	        </div>
+	      </div>
+	    </footer>
+    </section>
     <!-- End Footer -->
 
     <!-- jquery cdn -->
@@ -93,17 +41,17 @@
       $(document).ready(function(e) {
         $.fn.maphilight.defaults = {
           fill: true,  //이미지맵 링크에 마우스가 올라오면 색을 넣을 건지 여부
-          fillColor: '000000',  // 색상지정
+          fillColor: 'FFFFFF',  // 색상지정
           fillOpacity: 1,  // 투명도 지정 0~1
           stroke: true,    // border를 넣을건지 여부 false로 설정하면 이하 옵션 무시됨
-          strokeColor: '000000',  //border 색상
+          strokeColor: 'FFFFFF',  //border 색상
           strokeOpacity: 1,  //border 투명도
-          strokeWidth: 5  //border 폭
+          strokeWidth: 10  //border 폭
         }
         $('img[usemap]').maphilight();
       });
     </script>
-    <script>
+	<script>
       $(function(){
 
         let area = $("area");

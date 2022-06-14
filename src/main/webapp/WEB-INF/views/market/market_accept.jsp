@@ -12,70 +12,76 @@
 		<div class="card-body">
 			
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-					<thead style="text-align: center">
+				<table class="table table-bordered mt-3" id="dataTable" width="100%" cellspacing="0" style="text-align: center" >
+					<thead>
 						<tr class="text-gray-800">
-							<th>번 호</th>
-							<th>상품명</th>
-							<th>판매자</th>
-							<th>수 량</th>
-							<th>가 격</th>
+							<th class="col-lg-1">번 호</th>
+							<th class="col-lg-3">상품명</th>
+							<th class="col-lg-2">판매자</th>
+							<th class="col-lg-1">수 량</th>
+							<th class="col-lg-2">가 격</th>
+							<th class="col-lg-3">등록일</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="product" items="${product}" varStatus="status">
 							<tr>
-								<td>${status.count}</td>
-								<td>${product.productName}</td>
-								<td>${product.userName}</td>
-								<td>${product.productQN}</td>
-								<td>${product.productPrice}</td>
+								<td class="col-lg-1">${status.count}</td>
+								<td class="col-lg-3">${product.productName}</td>
+								<td class="col-lg-2">${product.userName}</td>
+								<td class="col-lg-2">${product.productQN}</td>
+								<td class="col-lg-2">${product.productPrice}</td>
+								<td class="col-lg-2"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${product.productDate}" /></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 
-				<%-- <div class="text-center">
-					<!-- start Pagination -->
-					<ul class="pagination">
-						<c:if test="${pageDTO.prev}">
-							<li class="paginate_button previous"><a
-								href="${pageDTO.startPage-1}">Previous</a></li>
-						</c:if>
-						<c:forEach var="index" begin="${pageDTO.startPage}"
-							end="${pageDTO.endPage}">
-							<li
-								class="paginate_button ${pageDTO.criteria.pageNum == index ? 'active' : ''}"><a
-								href="${index}">${index}</a></li>
-						</c:forEach>
-						<c:if test="${pageDTO.next}">
-							<li class="paginate_button next"><a
-								href="${pageDTO.endPage+1}">Next</a></li>
-						</c:if>
-					</ul>
-				</div> --%>
-				<!-- end Pagination -->
+				<!-- 페이징 -->
+				<div class="row justify-content-center align-items-center container-fluid">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<c:if test="${pageDTO.prev}"> <!-- prev가 true면 이전 버튼 활성화 -->
+								<li class="paginate_button previous">
+									<a class="page-link" href="${pageDTO.startPage-1}" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+									</a>
+								</li>
+							</c:if>
+	
+							<c:forEach var="idx" begin="${pageDTO.startPage}" end="${pageDTO.endPage}">
+								<!-- 선택한 페이지 번호 색 채우기 -->
+								<li class="page-item ${pageDTO.criteria.pageNum==idx?'active':''}">
+									<a class="page-link" href="${idx}">${idx}</a>
+								</li>
+							</c:forEach>
+	
+							<c:if test="${pageDTO.next}"> <!-- next가 true면 다음 버튼 활성화 -->
+								<li class="paginate_button next">
+									<a class="page-link" href="${pageDTO.endPage+1}" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+										<span class="sr-only">Next</span>
+									</a>
+								</li>
+							</c:if>
+						</ul>
+					</nav>
+				</div>
 			</div>
-			<!-- end panel-body -->
+			
 		</div>
-		<!-- end panel -->
+		<!-- end card-body -->
 	</div>
+	<!-- end card -->
 </div>
-<!-- /.row -->
+<!-- end container -->
 
-<input type="hidden" name="marketNo" />
-
-<!-- 페이지 링크 처리 form -->
-<form action="/board/list" id="actionForm">
-	<!--
-		pageNum, amount, type, keyword 값을 부를 때
-		1) pageDTO 사용 - pageDTO.criteria.pageNum
-		2) criteria에서 가져다 사용 - criteria.pageNum
-	-->
-	<input type="hidden" name="pageNum" value="${criteria.pageNum }" /> <input
-		type="hidden" name="amount" value="${criteria.amount }" /> <input
-		type="hidden" name="type" value="${criteria.type }" /> <input
-		type="hidden" name="keyword" value="${criteria.keyword }" />
+<!-- URL + 페이징 처리 -->
+<form action="/market/market_accept" id="actionForm">
+	<input type="hidden" name="marketNo" value="${marketNo}" />
+	<input type="hidden" name="pageNum" value="${criteria.pageNum }" />
+	<input type="hidden" name="amount" value="${criteria.amount }" />
 </form>
 
 <%@ include file="../include/manager_footer.jsp"%>

@@ -76,4 +76,10 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.marketTotal(cri);
 	}
 
+
+	@Override
+	public List<ProductDTO> getSearchList(String productName) {
+		return mapper.search(productName);
+	}
+
 }

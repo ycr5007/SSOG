@@ -36,102 +36,91 @@ public class MarketController {
 	
 	/* ============ 장터 참여 신청 목록 보기 (상품 상태 0 & 장터 번호) ============ */
 	@GetMapping("/market_receive")
-	public void market_receive(int marketNo, Model model) {
+	public void market_receive(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 참여 신청 리스트 호출 ==========");
-		List<ProductDTO> list = service.showReceive(marketNo);
+		List<ProductDTO> list = service.showReceive(marketNo, criteria);
+		PageDTO pageDTO = new PageDTO(criteria, service.TotalReceive(marketNo));
 		model.addAttribute("product", list);
+		model.addAttribute("pageDTO", pageDTO);
+		model.addAttribute("marketNo", marketNo);
 	}
 	
 	/* ================= 장터 참여 신청 상품 상세 ================= */
 	@GetMapping("/market_receiveDetail")
-	public void market_productDetail(int marketNo, int productNo, Model model) {
+	public void market_productDetail(int marketNo, int productNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 참여 신청 상품 상세 호출 ==========");
 		ProductDTO productDTO = service.showProduct(marketNo, productNo);
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("product", productDTO);
 	}
 	
-	/* ================= 상품 승인 (상품 상태 0 → 1) ================== */
-	/* ================= 상품 거부 (상품 상태 0 → 2) ================== */
-	@PostMapping("/market_receiveDetail")
-	public String market_productAccept(int productNo) {
-		log.info("[PostMapping] ========== 장터 참여 승인 / 거부 ==========");
-		if(service.ProductAccept(productNo)) {
-			log.info("상품 승인 완료");
-			return "redirect:/market/market_receiveDetail";			
-		}
-		else if(service.ProductAccept(productNo)) {
-			log.info("상품 거부 완료");
-			return "redirect:/market/market_receiveDetail";
-		}
-		return "redirect:/market/market_receive";			
-	}
-	
 	/* ==================== 장터 참여 승인 목록 보기 ==================== */
 	@GetMapping("/market_accept")
-	public void market_accept(int marketNo, Model model) {
+	public void market_accept(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 참여 승인 리스트 호출 ==========");
-		List<ProductDTO> list = service.showProductAcceptList(marketNo);
+		List<ProductDTO> list = service.showProductAcceptList(marketNo, criteria);
+		PageDTO pageDTO = new PageDTO(criteria, service.TotalAccept(marketNo));
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("product", list);
+		model.addAttribute("pageDTO", pageDTO);
 	}
 	
 	/* ======================= 장터 상세 페이지 ======================= */
 	@GetMapping("/market_detail")
-	public void market_detail(int marketNo, Model model) {
+	public void market_detail(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 상세 페이지 호출 ==========");
-		List<NoticeDTO> notice = service.showNoticeList(marketNo);
-		List<AttachDTO> marketImg = service.MarketImg(marketNo);
-		List<ProductDTO> product = service.ProductList(marketNo);
+		AttachDTO marketImg = service.MarketImg(marketNo);
 		AttachDTO productImg = service.ProductImg(marketNo);
 		String marketLoc = service.showMarketLoc(marketNo);
-		List<ReviewDTO> review = service.ReviewList(marketNo);
-		model.addAttribute("notice", notice);
+		List<ProductDTO> list = service.showProductAcceptList(marketNo, criteria);
 		model.addAttribute("marketImg", marketImg);
-		model.addAttribute("product", product);
 		model.addAttribute("productImg", productImg);
 		model.addAttribute("marketLoc", marketLoc);
-		model.addAttribute("review", review);
+		model.addAttribute("marketNo", marketNo);
+		model.addAttribute("product", list);
 	}
 	
 	/* ======================= 장터 후기 목록 보기 (사용자) ======================= */
 	@GetMapping("/market_detailReview")
 	public void market_detailReview(int marketNo, Model model) {
 		log.info("[GetMapping] ========== 장터 후기 더보기 호출 ==========");
-		List<AttachDTO> img = service.MarketImg(marketNo);
-		List<ReviewDTO> list = service.ReviewList(marketNo);
-		double rate = service.MarketRate(marketNo);
-		model.addAttribute("img", img);
-		model.addAttribute("reviews", list);
-		model.addAttribute("marketRate", rate);
+		model.addAttribute("marketNo", marketNo);
 	}
 	
-	@PostMapping("/market_detailReview")
-	public void market_registerReview(ReviewDTO reviewDTO, RedirectAttributes rttr) {
-		log.info("[PostMapping] ========== 장터 후기 작성 등록 ==========");
-		if(service.registerReview(reviewDTO)) {
-			service.ReviewRate(reviewDTO);
-			rttr.addAttribute("review", reviewDTO);
-		}
-	}
+//	@PostMapping("/market_detailReview")
+//	public void market_registerReview(ReviewDTO reviewDTO, int marketNo, RedirectAttributes rttr) {
+//		log.info("[PostMapping] ========== 장터 후기 작성 등록 ==========");
+//		if(service.findReveiwer(marketNo, reviewDTO.getUserNo())) {
+//			rttr.addFlashAttribute("error", "후기를 작성한 이력이 있습니다.");
+//		}
+//		if(service.registerReview(reviewDTO)) {
+//			service.ReviewRate(reviewDTO);
+//			rttr.addAttribute("review", reviewDTO);
+//		}
+//	}
 	
 	/* ================== 장터 판매 상품 목록 보기 ================== */
 	@GetMapping("/market_myseller")
-	public void seller_list(int marketNo, Model model) {
+	public void seller_list(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 참여자 리스트 호출 ==========");
-		List<ProductDTO> list = service.ProductList(marketNo);
+		List<ProductDTO> list = service.ProductList(marketNo, criteria);
 		AttachDTO img = service.ProductImg(marketNo);
+		PageDTO pageDTO = new PageDTO(criteria, service.TotalProduct(marketNo));
+		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("img", img);
 		model.addAttribute("product", list);
+		model.addAttribute("pageDTO", pageDTO);
 	}
 	
 	/* ====================== 장터 공지 목록 보기 ====================== */
 	@GetMapping("/market_notice")
-	public void market_notice(int marketNo, Model model) {
+	public void market_notice(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 공지 리스트 호출 ==========");
-		List<NoticeDTO> list = service.showNoticeList(marketNo);
+		List<NoticeDTO> list = service.showNoticeList(marketNo, criteria);
+		PageDTO pageDTO = new PageDTO(criteria, service.TotalNotice(marketNo));
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("notice", list);
+		model.addAttribute("pageDTO", pageDTO);
 	}
 	
 	/* ====================== 장터 공지 등록 ====================== */
@@ -153,17 +142,20 @@ public class MarketController {
 	
 	/* ====================== 장터 후기 목록 보기 (운영자) ====================== */
 	@GetMapping("/market_review")
-	public void market_review(int marketNo, Model model) {
+	public void market_review(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 후기 리스트 호출 ==========");
-		List<ReviewDTO> list = service.ReviewList(marketNo);
+		List<ReviewDTO> list = service.ReviewList(marketNo, criteria);
+		PageDTO pageDTO = new PageDTO(criteria, service.TotalReview(marketNo));
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("review", list);
+		model.addAttribute("pageDTO", pageDTO);
 	}
 	
-	@PostMapping("/market_reviewDelete")
-	public String market_reviewDelete(int reviewNo) {
-		log.info("[PostMapping] ========== 장터 후기 삭제 요청 ==========");
+	@PostMapping("/market_review")
+	public String market_reviewDelete(int marketNo, int reviewNo, Model model) {
+		log.info("[PostMapping] ========== 장터 후기 삭제 작업 ==========");
 		service.deleteReview(reviewNo);
+		model.addAttribute("marketNo", marketNo);
 		return "redirect:/market/market_review";
 	}
 	

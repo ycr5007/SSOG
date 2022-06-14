@@ -28,4 +28,7 @@ public interface ProductService {
 	// 장터 리스트 페이징 처리
 	public int marketTotal(Criteria cri);
 
+	// 검색
+	public List<ProductDTO> getSearchList(String productName);
+	
 }

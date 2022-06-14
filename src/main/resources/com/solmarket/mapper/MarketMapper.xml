@@ -8,11 +8,23 @@
 		VALUES(market_seq.nextval, #{userNo}, #{marketLoc}, #{marketSD}, #{marketED}, #{marketRate}, 0, 0)
 	</insert>
 
-<!-- ====================== 장터 참여 신청 목록 보기 상품 조회 (상품 상태 0 & 장터 번호) ====================== --> 
+<!-- ========================= 장터 참여 신청 목록 보기 ========================= --> 
+<!-- ====================== 상품 조회 (상품 상태 0 & 장터 번호) ====================== --> 
 	<select id="selectReceive" resultType="com.solmarket.dto.ProductDTO">
-		SELECT p.product_no as productNo, p.user_no as userNo, u.user_name as userName, p.product_name as productName, p.product_qn as productQN, p.product_price as productPrice, p.product_date as productDate
-		FROM product p, myUser u 
-		WHERE p.user_no = u.user_no AND market_no = #{marketNo} AND product_status = 0
+		<![CDATA[
+			SELECT *
+			FROM (SELECT rownum as r, statusList.*
+				FROM (SELECT u.user_name as userName, p.*
+					FROM (SELECT m.market_no as marketNo, p.product_no as productNo, p.user_no as userNo, p.product_name as productName, p.product_qn as productQN, p.product_price as productPrice, p.product_status as productStatus, p.product_date as productDate
+						FROM market m left outer join product p on m.market_no = p.market_no
+						WHERE p.market_no = #{marketNo} and product_status = 0) p left outer join myUser u on p.userNo = u.user_no) statusList
+				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
+			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+		]]>
+	</select>
+<!-- ====================== 신청 상품 총 개수 (상품 상태 0 & 장터 번호) ====================== --> 
+	<select id="selectTotalReceive" resultType="int">
+		SELECT COUNT(*) FROM product WHERE market_no = #{marketNo} AND product_status = 0
 	</select>
 
 <!-- ====================== 장터 참여 신청 상품 상세 ====================== -->
@@ -32,13 +44,24 @@
 		UPDATE product SET product_status = 2 WHERE product_no = #{productNo}
 	</update>
 
-<!-- ====================== 장터 참여 승인 목록 보기 (상품 상태 1 & 장터 번호) ====================== --> 
+<!-- ====================== 장터 참여 승인 목록 보기 ====================== --> 
+<!-- ====================== 상품 조회 (상품 상태 1 & 장터 번호) ====================== --> 
 	<select id="selectAcceptList" resultType="com.solmarket.dto.ProductDTO">
-		SELECT p.product_no as productNo, p.product_name as productName, u.user_name as userName, p.product_qn as productQN, p.product_price as productPrice
-		FROM product p, myUser u
-		WHERE market_no = #{marketNo} AND product_status = 1 AND p.user_no = u.user_no
-		ORDER BY productNo DESC
+		<![CDATA[
+			SELECT *
+			FROM (SELECT rownum as r, list.*
+				FROM (SELECT u.user_name as userName, p.*
+					FROM (SELECT m.market_no as marketNo, p.product_no as productNo, p.user_no as userNo, p.product_name as productName, p.product_qn as productQN, p.product_price as productPrice, p.product_status as productStatus, p.product_date as productDate
+						FROM market m left outer join product p on m.market_no = p.market_no
+						WHERE p.market_no = #{marketNo} and product_status = 1) p left outer join myUser u on p.userNo = u.user_no) list
+				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
+			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+		]]>
 	</select>
+<!-- ====================== 승인 상품 총 개수 (상품 상태 1 & 장터 번호) ====================== -->
+	<select id="selectTotalAccept" resultType="int">
+		SELECT COUNT(*) FROM product WHERE market_no = #{marketNO} AND product_status = 1
+	</select> 
 
 <!-- ====================== 장터 오픈 ====================== --> 
 <!-- ====================== (장터 상태 1 → 2) ====================== -->
@@ -59,18 +82,43 @@
 <!-- ====================== 장터 공지 ====================== -->
 <!-- ====================== 장터 공지 목록 보기 ====================== -->
 	<select id="selectNoticeList" resultType="com.solmarket.dto.NoticeDTO">
-		SELECT notice_no as noticeNo, notice_title as noticeTitle, notice_content as noticeContent, notice_date as noticeDate FROM notice WHERE market_no = #{marketNo} ORDER BY notice_no DESC
+	<![CDATA[
+		SELECT *
+		FROM (SELECT rownum as r, list.*
+			FROM (SELECT notice_no as noticeNo, notice_title as noticeTitle, notice_content as noticeContent, notice_date as noticeDate
+				FROM notice
+				WHERE market_no = #{marketNo}) list
+			WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
+		WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+	]]>
 	</select>
+<!-- ====================== 장터 공지 총 개수 ====================== -->
+	<select id="selectTotalNotice" resultType="int">
+		SELECT COUNT(*) FROM notice WHERE market_no = #{marketNo} AND notice_status = 0
+	</select>
+
 <!-- ====================== 장터 공지 등록 ====================== -->
 	<insert id="insertNotice">
 		INSERT INTO notice(notice_no, market_no, notice_title, notice_content, notice_date, notice_category) VALUES(notice_seq.nextval, #{marketNo}, #{noticeTitle}, #{noticeContent}, SYSDATE, #{noticeCategory})
 	</insert>
 
-<!-- ====================== 장터 판매 상품 목록 보기 (상품 상태 3 & 장터 번호) ====================== --> 
+<!-- ====================== 장터 판매 상품 목록 보기 ====================== --> 
+<!-- ====================== 상품 조회 (상품 상태 3 & 장터 번호) ====================== --> 
 	<select id="selectProductList" resultType="com.solmarket.dto.ProductDTO">
-		SELECT p.product_no as productNo, p.user_no as userNo, u.user_name as userName, u.user_phone as userPhone, p.product_name as productName, p.product_qn as productQn, p.product_price as productPrice, p.product_date as productDate
-		FROM product p, myUser u 
-		WHERE market_no = #{marketNo} AND product_status = 3 AND p.user_no = u.user_no
+		<![CDATA[
+			SELECT *
+			FROM (SELECT rownum as r, list.*
+				FROM (SELECT u.user_name as userName, p.*
+					FROM (SELECT m.market_no as marketNo, p.product_no as productNo, p.user_no as userNo, p.product_name as productName, p.product_qn as productQN, p.product_price as productPrice, p.product_status as productStatus, p.product_date as productDate
+						FROM market m left outer join product p on m.market_no = p.market_no
+						WHERE p.market_no = #{marketNo} and product_status = 3) p left outer join myUser u on p.userNo = u.user_no) list
+				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
+			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+		]]>
+	</select>
+<!-- ====================== 판매 상품 총 개수 ====================== -->
+	<select id="selectTotalProduct" resultType="int">
+		SELECT COUNT(*) FROM product WHERE market_no = #{marketNo} AND product_status = 3
 	</select>
 
 <!-- ====================== 장터 종료 ====================== --> 
@@ -84,11 +132,22 @@
 	</update>
 
 <!-- ====================== 장터 후기 ====================== --> 
-<!-- ====================== 장터 후기 목록 보기 ====================== -->
+<!-- ====================== 장터 후기 목록 보기 (후기 상태 1) ====================== -->
 	<select id="selectReviewList" resultType="com.solmarket.dto.ReviewDTO">
-		SELECT r.review_no as reviewNo, u.user_name as userName, r.review_content as reviewContent, r.review_date as reviewDate, r.review_rate as reviewRate
-		FROM review r, myUser u
-		WHERE r.user_no = u.user_no AND market_no = #{marketNo} AND r.review_status = 1
+		<![CDATA[
+			SELECT *
+			FROM (SELECT rownum as r, list.*
+				FROM (SELECT u.user_name as userName, review.*
+					FROM (SELECT m.market_no as marketNo, r.review_no as reviewNo, r.user_no as userNo, r.review_content as reviewContent, r.review_date as reviewDate, r.review_rate as reviewRate
+						FROM market m left outer join review r on m.market_no = r.market_no
+						WHERE r.market_no = #{marketNo} and r.review_status = 1) review left outer join myUser u on review.userNo = u.user_no) list
+				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
+			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+		]]>
+	</select>
+<!-- ====================== 장터 후기 총 개수 ====================== -->
+	<select id="selectTotalReview" resultType="int">
+		SELECT COUNT(*) FROM review WHERE market_no = #{marketNo} AND review_status = 1
 	</select>
 	
 <!-- ====================== 장터 전체 평점 보기 ====================== -->
@@ -97,6 +156,10 @@
 	</select>
 
 <!-- ====================== 장터 후기 등록 ====================== -->
+	<select id="selectReveiwer" resultType="int">
+		SELECT user_no FROM market WHERE user_no = #{userNo} AND market_no = #{marketNo}
+	</select>
+
 	<insert id="insertReview">
 		INSERT INTO review(review_no, user_no, market_no, review_content, review_date, review_rate, review_status) VALUES(review_seq.nextval, #{userNo}, #{marketNo}, #{reviewContent}, SYSDATE, #{reviewRate}, 1)
 	</insert>

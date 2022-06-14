@@ -8,15 +8,4 @@
 		]]>
 	</select>
 	
-	<!-- 
-	<select id="list" resultType="com.solmarket.dto.MarketDTO">
-		<![CDATA[
-			select market_no as marketNo, market_loc as marketLoc, market_name as MarketName from market where market_status=2	
-		]]>
-	</select>
-	
-	<select id="list" resultType="com.solmarket.dto.MarketDTO">
-			select market_no as marketNo, market_loc as marketLoc, market_name as MarketName from market where market_status=3
-	</select> 	 -->
-
 </mapper>

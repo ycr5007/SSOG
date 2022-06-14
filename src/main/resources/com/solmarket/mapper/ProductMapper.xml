@@ -115,4 +115,8 @@
 	
 
 
+	<select id="search" resultType="com.solmarket.dto.ProductDTO">
+		select * from product
+		where writer like '%' || #{productName} || '%'
+	</select>
 </mapper>
