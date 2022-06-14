@@ -22,7 +22,7 @@ public interface AdminService {
 	
 	// User Page
 	List<UserDTO> getUserList(Criteria cri);
-	int getUserCount(Criteria cri);
+	int getUserCount();
 	// User Detail
 	UserDTO getUserDetail(int userNo);
 	boolean deleteUserData(int userNo);

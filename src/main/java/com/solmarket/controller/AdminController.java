@@ -43,7 +43,7 @@ public class AdminController {
 	public void UserManager(Criteria cri, Model model) {
 		log.info("[GET] <<<<< ADMIN User 관리 페이지 요청 >>>>>");
 		List<UserDTO> userList = adminService.getUserList(cri);
-		int total = adminService.getUserCount(cri);
+		int total = adminService.getUserCount();
 		
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("list", userList);

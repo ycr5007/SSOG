@@ -17,24 +17,24 @@
 	
 	<!-- INDEX 페이지, 회원 비율 -->
 	<select id="getUserRatio" resultType="string">
-		select (select count(*) from myuser where user_auth = 'USER') || '/' || 
-		(select count(*) from myuser where user_auth = 'SELLER') || '/' || 
-		(select count(*) from myuser where user_auth = 'MANAGER') as data from dual
+		select (select count(*) from myuser_auth where authority = 'ROLE_USER') || '/' || 
+		(select count(*) from myuser_auth where authority = 'ROLE_SELLER') || '/' || 
+		(select count(*) from myuser_auth where authority = 'ROLE_MANAGER') as data from dual
 	</select>
 
 	<!-- 회원관리 > 전체회원 리스트 출력 -->
 	<select id="getUserList" resultType="com.solmarket.dto.UserDTO">
 		select * from (select rownum as pagingNum, userList.* from 
-			(select user_no as userNo , user_Auth as userAuth, user_Id as userId, user_Name as userName, user_Mail as userMail, user_Ver as userVer, user_Status as userStatus from myuser <if test="keyword != null"> where user_auth = #{keyword}</if> order by user_ver desc, user_no desc)
+			(select user_no as userNo, user_Id as userId, user_Name as userName, user_Mail as userMail, user_Status as userStatus from myuser order by user_no desc)
 		userList where rownum <![CDATA[ <= ]]> (#{pageNum} * #{amount})) where pagingNum > ((#{pageNum} - 1) * #{amount})
 	</select>
 	
 	<select id="getUserCount" resultType="Integer">
-		select count(*) from myuser <if test="keyword != null"> where user_auth = #{keyword}</if>
+		select count(*) from myUser
 	</select>
 	
 	<select id="getUserDetail" resultType="com.solmarket.dto.UserDTO">
-		select user_no as userNo, user_id as userId, user_name as userName, user_mail as userMail, user_profile as userProfile, user_PF as userPF, user_status as userStatus, user_auth as userAuth, user_phone as userPhone, user_address as userAddress
+		select user_no as userNo, user_id as userId, user_name as userName, user_mail as userMail, user_profile as userProfile, user_status as userStatus, user_phone as userPhone, user_address as userAddress
 		from myUser where user_no = #{userNo}
 	</select>
 	

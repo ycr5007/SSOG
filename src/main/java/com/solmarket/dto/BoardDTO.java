@@ -1,6 +1,7 @@
 package com.solmarket.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,4 +18,6 @@ public class BoardDTO {
 	private Date boardDate; // 작성일
 	private int boardHit; // 조회수
 	private int boardRepl; // 댓글 수
+	
+	private List<AttachDTO> attachList; // 파일첨부 리스트
 }

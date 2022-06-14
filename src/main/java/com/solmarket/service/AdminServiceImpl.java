@@ -60,8 +60,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
-	public int getUserCount(Criteria cri) {
-		return adminMapper.getUserCount(cri);
+	public int getUserCount() {
+		return adminMapper.getUserCount();
 	}
 	
 	@Override

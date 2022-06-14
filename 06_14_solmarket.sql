@@ -1,3 +1,14 @@
+-- 테이블 추가
+CREATE TABLE recruit_img (
+	uuid varchar2(100) not null,
+    uploadpath varchar2(200) not null,
+    filename varchar2(100) not null,
+    market_no number(10, 0)
+);
+alter table recruit_img add constraint PK_RECRUIT_IMG primary key(uuid);
+ALTER TABLE recruit_img ADD CONSTRAINT FK_RECRUIT_IMG FOREIGN KEY(market_no) REFERENCES market(market_no) ON DELETE CASCADE;
+
+-------------------------------------------------------------------------------------------------------------------------
 -- 방문자 테이블
 create table visitor(
 	visit_id number,
@@ -93,7 +104,6 @@ CREATE TABLE notice_img (
 );
 alter table notice_img add constraint PK_NOTICE_IMG primary key(uuid);
 ALTER TABLE notice_img ADD CONSTRAINT FK_NOTICE_IMG FOREIGN KEY(notice_no) REFERENCES notice(notice_no) ON DELETE CASCADE;
-
 
 -- 게시판 테이블 --
 CREATE TABLE board (
@@ -240,5 +250,3 @@ insert into category values(4, '캔들/디퓨저/방향제');
 insert into category values(5, '문구/팬시');
 insert into category values(6, '향수/화장품/뷰티');
 insert into category values(7, '기타');
-
-commit;
