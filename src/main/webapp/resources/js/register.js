@@ -35,10 +35,13 @@ $(function () {
       userPhone: {
         required: true,
       },
-      userEmail: {
+      userMail: {
         required: true,
         email: true,
-      }
+      },
+      userAddress: {
+      	required: true,
+	  }
     }, //rules 종료
 
     //규칙이 맞지 않을 경우 보여줄 메세지 작성
@@ -72,7 +75,7 @@ $(function () {
    		$(element).closest("form")
                   .find("small[id='"+ element.attr('id') +"']")
                   .append(error);	
-    }
+    },
   });
 });
 

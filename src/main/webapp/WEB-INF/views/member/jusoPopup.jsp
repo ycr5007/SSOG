@@ -20,25 +20,39 @@
 		주소팝업API를 제외하시고 테스트 하시기 바랍니다.
 */
 
+
 function init(){
 	var url = location.href;
 	var confmKey = "U01TX0FVVEgyMDIyMDYxMDEwMzAyNjExMjY3MzE=";
 	var resultType = "4"; // 도로명주소 검색결과 화면 출력내용, 1 : 도로명, 2 : 도로명+지번+상세보기(관련지번, 관할주민센터), 3 : 도로명+상세보기(상세건물명), 4 : 도로명+지번+상세보기(관련지번, 관할주민센터, 상세건물명)
 	var inputYn= "<%=inputYn%>";
 	
+	// Script 에서 Csrf 토큰 사용
+	//let csrfHeaderName = "${_csrf.headerName}";
+	//let csrfTokenValue = "${_csrf.token}";
+	
 	if(inputYn != "Y"){
 		document.form.confmKey.value = confmKey;
 		document.form.returnUrl.value = url;
 		document.form.resultType.value = resultType;
 		document.form.action="https://www.juso.go.kr/addrlink/addrLinkUrl.do"; //인터넷망
+		
 		//document.form.action="https://www.juso.go.kr/addrlink/addrMobileLinkUrl.do"; //모바일 웹인 경우, 인터넷망
+		//document.form.appendChild("<input type='hidden' name="+csrfHeaderName+" value= "+csrfTokenValue+" />");
+		
+		
+		
 		document.form.submit();
 	}else{
 		// opener.josoCallback : 주소를 열은곳으로 callback 
-		opener.jusoCallBack("<%=roadFullAddr%>");
+		opener.jusoCallBack("<%=roadFullAddr%>");		
 		window.close();
-		}
+	}	
 }
+
+
+
+
 </script>
 <body onload="init();">
 	<form id="form" name="form" method="POST">

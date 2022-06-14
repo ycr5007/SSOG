@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<<<<<<< HEAD
 <!-- Start Footer -->
 <footer class="bg-light" id="tempaltemo_footer"
 	style="width: auto; height: auto;">
@@ -11,12 +12,28 @@
 	</div>
 </footer>
 <!-- End Footer -->
+=======
+	<!-- Start Footer -->
+	<section>
+	    <footer class="bg-light" id="tempaltemo_footer" style="width:auto; height:auto;">
+	      <div class="container">
+	        <div class="row">
+	           <img
+	             src="../resources/img/footerimg.png"
+	           />
+	        </div>
+	      </div>
+	    </footer>
+    </section>
+    <!-- End Footer -->
+>>>>>>> branch 'main' of https://github.com/ycr5007/SolMarket.git
 
 <!-- jquery cdn -->
 <script src="/resources/js/jquery-3.6.0.min.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+<<<<<<< HEAD
 <!-- 반응형 이미지 맵 스크립트 : jquery 1.9.1에서만 동작-->
 <script
 	src="http://mattstow.com/experiment/responsive-image-maps/jquery.rwdImageMaps.min.js"></script>
@@ -27,6 +44,25 @@
 	//});
 </script>
 <!-- 반응형 이미지 맵 스크립트 종료-->
+=======
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.2/jquery.maphilight.min.js"></script>
+    <script>
+      $(document).ready(function(e) {
+        $.fn.maphilight.defaults = {
+          fill: true,  //이미지맵 링크에 마우스가 올라오면 색을 넣을 건지 여부
+          fillColor: 'FFFFFF',  // 색상지정
+          fillOpacity: 1,  // 투명도 지정 0~1
+          stroke: true,    // border를 넣을건지 여부 false로 설정하면 이하 옵션 무시됨
+          strokeColor: 'FFFFFF',  //border 색상
+          strokeOpacity: 1,  //border 투명도
+          strokeWidth: 10  //border 폭
+        }
+        $('img[usemap]').maphilight();
+      });
+    </script>
+	<script>
+      $(function(){
+>>>>>>> branch 'main' of https://github.com/ycr5007/SolMarket.git
 
 <!-- bootstrap Script -->
 <script

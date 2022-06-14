@@ -54,102 +54,104 @@
   </head>
   <body>
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-      <div class="container d-flex justify-content-between align-items-center">
-        <a class="navbar-brand text-success logo" href="index.html">
-          <img
-            src="/resources/img/ssol_logo.png"
-            class="market_logo"
-            style="display: block; margin: 20px auto; width: auto; height: auto"
-          />
-        </a>
-
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#templatemo_main_nav"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div
-          class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
-          id="templatemo_main_nav"
-        >
-          <div class="flex-fill">
-            <ul
-              class="nav navbar-nav d-flex justify-content-between mx-lg-auto"
-            >
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">홈</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="notice.html">공지사항</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">커뮤니티</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/shop/index">재고상점</a>
-              </li>
-            </ul>
-          </div>
-          <div class="navbar align-self-center d-flex">
-            <div
-              class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3"
-            >
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="inputMobileSearch"
-                  placeholder="Search ..."
-                />
-                <div class="input-group-text">
-                  <i class="fa fa-fw fa-search"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- 검색 icon -->
-            <a
-              class="nav-icon d-none d-lg-inline"
-              href="#"
-              data-bs-toggle="modal"
-              data-bs-target="#templatemo_search"
-            >
-              <i class="fa fa-fw fa-search text-dark mr-2"></i>
-            </a>
-
-            <!-- 마이메뉴 icon + 드롭다운창 -->
-            <div class="dropdown show">
-              <a
-                class="nav-icon position-relative text-decoration-none dropdown-toggle"
-                href="#"
-                data-toggle="dropdown"
-              >
-                <i class="fa fa-fw fa-user text-dark mr-3"></i>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <c:if test="${empty login }">
-                <a class="dropdown-item" href="/member/signUp1">회원가입</a>
-                <a class="dropdown-item" href="/member/login">로그인</a>
-                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
-              </c:if>
-              <c:if test="${!empty login}">
-               	<a class="dropdown-item" href="/member/logout">로그아웃</a>
-                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
-              </c:if>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <section>
+	    <nav class="navbar navbar-expand-lg navbar-light shadow">
+	      <div class="container d-flex justify-content-between align-items-center">
+	        <a class="navbar-brand text-success logo" href="/">
+	          <img
+	            src="/resources/img/ssol_logo.png"
+	            class="market_logo"
+	            style="display: block; margin: 20px auto; width: auto; height: auto"
+	          />
+	        </a>
+	
+	        <button
+	          class="navbar-toggler border-0"
+	          type="button"
+	          data-bs-toggle="collapse"
+	          data-bs-target="#templatemo_main_nav"
+	          aria-controls="navbarSupportedContent"
+	          aria-expanded="false"
+	          aria-label="Toggle navigation"
+	        >
+	          <span class="navbar-toggler-icon"></span>
+	        </button>
+	
+	        <div
+	          class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
+	          id="templatemo_main_nav"
+	        >
+	          <div class="flex-fill">
+	            <ul
+	              class="nav navbar-nav d-flex justify-content-between mx-lg-auto"
+	            >
+	              <li class="nav-item">
+	                <a class="nav-link" href="index.html">홈</a>
+	              </li>
+	              <li class="nav-item">
+	                <a class="nav-link" href="notice.html">공지사항</a>
+	              </li>
+	              <li class="nav-item">
+	                <a class="nav-link" href="about.html">커뮤니티</a>
+	              </li>
+	              <li class="nav-item">
+	                <a class="nav-link" href="/shop/index">재고상점</a>
+	              </li>
+	            </ul>
+	          </div>
+	          <div class="navbar align-self-center d-flex">
+	            <div
+	              class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3"
+	            >
+	              <div class="input-group">
+	                <input
+	                  type="text"
+	                  class="form-control"
+	                  id="inputMobileSearch"
+	                  placeholder="Search ..."
+	                />
+	                <div class="input-group-text">
+	                  <i class="fa fa-fw fa-search"></i>
+	                </div>
+	              </div>
+	            </div>
+	
+	            <!-- 검색 icon -->
+	            <a
+	              class="nav-icon d-none d-lg-inline"
+	              href="#"
+	              data-bs-toggle="modal"
+	              data-bs-target="#templatemo_search"
+	            >
+	              <i class="fa fa-fw fa-search text-dark mr-2"></i>
+	            </a>
+	
+	            <!-- 마이메뉴 icon + 드롭다운창 -->
+	            <div class="dropdown show">
+	              <a
+	                class="nav-icon position-relative text-decoration-none dropdown-toggle"
+	                href="#"
+	                data-toggle="dropdown"
+	              >
+	                <i class="fa fa-fw fa-user text-dark mr-3"></i>
+	              </a>
+	              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	              <c:if test="${empty login }">
+	                <a class="dropdown-item" href="/member/signUp1">회원가입</a>
+	                <a class="dropdown-item" href="/member/login">로그인</a>
+	                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
+	              </c:if>
+	              <c:if test="${!empty login}">
+	               	<a class="dropdown-item" href="/member/logout">로그아웃</a>
+	                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
+	              </c:if>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </nav>
+    </section>
     <!-- Close Header -->
 
     <!-- Modal -->

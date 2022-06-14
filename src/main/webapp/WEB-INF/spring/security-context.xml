@@ -8,25 +8,34 @@
 	<!-- 비밀번호 암호화 담당 -->
 	<bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	
-	<!-- 로그인 성공 후 다음 작업을 담당 -->
-	<bean id="customLoginSuccessHandler" class="com.solmarket.handler.CustomLoginSuccessHandler"/>
+	<!-- csrf -->
+	<bean id="csrfSecurityRequestMatcher" class="com.solmarket.handler.CsrfSecurityRequestMatcher"/>
 	
 	<!-- 접근 권한이 없는 경우 처리 작업을 담당 -->
 	<bean id="customAccessDeniedHandler" class="com.solmarket.handler.CustomAccessDeniedHandler"/>
 	
+	<!-- 로그인 이후 정보를 가지고 있는 객체 -->
+	<bean id="customUserDetailService" class="com.solmarket.service.CustomUserDetailService"></bean>
 	
 	<security:http>
+		<!-- 정적 리소스는 모두 접근 허용 -->
+		<security:intercept-url pattern="/resources/**" access="permitAll"/>	
+		<!-- <security:intercept-url pattern="/member/jusoPopup" access="permitAll"/>	 -->
+		<security:intercept-url pattern="/market/market_accept" access="hasRole('admin')" />
+		
 		<!-- login-page : 컨트롤러 지정 -->
-		<security:form-login login-page="/member/login"
-		authentication-failure-url="/member/login-error"
-		authentication-success-handler-ref="customLoginSuccessHandler"
-		/>
+		<security:form-login login-page="/member/login"	authentication-failure-url="/member/login-error" login-processing-url="/member/login"/>
+		<security:logout logout-url="/member/logout" invalidate-session="true" delete-cookies="JSESSION_ID"
+		logout-success-url="/" />
+		
+		<security:access-denied-handler error-page="/"/>
+		
+		<security:csrf request-matcher-ref="csrfSecurityRequestMatcher"/>
 	</security:http>
 	
 	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="ds"/>
-			<security:password-encoder ref="encoder"/>
+		<security:authentication-provider user-service-ref="customUserDetailService">
+			<security:password-encoder ref="encoder" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 </beans>

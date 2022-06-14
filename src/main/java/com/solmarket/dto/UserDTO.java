@@ -17,12 +17,8 @@ public class UserDTO {
 	private String userMail; // 이메일주소
 	private String userPhone; // 연락처 ('-' 포함)
 	private String userProfile; // 프로필 문구
-	private int userVer; // 이메일 인증상태 ( 0 / 1 )
-	private String userPF; // 프로필 이미지 파일
-	private int userPFSize; // 프로필 이미지 파일크기
-	private int userStatus; // 회원 상태 ( 0 / 1 / 2 )
-	private String userAuth; // 권한 ( USER, SELLER, MARKET, ADMIN )
 	private String userAddress; // 주소 (추가)
 	private boolean enabled;
+
 	private List<AuthDTO> authorities;;
 }
