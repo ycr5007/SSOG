@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,5 +29,11 @@ public class AdminRestController {
 		UserDTO dto = adminService.getUserDetail(userNo);
 		log.info("DTO :: " + dto);
 		return new ResponseEntity<UserDTO>(dto, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/deleteUser/{userNo}")
+	public ResponseEntity<String> deleteUserData(@PathVariable("userNo") int userNo){
+		log.info("[REST-DELETE] <<<<< Delete User Data " + userNo + ">>>>>");
+		return adminService.deleteUserData(userNo) ? new ResponseEntity<String>("" + userNo, HttpStatus.OK) : new ResponseEntity<String>("" + userNo, HttpStatus.BAD_REQUEST);
 	}
 }

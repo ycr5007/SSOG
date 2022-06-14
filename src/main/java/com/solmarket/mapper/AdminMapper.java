@@ -16,7 +16,13 @@ public interface AdminMapper {
 	// User List 
 	public List<UserDTO> getUserList(Criteria cri);
 	public int getUserCount(Criteria cri);
-	
 	// User Detail
 	public UserDTO getUserDetail(int userNo);
+	// delete UserData
+	public int deleteUserData(int userNo);
+	
+	
+	// Market Request List
+	public List<MarketDTO> getreqMakretList(Criteria cri);
+	public int getMarketCount();
 }

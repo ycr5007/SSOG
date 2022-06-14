@@ -2,6 +2,7 @@
  * 
  */
 $(function(){
+	// 페이징 처리
 	let operForm = $("#operForm");
 	
 	$(".page-item a").click(function(e){
@@ -18,8 +19,24 @@ $(function(){
 		operForm.submit();
 	})
 	
+	
+	// 회원 권한별 검색
+	$("#inlineFormCustomSelect").change(function(){
+		let keyword = operForm.find("[name='keyword']");
+		if(keyword.val() == ''){
+			keyword.remove();
+		}
+		
+		operForm.find("[name='pageNum']").val(1);
+		operForm.attr('action','/admin/user');
+		operForm.submit();
+	})
+	
+
 })
 
+
+// 회원 상세정보 보여주기 ( ajax )
 function getDetailUser(userNo){
 	$.getJSON({
 		url:'/admin/user/' + userNo,
@@ -27,8 +44,6 @@ function getDetailUser(userNo){
 			showDetail(result);
 		}
 	})
-	
-	
 }
 
 function showDetail(data){
@@ -50,12 +65,12 @@ function showDetail(data){
 	str += "<tr><th colspan='2'>이름</th>"
 	str += "<td colspan='4'>" + data.userName + "</td></tr>"
 	str += "<tr><th colspan='2'>주소</th>"
-	str += "<td colspan='4'>#서울 어딘가 ?#</td></tr>"
+	str += "<td colspan='4'>" + data.userAddress + "</td></tr>"
 	str += "<tr><th colspan='2'>핸드폰</th>"
 	str += "<td colspan='4'>" + data.userPhone + "</td></tr>"
 	str += "<tr><th colspan='2'>이메일</th>"
 	str += "<td colspan='4'>" + data.userMail + "</td></tr>"
-	str += "<tr><td colspan='3'><button type='button' class='return-btn btn btn-danger'>데이터 삭제</button></td>";
+	str += "<tr><td colspan='3'><button type='button' class='delete-btn btn btn-danger' onclick='deleteUserData(" + data.userNo + ")'>데이터 삭제</button></td>";
 	str += "<td colspan='3'><button type='button' class='return-btn btn btn-primary' onclick='returnDetail()'>돌아가기</button></td></tr>";
 	str += "</table>"
 	str += "</div></div></div></div>";
@@ -86,7 +101,20 @@ function returnDetail(){
 	$(".data-wrapper").hide();
 }
 
-
-
+function deleteUserData(userNo){
+	console.log('HELP ME !!')
+		$.ajax({
+			url:'/admin/deleteUser/' + userNo,
+			type: 'delete',
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
+			success: function(result){
+				returnDetail();
+				alert(result + " 번 회원 정보가 삭제되었습니다.");
+			}
+			
+		})
+}
 
 

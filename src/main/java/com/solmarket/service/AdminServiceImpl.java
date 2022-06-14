@@ -69,4 +69,19 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.getUserDetail(userNo);
 	}
 	
+	@Override
+	public boolean deleteUserData(int userNo) {
+		return adminMapper.deleteUserData(userNo) > 0 ? true : false;
+	}
+	
+	// marketRequest 페이지
+	@Override
+	public List<MarketDTO> getreqMakretList(Criteria cri) {
+		return adminMapper.getreqMakretList(cri);
+	}
+	@Override
+	public int getMarketCount() {
+		return adminMapper.getMarketCount();
+	}
+	
 }

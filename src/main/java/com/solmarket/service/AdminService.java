@@ -23,7 +23,12 @@ public interface AdminService {
 	// User Page
 	List<UserDTO> getUserList(Criteria cri);
 	int getUserCount(Criteria cri);
-	
 	// User Detail
 	UserDTO getUserDetail(int userNo);
+	boolean deleteUserData(int userNo);
+	
+	// Market Request List
+	List<MarketDTO> getreqMakretList(Criteria cri);
+	int getMarketCount();
+	
 }

@@ -16,7 +16,7 @@
 	              style="max-width: 100%; height: auto; align-content: center"
 	            />
           	</div>
-	          <map name="image-map">
+	          <map name="image-map" id="image-map">
 	            <area
 	              target="_blank"
 	              alt="강서구"

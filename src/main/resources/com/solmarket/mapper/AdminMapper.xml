@@ -34,7 +34,22 @@
 	</select>
 	
 	<select id="getUserDetail" resultType="com.solmarket.dto.UserDTO">
-		select user_no as userNo, user_id as userId, user_name as userName, user_mail as userMail, user_profile as userProfile, user_PF as userPF, user_status as userStatus, user_auth as userAuth, user_phone as userPhone 
+		select user_no as userNo, user_id as userId, user_name as userName, user_mail as userMail, user_profile as userProfile, user_PF as userPF, user_status as userStatus, user_auth as userAuth, user_phone as userPhone, user_address as userAddress
 		from myUser where user_no = #{userNo}
+	</select>
+	
+	<delete id="deleteUserData">
+		delete from myuser where user_no = #{userNo}
+	</delete>
+	
+	<!-- 장터 신청 관리 -->
+	<select id="getreqMakretList" resultType="com.solmarket.dto.MarketDTO">
+		select * from (select rownum as pagingNum, marketList.* from
+			(select market_no as marketNo, market_name as marketName, user_name as dummy, market_loc as marketLoc, market_sd as marketSD, market_ed as marketED from market m left outer join myuser u on m.user_no = u.user_no where market_status = 0) marketList
+		where rownum <![CDATA[ <= ]]> (#{pageNum} * #{amount})) where pagingNum > ((#{pageNum} - 1) * #{amount})
+	</select>
+	
+	<select id="getMarketCount" resultType="Integer">
+		select count(*) from market where market_status = 0
 	</select>
 </mapper>

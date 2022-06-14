@@ -17,4 +17,5 @@ public class MarketDTO {
 	private int marketStatus; // 장터 상태
 	
 	private List<AttachDTO> attachList; // 첨부파일
+	private String dummy; // join 활용 추가 데이터
 }

@@ -9,39 +9,33 @@
 				<div class="card shadow mb-4">
 					<form action="" id="operForm">
 						<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-							<h6 class="m-0 font-weight-bold text-primary">회원목록</h6>
+							<h6 class="m-0 font-weight-bold text-primary">장터신청목록</h6>
 							<div class="col-auto my-1">
 								<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-								<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="keyword">
-									<option value="" selected>권한</option>
-									<option value="USER" ${pageDto.cri.keyword == 'USER'? 'selected' : '' }>USER</option>
-									<option value="SELLER" ${pageDto.cri.keyword == 'SELLER'? 'selected' : '' }>SELLER</option>
-									<option value="MANAGER" ${pageDto.cri.keyword == 'MANAGER'? 'selected' : '' }>MANAGER</option>
-								</select>
 							</div>
-						</div>
-						<div class="data-wrapper">
-							<div class="detail-data"></div>
 						</div>
 						<div class="card-body">
 							<table class="table">
 								<tr class="column-header">
-									<th>권한</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>이메일</th>
-									<th>인증상태</th>
-									<th>회원상태</th>
+									<th class="col-lg-1">번호</th>
+									<th class="col-lg-3">장터명</th>
+									<th class="col-lg-2">운영자</th>
+									<th class="col-lg-2">지역</th>
+									<th class="col-lg-1">시작일</th>
+									<th class="col-lg-1">종료일</th>
+									<th class="col-lg-1">승인</th>
+									<th class="col-lg-1">거부</th>
 								</tr>
-							<c:forEach items="${list }" var="user">
-								<tr class="list-select row-data" onclick="getDetailUser(${user.userNo})">
-									<td>${user.userAuth }</td>
-									<td>${user.userId }</td>
-									<td>${user.userName }</td>
-									<td>${user.userMail }</td>
-									<td>${user.userVer }</td>
-									<td>${user.userStatus }</td>
-									
+							<c:forEach items="${list }" var="market" varStatus="status">
+								<tr class="row-data">
+									<td>${status.count }</td>
+									<td style="text-align: left; text-indent: 10px;">${market.marketName }</td>
+									<td>${market.dummy }</td>
+									<td>${market.marketLoc }</td>
+									<td><fmt:formatDate value="${market.marketSD }" pattern="MM-dd"/></td>
+									<td><fmt:formatDate value="${market.marketED }" pattern="MM-dd"/></td>
+									<td><button type="button" class="btn btn-outline-primary btn-sm approval" value="${market.marketNo }">승인</button></td>
+									<td><button type="button" class="btn btn-outline-danger btn-sm refusal" value="${market.marketNo }">거부</button></td>
 								</tr>
 							</c:forEach>
 							</table>
@@ -62,7 +56,7 @@
 						<!-- 페이징 처리 -->
 						</div>
 						<input type="hidden" name="pageNum" value="1" />
-						<input type="hidden" name="amount" value="10" />
+						<input type="hidden" name="amount" value="25" />
 					</form>
 				</div>
 			</div>
@@ -70,9 +64,4 @@
 	</div>
 </div>
 <!-- End of Main Content -->
-<script>
-	let csrfHeaderName = "${_csrf.headerName}";
-	let csrfTokenValue = "${_csrf.token}";
-</script>
-<script src="/resources/js/admin/userList.js"></script>
 <%@ include file="../include/manager_footer.jsp" %>

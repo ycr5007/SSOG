@@ -11,7 +11,6 @@
 	<!-- Style -->
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	<!-- MetisMenu CSS -->
-   <link href="/resources/vendor/metisMenu/metisMenu.min.css" rel="stylesheet"> 
 	<script src="/resources/vendor/chart.js/Chart.min.js"></script>
 	<script src="/resources/js/jquery.min.js"></script>
 	<title>쏠장터 사이트 관리자</title>
@@ -56,7 +55,7 @@
 
 			<!-- 장터관리 - 마켓운영자로부터 장터 오픈 요청 확인 및 승인 작업 -->
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="/admin/market">
 					<i class="fas fa-fw fa-users"></i>
 					<span>장터관리</span>
 				</a>

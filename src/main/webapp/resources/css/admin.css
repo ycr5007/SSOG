@@ -35,6 +35,14 @@
 	background-color: #dfdfdf;
 }
 
+.column-header{
+	text-align: center;
+}
+
+.row-data{
+	text-align: center;
+}
+
 .data-wrapper{
 	position: absolute;
 	display: none;

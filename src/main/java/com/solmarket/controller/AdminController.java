@@ -40,13 +40,23 @@ public class AdminController {
 	}
 
 	@GetMapping("/user")
-	public void reqManager(Criteria cri, Model model) {
+	public void UserManager(Criteria cri, Model model) {
 		log.info("[GET] <<<<< ADMIN User 관리 페이지 요청 >>>>>");
 		List<UserDTO> userList = adminService.getUserList(cri);
 		int total = adminService.getUserCount(cri);
 		
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("list", userList);
+	}
+	
+	@GetMapping("/market")
+	public void reqMarketManager(Criteria cri, Model model) {
+		log.info("[GET] <<<<< ADMIN Market 승인 페이지 요청 >>>>>");
+		List<MarketDTO> marketList = adminService.getreqMakretList(cri);
+		int total = adminService.getMarketCount();
+		
+		model.addAttribute("pageDto", new PageDTO(cri, total));
+		model.addAttribute("list", marketList);
 	}
 	
 }
