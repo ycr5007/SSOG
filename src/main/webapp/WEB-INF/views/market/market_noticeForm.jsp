@@ -72,9 +72,7 @@ let marketNo = ${marketNo};
 
 $(function() {
 	$(".btn-primary").click(function(e) {
-		e.preventDefault();
-		
-		console.log("등록 버튼 클릭");
+		e.preventDefault();		
 		
 		if($("#noticeTitle").val() == "" || $("#noticeContent").val() == "") {
 			alert('입력되지 않은 항목이 있습니다.');

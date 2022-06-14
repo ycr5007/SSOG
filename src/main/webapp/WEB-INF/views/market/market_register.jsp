@@ -15,29 +15,29 @@
 				<form action="" method="post">
 					<div class="form-group">
 						<label>장터 이름</label>
-						<input class="form-control" name="marketName" required>
+						<input class="form-control" name="marketName" id="marketName" required>
 					</div>
 					<div class="form-group">
 						<label>장터 위치</label>
 							<button type="button" class="btn btn-outline-primary btn-sm mb-2" onclick="goPopup();">주소검색</button>
-							<input class="form-control" name="marketLoc" required>
+							<input class="form-control" name="marketLoc" id="marketLoc" required>
 							<div id="map" class="form-control mt-3" style="height: 200px"></div>
 					</div>
 					<div class="form-group">
 						<label>장터 시작일</label>
-						<input class="form-control" type="datetime-local" name="marketSD" required/>
+						<input class="form-control" type="datetime-local" name="marketSD" id="marketSD" required/>
 					</div>
 					<div class="form-group">
 						<label>장터 종료일</label>
-						<input class="form-control" type="datetime-local" name="marketED" required/>
+						<input class="form-control" type="datetime-local" name="marketED" id="marketED" required/>
 					</div>
 					<div class="form-group">
 						<label>파일 첨부 (셀러 모집-소개 순으로)</label><br>
-						<input type="file" name="marketImg" multiple required />
+						<input type="file" name="marketImg" id="marketImg" required />
 					</div>
 					<div class="row justify-content-center">
-						<button type="submit" class="btn btn-primary m-2">등록</button>
-						<button type="reset" class="btn btn-secondary m-2">뒤로</button>
+						<button type="button" class="btn btn-primary m-2">등록</button>
+						<button type="button" class="btn btn-secondary m-2">뒤로</button>
 					</div>
 				</form>
 			</div>
@@ -76,21 +76,21 @@
 <script>
 $(function() {
 	// 등록 버튼 클릭 시
-	$("[type='submit']").click(function(e) {
+	$(".btn-primary").click(function(e) {
 		e.preventDefault();
-		
-		if($("input[name='marketName']") == "" || $("input[name='marketLoc']") == "" || $("input[name='marketSD']") == "" || $("input[name='marketED']") == "" || $("input[name='marketImg']") == "") {
+				
+		if($("#marketName").val() == "" || $("#marketLoc").val() == "" || $("#marketSD").val() == "" || $("#marketED").val() == "" || $("#marketImg").val() == "") {
 			alert('입력되지 않은 항목이 있습니다.');
 			return;
 		}
 		
 		$("form").submit();
-	})
+	});
 	
 	// 뒤로가기 버튼 클릭 시
-	$("input[type='reset']").click(function() {
-		$("form").val() = "";
-	})
+	$(".btn-secondary").click(function() {
+		location.href = "/manager_index";
+	});
 })
 </script>
 
