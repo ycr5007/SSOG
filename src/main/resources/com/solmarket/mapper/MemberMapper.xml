@@ -4,12 +4,12 @@
 	
 	<!-- 회원가입 -->
 	<insert id="insert">
-		insert into myuser(user_no, user_id, user_pw, user_name, user_phone, user_mail, user_profile, user_address)
-		values(myUser_seq.nextval, #{userId}, #{userPw}, #{userName}, #{userPhone}, #{userMail}, #{userProfile, jdbcType=VARCHAR}, #{userAddress})
+		insert into myuser(user_no, user_id, user_pw, user_name, user_phone, user_mail, user_address, user_profile)
+		values(myUser_seq.nextval, #{userId}, #{userPw}, #{userName}, #{userPhone}, #{userMail}, #{userAddress}, #{userProfile, jdbcType=VARCHAR})
 	</insert>
 	
 	<!-- 회원가입시 권한부여 -->
-	<insert id="insertauth">
+	<insert id="insertAuth">
 		insert into myuser_auth(user_id, authority)
 		values(#{userId}, #{authority})
 	</insert>
@@ -24,10 +24,10 @@
 		
 	<resultMap type="com.solmarket.dto.AuthDTO" id="authList">
 		<result property="userId" column="user_id" />
-		<result property="Auth" column="authority" />
+		<result property="authority" column="authority" />
 	</resultMap>
 	<select id="read" resultMap="myUser">
-		select use.user_id as userId, user_pw as userPw, enabled, authority from 
+		select use.user_id, user_pw, enabled, authority from 
 		myuser use join myuser_auth auth on use.user_id = auth.user_id where use.user_id = #{userId}
 	</select>
 	

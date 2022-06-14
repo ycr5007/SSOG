@@ -28,6 +28,7 @@ CREATE TABLE myuser (
     enabled CHAR(1) DEFAULT '1'
 );
 
+
 ALTER TABLE myuser ADD CONSTRAINT PK_USER PRIMARY KEY (user_no);
 
 CREATE TABLE myuser_auth(
@@ -65,9 +66,8 @@ CREATE TABLE market_img (
 	uuid varchar2(100) not null,
     uploadpath varchar2(200) not null,
     filename varchar2(100) not null,
-    notice_no number(10, 0)
+    market_no number(10, 0)
 );
-
 alter table market_img add constraint PK_MARKET_IMG primary key(uuid);
 ALTER TABLE market_img ADD CONSTRAINT FK_MARKET_IMG FOREIGN KEY(market_no) REFERENCES market(market_no) ON DELETE CASCADE;
 
@@ -112,7 +112,7 @@ CREATE TABLE board_img (
 	uuid varchar2(100) not null,
     uploadpath varchar2(200) not null,
     filename varchar2(100) not null,
-    notice_no number(10, 0)
+    board_no number(10, 0)
 );
 alter table board_img add constraint PK_BOARD_IMG primary key(uuid);
 ALTER TABLE board_img ADD CONSTRAINT FK_BOARD_IMG FOREIGN KEY (board_no) REFERENCES board(board_no)  ON DELETE CASCADE;
@@ -176,7 +176,7 @@ CREATE TABLE product_img(
 	uuid varchar2(100) not null,
     uploadpath varchar2(200) not null,
     filename varchar2(100) not null,
-    notice_no number(10, 0)
+    product_no number(10, 0)
 );
 alter table product_img add constraint PK_PRODUCT_IMG primary key(uuid);
 ALTER TABLE product_img ADD CONSTRAINT FK_PRODUCT_IMG FOREIGN KEY(product_no) REFERENCES product(product_no);

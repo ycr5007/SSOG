@@ -19,6 +19,6 @@ public class UserDTO {
 	private String userProfile; // 프로필 문구
 	private String userAddress; // 주소 (추가)
 	private boolean enabled;
-
+	private int userStatus;
 	private List<AuthDTO> authorities;;
 }

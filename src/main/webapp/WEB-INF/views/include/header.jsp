@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>  
+<%@ taglib uri="http://www.springframework.org/security/tags"  prefix="sec" %> 
    
 <!DOCTYPE html>
 <html lang="en">
@@ -139,15 +139,14 @@
 	                <i class="fa fa-fw fa-user text-dark mr-3"></i>
 	              </a>
 	              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-	              <c:if test="${empty login }">
+	               <sec:authorize access="isAnonymous()">
 	                <a class="dropdown-item" href="/member/signUp1">회원가입</a>
 	                <a class="dropdown-item" href="/member/login">로그인</a>
-	                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
-	              </c:if>
-	              <c:if test="${!empty login}">
+	              </sec:authorize>
+	              <sec:authorize access="isAuthenticated()">
 	               	<a class="dropdown-item" href="/member/logout">로그아웃</a>
 	                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
-	              </c:if>
+	              </sec:authorize>
 	              </div>
 	            </div>
 	              
