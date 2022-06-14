@@ -115,17 +115,23 @@
 	                </div>
 	              </div>
 	            </div>
-	
+	            
+	            
+				<!-- Search form -->
+				<div class="active-cyan-2">
+				  <input class="form-control" type="text" placeholder="상품명 입력" aria-label="Search">
+				</div>
+				
 	            <!-- 검색 icon -->
-	            <a
+	            <div
 	              class="nav-icon d-none d-lg-inline"
-	              href="#"
 	              data-bs-toggle="modal"
 	              data-bs-target="#templatemo_search"
 	            >
 	              <i class="fa fa-fw fa-search text-dark mr-2"></i>
-	            </a>
-	
+	            </div>
+	            
+					
 	            <!-- 마이메뉴 icon + 드롭다운창 -->
 	            <div class="dropdown show">
 	              <a
@@ -147,6 +153,7 @@
 	              </c:if>
 	              </div>
 	            </div>
+	              
 	          </div>
 	        </div>
 	      </div>
@@ -155,43 +162,18 @@
     <!-- Close Header -->
 
     <!-- Modal -->
-    <div
-      class="modal fade bg-white"
-      id="templatemo_search"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="w-100 pt-1 mb-5 text-right">
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
         </div>
-        <form
-          action=""
-          method="get"
-          class="modal-content modal-body border-0 p-0"
-        >
-          <div class="input-group mb-2">
-            <input
-              type="text"
-              class="form-control"
-              id="inputModalSearch"
-              name="q"
-              placeholder="Search ..."
-            />
-            <button
-              type="submit"
-              class="input-group-text bg-success text-light"
-            >
-              <i class="fa fa-fw fa-search text-white"></i>
-            </button>
-          </div>
-        </form>
-      </div>
     </div>
