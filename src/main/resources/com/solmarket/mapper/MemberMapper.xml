@@ -21,10 +21,10 @@
 		<result property="enabled" column="enabled"/>
 		<collection property="authorities" resultMap="authList"></collection>
 	</resultMap>
-	
+		
 	<resultMap type="com.solmarket.dto.AuthDTO" id="authList">
 		<result property="userId" column="user_id" />
-		<result property="authority" column="authority" />
+		<result property="Auth" column="authority" />
 	</resultMap>
 	<select id="read" resultMap="myUser">
 		select use.user_id as userId, user_pw as userPw, enabled, authority from 
