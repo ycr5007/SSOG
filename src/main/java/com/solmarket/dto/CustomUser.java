@@ -19,7 +19,7 @@ public class CustomUser extends User  {
 	}
 
 	public CustomUser(UserDTO userDto) {
-		super(userDto.getUserId(), userDto.getUserPw(), userDto.getAuthorities().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuth()))
+		super(userDto.getUserId(), userDto.getUserPw(), userDto.getAuthorities().stream().map(auth -> new SimpleGrantedAuthority(auth.getAuthority()))
 			.collect(Collectors.toList()));
 			
 			this.userDto = userDto;

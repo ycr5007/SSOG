@@ -17,7 +17,7 @@
                 <div class="circle_bg">
                   <i class="fa fa-cogs" style="font-size: 80px;"></i>
                 </div>
-                <p class="card-text mt-5" style="font-size: 25px;">회원정보</p>
+                <p class="card-text mt-5" style="font-size: 25px;">회원정보수정</p>
               </div>
             </div>
           </a>

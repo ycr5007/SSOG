@@ -121,6 +121,22 @@ pageEncoding="UTF-8"%>
 		  <button type="button" class="btn btn-info" onClick="goPopup();" >주소검색</button>
         </div>
         <input type="text" name="userAddress" id="userAddress" class="form-control" placeholder="Enter Address" required readonly>
+        
+        <div class="form-group row justify-content-center">
+          <label for="userprofile" class="col-sm-2 col-form-label">프로필</label>
+          <div class="textForm">
+            <input
+              type="text"
+              name="userProfile"
+              id="userProfile"
+              class="profile_input"
+              placeholder="소개글"
+            />
+            <small id="userMail" class="text-info"></small>
+          </div>
+        </div>
+        
+        
         <div class="form-group text-center">
           <button type="submit" class="btn btn-primary send-data">가입하기</button>
           <button type="reset" class="btn btn-secondary">취소</button>

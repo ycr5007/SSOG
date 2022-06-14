@@ -20,6 +20,7 @@
       		</c:if>
       	</div>
       	<br>
+      	 <button type="button" onclick="location.href='/member/findPw'">비밀번호찾기</button>
       	<button type="button" onclick="location.href='/member/login'">로그인</button>
     </div>
 </div>
