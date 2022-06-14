@@ -58,7 +58,7 @@
 
 			<!-- 사이드바 - 내 장터 참여자 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_myseller?marketNo=${marketNo}&pageNum=1&amount=10">
+				<a class="nav-link" href="/market/market_myseller?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
 					<i class="fas fa-fw fa-users"></i>
 					<span>장터 판매 상품 목록</span>
 				</a>
@@ -66,7 +66,7 @@
 
 			<!-- 사이드바 - 내 장터 참여 신청자 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_receive?marketNo=${marketNo}&pageNum=1&amount=10">
+				<a class="nav-link" href="/market/market_receive?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
 					<i class="fas fa-fw fa-edit"></i>
 					<span>장터 참여 신청 목록</span>
 				</a>
@@ -74,7 +74,7 @@
 			
 			<!-- 사이드바 - 참여 승인 상품 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_accept?marketNo=${marketNo}&pageNum=1&amount=10">
+				<a class="nav-link" href="/market/market_accept?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
 					<i class="fas fa-fw fa-check-square"></i>
 					<span>참여 승인 목록</span>
 				</a>
@@ -82,7 +82,7 @@
 
 			<!-- 사이드바 - 내 장터 한 줄 리뷰 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_review?marketNo=${marketNo}&pageNum=1&amount=10">
+				<a class="nav-link" href="/market/market_review?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
 					<i class="fas fa-fw fa-star"></i>
 					<span>장터 후기</span>
 				</a>
@@ -90,7 +90,7 @@
 
 			<!-- 사이드바 - 내 장터 공지 및 이벤트 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_notice?marketNo=${marketNo}&pageNum=1&amount=10">
+				<a class="nav-link" href="/market/market_notice?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
 					<i class="fas fa-fw fa-table"></i>
 					<span>장터 공지</span>
 				</a>
@@ -140,7 +140,7 @@
 							</a>
 							<!-- 프로필 드롭다운 -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="/member/myPage">
+								<a class="dropdown-item" href="/member/myPage?userNo=${userNo}">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									마이페이지
 								</a>

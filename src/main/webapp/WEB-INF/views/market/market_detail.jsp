@@ -44,10 +44,10 @@
 							<div class="col-md-4">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+										src="https://cdn.pixabay.com/photo/2017/01/06/18/28/essential-oils-1958550_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -57,10 +57,10 @@
 							<div class="col-md-4 clearfix d-none d-md-block">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+										src="https://cdn.pixabay.com/photo/2018/09/14/11/12/food-3676796_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -70,10 +70,10 @@
 							<div class="col-md-4 clearfix d-none d-md-block">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+										src="https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -91,10 +91,10 @@
 							<div class="col-md-4">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+										src="https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -104,10 +104,10 @@
 							<div class="col-md-4 clearfix d-none d-md-block">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+										src="https://cdn.pixabay.com/photo/2017/01/06/18/28/essential-oils-1958550_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -117,10 +117,10 @@
 							<div class="col-md-4 clearfix d-none d-md-block">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+										src="https://cdn.pixabay.com/photo/2018/09/14/11/12/food-3676796_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -138,10 +138,10 @@
 							<div class="col-md-4">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+										src="https://cdn.pixabay.com/photo/2018/09/14/11/12/food-3676796_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -151,10 +151,10 @@
 							<div class="col-md-4 clearfix d-none d-md-block">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+										src="https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -164,10 +164,10 @@
 							<div class="col-md-4 clearfix d-none d-md-block">
 								<div class="card mb-2">
 									<img class="card-img-top"
-										src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+										src="https://cdn.pixabay.com/photo/2017/01/06/18/28/essential-oils-1958550_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">Card title</h4>
+										<h4 class="card-title">상품명</h4>
 										<p class="card-text">Some quick example text to build on
 											the card title and make up the bulk of the card's content.</p>
 									</div>
@@ -198,6 +198,7 @@
 		<div class="card border-light">
 			<h4 class="card-title">장터 위치</h4>
 				<div class="card-body">
+					${marketLoc}
 					<div id="map" style="width: 100%; height: 300px"></div>
 				</div>
 			</div>
@@ -210,11 +211,11 @@
 				<!-- header -->
 				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 					<h6 class="m-0 font-weight-bold">장터 후기</h6>
-					<a href="/market/market_detailReview" style="text-decoration: none" onclick="marketReivew(${marketNo})">more</a>
+					<a href="/market/market_detailReview?marketNo=${marketNo}" style="text-decoration: none" onclick="marketReivew(${marketNo})">more</a>
 				</div>
 				<!-- body -->
 				<div class="card-body">
-					<h4 class="card-title">
+					<h4 class="card-title mb-3">
 						<c:if test="reviewRate ">
 							
 						</c:if>
@@ -226,8 +227,8 @@
 						3.8
 					</h4>
 					<ul>
-						<c:forEach var="review" items="${review}">
-							<li>${review.reviewContent}</li>
+						<c:forEach var="review" items="${review}" end="5">
+							<li style="list-style:circle; text-align:left; line-height:40px">${review.reviewContent}</li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -305,5 +306,3 @@
 		player.stopVideo();
 	}
 </script>
-
-<%@ include file="../include/footer.jsp"%>

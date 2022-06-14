@@ -74,52 +74,22 @@ let marketNo = ${marketNo};
 let productNo = ${product.productNo};
 
 $(function() {
-	$(".btn-primary").click(function() {		
+	$(".btn-primary").click(function() {
 		let accept = confirm('승인하시겠습니까?');
 		
 		if(accept) {
-			accept(marketNo, productNo);
+			location.href = "/market/market_receiveAccept?marketNo=${marketNo}&productNo=${product.productNo}&pageNum=1&amount=10";
 		}
-	})
+	});
 	
-	$(".btn-danger").click(function() {		
+	$(".btn-danger").click(function() {
 		let deny = confirm('거부하시겠습니까?');
 		
 		if(deny) {
-			deny(marketNo, productNo);
+			location.href = "/market/market_receiveDeny?marketNo=${marketNo}&productNo=${product.productNo}&pageNum=1&amount=10";
 		}
-	})
+	});
 })
-
-function accept(marketNo, productNo) {
-	$.ajax({
-		url:'/receiveAccept/' + marketNo + '/' + productNo,
-		type:'put',
-		contentType:'application/json',
-		success:function(result) {
-			if(result == "success") {
-				alert("상품을 승인했습니다.");
-				location.href="/market/market_receive"; 
-			} else {
-				alert("상품 승인 실패. 다시 시도해주세요.");
-			}
-		}
-	});
-} /* 상품 승인 종료 */
-
-function deny(marketNo, productNo) {
-	$.ajax({
-		url:'/receiveDeny/' + marketNo + '/' + productNo,
-		type:'put',
-		contentType:'application/json',
-		success:function(result) {
-			if(result == "success") {
-				alert("상품을 거부했습니다.");
-				location.href="/market/market_receive"; 
-			}
-		}
-	});
-} /* 상품 거부 종료 */
 </script>
 
 <%@ include file="../include/manager_footer.jsp"%>

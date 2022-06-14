@@ -13,19 +13,21 @@
 			<div class="card-body">
 
 				<!-- 공지 작성 form -->
-				<form action="/market/market_noticeForm" method="post">
+				<form action="" method="post" id="noticeForm">
 					<div class="form-group">
-						<label>카테고리</label> <select name="category" id="category">
+						<label>카테고리</label>
+						<select name="noticeCategory" id="noticeCategory">
 							<option value="공지">공지</option>
 							<option value="이벤트">이벤트</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label>제목</label> <input class="form-control" name="title">
+						<label>제목</label>
+						<input class="form-control" name="noticeTitle" id="noticeTitle">
 					</div>
 					<div class="form-group">
 						<label>내용</label>
-						<textarea class="form-control" rows="3" name="content"></textarea>
+						<textarea class="form-control" rows="3" name="noticeContent" id="noticeContent"></textarea>
 					</div>
 
 					<!-- 파일 첨부 -->
@@ -35,7 +37,7 @@
 								<div class="panel-heading">파일첨부</div>
 								<div class="panel-body">
 									<div class="form-group uploaddiv">
-										<input type="file" name="uploadFile" id="" />
+										<input type="file" name="marketImg" id="marketImg" />
 									</div>
 									<div class="uploadResult">
 										<!-- 첨부파일 정보 -->
@@ -47,7 +49,7 @@
 					
 					<!-- 버튼 -->
 					<div class="row justify-content-center">
-						<button type="submit" class="btn btn-primary m-2">등록</button>
+						<button type="button" class="btn btn-primary m-2">등록</button>
 						<button type="button" class="btn btn-secondary m-2">취소</button>
 					</div>
 				</form>
@@ -69,13 +71,22 @@
 let marketNo = ${marketNo};
 
 $(function() {
-	$("[type='submit']").click(function(e) {
+	$(".btn-primary").click(function(e) {
 		e.preventDefault();
-	})
+		
+		console.log("등록 버튼 클릭");
+		
+		if($("#noticeTitle").val() == "" || $("#noticeContent").val() == "") {
+			alert('입력되지 않은 항목이 있습니다.');
+			return;
+		}
+		
+		$("#noticeForm").submit();
+	});
 	
-	$(".btn-secondary").click(function() {		
-		location.href = "/market/market_notice?marketNo=" + ${marketNo};
-	})
+	$(".btn-secondary").click(function() {
+		location.href = "/market/market_notice?marketNo=${marketNo}&pageNum=1&amount=10";
+	});
 })
 </script>
 

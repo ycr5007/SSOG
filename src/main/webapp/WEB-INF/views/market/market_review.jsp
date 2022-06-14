@@ -30,7 +30,7 @@
 								<td>${review.userName}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.reviewDate}" /></td>
 								<td>
-									<a href="/market/market_review?marketNo=${marketNo}&reviewNo=${review.reviewNo}" class="btn btn-danger btn-circle btn-sm">
+									<a href="${review.reviewNo}" class="btn btn-danger btn-circle btn-sm">
 										<i class="fas fa-trash"></i>
 									</a>
 								</td>
@@ -80,19 +80,24 @@
 <!-- /.row -->
 
 <!-- URL + 페이징 처리 -->
-<form action="/market/market_review" id="actionForm">
+<form action="/market/market_review" id="actionForm" method="post">
 	<input type="hidden" name="marketNo" value="${marketNo}" />
 	<input type="hidden" name="pageNum" value="${criteria.pageNum }" />
 	<input type="hidden" name="amount" value="${criteria.amount }" />
+	<input type="hidden" name="reviewNo" value="" />
 </form>
 
 <script>
-	$('.btn-circle').click(function() {		
+	$('.btn-circle').click(function(e) {
+		e.preventDefault();
+		
+		reviewNo = $(this).attr("href");
+		
 		let del = confirm("삭제하시겠습니까?");
 		
 		if(del) {
-			$(this).attr("marketNo", ${marketNo});
-			location.href="/market/market_review";
+			$("#actionForm").find("[name='reviewNo']").val(reviewNo);
+			$("#actionForm").submit();
 		}
 	})
 </script>

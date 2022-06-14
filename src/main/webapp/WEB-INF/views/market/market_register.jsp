@@ -15,27 +15,29 @@
 				<form action="" method="post">
 					<div class="form-group">
 						<label>장터 이름</label>
-						<input class="form-control" name="marketName">
+						<input class="form-control" name="marketName" required>
 					</div>
 					<div class="form-group">
 						<label>장터 위치</label>
-						<div id="map" class="form-control" style="height: 200px"></div>
+							<button type="button" class="btn btn-outline-primary btn-sm mb-2" onclick="goPopup();">주소검색</button>
+							<input class="form-control" name="marketLoc" required>
+							<div id="map" class="form-control mt-3" style="height: 200px"></div>
 					</div>
 					<div class="form-group">
 						<label>장터 시작일</label>
-						<input class="form-control" type="datetime-local" name="marketSD"/>
+						<input class="form-control" type="datetime-local" name="marketSD" required/>
 					</div>
 					<div class="form-group">
 						<label>장터 종료일</label>
-						<input class="form-control" type="datetime-local" name="marketED"/>
+						<input class="form-control" type="datetime-local" name="marketED" required/>
 					</div>
 					<div class="form-group">
 						<label>파일 첨부 (셀러 모집-소개 순으로)</label><br>
-						<input type="file" name="marketImg" multiple />
+						<input type="file" name="marketImg" multiple required />
 					</div>
 					<div class="row justify-content-center">
 						<button type="submit" class="btn btn-primary m-2">등록</button>
-						<button type="reset" class="btn btn-secondary m-2">취소</button>
+						<button type="reset" class="btn btn-secondary m-2">뒤로</button>
 					</div>
 				</form>
 			</div>
@@ -44,36 +46,21 @@
 </div>
 
 <!-- 네이버 지도 API Script -->
-<!-- <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i"></script> -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i&submodules=geocoder"></script>
-<script>
-/* naver.maps.Service.geocode({ address: '종각역' }, function(status, response) {
-    if (status === naver.maps.Service.Status.ERROR) {
-        return alert('Something wrong!');
-    }
-    var new_position = new naver.maps.LatLng(response.v2.addresses[0].y, response.v2.addresses[0].x)
-    map.setCenter(new_position);
 
-    var marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(response.v2.addresses[0].y, response.v2.addresses[0].x),
-        map: map
-    });
-}); */
-	/* naver.maps.Service.geocode({ address: '종각역' }, function(status, response) {
-	    if (status === naver.maps.Service.Status.ERROR) {
-	        return alert('Something wrong!');
-	    }
-	    var mapOptions = {
-    		center : new naver.maps.LatLng(response.v2.addresses[0].y, response.v2.addresses[0].x),
-    		zoom : 10,
-    	};
-    	var map = new naver.maps.Map("map", mapOptions);
-    	var markerOptions = {
-    		position: new naver.maps.LatLng(response.v2.addresses[0].y, response.v2.addresses[0].x),
-    		map: map
-    	};
-    	var marker = new naver.maps.Marker(markerOptions);
-	}); */
+<!-- 주소 검색 -->
+<script>
+	function goPopup() {
+		var pop = window.open("/market/mapPopup", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+	}
+	function jusoCallBack(roadFullAddr) {
+		var addr = document.querySelector("#marketLoc");
+		addr.value = roadFullAddr;
+	}
+</script>
+
+<!-- 지도 보여주기 -->
+<script>
 	var mapOptions = {
 		center : new naver.maps.LatLng(37.3595704, 127.105399),
 		zoom : 10,
@@ -84,6 +71,27 @@
 		map: map
 	};
 	var marker = new naver.maps.Marker(markerOptions);
+</script>
+
+<script>
+$(function() {
+	// 등록 버튼 클릭 시
+	$("[type='submit']").click(function(e) {
+		e.preventDefault();
+		
+		if($("input[name='marketName']") == "" || $("input[name='marketLoc']") == "" || $("input[name='marketSD']") == "" || $("input[name='marketED']") == "" || $("input[name='marketImg']") == "") {
+			alert('입력되지 않은 항목이 있습니다.');
+			return;
+		}
+		
+		$("form").submit();
+	})
+	
+	// 뒤로가기 버튼 클릭 시
+	$("input[type='reset']").click(function() {
+		$("form").val() = "";
+	})
+})
 </script>
 
 <%@ include file="../include/manager_footer.jsp"%>
