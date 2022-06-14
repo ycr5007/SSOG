@@ -27,22 +27,24 @@ public class MyPageController {
 		log.info("myPage 페이지 요청");
 	}
 	
+	@GetMapping("/myPagePwCheck")
+	public void myPagePwCheckGet() {
+		log.info("myPagePwCheck 페이지 요청");
+	}
+	
 	@PostMapping("/myPagePwCheck")
-	public String myPagePwCheckPOST(String userPw, HttpSession session) {
+	public String myPagePwCheckPost(String userId, String userPw, HttpSession session) {
+		log.info("userId : " + userId);
 		log.info("userPw : " + userPw);
 		
 		String ch = service.myPagePwCheck(userPw);
 		if(ch==null) {
 			return "redirect:/myPagePwCheck";
 		}
-		// 비밀번호가 맞다면, 회원정보 페이지 보여주기
 		
+		// 비밀번호가 맞다면, 회원정보 페이지 보여주기
 		session.setAttribute("myPagePwCheck", ch);
 		return "/member/myPageEdit";
 	}
 	
-	@GetMapping("/myPagePwCheck")
-	public void myPagePwCheckGet(boolean agree) {
-		
-	}
 }

@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.solmarket.dto.AuthDTO;
 //import com.solmarket.dto.ChangeDTO;
@@ -22,20 +24,25 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 	
 	@Inject
 	JavaMailSenderImpl MailSender;
 	
+	@Transactional // 성공시 commit, 에러시 rollback
 	@Override
 	public boolean register(UserDTO register) {
 		
-		return mapper.insert(register)==1?true:false;
+		register.setUserPw(encoder.encode(register.getUserPw()));
+		
+		boolean result = mapper.insert(register) > 0;
+		mapper.insertAuth(new AuthDTO(register.getUserId(), "ROLE_USER"));
+	//	mapper.insertAuth(new AuthDTO(register.getUserId(), "ROLE_SELLER"));
+	//	mapper.insertAuth(new AuthDTO(register.getUserId(), "ROLE_MARKET"));
+	//	mapper.insertAuth(new AuthDTO(register.getUserId(), "ROLE_ADMIN"));
+		return result;
 	}
-
-	//@Override
-	//public AuthDTO login(String userId, String userPw) {
-	//	return mapper.login(userId, userPw);
-	//}
 
 	/*
 	 * @Override public boolean changePwd(ChangeDTO changeDto) { return
@@ -53,12 +60,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public AuthDTO findId(String userName, String userMail) {
+	public UserDTO findId(String userName, String userMail) {
 		return mapper.searchId(userName, userMail);
 	}
 	
 	@Override
-	public AuthDTO findPw(String userId, String userMail) {
+	public UserDTO findPw(String userId, String userMail) {
 		return mapper.searchPw(userId, userMail);
 	}
 
@@ -104,11 +111,6 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.myPagePwCheck(userPw);
 	}
 
-	@Override
-	public AuthDTO login(String userId, String userPw) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 

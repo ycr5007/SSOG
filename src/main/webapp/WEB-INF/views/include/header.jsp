@@ -114,11 +114,11 @@
               <c:if test="${empty login }">
                 <a class="dropdown-item" href="/member/signUp1">회원가입</a>
                 <a class="dropdown-item" href="/member/login">로그인</a>
-                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
+                <a class="dropdown-item" href="/member/myPagePwCheck">마이페이지</a>
               </c:if>
               <c:if test="${!empty login}">
                	<a class="dropdown-item" href="/member/logout">로그아웃</a>
-                <a class="dropdown-item" href="/member/myPage">마이페이지</a>
+                <a class="dropdown-item" href="/member/myPagePwCheck">마이페이지</a>
               </c:if>
               </div>
             </div>

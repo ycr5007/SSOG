@@ -9,9 +9,6 @@ public interface MemberService {
 	// 회원가입
 	public boolean register(UserDTO register);
 			
-	// 로그인
-	public AuthDTO login(String userId, String userPw);
-			
 	// 비밀번호 변경
 	//public boolean changePwd(ChangeDTO changeDto);
 			
@@ -22,10 +19,10 @@ public interface MemberService {
 	public String dupId(String userId);
 			
 	// ID 찾기
-	public AuthDTO findId(String userName, String userMail);
+	public UserDTO findId(String userName, String userMail);
 			
 	// PW 찾기
-	public AuthDTO findPw(String userId, String userMail);
+	public UserDTO findPw(String userId, String userMail);
 			
 	// 가입시 이메일 인증
 	public String authMail(String userMail);

@@ -165,18 +165,17 @@ public class MemberController {
 			log.info(""+userName);
 			log.info(""+userMail);
 			
-			AuthDTO authDto = service.findId(userName, userMail);
+			UserDTO userDto = service.findId(userName, userMail);
 			
-			if(authDto!=null) {
+			if(userDto!=null) {
 			//	model.addAttribute("userName", userName);
 			//	model.addAttribute("userMail", userMail);
-				rttr.addFlashAttribute("userId", authDto.getUserId());
+				rttr.addFlashAttribute("userId", userDto.getUserId());
 				log.info(""+userName);
 				log.info(""+userMail);
-				log.info(""+authDto.getUserId());
+				log.info(""+userDto.getUserId());
 				return "redirect:/member/findIdResult";
 			}else {
-				rttr.addAttribute("error", "확인해주세요");
 				return "redirect:/member/findIdResult";
 				
 			}
@@ -192,22 +191,27 @@ public class MemberController {
 			log.info("비밀번호 찾기 폼 요청");
 		}
 		
-		/*
-		 * @PostMapping("/findPw") public String findPwPost(String userId, String
-		 * userMail, RedirectAttributes rttr) { log.info("비밀번호 찾기");
-		 * log.info(""+userId); log.info(""+userMail);
-		 * 
-		 * AuthDTO authDto = service.findPw(userId, userMail);
-		 * 
-		 * if(authDto!=null) { rttr.addAttribute("userId", userId);
-		 * rttr.addAttribute("userMail", userMail); rttr.addFlashAttribute("userPw",
-		 * authDto.getUserPw()); log.info(""+userId); log.info(""+userMail);
-		 * log.info(""+authDto.getUserPw()); return "redirect:/member/findPwResult";
-		 * }else { return "redirect:/member/findPwResult";
-		 * 
-		 * }
-		 */
-		//}
+		
+		 @PostMapping("/findPw")
+		 public String findPwPost(String userId, String userMail, RedirectAttributes rttr) {
+			 log.info("비밀번호 찾기");
+			 log.info(""+userId); 
+			 log.info(""+userMail);
+			 
+			 UserDTO userDto = service.findPw(userId, userMail);
+			 
+			 if(userDto!=null) { 
+				 rttr.addAttribute("userId", userId);
+				 rttr.addAttribute("userMail", userMail); 
+				 rttr.addFlashAttribute("userPw",userDto.getUserPw()); 
+				 log.info(""+userId); 
+				 log.info(""+userMail);
+				 log.info(""+userDto.getUserPw()); 
+				 return "redirect:/member/findPwResult";
+			 }else { 
+				 return "redirect:/member/findPwResult";
+			 }
+		 }
 		
 		@GetMapping("/findPwResult")
 		public void findPwResultGet(String userId, String userMail) {
@@ -234,10 +238,13 @@ public class MemberController {
 		public void jusoPopupGet() {
 			log.info("주소 팝업 요청");
 		}
+	
 		
-		@PostMapping("/jusoPopup")
+	
+		@PostMapping("/jusoPopup") 
 		public void jusoPopupPost() {
-			log.info("주소 팝업 요청;");
+			log.info("주소 팝업 요청;"); 
 		}
+		
 		
 }

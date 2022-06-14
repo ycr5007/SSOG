@@ -21,7 +21,7 @@ public class CustomUserDetailService implements UserDetailsService {
 	
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) {
 		log.info("[UserDetailsService] <<<<< CustomUserDetailService >>>>> ");
 		log.info("[UserDetailsService] User Id 정보 : " + username);
 		// username = userid
@@ -29,7 +29,11 @@ public class CustomUserDetailService implements UserDetailsService {
 		UserDTO userDto = mapper.read(username);
 		log.info("[UserDetailsService] 인증 정보 : " + userDto);
 		
-		return new CustomUser(userDto);
+		if(userDto == null) {
+			return null;
+		}else {
+			return new CustomUser(userDto);
+		}
 	}
 
 }

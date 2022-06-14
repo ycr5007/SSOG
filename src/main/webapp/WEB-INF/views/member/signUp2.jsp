@@ -6,6 +6,7 @@ pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8" />
+
     <title>회원가입</title>
         <!--<link rel="stylesheet" href="/resources/css/sign.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -124,6 +125,7 @@ pageEncoding="UTF-8"%>
           <button type="submit" class="btn btn-primary send-data">가입하기</button>
           <button type="reset" class="btn btn-secondary">취소</button>
         </div>
+        <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
      </form>
      </div>
 <script>
@@ -178,12 +180,15 @@ $(".mail_check_input").blur(function(){
 });
 </script>
 <script>
+
     function goPopup(){
     	// 주소검색을 수행할 팝업 페이지를 호출합니다.
     	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-    	var pop = window.open("/member/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+
+    	var pop = window.open("/member/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes");
     }
     function jusoCallBack(roadFullAddr){
+
     	var addr = document.querySelector("#userAddress");
     	addr.value = roadFullAddr;
     }

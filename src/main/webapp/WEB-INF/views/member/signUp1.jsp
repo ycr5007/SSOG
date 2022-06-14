@@ -153,6 +153,7 @@
 <input type="checkbox" name="agree" value="true"> 약관동의
 </label>
 <input type="submit" class="btn btn-primary btn-sm" value="다음단계">
+<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 </form>	
 <script src="/resources/js/jquery-3.6.0.min.js"></script>
 <script>

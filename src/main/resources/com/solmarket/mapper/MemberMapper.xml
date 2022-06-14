@@ -4,9 +4,14 @@
 	
 	<!-- 회원가입 -->
 	<insert id="insert">
-		insert into myuser(user_no, user_id, user_pw, user_name, user_phone, user_mail,
-		user_profile,user_pf, user_pfsize, user_address)
-		values(myUser_seq.nextval, #{userId},#{userPw},#{userName},#{userPhone},#{userMail},#{userProfile, jdbcType=VARCHAR},0,0,#{userAddress})
+		insert into myuser(user_no, user_id, user_pw, user_name, user_phone, user_mail, user_profile, user_address)
+		values(myUser_seq.nextval, #{userId}, #{userPw}, #{userName}, #{userPhone}, #{userMail}, #{userProfile, jdbcType=VARCHAR}, #{userAddress})
+	</insert>
+	
+	<!-- 회원가입시 권한부여 -->
+	<insert id="insertauth">
+		insert into myuser_auth(user_id, authority)
+		values(#{userId}, #{authority})
 	</insert>
 	
 	<!-- 로그인 : userId, 비밀번호 : userPw -->
@@ -14,9 +19,16 @@
 		<id property="userId" column="user_id"/>
 		<result property="userPw" column="user_pw"/>
 		<result property="enabled" column="enabled"/>
+		<collection property="authorities" resultMap="authList"></collection>
+	</resultMap>
+	
+	<resultMap type="com.solmarket.dto.AuthDTO" id="authList">
+		<result property="userId" column="user_id" />
+		<result property="authority" column="authority" />
 	</resultMap>
 	<select id="read" resultMap="myUser">
-		select user_id as userId, user_pw as userPw, enabled from myUser where user_id=#{userId}
+		select use.user_id as userId, user_pw as userPw, enabled, authority from 
+		myuser use join myuser_auth auth on use.user_id = auth.user_id where use.user_id = #{userId}
 	</select>
 	
 	<!-- 비밀번호 변경 -->
@@ -25,9 +37,9 @@
 	</update>
 	
 	<!--  회원탈퇴 -->
-	<delete id="delete">
-		delete from myuser where user_id=#{userId} and user_pw=#{userPw}
-	</delete>
+	<update id="delete">
+		update set myuser user_status=0 where user_id=#{userId}
+	</update>
 	
 	<!-- ID 중복검사 -->
 	<select id="dupId" resultType="java.lang.String">
@@ -35,12 +47,12 @@
 	</select>
 	
 	<!-- ID 찾기 -->
-	<select id="searchId" resultType="com.solmarket.dto.AuthDTO">
+	<select id="searchId" resultType="com.solmarket.dto.UserDTO">
 		select user_id as userId from myuser where user_name=#{userName} and user_mail=#{userMail}
 	</select>
 	
 	<!-- PW 찾기 -->
-	<select id="searchPw" resultType="com.solmarket.dto.AuthDTO">
+	<select id="searchPw" resultType="com.solmarket.dto.UserDTO">
 		select user_pw as userPw from myuser where user_id=#{userId} and user_mail=#{userMail}
 	</select>
 </mapper>

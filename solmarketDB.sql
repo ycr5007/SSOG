@@ -6,10 +6,9 @@ ALTER TABLE notice ADD notice_status NUMBER(2) DEFAULT 0; -- 공지사항 상태
 ALTER TABLE product ADD product_date DATE DEFAULT SYSDATE; -- 상품 등록일 추가
 ALTER TABLE review ADD review_status NUMBER(2) DEFAULT 1; -- 장터 한 줄 리뷰 상태 추가
 ALTER TABLE product ADD product_content NVARCHAR2(512) NOT NULL; -- 상품 설명 컬럼 추가
-ALTER TABLE myUser ADD user_address NVARCHAR2(128) NOT NULL; 
-delete from myUser;
-select * from myUser;
-ALTER TABLE myUser ADD enabled char(1) DEFAULT '1';
+ALTER TABLE myUser ADD user_address NVARCHAR2(128) NOT NULL; -- 회원 주소 추가
+ALTER TABLE myUser ADD enabled char(1) DEFAULT '1'; -- 씨큐리티 기존양식 맞춤
+
 
 -- 테이블 추가 --
 create table visitor(
@@ -43,8 +42,11 @@ CREATE TABLE myuser (
 	user_pf VARCHAR2(128) NOT NULL,
 	user_pfsize NUMBER(8) NOT NULL,
 	user_status NUMBER(2) DEFAULT 0,
-	user_auth VARCHAR2(8) DEFAULT 'USER'
+	user_auth VARCHAR2(8) DEFAULT 'ROLE_USER'
 );
+
+--UPDATE myuser set user_auth = concat("ROLE_",입력값) WHERE ;
+
 
 ALTER TABLE myuser ADD CONSTRAINT PK_USER PRIMARY KEY (user_no);
 
@@ -217,3 +219,8 @@ CREATE SEQUENCE myOrder_seq;
 CREATE SEQUENCE delivery_seq;
 CREATE SEQUENCE cart_seq;
 -- 시퀀스 생성 --
+
+
+select * from myUser;
+
+
