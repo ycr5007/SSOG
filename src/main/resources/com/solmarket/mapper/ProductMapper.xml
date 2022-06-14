@@ -111,12 +111,9 @@
 		where product_no=#{productNo}
 	</delete>
 
-
-	
-
-
+	<!-- 상품 검색 -->
 	<select id="search" resultType="com.solmarket.dto.ProductDTO">
 		select * from product
-		where writer like '%' || #{productName} || '%'
+		where product_Name like '%' || #{productName} || '%'
 	</select>
 </mapper>
