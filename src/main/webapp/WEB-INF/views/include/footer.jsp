@@ -2,15 +2,17 @@
     pageEncoding="UTF-8"%>
 
 	<!-- Start Footer -->
-    <footer class="bg-light" id="tempaltemo_footer" style="width:auto; height:auto;">
-      <div class="container">
-        <div class="row">
-           <img
-             src="../resources/img/bgimage.jpg"
-           />
-        </div>
-      </div>
-    </footer>
+	<section>
+	    <footer class="bg-light" id="tempaltemo_footer" style="width:auto; height:auto;">
+	      <div class="container">
+	        <div class="row">
+	           <img
+	             src="../resources/img/footerimg.png"
+	           />
+	        </div>
+	      </div>
+	    </footer>
+    </section>
     <!-- End Footer -->
 
     <!-- jquery cdn -->
@@ -49,7 +51,7 @@
         $('img[usemap]').maphilight();
       });
     </script>
-    <script>
+	<script>
       $(function(){
 
         let area = $("area");
