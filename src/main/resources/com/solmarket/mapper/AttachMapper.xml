@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.solmarket.mapper.AttachMapper">
-	
+<mapper namespace="com.solmarket.mapper.AttachMapper">	
 	<!-- ====================== 장터 등록 시 장터 이미지 삽입 ====================== --> 
 	<insert id="insertImg">
 		INSERT INTO market_img(market_no, market_img, market_imgsize) VALUES(#{marketNo}, #{marketImg}, #{marketImgSize})
