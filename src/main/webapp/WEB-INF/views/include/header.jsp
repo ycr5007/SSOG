@@ -118,20 +118,17 @@
 	            
 	            
 				<!-- Search form -->
-				<div class="active-cyan-2">
-				  <input class="form-control" type="text" placeholder="상품명 입력" aria-label="Search">
-				</div>
-				
-	            <!-- 검색 icon -->
-	            <div
-	              class="nav-icon d-none d-lg-inline"
-	              data-bs-toggle="modal"
-	              data-bs-target="#templatemo_search"
-	            >
-	              <i class="fa fa-fw fa-search text-dark mr-2"></i>
-	            </div>
-	            
+				<form action="/product/product_search" method="get">
+					<div class="active-cyan-2">
+					  <input class="form-control" type="text" name="productName" placeholder="상품명 입력" aria-label="Search">
+					</div>
 					
+		            <!-- 검색 icon -->
+		            <button type="submit" class="btn btn-outline-primary">
+		              <i class="fa fa-fw fa-search text-dark mr-2"></i>
+		            </button>
+				</form>	
+				
 	            <!-- 마이메뉴 icon + 드롭다운창 -->
 	            <div class="dropdown show">
 	              <a
