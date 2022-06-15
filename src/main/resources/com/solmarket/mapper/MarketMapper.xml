@@ -70,7 +70,7 @@
 	</update> 
 <!-- ====================== (상품 상태 1 → 3) ====================== --> 
 	<update id="updateProductOn">
-		UPDATE product SET product_status = 3 WHERE product_no = #{productNo}
+		UPDATE product SET product_status = 3 WHERE market_no = #{marketNo} AND product_status = 1
 	</update>
 
 <!-- ====================== 장터 상세 페이지 보기 ====================== -->
@@ -129,7 +129,7 @@
 	</update>
 <!-- ====================== (상품 상태 3 → 4) ====================== --> 
 	<update id="updateProductOff">
-		UPDATE product SET product_status = 4 WHERE product_no = #{productNo}
+		UPDATE product SET product_status = 4 WHERE market_no = #{marketNo} AND product_status = 3
 	</update>
 
 <!-- ====================== 장터 후기 ====================== --> 
