@@ -8,7 +8,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12 pl-2">
-			<h1 class="page-header">상품 목록</h1>
+			<h1 class="page-header">재고 상품 목록</h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -18,31 +18,32 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">Product List Page</div>
+				<div class="panel-heading">
+				List After Shop Listing Product List Page
+				</div>
 				<!-- /.panel-heading 종료-->
 
 				<div class="panel-body">
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>판매장터</th>
 								<th>상품명</th>
 								<th>가 격</th>
-								<th>등록일</th>
-								<th>상품 상태</th>
+								<th>유효 기간 </th>
+								<th>수량 </th>
+								
 							</tr>
 						</thead>
 						<!-- thead 종료 -->
-
 						<tbody>
 							<!-- 게시판 리스트 반복문 -->
-							<c:forEach var="dto" items="${list}" varStatus="status">
+							<c:forEach var="dto" items="${remainList}">
 								<tr>
-									<td>${dto.dummy}</td>
-									<td><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
+									<td><a href="${dto.productNo}" class="move">${dto.productName}</a>
+									</td>
 									<td>${dto.productPrice}</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
-									<td>${dto.productStatus}</td>
+									<td>${dto.productQN}</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -51,7 +52,7 @@
 					<div class="row">
 						<div class="col-md-2 col-md-offset-2">
 							<!--페이지 목록 갯수 지정하는 폼-->
-							<select name="perPage" id="amount" class="form-control">
+							<select name="" id="amount" class="form-control">
 								<option value="10"
 									<c:out value="${cri.amount == 10? 'selected':''}"/>>10</option>
 								<option value="20"
@@ -68,7 +69,8 @@
 
 					<!-- pagination start -->
 					<nav aria-label="Page navigation example">
-						<ul	class="pagination row justify-content-center align-items-center">
+						<ul
+							class="pagination row justify-content-center align-items-center">
 							<!-- row justify-content-center align-items-center : 가운데 정렬 -->
 							<c:if test="${pageDto.prev}">
 								<!-- prev가 true여야 이전버튼 활성화 -->
@@ -107,13 +109,13 @@
 	</div>
 
 	<%-- URL + 페이지 링크 처리할 폼 --%>
-	<form action="/product/product_list" id="actionForm">
+	<form action="/product/product_remain_list" id="actionForm">
 		<!-- pageNum, amount, type, keyword 값을 부를 때
 			①pageDto(pageDto.cri.pageNum)
 			②cri(criteria.pageNum( @ModelAttribute가 사용 안된 경우), cri.pageNum)
 			 
 		  -->
-		<input type="hidden" name="userNo" value="${dto.userNo}" />
+		<input type="hidden" name="userNo" value="7" />
 		<input type="hidden" name="pageNum" value="${pageDto.cri.pageNum}" />
 		<input type="hidden" name="amount" value="${pageDto.cri.amount}" />
 	</form>
@@ -122,6 +124,5 @@
 <!-- div class="panel-body" 종료 -->
 
 
-
-<script src="/resources/js/product_list.js"></script>
+<script src="/resources/js/product_remain_list.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

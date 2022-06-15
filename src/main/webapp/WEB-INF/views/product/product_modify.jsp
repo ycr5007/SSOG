@@ -9,7 +9,7 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			<h2 class="page-header">상품 수정</h2>
+			<h2 class="page-header">재고 상점 등록</h2>
 		</div>
 	</div>
 	<div class="row">
@@ -25,29 +25,29 @@
 
 						<div class="custom-form">
 							<label>상품 수량</label>
-							<input type="radio" name="productQN"  value="50" />50&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="productQN" value="100" />100&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="productQN" value="150" />150
+							<input type="radio" name="productQN"  value="5" />5 &nbsp;&nbsp;&nbsp;
+							<input type="radio" name="productQN" value="10" />10 &nbsp;&nbsp;&nbsp;
+							<input type="radio" name="productQN" value="20" />20
 						</div>
 
 						<div class="form-group">
 							<label>상품설명</label>
-							<textarea class="form-control" rows="5" name="productContent" style="resize: none">${dto.productContent}</textarea>
+							<textarea class="form-control" rows="5" name="productContent" style="resize: none" readonly>${dto.productContent}</textarea>
 						</div>
 
 						<div class="form-group">
-							<label>상품가격</label>
-							 <input type="text" name="productPrice" id="productPrice" class="form-control" value="${dto.productPrice}" />
+							 <label>상품가격</label>
+							 <input type="text" name="productPrice" id="productPrice" class="form-control" value="${dto.productPrice}" readonly/>
 						</div>
 						
 						<div class="form-group">
-							<label>상품상태</label>
-							 <input type="text" name="productStatus" id="productStatus" class="form-control" value="${dto.productStatus}" readonly/>
+							 <label>할인율</label>
+							 <input type="text" name="productSale" id="productSale" class="form-control" value="${dto.productSale}" />
 						</div>
 	
 
 
-						<button type="submit" class="btn btn-primary" id="modifyBtn">수정</button>
+						<button type="submit" class="btn btn-primary" id="modifyBtn">등록</button>
 						<button type="button" class="btn btn-danger" id="deleteBtn">취소</button>
 						
 						<input type="hidden" value="${dto.productNo}" name="productNo" />
@@ -68,7 +68,7 @@
 <script>
 $(function(){
 	$(".btn-danger").click(function(){
-		location.href="/product/product_list";
+		location.href="/product/product_remain_list";
 	})
 })
 </script>
