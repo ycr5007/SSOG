@@ -120,13 +120,14 @@ public class MarketController {
 		log.info("[GetMapping] ========== 장터 상세 페이지 호출 ==========");
 //		List<AttachDTO> marketImg = service.showMarketImg(marketNo);
 //		List<AttachDTO> productImg = service.showProductImg(marketNo);
-		String marketLoc = service.showMarketLoc(marketNo);
+		MarketDTO marketDTO = new MarketDTO();
+		marketDTO.setMarketNo(marketNo);
 		List<ProductDTO> list = service.showProductAcceptList(marketNo, criteria);
 		List<ReviewDTO> review = service.ReviewList(marketNo, criteria);
 //		model.addAttribute("marketImg", marketImg);
 //		model.addAttribute("productImg", productImg);
-		model.addAttribute("marketLoc", marketLoc);
-		model.addAttribute("marketNo", marketNo);
+		model.addAttribute("marketLoc", service.showMarketLoc(marketNo));
+		model.addAttribute("marketDTO", marketDTO);
 		model.addAttribute("product", list);
 		model.addAttribute("review", review);
 	}
@@ -136,8 +137,11 @@ public class MarketController {
 	public void market_detailReview(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 후기 더보기 호출 ==========");
 		List<ReviewDTO> review = service.ReviewList(marketNo, criteria);
+		MarketDTO marketDTO = new MarketDTO();
+		marketDTO.setMarketNo(marketNo);
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("review", review);
+		model.addAttribute("marketRate", marketDTO.getMarketRate());
 	}
 	
 	@PostMapping("/market_detailReview")
