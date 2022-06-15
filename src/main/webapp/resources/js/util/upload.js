@@ -48,6 +48,29 @@ $(function(){
 			}
 		})
 	}) // uploadBtn.click 종료
+	
+	// 이미지 삭제 시
+	$(".uploadResult").on("click", "span", function() {
+		// span 태그 data- 속성 가져오기
+		let targetFile = $(this).data("file");
+		let type = $(this).data("type");
+
+		// span 태그가 속해 있는 li 태그 가져오기
+		let targetLi = $(this).closest("li");		
+		$.ajax({
+			url:'/deleteFile/' + section,
+			data:{
+				fileName: targetFile,
+				type:type
+			},
+			type:'post',
+			success:function(result) {
+				$(".form-filename").val("");
+				$(".custom-file-label").text("");
+				targetLi.remove();
+			}
+		})
+	})
 })
 
 function showUploadFile(result){
@@ -67,7 +90,7 @@ function showUploadFile(result){
 		str += "<li>";
 		str += "<img class='img-thumbnail' src='/display/market?fileName=" + fileCallPath + "'>";
 		str += "<div class='form-filename'>" + obj.fileName;
-		str += "<span data-file='" + fileCallPath + "'><button type='button' class='btn btn-danger'>삭제</button></span></div></li>"
+		str += "<span data-file='" + fileCallPath + "'><button type='button' class='btn btn-danger btn-sm m-2'>삭제</button></span></div></li>"
 	})
 	uploadResult.append(str);
 } 
