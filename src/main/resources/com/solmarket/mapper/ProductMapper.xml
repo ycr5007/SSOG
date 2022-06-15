@@ -46,7 +46,7 @@
 							p.product_content as productContent, p.product_date as productDate,
 							p.product_status as productStatus
 					from product p left outer join market m on p.market_no = m.market_no 
-					where p.user_no = #{userNo}) p 
+					where p.user_no = #{userNo}  order by p.product_no desc) p 
 				left outer join myUser u on p.userNo = u.user_no) statusList
 				where rownum <= (#{cri.pageNum} * #{cri.amount}))
 			where num > (#{cri.pageNum} - 1) * #{cri.amount}
@@ -67,23 +67,12 @@
 	<select id="totalCnt" resultType="int">
 		select count(*) from product
 		where user_no =#{userNo}	
-	</select>
-	
-	<!-- 동적 sql 추가 
-	<sql id="criteria">
-		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
-			<foreach collection="typeArr" item="type">
-				<trim prefix="OR">
-				
-				</trim>
-			</foreach>		
-		</trim>
-	</sql>-->
+	</select>	
 
-	<!-- 상품 수정 : 상품 번호가 일치한다면 상품 수량, 내용, 가격 수정 -->
+	<!-- 재고상점 등록 : 상품 번호가 일치한다면 상품 수량,  할인율 적용, 상태 변경,  -->
 	<update id="update">
 		update product
-		set product_qn=#{productQN}, product_content=#{productContent}, product_price=#{productPrice}, product_status=#{productStatus}
+		set product_qn=#{productQN}, product_sale = #{productSale}, product_status=5
 		where product_no=#{productNo}
 	</update>
 
@@ -104,6 +93,54 @@
 		select count(*) from market
 		where market_status = 1
 	</select>
+	
+	<!-- 인덱스에서 참여 중인 장터 리스트 보여주기 -->
+	<select id="mList" resultType="com.solmarket.dto.MarketDTO">
+		select market_no as marketNo, market_name as marketName, market_sd as marketSD, market_loc as marketLoc
+		from market
+		where market_status = 2
+	</select>
+	
+	<!-- 인덱스에서 오픈 예정 장터 리스트 보여주기 -->
+	<select id="oList" resultType="com.solmarket.dto.MarketDTO">
+		select market_no as marketNo, market_name as marketName, market_sd as marketSD, market_loc as marketLoc
+		from market
+		where market_status = 1
+	</select>
+
+	<!-- 인덱스에서 상품 리스트 보여주기 -->
+	<select id="pList" resultType="com.solmarket.dto.ProductDTO">
+		select product_name as productName, product_price as productPrice
+		from product
+	</select>
+
+	<!-- 장터 종료 후 상품 리스트 보여주기 -->
+	<select id="remainList" resultType="com.solmarket.dto.ProductDTO">
+		<![CDATA[
+		select * from 
+			(select rownum as num, statusList.* from
+				(select user_name as userName, p.* from 
+					(select p.product_no as productNo, m.market_name as dummy,
+							p.user_no as userNo,
+							p.product_name as productName, 
+							p.product_price as productPrice,
+							p.product_content as productContent, 
+							p.product_date as productDate,
+							p.product_qn as productQN
+					from product p left outer join market m on p.market_no = m.market_no 
+					where p.user_no = #{userNo} and product_qn >= 1 and product_status = 4) p 
+				left outer join myUser u on p.userNo = u.user_no) statusList
+				where rownum <= (#{cri.pageNum} * #{cri.amount}))
+			where num > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
+	</select>
+
+	<!-- 재고 상품 리스트 페이징 -->
+	<select id="remainTotal" resultType="int">
+		select count(*) from product
+		where user_no =#{userNo} and product_status = 4
+	</select>
+
 
 	<!-- 상품 삭제 -->
 	<delete id="delete">
@@ -111,9 +148,8 @@
 		where product_no=#{productNo}
 	</delete>
 
-	<!-- 상품 검색 -->
-	<select id="search" resultType="com.solmarket.dto.ProductDTO">
-		select * from product
-		where product_Name like '%' || #{productName} || '%'
-	</select>
+
+	
+
+
 </mapper>

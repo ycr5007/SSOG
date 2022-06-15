@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../include/market_header.jsp"%>
 
 <div class="row justify-content-center align-items-center">
@@ -27,7 +28,7 @@
 	<!-- 마켓 이미지 끝 -->
 
 	<!-- 판매 상품 리스트 -->
-	<div class="row align-items-center container mt-5 col-xl-7 px-xl-5">
+	<div class="container my-5 col-xl-7 px-xl-5">
 		<div class="card border-light">
 			<h4 class="card-title">판매 상품</h4>
 		
@@ -194,14 +195,14 @@
 	<!-- 판매 상품 리스트 끝 -->
 	
 	<!-- 장터 위치 (네이버 지도 API) -->
-	<div class="container my-5 col-xl-7 px-xl-5">
+	<div class="container my-3 col-xl-7 px-xl-5">
 		<div class="card border-light">
 			<h4 class="card-title">장터 위치</h4>
 				<div class="card-body">
 					${marketLoc}
-					<div id="map" style="width: 100%; height: 300px"></div>
-				</div>
+				<div id="map" class="mt-3" style="width: 100%; height: 300px"></div>
 			</div>
+		</div>
 	</div>
 	
 	<div class="row col-xl-7 px-xl-5">
@@ -211,24 +212,53 @@
 				<!-- header -->
 				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 					<h6 class="m-0 font-weight-bold">장터 후기</h6>
-					<a href="/market/market_detailReview?marketNo=${marketNo}" style="text-decoration: none" onclick="marketReivew(${marketNo})">more</a>
+					<a href="/market/market_detailReview?marketNo=${marketDTO.marketNo}" onclick="marketReivew(${marketDTO.marketNo})">more</a>
 				</div>
 				<!-- body -->
 				<div class="card-body">
 					<h4 class="card-title mb-3">
-						<c:if test="reviewRate ">
-							
-						</c:if>
-						<i class="fas fa-fw fa-star"></i>
-						<i class="fas fa-fw fa-star"></i>
-						<i class="fas fa-fw fa-star"></i>
-						<i class="fas fa-fw fa-star-half-alt"></i>
-						<i class="far fa-fw fa-star"></i>
-						3.8
+						<c:choose>
+							<c:when test="${marketDTO.marketRate == 0.0}">
+								<i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+							</c:when>
+							<c:when test="${marketDTO.marketRate > 0.0 && marketDTO.marketRate < 1.0}">
+								<i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate == 1.0}">
+								<i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate > 1.0 && marketDTO.marketRate < 2.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate == 2.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate > 2.0 && marketDTO.marketRate < 3.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate == 3.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate > 3.0 && marketDTO.marketRate < 4.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						     <c:when test="${marketDTO.marketRate == 4.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate > 4.0 && marketDTO.marketRate < 5.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i>
+						    </c:when>
+						     <c:when test="${marketDTO.marketRate == 5.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i>
+						    </c:when>
+						</c:choose>
+						${marketDTO.marketRate}
 					</h4>
 					<ul>
 						<c:forEach var="review" items="${review}" end="5">
-							<li style="list-style:circle; text-align:left; line-height:40px">${review.reviewContent}</li>
+							<li style="list-style:circle; text-align:left; line-height:40px">
+								${fn:substring(review.reviewContent, "0", "10")}...
+							</li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -253,14 +283,14 @@
 	</div>
 </div>
 
-<input type="hidden" name="marketNo" value="${marketNo}"/>
+<input type="hidden" name="marketNo" value="${marketDTO.marketNo}"/>
 
 <!-- 네이버 지도 API Script -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i"></script>
 <script>
 	var mapOptions = {
-		center : new naver.maps.LatLng(37.3595704, 127.105399),
-		zoom : 10,
+		center : new naver.maps.LatLng(37.565474690, 126.977199586),
+		zoom : 15,
 	};
 
 	var map = new naver.maps.Map("map", mapOptions);
@@ -306,3 +336,4 @@
 		player.stopVideo();
 	}
 </script>
+<%@ include file="../include/footer.jsp"%>

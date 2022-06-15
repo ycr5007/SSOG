@@ -124,12 +124,22 @@ public class MarketServiceImpl implements MarketService {
 
 	/* ====================== 첨부 파일 ====================== */
 	@Override
-	public AttachDTO MarketImg(int marketNo) {
+	public boolean MarketImg(AttachDTO attachDTO) {
+		return attachMapper.insertMarketImg(attachDTO) == 1 ? true : false;
+	}
+	
+	@Override
+	public boolean RecruitImg(AttachDTO attachDTO) {
+		return attachMapper.insertRecruitImg(attachDTO) == 1 ? true : false;
+	}
+	
+	@Override
+	public List<AttachDTO> showMarketImg(int marketNo) {
 		return attachMapper.selectMarketImg(marketNo);
 	}
 	
 	@Override
-	public AttachDTO ProductImg(int marketNo) {
+	public List<AttachDTO> showProductImg(int marketNo) {
 		ProductDTO dto = new ProductDTO();
 		dto.setMarketNo(marketNo);
 		int productNo = dto.getProductNo();

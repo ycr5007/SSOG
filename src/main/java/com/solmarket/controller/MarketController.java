@@ -24,7 +24,6 @@ public class MarketController {
 		log.info("[GetMapping] ========== 장터 등록 폼 호출 ==========");
 	}
 
-	// 주소
 	@GetMapping("/mapPopup")
 	public void mapPopupGet() {
 		log.info("[GetMapping] ========== 주소 검색 팝업 호출 ==========");
@@ -36,13 +35,25 @@ public class MarketController {
 	}
 
 	@PostMapping("/market_register")
-	public String market_registerMarket(MarketDTO insertDTO, RedirectAttributes rttr) {
+	public String market_registerMarket(MarketDTO insertDTO, AttachDTO attachDTO, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 장터 등록 폼 전송 ==========");
-		if(service.registerMarket(insertDTO)) {
+		if(service.registerMarket(insertDTO) && service.MarketImg(attachDTO)) {
 			rttr.addAttribute("marketNo", insertDTO.getMarketNo());
 			return "redirect:/manager_index";
 		}
 		return "redirect:/market/market_register";
+	}
+	
+	/* ====================== 장터 참여자 모집 ====================== */
+	@GetMapping("/recruitPopup")
+	public void recruitGet() {
+		log.info("[GetMapping] ========== 셀러 모집 파일 업로드 팝업 호출 ==========");
+	}
+	
+	@PostMapping("/recruitPopup")
+	public void recruitPost(AttachDTO attachDTO) {
+		log.info("[PostMapping] ========== 셀러 모집 파일 업로드 팝업 전송 ==========");
+		service.RecruitImg(attachDTO);
 	}
 	
 	/* ============ 장터 참여 신청 목록 보기 (상품 상태 0 & 장터 번호) ============ */
@@ -107,27 +118,30 @@ public class MarketController {
 	@GetMapping("/market_detail")
 	public void market_detail(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 상세 페이지 호출 ==========");
-		AttachDTO marketImg = service.MarketImg(marketNo);
-		AttachDTO productImg = service.ProductImg(marketNo);
-		String marketLoc = service.showMarketLoc(marketNo);
+//		List<AttachDTO> marketImg = service.showMarketImg(marketNo);
+//		List<AttachDTO> productImg = service.showProductImg(marketNo);
+		MarketDTO marketDTO = new MarketDTO();
+		marketDTO.setMarketNo(marketNo);
 		List<ProductDTO> list = service.showProductAcceptList(marketNo, criteria);
 		List<ReviewDTO> review = service.ReviewList(marketNo, criteria);
-		model.addAttribute("marketImg", marketImg);
-		model.addAttribute("productImg", productImg);
-		model.addAttribute("marketLoc", marketLoc);
-		model.addAttribute("marketNo", marketNo);
+//		model.addAttribute("marketImg", marketImg);
+//		model.addAttribute("productImg", productImg);
+		model.addAttribute("marketLoc", service.showMarketLoc(marketNo));
+		model.addAttribute("marketDTO", marketDTO);
 		model.addAttribute("product", list);
 		model.addAttribute("review", review);
 	}
 	
 	/* ======================= 장터 후기 목록 보기 (사용자) ======================= */
 	@GetMapping("/market_detailReview")
-	public void market_detailReview(int marketNo, Model model) {
+	public void market_detailReview(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 후기 더보기 호출 ==========");
-		ReviewDTO review = new ReviewDTO();
-		review.setMarketNo(marketNo);
+		List<ReviewDTO> review = service.ReviewList(marketNo, criteria);
+		MarketDTO marketDTO = new MarketDTO();
+		marketDTO.setMarketNo(marketNo);
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("review", review);
+		model.addAttribute("marketRate", marketDTO.getMarketRate());
 	}
 	
 	@PostMapping("/market_detailReview")
@@ -135,6 +149,7 @@ public class MarketController {
 		log.info("[PostMapping] ========== 장터 후기 작성 등록 ==========");
 		if(service.findReveiwer(marketNo, reviewDTO.getUserNo())) {
 			rttr.addFlashAttribute("error", "후기를 작성한 이력이 있습니다.");
+			return;
 		}
 		if(service.registerReview(reviewDTO)) {
 			service.ReviewRate(reviewDTO);
@@ -147,7 +162,7 @@ public class MarketController {
 	public void seller_list(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 참여자 리스트 호출 ==========");
 		List<ProductDTO> list = service.ProductList(marketNo, criteria);
-		AttachDTO img = service.ProductImg(marketNo);
+		List<AttachDTO> img = service.showProductImg(marketNo);
 		PageDTO pageDTO = new PageDTO(criteria, service.TotalProduct(marketNo));
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("img", img);

@@ -1,24 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-	<!-- Start Footer -->
-	<section>
-	    <footer class="bg-light" id="tempaltemo_footer" style="width:auto; height:auto;">
-	      <div class="container">
-	        <div class="row">
-	           <img
-	             src="../resources/img/footerimg.png"
-	           />
-	        </div>
-	      </div>
-	    </footer>
-    </section>
-    <!-- End Footer -->
-
-    <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-   
+ 
     <!-- 반응형 이미지 맵 스크립트 : jquery 1.9.1에서만 동작-->
     <script src="http://mattstow.com/experiment/responsive-image-maps/jquery.rwdImageMaps.min.js"></script>
     <script>
@@ -33,9 +15,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <script src="/resources/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="/resources/js/templatemo.js"></script>
-    <script src="/resources/js/custom.js"></script>
     <!-- /bootstrap Script -->
 
+	<!-- 맵 하이라이트 -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.2/jquery.maphilight.min.js"></script>
     <script>
       $(document).ready(function(e) {
@@ -51,6 +33,9 @@
         $('img[usemap]').maphilight();
       });
     </script>
+    <!-- 맵 하이라이트 종료-->
+    
+    <!-- 마켓리스트 hover 지도 연결 -->
 	<script>
       $(function(){
 
@@ -105,5 +90,21 @@
         
       });
     </script>
+    <!-- 마켓리스트 hover 지도 연결 종료 -->
+
+	<!-- Start Footer -->
+	<section>
+	    <footer class="bg-light" id="tempaltemo_footer" style="width:auto; height:auto;">
+	      <div class="container">
+	        <div class="row">
+	           <img
+	             src="../resources/img/footerimg.png"
+	           />
+	        </div>
+	      </div>
+	    </footer>
+    </section>
+    <!-- End Footer -->
+    
   </body>
 </html>

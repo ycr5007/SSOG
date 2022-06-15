@@ -1,25 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원가입</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
-<style>
-	#textarea1{
-		font-family: 'Noto Sans KR', sans-serif;
-		font-size:14px;
-	}
-</style>
-</head>
-<body>
-<div class="container">
-<form action="signUp2" method="post">	
-	<div class="form-group">
-	    <label for="textarea1" id="textarea1" style="font-size:18px;">회원가입약관</label>
-	    <textarea class="form-control" id="textarea1" rows="20">
+<%@ include file="../include/header.jsp" %>
+
+
+<section class="bg-dark">
+	<div id="signup1" style="overflow:auto; width:auto; height:720px; color: white; padding: 50px 50px 50px 50px">      	
+		<img src="../resources/img/signup_logo.png" style="max-width: 100%; height: auto; padding-bottom: 20px; align-content: center"/>
+	<div class="container">
+		<form action="signUp2" style="background-color:#212934; color:white;" method="post">	
+			<div class="form-group">
+<textarea class="form-control" id="textarea1" rows="15" style="background-color:#212934; color:white;">
 제 1 장 총칙
 
 제 1 조 (목적)
@@ -145,35 +135,35 @@
 ① 회사와 이용자는 본 사이트 이용과 관련해 발생한 분쟁을 원만하게 해결하기 위하여 필요한 모든 노력을 해야 한다.
 ② 제1항의 규정에도 불구하고 동 분쟁으로 인하여 소송이 제기될 경우 동 소송은 회사의 본사 소재지를 관할하는 법원의 관할로 본다.
 
-<부칙>
+부칙
 본 약관은 2018년 10월 1일부터 적용한다.	    
 </textarea>
-</div>
-<label id="textarea1" style="font-size:16px;">
-<input type="checkbox" name="agree" value="true"> 약관동의
-</label>
-<input type="submit" class="btn btn-primary btn-sm" value="다음단계">
-<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
-</form>	
-<script src="/resources/js/jquery-3.6.0.min.js"></script>
-<script>
-$(function(){
-	let check = ${check};
-	if(!check){
-		alert("약관에 동의를 해주세요");
-	}
-})
-</script>
-</div>
-</body>
-</html>
+			</div>
+			
+			<div style="padding-top:50px">
+				<label id="textarea1" style="font-size:16px">
+					<input type="checkbox" name="agree" value="true"> 약관동의
+				</label>
+				<input type="submit" class="btn btn-primary btn-sm" value="다음단계">
+				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
+			</div>
+			
+		</form>	
+	</div>
+
+	<script>
+		$(function(){
+			let check = ${check};
+			if(!check){
+				alert("약관에 동의를 해주세요");
+			}
+		})
+	</script>
+	
+	</div>
 
 
+</section>
 
 
-
-
-
-
-
-
+<%@ include file="../include/footer.jsp" %>
