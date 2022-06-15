@@ -20,7 +20,7 @@
 					<div class="form-group">
 						<label>장터 위치</label>
 							<button type="button" class="btn btn-outline-primary btn-sm mb-2" onclick="goPopup();">주소검색</button>
-							<input class="form-control" name="marketLoc" id="marketLoc" required>
+							<input class="form-control" name="marketLoc" id="marketLoc" onchange="mapMark();" required>
 							<div id="map" class="form-control mt-3" style="height: 200px"></div>
 					</div>
 					<div class="form-group">
@@ -31,9 +31,18 @@
 						<label>장터 종료일</label>
 						<input class="form-control" type="datetime-local" name="marketED" id="marketED" required/>
 					</div>
+			</div>
+		</div>
+		<div class="card shadow mb-4 col-xl-7">
+			<div class="card-body">
 					<div class="form-group">
-						<label>파일 첨부 (셀러 모집-소개 순으로)</label><br>
-						<input type="file" name="marketImg" id="marketImg" required />
+						<label>이미지 첨부</label><br>
+						<input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display:none" required>
+						<label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
+							<h5 class="card-title text-center">업로드 사진</h5>
+							<div class="card-text text-center uploadResult">
+								<ul></ul>
+							</div>
 					</div>
 					<div class="row justify-content-center">
 						<button type="button" class="btn btn-primary m-2">등록</button>
@@ -45,30 +54,57 @@
 	</div>
 </div>
 
+<!-- 파일 업로드 -->
+<script>
+	let section = "market";
+</script>
+<script src="/resources/js/util/upload.js"></script>
+
 <!-- 네이버 지도 API Script -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i&submodules=geocoder"></script>
 
-<!-- 주소 검색 -->
 <script>
+	var y = "";
+	var x = "";
+
+	<!-- 주소 검색 팝업창 호출 -->
 	function goPopup() {
-		var pop = window.open("/market/mapPopup", "pop", "width=570,height=420, scrollbars=yes, resizable=yes");
+		var pop = window.open("/market/mapPopup", "pop", "width=570,height=420");
 	}
+	
+	<!-- 주소 → 좌표 변환 -->
+	<!-- 좌표에 해당하는 지점 마크 -->
 	function jusoCallBack(roadFullAddr) {
 		var addr = document.querySelector("#marketLoc");
 		addr.value = roadFullAddr;
-	}
-</script>
 
-<!-- 지도 보여주기 -->
-<script>
+		$.ajax({
+			type : 'post',
+			data : {
+				'address' : encodeURIComponent(roadFullAddr)
+			}, // encodeURIComponent로 인코딩하여 넘기기
+			dataType : 'json',
+			error : function(x, e) {
+				alert('주소를 다시 확인해주세요.');
+			},
+			success : function(data) {
+				console.log(data);
+				x = data.result.items[0].point.x;
+				y = data.result.items[0].point.y;
+				console.log(lng);
+				console.log(lat);
+			}
+		});
+	}
+	
 	var mapOptions = {
-		center : new naver.maps.LatLng(37.3595704, 127.105399),
-		zoom : 10,
+		center : new naver.maps.LatLng(37.565474690, 126.977199586),
+		zoom : 15,
 	};
 	var map = new naver.maps.Map("map", mapOptions);
 	var markerOptions = {
-		position: new naver.maps.LatLng(37.3595704, 127.105399),
-		map: map
+		position : new naver.maps.LatLng(y, x),
+		map : map
 	};
 	var marker = new naver.maps.Marker(markerOptions);
 </script>

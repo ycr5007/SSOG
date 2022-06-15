@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 	<!-- Style -->
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/resources/css/upload.css" />
     <script src="/resources/js/jquery.min.js"></script>
     <script src="/resources/js/market_pagination.js"></script>
 	<title>관리자 메인 페이지</title>
@@ -56,11 +57,11 @@
 				</a>
 			</li>
 
-			<!-- 사이드바 - 내 장터 참여자 보기 -->
+			<!-- 사이드바 - 장터 참여자 모집 신청 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_myseller?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
+				<a class="nav-link" href="" onclick="recruitPopup();">
 					<i class="fas fa-fw fa-users"></i>
-					<span>장터 판매 상품 목록</span>
+					<span>장터 참여자 모집</span>
 				</a>
 			</li>
 
@@ -77,6 +78,14 @@
 				<a class="nav-link" href="/market/market_accept?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
 					<i class="fas fa-fw fa-check-square"></i>
 					<span>참여 승인 목록</span>
+				</a>
+			</li>
+
+			<!-- 사이드바 - 내 장터 참여자 보기 -->
+			<li class="nav-item">
+				<a class="nav-link" href="/market/market_myseller?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
+					<i class="fas fa-fw fa-shopping-basket"></i>
+					<span>장터 판매 상품 목록</span>
 				</a>
 			</li>
 
@@ -155,3 +164,8 @@
 
 				</nav>
 				<!-- 상단바 종료 -->
+		<script>
+			function recruitPopup() {
+				var pop = window.open("/market/recruitPopup", "pop", "width=500,height=400");
+			}
+		</script>

@@ -49,8 +49,10 @@ public interface MarketService {
 	public boolean ProductOff(int productNo); // 장터 종료 (상품 상태 3 → 4)
 
 	/* ====================== 첨부파일 ====================== */
-	public AttachDTO MarketImg(int marketNo); // 장터 이미지
-	public AttachDTO ProductImg(int marketNo); // 상품 이미지
+	public boolean MarketImg(AttachDTO attachDTO); // 장터 이미지 삽입
+	public boolean RecruitImg(AttachDTO attachDTO); // 셀러 모집 이미지 삽입
+	public List<AttachDTO> showMarketImg(int marketNo); // 장터 이미지 가져오기
+	public List<AttachDTO> showProductImg(int marketNo); // 상품 이미지 가져오기
 	
 	/* ====================== 장터 후기 목록 보기 ====================== */
 	public List<ReviewDTO> ReviewList(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 한 줄 후기 조회 (장터 번호)
