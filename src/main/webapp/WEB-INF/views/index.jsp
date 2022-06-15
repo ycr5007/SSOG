@@ -249,7 +249,7 @@
 	                          <ul class="collapse show list-unstyled pl-3" id="openmarket">
 	                              <c:forEach items='${list}' var="item" varStatus="">
 	                              	<c:if test="${item.marketStatus==1}">
-	                                	<li><a class="text-decoration-none" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
+	                                	<li><a class="text-decoration-none market-detail" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
 	                                </c:if>
 	                              </c:forEach>                              
 	                          </ul>
@@ -264,7 +264,7 @@
 	                          <ul class="collapse show list-unstyled pl-3" id="willopenmarket">
 	                              <c:forEach items='${list}' var="item" varStatus="">
 	                              	<c:if test="${item.marketStatus==2}">
-	                                	<li><a class="text-decoration-none" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
+	                                	<li><a class="text-decoration-none market-detail" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
 	                                </c:if>
 	                              </c:forEach>  
 	                          </ul>
@@ -281,6 +281,20 @@
 	</div>
 </section>
 <!-- body 종료 -->
+
+<!--  마켓리스트 script -->
+<script>
+$(function(){
+	
+	$(".market-detail").click(function(e){
+		e.preventDefault();
+		
+		let marketNo = $(this).attr('href');
+		location.href = "/market/market_detail?marketNo=" + marketNo;
+	})
+	
+})
+</script>
 
     
 <%@ include file="./include/footer.jsp" %>
