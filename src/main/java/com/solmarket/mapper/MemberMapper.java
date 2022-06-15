@@ -9,26 +9,28 @@ import com.solmarket.dto.UserDTO;
 public interface MemberMapper {
 	public int insert(UserDTO register);
 	public int insertAuth(AuthDTO auth);
+	
 	public UserDTO read(String userId);
 	
+	public int updateUser(UserDTO updater);
 	
-	public String dupId(String userId);
+	public int userStatus(String userId);
+	
+	public String dupMail(String userMail);
 	
 	public UserDTO searchId(@Param("userName") String userName,@Param("userMail") String userMail);
 	
-	public UserDTO searchPw(@Param("userId") String userId, @Param("userMail") String userMail);
-	
-	//public int update(ChangeDTO changeDto);
-	
-	public int delete(@Param("userId") String userId,@Param("userPw") String userPw);
+	public int delete(String userId);
 
-	public String updatePw(AuthDTO authPw);
+	public String updatePw(String userMail);
 	
 	public String authMail(String userMail);
 	
 	public int myPage(UserDTO userDto);
 	
-	public String myPagePwCheck(String userPw);
+	public String checkPw(String userId);
+	
+	public int reqAuth(AuthDTO auth);
 	
 
 }

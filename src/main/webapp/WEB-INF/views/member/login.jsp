@@ -49,6 +49,7 @@ $(function(){
 	if(!error){
 		alert(error);
 	}
+	
 })
 </script>
 <%@ include file="../include/footer.jsp" %>
