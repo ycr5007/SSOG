@@ -17,6 +17,8 @@
 	<!-- 로그인 이후 정보를 가지고 있는 객체 -->
 	<bean id="customUserDetailService" class="com.solmarket.service.CustomUserDetailService"></bean>
 	
+	<!-- 로그인 성공 이후 처리 작업을 담당 -->
+ 	<bean id="customLoginSuccessHandler" class="com.solmarket.handler.CustomLoginSuccessHandler"/> 
 	<security:http>
 		<!-- 정적 리소스는 모두 접근 허용 -->
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>	
@@ -24,7 +26,8 @@
 		<security:intercept-url pattern="/market/market_accept" access="hasRole('admin')" />
 		
 		<!-- login-page : 컨트롤러 지정 -->
-		<security:form-login login-page="/member/login"	authentication-failure-url="/member/login-error" login-processing-url="/member/login"/>
+		<security:form-login login-page="/member/login"	authentication-failure-url="/member/login-error" login-processing-url="/member/login"
+		authentication-success-handler-ref="customLoginSuccessHandler"/>
 		<security:logout logout-url="/member/logout" invalidate-session="true" delete-cookies="JSESSION_ID"
 		logout-success-url="/" />
 		

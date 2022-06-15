@@ -1,3 +1,15 @@
+-- user테이블 칼럼추가
+-- req_auth : 권한요청(SELLER : 1 / MANAGER : 2)
+ALTER TABLE myuser add req_auth number(2) default 0;
+
+-- 권한요청 테이블 추가
+CREATE TABLE auth_request(
+	user_id VARCHAR2(12) NOT NULL,
+	authority varchar2(50) NOT NULL
+);
+
+ALTER TABLE auth_request ADD constraint FK_REQ_AUTH foreign key(user_id) references myuser(user_id) ON DELETE CASCADE;
+
 -- 테이블 추가
 CREATE TABLE recruit_img (
 	uuid varchar2(100) not null,
@@ -18,7 +30,7 @@ create table visitor(
 
 alter table visitor add constraint PK_VISITOR primary key(visit_id);
 
-
+select * from myuser;
 create table visitor_total(
     visit_date Date not null,
     visit_total number(8) not null

@@ -21,7 +21,7 @@
       <h2>비밀번호 재확인</h2>
       <form action="myPagePwCheck" method="post">
         <div class="txt_field">
-          <input type="text" name="userId" id="userId" value="${userId }" readonly />
+          <input type="text" name="userId" id="userId" value='<sec:authentication property="principal.username"/>' />
           <input type="password" name="userPw" id="userPw" placeholder="비밀번호"  />
         </div>
         <button type="submit" id="checkPw">비밀번호 확인</button>

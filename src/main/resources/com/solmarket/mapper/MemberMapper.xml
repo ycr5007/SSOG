@@ -19,6 +19,11 @@
 		<id property="userId" column="user_id"/>
 		<result property="userPw" column="user_pw"/>
 		<result property="enabled" column="enabled"/>
+		<result property="userName" column="user_name"/>
+		<result property="userPhone" column="user_phone"/>
+		<result property="userMail" column="user_mail"/>
+		<result property="userAddress" column="user_address"/>
+		<result property="userProfile" column="user_profile"/>
 		<collection property="authorities" resultMap="authList"></collection>
 	</resultMap>
 		
@@ -27,23 +32,24 @@
 		<result property="authority" column="authority" />
 	</resultMap>
 	<select id="read" resultMap="myUser">
-		select use.user_id, user_pw, enabled, authority from 
+		select use.user_id, user_pw, enabled, user_name, user_phone, user_mail, user_address, user_profile, authority from 
 		myuser use join myuser_auth auth on use.user_id = auth.user_id where use.user_id = #{userId}
 	</select>
 	
-	<!-- 비밀번호 변경 -->
-	<update id="update">
-		update myuser set user_pw=#{userConfirmPw} where user_id=#{userId}
+	<!-- 정보 수정 -->
+	<update id="updateUser">
+		update myuser set user_pw=#{userPw}, user_phone=#{userPhone}, user_mail=#{userMail}, user_address=#{userAddress}, user_profile=#{userProfile}
+		where user_id=#{userId}
 	</update>
-	
+
 	<!--  회원탈퇴 -->
 	<update id="delete">
-		update set myuser user_status=0 where user_id=#{userId}
+		update myuser set user_status = 0 where user_id = #{userId}
 	</update>
 	
-	<!-- ID 중복검사 -->
-	<select id="dupId" resultType="java.lang.String">
-		select user_id as userId from myuser where user_id=#{userId}
+	<!-- Mail 중복검사 -->
+	<select id="dupMail" resultType="java.lang.String">
+		select user_mail as userMail from myuser where user_mail=#{userMail}
 	</select>
 	
 	<!-- ID 찾기 -->
@@ -52,7 +58,23 @@
 	</select>
 	
 	<!-- PW 찾기 -->
-	<select id="searchPw" resultType="com.solmarket.dto.UserDTO">
-		select user_pw as userPw from myuser where user_id=#{userId} and user_mail=#{userMail}
+	<update id="updatePw">
+		update myuser set user_pw = #{userPw} where user_id = #{userId]
+	</update>
+	
+	<!-- PW Check -->
+	<select id="checkPw" resultType="java.lang.String">
+		select user_pw from myuser where user_id = #{userId}
 	</select>
+	
+	<!-- status 체크 -->
+	<select id="userStatus" resultType="Integer">
+		select user_status as userStatus from myuser where user_id = #{userId}
+	</select>
+	
+	<!-- 권한요청 -->
+	<insert id="reqAuth">
+		insert into auth_request(user_id, authority)
+		values(#{userId}, #{authority})
+	</insert>
 </mapper>

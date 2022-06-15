@@ -2,58 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.solmarket.mapper.ShopMapper">
 	
-	<select id="getCategory" resultType="string">
-		select category_name as categoryName from category
+	<select id="getCategory" resultType="com.solmarket.dto.CategoryDTO">
+		select category_no as categoryNo, category_name as categoryName from category
 	</select>
 	
 	<select id="getProduct" resultType="com.solmarket.dto.ProductDTO">
-		<![CDATA[ 
 		
-		
-		select product_no as productNo, product_name as productName, product_price as productPrice
-		from(select /*+INDEX_DESC(product pk_product)*/ rownum rn, product_no, product_name, product_price
-			 from product
-			 where rownum <= (#{pageNum} * #{amount}))
+		<!-- select product_no as productNo, product_name as productName, product_price as productPrice, product_sale as productSale
+		from(select /*+INDEX_DESC(product pk_product)*/ rownum rn, product_no, product_name, product_price, product_sale
+			 from product 
+			 where <if test= "categoryNo != 0"> categoryNo = #{categoryNo}</if>
+			  	   rownum <![CDATA[ <= ]]>(#{pageNum} * #{amount})
 		where rn > (#{pageNum} - 1) * #{amount}
-		
-		]]>
-		
+		 -->
+		select * from (select rownum as num, productList.* from
+		(select product_name as productName, product_no as productNo, product_price as productPrice, product_sale as productSale from product <if test="keyword != '0'.toString()"> where category_no = #{keyword} </if> order by product_date asc) productList
+		where rownum <![CDATA[ <= ]]> (#{pageNum} * #{amount})) where num > ((#{pageNum} - 1) * #{amount})
 	</select>
 	
 	<select id="totalCnt" resultType="int">
-		select count(*) from product where product_no > 0
+		select count(*) from product where product_no > 0 <if test="keyword != '0'.toString()"> and category_no = #{keyword}</if>
 	</select>
 	
 	
 	<select id="getDetail" resultType="com.solmarket.dto.ProductDTO">
-		<!-- select p.product_name as productName, p.product_price as productPrice, u.user_name as dummy from 
-		product p left outer join (select user_name, user_no from myUser) u on p.user_no = u.user_no
-		where product_no = #{productNo} -->
-		
-		select p.product_no as productNo, p.product_name as productName, p.product_price as productPrice, u.user_name as dummy
+		select p.product_no as productNo, p.product_name as productName, p.product_price as productPrice, p.product_content as productContent,product_sale as productSale, u.user_name as userName
 		from product p left outer join myUser u on p.user_no = u.user_no
 		where product_no = #{productNo}
 	</select>
 	
-	<!-- order 페이지 구매자정보, 상품정보 sql  -->
+	
+	<!-- 카트 담기 -->
+	<insert id="addCart">
+	 insert into cart(cart_no, user_no, product_no, cart_qn)
+	     values (cart_seq.nextval, #{userNo}, #{productNo}, #{cartQN})
+	</insert>
+	
+	<select id="getOrderCart" resultType="com.solmarket.dto.CartDTO">
+		select cart_no as cartNo, cart_qn as cartQN, cart_pay as cartPay,
+	</select>
+
+	<!-- order 페이지 구매자정보  -->
 	<select id="getOrderUser" resultType="com.solmarket.dto.UserDTO">
 		select user_name as userName, user_mail as userMail, user_address as userAddress
 		from myUser
 		where user_no = #{userNo}
-	</select>
-	<select id="getOrderCart" resultType="com.solmarket.dto.CartDTO">
-		select cart_no as cartNo, cart_qn as cartQN, cart_pay as cartPay,
-	</select>
+	</select> 
 	
-	
-	
-	
-	<!-- <select id="getOrderProduct" resultType="com.solmarket.dto.ProductDTO">
-		select product_no as productNo, product_name as productName, product_qn as productQN
+	<select id="getOrderProduct" resultType="com.solmarket.dto.ProductDTO">
+		select product_no as productNo, product_name as productName, product_price as productPrice, product_sale as productSale
 		from product
 		where product_no = #{productNo}
-	</select> -->
-	
+	</select>
 	
 	
 	

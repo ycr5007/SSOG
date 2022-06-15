@@ -212,20 +212,47 @@
 				<!-- header -->
 				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 					<h6 class="m-0 font-weight-bold">장터 후기</h6>
-					<a href="/market/market_detailReview?marketNo=${marketNo}" onclick="marketReivew(${marketNo})">more</a>
+					<a href="/market/market_detailReview?marketNo=${marketDTO.marketNo}" onclick="marketReivew(${marketDTO.marketNo})">more</a>
 				</div>
 				<!-- body -->
 				<div class="card-body">
 					<h4 class="card-title mb-3">
-						<c:if test="reviewRate ">
-							
-						</c:if>
-						<i class="fas fa-fw fa-star"></i>
-						<i class="fas fa-fw fa-star"></i>
-						<i class="fas fa-fw fa-star"></i>
-						<i class="fas fa-fw fa-star-half-alt"></i>
-						<i class="far fa-fw fa-star"></i>
-						3.8
+						<c:choose>
+							<c:when test="${marketDTO.marketRate == 0.0}">
+								<i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+							</c:when>
+							<c:when test="${marketDTO.marketRate > 0.0 && marketDTO.marketRate < 1.0}">
+								<i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate == 1.0}">
+								<i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate > 1.0 && marketDTO.marketRate < 2.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate == 2.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate > 2.0 && marketDTO.marketRate < 3.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate == 3.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate > 3.0 && marketDTO.marketRate < 4.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						     <c:when test="${marketDTO.marketRate == 4.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketDTO.marketRate > 4.0 && marketDTO.marketRate < 5.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i>
+						    </c:when>
+						     <c:when test="${marketDTO.marketRate == 5.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i>
+						    </c:when>
+						</c:choose>
+						${marketDTO.marketRate}
 					</h4>
 					<ul>
 						<c:forEach var="review" items="${review}" end="5">
@@ -256,7 +283,7 @@
 	</div>
 </div>
 
-<input type="hidden" name="marketNo" value="${marketNo}"/>
+<input type="hidden" name="marketNo" value="${marketDTO.marketNo}"/>
 
 <!-- 네이버 지도 API Script -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i"></script>

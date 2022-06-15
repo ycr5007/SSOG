@@ -21,6 +21,7 @@ public class UserDTO {
 	private boolean enabled;
 	private int userStatus;
 	private List<AuthDTO> authorities;
+	private int reqAuth;
 	
 	private List<AttachDTO> attachList; // 파일첨부 리스트
 }

@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp" %>
-<section class="bg-dark">
-            <div id="searchlist" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">    
+<%@ include file="../include/shop_header.jsp" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <style>
-
 .card{
+color: black;
 display:inline-block;
 margin:20px 30px;
 }
@@ -14,74 +13,76 @@ align-items: center;
 justify-content: center;
 margin-left:150px;
 }
-  /* 사이드바 래퍼 스타일 */
-  
-  #page-wrapper {
-    padding-left: 250px;
-  }
-  
-  #sidebar-wrapper {
-    position: absolute;
-    width: 250px;
-    height: 100%;
-    margin-left: -250px;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  
-  #page-content-wrapper {
-    width: 100%;
-    padding: 20px;
-  }
-  /* 사이드바 스타일 */
-  
-  .sidebar-nav {
-    width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .sidebar-nav li {
-    text-indent: 1.5em;
-    line-height: 2.8em;
-    margin: 12px 0;
-  }
-  
-  .sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: rgb(0,0,0);
-  }
-  
-  .sidebar-nav li a:hover {
-    color: #0a4b78;
-  }
-  
-  .sidebar-nav > .sidebar-brand {
-    font-size: 2.3em;
-    line-height: 3em;
-  }
+.card-title-price{
+text-decoration:line-through;
+font-size: 16px;
+}
+/* 사이드바 래퍼 스타일 */
 
+#page-wrapper {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  position: absolute;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+/* 사이드바 스타일 */
+
+.sidebar-nav {
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 1.5em;
+  line-height: 2.8em;
+  margin: 12px 0;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar-nav li a:hover {
+  color: #72aee6;
+}
+
+.sidebar-nav > .sidebar-brand {
+  font-size: 2.3em;
+  
+  line-height: 3em;
+}
+
+.pagination{
+	justify-content: center;
+}
 </style>
-<style>
-	.pagination{
-		justify-content: center;
-	}
-</style>
+<section class="bg-dark">
+
 
 <div id="page-wrapper">
   <!-- 사이드바 -->
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-        <a href="#">카테고리</a>
+        카테고리
       </li>
-    	<%-- <c:forEach var="dto" items="${categoryList}">
-    		<li>${dto.category_Name}</li>
-    	</c:forEach> --%>
       <c:forEach var="category" items="${categoryList}" >
-      	<li><a href="">${category}</a></li>
+      	<li><a href="${category.categoryNo }" class="category-data">${category.categoryName}</a></li>
       </c:forEach>
 
     </ul>
@@ -96,7 +97,8 @@ margin-left:150px;
 	  style="width:318px; heigth:300px;" class="card-img-top" alt="...">
 	  <div class="card-body">
 	    <h5 class="card-title">${product.productName}</h5>
-	    <h5 class="card-title">${product.productPrice}원</h5>
+	    <h5 class="card-title-price">${product.productPrice}원</h5>
+	    <h5 class="card-price"><fmt:parseNumber value ="${(product.productPrice - (product.productPrice*product.productSale * 0.01))}" integerOnly= "true" />원</h5>
 	    
 	    <a href="/shop/detail?productNo=${product.productNo}" class="btn btn-outline-primary">상품 보기</a>
 	  </div>
@@ -135,14 +137,21 @@ margin-left:150px;
 
 <!-- 페이지 링크를 처리할 폼 -->
 <form action="/shop/index" id="actionForm">
+	<input type="hidden" name="keyword" value="0" />
 	<input type="hidden" name="pageNum" value="${cri.pageNum}" />
 	<input type="hidden" name="amount" value="9" />
 </form>
 
 
-
-		    	</div>
 </section>
+
+
+
+
+
+
+
+
 
 
 

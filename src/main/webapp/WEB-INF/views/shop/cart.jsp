@@ -29,46 +29,46 @@
         <h3>장바구니</h3>    
         <table class="table table-bordered" id="tbl-product">
             <colgroup>
-                <col style="width: 20%;" />
                 <col style="width: 20%" />
                 <col style="width: 20%" />
                 <col style="width: 20%" />
                 <col style="width: 20%" />
             </colgroup>
             <tr>             
-                <th>구매상품 선택</th>   
-                <th>코드</th>   
                 <th>품목</th>
                 <th>가격</th>
                 <th>수량</th>
+                <th>총금액</th>
+                <th>삭제</th>
+                <th>결제</th>
             </tr>
             <tr>                
-                <td><input type="checkbox" name="fruit"></td>
-                <td>1</td>
                 <td>힘이 나는 커피</td>
                 <td>2000</td>
                 <td><input type="number" class="edt-qty" value="0" min="0"></td>
+                <td>2000</td>
+                <td><a href="#" class="btn btn-primary text-uppercase" id="btn-delete">삭제</a></td>
+            	<td><a href="#" class="btn btn-primary text-uppercase" id="btn-buy">결제</a></td>
             </tr>
-            <tr>       
-                <td><input type="checkbox" name="fruit"></td>         
-                <td>2</td>
+            <tr>               
                 <td>바나나</td>
                 <td>1500</td>
                 <td><input type="number" class="edt-qty" value="0" min="0"></td>
+                <td>1500</td>
+                <td><a href="#" class="btn btn-primary text-uppercase" id="btn-delete">삭제</a></td>
+            	<td><a href="#" class="btn btn-primary text-uppercase" id="btn-buy">결제</a></td>
             </tr>
-            <tr>         
-                <td><input type="checkbox" name="fruit"></td>       
-                <td>3</td>
+            <tr>              
                 <td>반지</td>
                 <td>10000</td>
                 <td><input type="number" class="edt-qty" value="0" min="0"></td>
+                <td>10000</td>
+                <td><a href="#" class="btn btn-primary text-uppercase" id="btn-delete">삭제</a></td>
+            	<td><a href="#" class="btn btn-primary text-uppercase" id="btn-buy">결제</a></td>
             </tr>
-        </table>
-        <div style="text-align: right;margin-bottom: 20px;">
-            <button type="button" class="btn btn-primary" id="btn-delete">삭제</button>
-            <a href="#" class="btn btn-lg btn-primary text-uppercase" id="btn-buy"> 결제 </a>
-        </div>                
-        <table class="table table-bordered" id="tbl-order" style="display: none;">
+        </table>       
+        <br><br><br>
+        <!-- <table class="table table-bordered" id="tbl-order" style="display: none;">
             <thead>                
                 <th>품목</th>
                 <th>가격</th>
@@ -88,7 +88,7 @@
                 <td><input type="number" readonly="readonly" id="total-qty" value="0"></td>
                 <td><input type="number" readonly="readonly" id="total-amt" value="0"></td>
             </tbody>            
-        </table>
+        </table> -->
     </div>    
 </body>
 <script>
@@ -205,7 +205,7 @@ $(document).ready(function(){
     // 삭제 버튼 클릭 시
     $('#btn-delete').on('click', function() {
 
-        var chkList = $('input[name="fruit"]:checked');        
+        var chkList = $('input[name="product"]:checked');        
         var cd;
 
         // chcekd 된 product row 삭제
@@ -226,7 +226,7 @@ $(document).ready(function(){
          
     });
 
-}); //end document ready
+}); <!-- //end document ready
 
 $.fn.serializeObject = function() {
     "use strict";
@@ -248,33 +248,8 @@ $.fn.serializeObject = function() {
 
     $.each(this.serializeArray(), extend);
     return result;
-};
+}; -->
 </script>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <%@ include file="../include/footer.jsp" %>

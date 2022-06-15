@@ -2,10 +2,10 @@ package com.solmarket.service;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.solmarket.dto.CategoryDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.ProductDTO;
 import com.solmarket.dto.UserDTO;
@@ -18,7 +18,7 @@ public class ShopServiceImpl implements ShopService{
 	private ShopMapper mapper;
 	
 	@Override
-	public List<String> getCategory() {
+	public List<CategoryDTO> getCategory() {
 		return mapper.getCategory();
 	}
 
@@ -27,9 +27,10 @@ public class ShopServiceImpl implements ShopService{
 		return mapper.getProduct(cri);
 	}
 
+	
 	@Override
-	public int getTotalCnt() {
-		return mapper.totalCnt();
+	public int getTotalCnt(Criteria cri) {
+		return mapper.totalCnt(cri);
 	}
 
 	@Override
@@ -42,8 +43,11 @@ public class ShopServiceImpl implements ShopService{
 		return mapper.getOrderUser(userNo);
 	}
 
+	
 	@Override
 	public ProductDTO getOrderProduct(int productNo) {
 		return mapper.getOrderProduct(productNo);
 	}
+
+	
 }

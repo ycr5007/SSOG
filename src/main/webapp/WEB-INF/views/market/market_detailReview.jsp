@@ -23,11 +23,41 @@
 			<div class="card-body">
 				<!-- 장터 평점 -->
 				<h4 class="card-title">
-					<i class="fas fa-fw fa-star"></i>
-					<i class="fas fa-fw fa-star"></i>
-					<i class="fas fa-fw fa-star"></i>
-					<i class="fas fa-fw fa-star-half-alt"></i>
-					<i class="far fa-fw fa-star"></i>
+					<c:choose>
+							<c:when test="${marketRate == 0.0}">
+								<i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+							</c:when>
+							<c:when test="${marketRate > 0.0 && marketRate < 1.0}">
+								<i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketRate == 1.0}">
+								<i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketRate > 1.0 && marketRate < 2.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketRate == 2.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketRate > 2.0 && marketRate < 3.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketRate == 3.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketRate > 3.0 && marketRate < 4.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						     <c:when test="${marketRate == 4.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
+						    </c:when>
+						    <c:when test="${marketRate > 4.0 && marketRate < 5.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i>
+						    </c:when>
+						     <c:when test="${marketRate == 5.0}">
+								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i>
+						    </c:when>
+						</c:choose>
 					<span class="marketRate">${marketRate}</span>
 				</h4>
 				<hr />
@@ -43,14 +73,32 @@
 				<div>
 					<form action="/" method="post" class="mt-2" id="reviewForm">
 						<input class="p-2" type="text" name="reviewContent" id="reviewContent" placeholder="이 장터 어떠셨나요?" size="50"/>
-						<button class="btn btn-primary btn-icon-split btn-sm" type="submit">등록</button>
+						<button class="btn btn-outline-primary btn-icon-split btn-sm" type="submit">등록</button>
 					</form>
 				</div>
 				<!-- 장터 후기 목록 -->
-				<ul class="reviewList mt-4" style="overflow-y:auto">
+				<ul class="reviewList mt-4" style="overflow-y:scroll">
 					<c:forEach var="review" items="${review}">
 						<li class="mb-2 px-2" style="float:left">
-							${review.userName}&nbsp;&nbsp;${review.reviewRate}<br>
+							${review.userName}&nbsp;&nbsp;
+							<c:choose>
+							    <c:when test="${review.reviewRate == 1.0}">
+									★☆☆☆☆
+							    </c:when>
+							    <c:when test="${review.reviewRate == 2.0}">
+									★★☆☆☆
+							    </c:when>
+							    <c:when test="${review.reviewRate == 3.0}">
+									★★★☆☆
+							    </c:when>
+							     <c:when test="${review.reviewRate == 4.0}">
+									★★★★☆
+							    </c:when>
+							     <c:when test="${review.reviewRate == 5.0}">
+									★★★★★
+							    </c:when>
+							</c:choose>
+							${review.reviewRate}<br>
 							${review.reviewContent}&nbsp;&nbsp;<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${review.reviewDate}" />
 						</li>
 					</c:forEach>
@@ -122,3 +170,4 @@
 		}
 	}
 </script>
+<%@ include file="../include/footer.jsp"%>
