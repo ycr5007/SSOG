@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.form-filename{
+	font-weight: bold;
+	text-align: center;	
+}
+
+.uploadResult ul{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.uploadResult ul li{
+	list-style: none;
+	padding: 10px;
+}
