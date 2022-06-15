@@ -87,14 +87,15 @@
 		FROM (SELECT rownum as r, list.*
 			FROM (SELECT notice_no as noticeNo, notice_title as noticeTitle, notice_content as noticeContent, notice_date as noticeDate
 				FROM notice
-				WHERE market_no = #{marketNo}) list
+				WHERE market_no = #{marketNo}
+				ORDER BY notice_no DESC) list
 			WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
 		WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
 	]]>
 	</select>
 <!-- ====================== 장터 공지 총 개수 ====================== -->
 	<select id="selectTotalNotice" resultType="int">
-		SELECT COUNT(*) FROM notice WHERE market_no = #{marketNo} AND notice_status = 0
+		SELECT COUNT(*) FROM notice WHERE market_no = #{marketNo} AND notice_status = 1
 	</select>
 
 <!-- ====================== 장터 공지 등록 ====================== -->
@@ -140,7 +141,8 @@
 				FROM (SELECT u.user_name as userName, review.*
 					FROM (SELECT m.market_no as marketNo, r.review_no as reviewNo, r.user_no as userNo, r.review_content as reviewContent, r.review_date as reviewDate, r.review_rate as reviewRate
 						FROM market m left outer join review r on m.market_no = r.market_no
-						WHERE r.market_no = #{marketNo} and r.review_status = 1) review left outer join myUser u on review.userNo = u.user_no) list
+						WHERE r.market_no = #{marketNo} and r.review_status = 1
+						ORDER BY m.market_no DESC) review left outer join myUser u on review.userNo = u.user_no) list
 				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
 			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
 		]]>

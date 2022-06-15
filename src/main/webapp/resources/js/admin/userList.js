@@ -58,7 +58,7 @@ function showDetail(data){
 	str += "<th class='col-lg-2'>권한</th>"
 	str += "<td class='col-lg-2'>" + data.userAuth + "</td>"
 	str += "<th class='col-lg-2'>상태</th>"
-	str += "<td class='col-lg-2'>" + (data.userStatus > 0 ? '탈퇴' : '회원') + "</td></tr>"
+	str += "<td class='col-lg-2'>" + (data.userStatus > 0 ? '회원' : '탈퇴') + "</td></tr>"
 	str += "<tr><td rowspan='2' colspan='2'><img src='https://via.placeholder.com/150x200'></td>"
 	str += "<th colspan='4'>프로필 문구</th></tr>"
 	str += "<tr><td colspan='4'>" + data.userProfile + "</td></tr>"

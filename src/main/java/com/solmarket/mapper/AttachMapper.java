@@ -4,6 +4,9 @@ import com.solmarket.dto.*;
 
 public interface AttachMapper {
 	
+	/* ====================== 회원 프로필 이미지 등록 ====================== */
+	public int userInsertImg(AttachDTO attachDto);
+	
 	/* ====================== 장터 등록 시 장터 이미지 삽입 ====================== */
 	public int insertImg(AttachDTO attachDTO);
 	

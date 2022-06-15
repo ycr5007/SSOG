@@ -20,5 +20,7 @@ public class UserDTO {
 	private String userAddress; // 주소 (추가)
 	private boolean enabled;
 	private int userStatus;
-	private List<AuthDTO> authorities;;
+	private List<AuthDTO> authorities;
+	
+	private List<AttachDTO> attachList; // 파일첨부 리스트
 }

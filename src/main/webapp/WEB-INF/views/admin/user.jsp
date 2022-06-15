@@ -12,12 +12,6 @@
 							<h6 class="m-0 font-weight-bold text-primary">회원목록</h6>
 							<div class="col-auto my-1">
 								<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-								<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="keyword">
-									<option value="" selected>권한</option>
-									<option value="USER" ${pageDto.cri.keyword == 'USER'? 'selected' : '' }>USER</option>
-									<option value="SELLER" ${pageDto.cri.keyword == 'SELLER'? 'selected' : '' }>SELLER</option>
-									<option value="MANAGER" ${pageDto.cri.keyword == 'MANAGER'? 'selected' : '' }>MANAGER</option>
-								</select>
 							</div>
 						</div>
 						<div class="data-wrapper">
@@ -30,16 +24,14 @@
 									<th>아이디</th>
 									<th>이름</th>
 									<th>이메일</th>
-									<th>인증상태</th>
 									<th>회원상태</th>
 								</tr>
 							<c:forEach items="${list }" var="user">
 								<tr class="list-select row-data" onclick="getDetailUser(${user.userNo})">
-									<td>${user.userAuth }</td>
+									<td></td>
 									<td>${user.userId }</td>
 									<td>${user.userName }</td>
 									<td>${user.userMail }</td>
-									<td>${user.userVer }</td>
 									<td>${user.userStatus }</td>
 									
 								</tr>

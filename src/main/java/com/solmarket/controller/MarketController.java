@@ -23,7 +23,18 @@ public class MarketController {
 	public void market_register() {
 		log.info("[GetMapping] ========== 장터 등록 폼 호출 ==========");
 	}
-	
+
+	// 주소
+	@GetMapping("/mapPopup")
+	public void mapPopupGet() {
+		log.info("[GetMapping] ========== 주소 검색 팝업 호출 ==========");
+	}
+
+	@PostMapping("/mapPopup")
+	public void mapPopupPost() {
+		log.info("[PostMapping] ========== 주소 팝업 전송 ==========");
+	}
+
 	@PostMapping("/market_register")
 	public String market_registerMarket(MarketDTO insertDTO, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 장터 등록 폼 전송 ==========");
@@ -54,6 +65,33 @@ public class MarketController {
 		model.addAttribute("product", productDTO);
 	}
 	
+	/* ==================== 장터 참여 승인 ==================== */
+	@GetMapping("/market_receiveAccept")
+	public String market_receiveAccept(int marketNo, int productNo, @ModelAttribute("criteria")Criteria criteria, RedirectAttributes rttr) {
+		log.info("[PostMapping] ========== 장터 참여 승인 ==========");
+		if(service.ProductAccept(productNo)) {
+			rttr.addAttribute("marketNo", marketNo);
+			rttr.addAttribute("productNo", productNo);
+			rttr.addAttribute("pageNum", criteria.getPageNum());
+			rttr.addAttribute("amount", criteria.getAmount());
+			return "redirect:/market/market_receive";
+		}
+		return "redirect:/market/market_receiveDetail";
+	}
+	
+	/* ==================== 장터 참여 거부 ==================== */
+	@GetMapping("/market_receiveDeny")
+	public String market_receiveDeny(int marketNo, int productNo, @ModelAttribute("criteria")Criteria criteria, RedirectAttributes rttr) {
+		log.info("[PostMapping] ========== 장터 참여 거부 ==========");
+		if(service.ProductDeny(productNo)) {
+			rttr.addAttribute("marketNo", marketNo);
+			rttr.addAttribute("pageNum", criteria.getPageNum());
+			rttr.addAttribute("amount", criteria.getAmount());
+			return "redirect:/market/market_receive";
+		}
+		return "redirect:/market/market_receiveDetail";
+	}
+	
 	/* ==================== 장터 참여 승인 목록 보기 ==================== */
 	@GetMapping("/market_accept")
 	public void market_accept(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
@@ -73,31 +111,36 @@ public class MarketController {
 		AttachDTO productImg = service.ProductImg(marketNo);
 		String marketLoc = service.showMarketLoc(marketNo);
 		List<ProductDTO> list = service.showProductAcceptList(marketNo, criteria);
+		List<ReviewDTO> review = service.ReviewList(marketNo, criteria);
 		model.addAttribute("marketImg", marketImg);
 		model.addAttribute("productImg", productImg);
 		model.addAttribute("marketLoc", marketLoc);
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("product", list);
+		model.addAttribute("review", review);
 	}
 	
 	/* ======================= 장터 후기 목록 보기 (사용자) ======================= */
 	@GetMapping("/market_detailReview")
 	public void market_detailReview(int marketNo, Model model) {
 		log.info("[GetMapping] ========== 장터 후기 더보기 호출 ==========");
+		ReviewDTO review = new ReviewDTO();
+		review.setMarketNo(marketNo);
 		model.addAttribute("marketNo", marketNo);
+		model.addAttribute("review", review);
 	}
 	
-//	@PostMapping("/market_detailReview")
-//	public void market_registerReview(ReviewDTO reviewDTO, int marketNo, RedirectAttributes rttr) {
-//		log.info("[PostMapping] ========== 장터 후기 작성 등록 ==========");
-//		if(service.findReveiwer(marketNo, reviewDTO.getUserNo())) {
-//			rttr.addFlashAttribute("error", "후기를 작성한 이력이 있습니다.");
-//		}
-//		if(service.registerReview(reviewDTO)) {
-//			service.ReviewRate(reviewDTO);
-//			rttr.addAttribute("review", reviewDTO);
-//		}
-//	}
+	@PostMapping("/market_detailReview")
+	public void market_registerReview(ReviewDTO reviewDTO, int marketNo, RedirectAttributes rttr) {
+		log.info("[PostMapping] ========== 장터 후기 작성 등록 ==========");
+		if(service.findReveiwer(marketNo, reviewDTO.getUserNo())) {
+			rttr.addFlashAttribute("error", "후기를 작성한 이력이 있습니다.");
+		}
+		if(service.registerReview(reviewDTO)) {
+			service.ReviewRate(reviewDTO);
+			rttr.addAttribute("marketNo", marketNo);
+		}
+	}
 	
 	/* ================== 장터 판매 상품 목록 보기 ================== */
 	@GetMapping("/market_myseller")
@@ -131,10 +174,12 @@ public class MarketController {
 	}
 	
 	@PostMapping("/market_noticeForm")
-	public String market_noticeFormPost(NoticeDTO noticeDTO, RedirectAttributes rttr) {
+	public String market_noticeFormPost(NoticeDTO noticeDTO, @ModelAttribute("criteria")Criteria criteria, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 장터 공지 폼 전송 ==========");
 		if(service.registerNotice(noticeDTO)) {
-			rttr.addAttribute("noticeDTO", noticeDTO);
+			rttr.addAttribute("marketNo", noticeDTO.getMarketNo());
+			rttr.addAttribute("pageNum", criteria.getPageNum());
+			rttr.addAttribute("amount", criteria.getAmount());
 			return "redirect:/market/market_notice";
 		}
 		return "redirect:/market/market_noticeForm";
@@ -152,10 +197,12 @@ public class MarketController {
 	}
 	
 	@PostMapping("/market_review")
-	public String market_reviewDelete(int marketNo, int reviewNo, Model model) {
+	public String market_reviewDelete(int marketNo, int reviewNo, @ModelAttribute("criteria")Criteria criteria, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 장터 후기 삭제 작업 ==========");
 		service.deleteReview(reviewNo);
-		model.addAttribute("marketNo", marketNo);
+		rttr.addAttribute("marketNo", marketNo);
+		rttr.addAttribute("pageNum", criteria.getPageNum());
+		rttr.addAttribute("amount", criteria.getAmount());
 		return "redirect:/market/market_review";
 	}
 	

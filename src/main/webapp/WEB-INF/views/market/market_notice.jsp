@@ -12,7 +12,7 @@
 		<div class="card-body">
 		
 			<!-- 공지 작성 버튼 -->
-			<a href="/market/market_noticeForm" class="btn btn-primary btn-icon-split btn-sm mb-3">
+			<a href="/market/market_noticeForm?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}" class="btn btn-outline-primary btn-icon-split btn-sm">
 				<span class="text">공지 작성하기</span>
 			</a>
 			

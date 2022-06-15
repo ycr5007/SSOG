@@ -1,6 +1,7 @@
 package com.solmarket.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,4 +20,5 @@ public class NoticeDTO {
 	private int noticeStatus; // 공지 상태
 	
 	private String dummy; // Join 활용 추가 데이터
+	private List<AttachDTO> attachList; // 파일첨부 리스트
 }
