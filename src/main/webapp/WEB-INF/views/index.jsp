@@ -2,13 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp" %>
 
-<!-- Open Content -->
+<!-- body 시작 -->
 <section class="bg-dark">
     <div class="container pb-5">
       <div class="row">
-          <div class="col-lg-6 mt-5">
+      
+	<!-- 지도 -->
+		<div class="col-lg-6 mt-5">
             <div class="card mb-3 border-0 bg-dark" style="width:auto; height:420px;">
-          		<div  style="padding: 50px 50px 50px 50px"> 
+          	<div  style="padding: 50px 50px 50px 50px"> 
 	            <img
 	              src="../resources/img/geo.png"
 	              usemap="#image-map"
@@ -219,55 +221,66 @@
 	            />
 	          </map>
         	</div>
-        <div class="row">
-     </div>
-      </div>
-      <!-- col end -->
-      <div class="col-lg-6 mt-5">
-          <div class="card border-0 bg-dark">
-            <div class="card-body" id="marketlist" style="overflow:auto; width:auto; height:420px;">
-            <div  style="padding: 10px 20px 20px 20px"> 
-            <div class="col-lg-12">
-                  <div>
-                  <img
-	              src="../resources/img/marketlistlogo.png"
-	              style="max-width: 100%; height: auto; align-content: center"
-	           	  />
-                  </div>
-                  <ul class="list-unstyled templatemo-accordion">
-                      <li class="pb-3">
-                          <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                              오픈중
-                              <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                          </a>
-                          <ul class="collapse show list-unstyled pl-3" id="openmarket">
-                              <c:forEach items='${list}' var="item" varStatus="">
-                              	<c:if test="${item.marketStatus==1}">
-                                	<li><a class="text-decoration-none" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
-                                </c:if>
-                              </c:forEach>                              
-                          </ul>
-                      </li>
-                      <li class="pb-3">
-                          <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                              오픈예정
-                              <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                          </a>
-                          <ul class="collapse show list-unstyled pl-3" id="willopenmarket">
-                              <c:forEach items='${list}' var="item" varStatus="">
-                              	<c:if test="${item.marketStatus==2}">
-                                	<li><a class="text-decoration-none" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
-                                </c:if>
-                              </c:forEach>  
-                          </ul>
-                      </li>
-                  </ul>
-              </div>   
-      </div>
-    </div>
-  </div>
+		<div class="row">
+     	</div>
+      	</div>
+	<!-- 지도 종료-->
+      
+	<!-- 마켓리스트 -->
+		<div class="col-lg-6 mt-5">
+	          <div class="card border-0 bg-dark">
+	            <div class="card-body" id="marketlist" style="overflow:auto; width:auto; height:420px;">
+	            <div  style="padding: 10px 20px 20px 20px"> 
+	            <div class="col-lg-12">
+	                  <div>
+	                  <img
+		              src="../resources/img/marketlistlogo.png"
+		              style="max-width: 100%; height: auto; align-content: center"
+		           	  />
+	                  </div>
+	                  <ul class="list-unstyled templatemo-accordion">
+	                      <li class="pb-3">
+	                          <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+	                              오픈중
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+								</svg>
+	                          </a>
+	                          <ul class="collapse show list-unstyled pl-3" id="openmarket">
+	                              <c:forEach items='${list}' var="item" varStatus="">
+	                              	<c:if test="${item.marketStatus==1}">
+	                                	<li><a class="text-decoration-none" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
+	                                </c:if>
+	                              </c:forEach>                              
+	                          </ul>
+	                      </li>
+	                      <li class="pb-3">
+	                          <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+	                              오픈예정
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+								</svg>
+	                          </a>
+	                          <ul class="collapse show list-unstyled pl-3" id="willopenmarket">
+	                              <c:forEach items='${list}' var="item" varStatus="">
+	                              	<c:if test="${item.marketStatus==2}">
+	                                	<li><a class="text-decoration-none" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
+	                                </c:if>
+	                              </c:forEach>  
+	                          </ul>
+	                      </li>
+	                  </ul>
+	            </div>   
+	     		</div>
+	    		</div>
+		  	</div>
+		</div>
+	<!-- 마켓리스트 종료 -->
+	
+		</div>
+	</div>
 </section>
-<!-- Close Content -->
+<!-- body 종료 -->
 
     
 <%@ include file="./include/footer.jsp" %>

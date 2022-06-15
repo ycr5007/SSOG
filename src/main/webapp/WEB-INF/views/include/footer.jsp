@@ -36,6 +36,7 @@
     <script src="/resources/js/custom.js"></script>
     <!-- /bootstrap Script -->
 
+	<!-- 맵 하이라이트 -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/maphilight/1.4.2/jquery.maphilight.min.js"></script>
     <script>
       $(document).ready(function(e) {
@@ -51,6 +52,9 @@
         $('img[usemap]').maphilight();
       });
     </script>
+    <!-- 맵 하이라이트 종료-->
+    
+    <!-- 마켓리스트 hover 지도 연결 -->
 	<script>
       $(function(){
 
@@ -105,5 +109,7 @@
         
       });
     </script>
+    <!-- 마켓리스트 hover 지도 연결 종료 -->
+
   </body>
 </html>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include/shop_header.jsp" %>
+<%@ include file="../include/header.jsp" %>
+<section class="bg-dark">
+            <div id="searchlist" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">    
 <style>
 
 .card{
@@ -139,14 +141,8 @@ margin-left:150px;
 
 
 
-
-
-
-
-
-
-
-
+		    	</div>
+</section>
 
 
 
