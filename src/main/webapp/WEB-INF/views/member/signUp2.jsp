@@ -1,18 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
+<link rel="stylesheet" href="/resources/css/y.css">
+<!-- validation 사용자 작성 코드 삽입-->
+<script src="/resources/js/register.js"></script>
 
+<!-- 콘텐츠 시작 -->
 <section class="bg-dark">
-	<div id="signup2" style="overflow:auto; width:auto; height:720px; color: white; padding: 50px 50px 50px 50px">      	
-		<img src="../resources/img/signup_logo.png" style="max-width: 100%; height: auto; padding-bottom: 5px; align-content: center"/>
-			<div class="center card mb-1 border-0 bg-dark" style="width:auto; height:420px;  align-content: center">
-			    <!-- validation 사용자 작성 코드 삽입-->
-			    <script src="/resources/js/register.js"></script>
+	<div id="signup2" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px;">      	
+		<div class="center card mb-3 border-0 bg-dark" style="width:auto; height:420px; align-content: center">
 			    
-			    <div class="container" style="margin-top: 20px">
-			      <form id="regist" method="post" action="/member/regist">
+			<div class="container">
+				<img src="../resources/img/signup_logo.png"/>
+				
+				<form id="regist" method="post" action="/member/regist">
+			        
+			        <!-- 아이디 -->
 			        <div class="form-group row justify-content-center">
-			          <label for="userid" class="col-sm-2 col-form-label">아이디</label>
+			          <label for="userid" class="col-sm-5 col-form-label">아이디</label>
 			          <div class="textForm ">
 			            <input
 			              type="text"
@@ -24,8 +29,10 @@
 			            <small id="userId" class="text-info"></small>
 			          </div>
 			        </div>
+			        
+			        <!-- 비밀번호 -->
 			        <div class="form-group row justify-content-center">
-			          <label for="pass1" class="col-sm-2 col-form-label">비밀번호</label>
+			          <label for="pass1" class="col-sm-5 col-form-label">비밀번호</label>
 			          <div class="textForm">
 			            <input
 			              type="password"
@@ -37,8 +44,10 @@
 			            <small id="userPwd" class="text-info"></small>
 			          </div>
 			        </div>
+			        
+			        <!-- 비밀번호 확인 -->
 			        <div class="form-group row justify-content-center">
-			          <label for="pass2" class="col-sm-2 col-form-label"
+			          <label for="pass2" class="col-sm-5 col-form-label"
 			            >비밀번호 확인
 			          </label>
 			          <div class="textForm">
@@ -52,6 +61,8 @@
 			            <small id="userPwCheck" class="text-info"></small>
 			          </div>
 			        </div>
+			        
+			        <!-- 이름 -->
 			        <div class="form-group row justify-content-center">
 			          <label for="name" class="col-sm-2 col-form-label">이름 </label>
 			          <div class="textForm">
@@ -65,8 +76,10 @@
 			            <small id="userName" class="text-info"></small>
 			          </div>
 			        </div>
+			        
+			        <!-- 핸드폰 폼 -->
 			        <div class="form-group row justify-content-center">
-			          <label for="phone" class="col-sm-2 col-form-label">핸드폰 </label>
+			          <label for="phone" class="col-sm-5 col-form-label">핸드폰 </label>
 			          <div class="textForm">
 			              <input
 			                type="text"
@@ -78,8 +91,10 @@
 			              <small id="userPhone" class="text-info"></small>
 			          </div>
 			        </div>
+			        
+			        <!-- 이메일 -->
 			   		<div class="form-group row justify-content-center">
-			          <label for="email" class="col-sm-2 col-form-label">이메일</label>
+			          <label for="email" class="col-sm-5 col-form-label">이메일</label>
 			          <div class="textForm">
 			            <input
 			              type="email"
@@ -92,8 +107,10 @@
 			            <small id="userMail" class="text-info"></small>
 			          </div>
 			        </div>
+			        
+			        <!-- 인증번호 전송 -->
 			        <div class="form-group row justify-content-center">
-			            <div class="mail_input_box_warn">	</div>
+			            <div class="mail_input_box_warn">	
 							<div class="textForm">
 								<div class="mail_check_input_box" id="mail_check_input_box_false">
 									<input class="mail_check_input" disabled="disabled">
@@ -104,38 +121,29 @@
 								<div class="clearfix"></div>
 									<span id="mail_check_input_box_warn"></span>
 							</div>
+						</div>
 					</div>
-					 <div class="d-flex justify-content-end">
-					<!--  <button type="button" class="btn btn-info" onClick="location.href='/member/jusoPopup'" >주소 검색</button>  -->
-					  <button type="button" class="btn btn-info" onClick="goPopup();" >주소검색</button>
-			        </div>
-			        <input type="text" name="userAddress" id="userAddress" class="form-control" placeholder="Enter Address" required readonly>
-			        
-			        <div class="form-group row justify-content-center">
-			          <label for="userprofile" class="col-sm-2 col-form-label">프로필</label>
-			          <div class="textForm">
-			            <input
-			              type="text"
-			              name="userProfile"
-			              id="userProfile"
-			              class="profile_input"
-			              placeholder="소개글"
-			            />
-			            <small id="userMail" class="text-info"></small>
-			          </div>
+					
+					<!-- 주소검색 + 주소입력 -->
+					<div class="d-flex justify-content-start">
+					<!-- <button type="button" class="btn btn-info" onClick="location.href='/member/jusoPopup'" >주소 검색</button> -->
+						<button type="button" class="btn btn-info" onClick="goPopup();" >주소검색</button>
+			        	<input type="text" name="userAddress" id="userAddress" class="form-control" placeholder="Enter Address" required readonly>
 			        </div>
 			        
-			        
+			        <!-- 가입하기-->
 			        <div class="form-group text-center">
 			          <button type="submit" class="btn btn-primary send-data">가입하기</button>
 			          <button type="reset" class="btn btn-secondary">취소</button>
 			        </div>
 			        <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
-			     </form>
-			     </div>
+			        
+				</form>
+			</div>
 	     </div>     
      </div>
 </section>
+<!-- 콘텐츠 종료 -->
      
      
 <!-- 스크립트 시작 -->     
