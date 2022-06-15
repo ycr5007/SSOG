@@ -23,7 +23,8 @@
 		<!-- 정적 리소스는 모두 접근 허용 -->
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>	
 		<!-- <security:intercept-url pattern="/member/jusoPopup" access="permitAll"/>	 -->
-		<security:intercept-url pattern="/market/market_accept" access="hasRole('admin')" />
+		<security:intercept-url pattern="/shop/**" access="hasRole('admin')" />
+		
 		
 		<!-- login-page : 컨트롤러 지정 -->
 		<security:form-login login-page="/member/login"	authentication-failure-url="/member/login-error" login-processing-url="/member/login"

@@ -18,6 +18,8 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 				//접근 제한이 된 후 처리해야 할 작업 작성
 		
+		
+		
 				//컨트롤러 경로 지정
 				
 				response.sendRedirect("/access-denied");
