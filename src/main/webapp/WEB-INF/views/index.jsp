@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp" %>
 
-<!-- body 시작 -->
+<!-- 컨텐트 시작 -->
 <section class="bg-dark">
     <div class="container pb-5">
       <div class="row">
@@ -280,9 +280,9 @@
 		</div>
 	</div>
 </section>
-<!-- body 종료 -->
+<!-- 컨텐트 종료 -->
 
-<!--  마켓리스트 script -->
+<!--  마켓리스트 마켓 연결 script -->
 <script>
 $(function(){
 	
@@ -295,6 +295,6 @@ $(function(){
 	
 })
 </script>
-
+<!--  마켓리스트 마켓 연결 script 종료 -->
     
 <%@ include file="./include/footer.jsp" %>
