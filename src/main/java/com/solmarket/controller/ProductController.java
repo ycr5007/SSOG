@@ -1,6 +1,10 @@
 package com.solmarket.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +20,7 @@ import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.PageDTO;
 import com.solmarket.dto.ProductDTO;
+import com.solmarket.dto.ProductListDTO;
 import com.solmarket.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +33,20 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	@RequestMapping(value = "/product_index", method = RequestMethod.GET)
-	public void seller_home() {
+	
+	//화면 첫 페이지 : 오픈예정 + 참여중인 장터, 상품 목록 보여주기
+	@GetMapping("/product_index")
+	public void seller_home(Model model) {
 		log.info("판매자 관리 페이지 요청");
+
+		List<MarketDTO> mList = service.mList();
+		List<MarketDTO> oList = service.oList();		
+		List<ProductDTO> pList = service.pList();
+				
+		// "mList" : jsp에서 사용할 item이름과 동일
+		model.addAttribute("mList",mList);
+		model.addAttribute("oList",oList);
+		model.addAttribute("pList",pList);
 	}
 	
 	// 상품 등록
@@ -42,18 +58,25 @@ public class ProductController {
 		model.addAttribute("marketName", service.marketName(marketNo));
 		model.addAttribute("userName", service.userName(userNo));
 		model.addAttribute("userNo", userNo);
+		model.addAttribute("marketNo", marketNo);
 	}
 	
+	// 상품 등록 : List로 받기
 	@PostMapping("/product_register")
-	public String registerPost(ProductDTO productDto, RedirectAttributes rttr) {
-		log.info("상품 등록 폼 전송");
-		if(service.insert(productDto)) {
-			log.info("productDto : " + productDto);
-			rttr.addAttribute("userNo", productDto.getUserNo());
-		}
+	public String registerPost(ProductListDTO proList, RedirectAttributes rttr) {
+		log.info("상품 등록 폼 전송 "+ proList);				
+		
+		service.insert(proList);		
+		
+		int userNo = proList.getProList().get(0).getUserNo();
+		
+		
+		rttr.addAttribute("userNo", userNo);
 		return "redirect:/product/product_list";
+		
 	}
 	
+	// 상품 수정 및 목록 보여주기
 	@GetMapping({"/product_modify","/product_read"})
 	public void modify(int userNo, int productNo, Model model, @ModelAttribute("cri") Criteria cri) {
 		log.info("상품 내역 폼 요청");
@@ -64,24 +87,28 @@ public class ProductController {
 		model.addAttribute("dto", dto);
 	}
 	
+	// 상품 수정하기
 	@PostMapping("/product_modify")
-	public String modifyPost(ProductDTO updateDto, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+	public String modifyPost(int userNo,ProductDTO updateDto, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 		log.info("수정 폼 확인");
 		if(service.update(updateDto)) {
 			// 수정 성공 시
 			rttr.addAttribute("userNo", updateDto.getUserNo());
 			rttr.addAttribute("productNo", updateDto.getProductNo());
-			rttr.addAttribute("pageDto", new PageDTO(cri, service.getTotalCnt(updateDto.getUserNo())));
+			rttr.addAttribute("pageNum", cri.getPageNum());
+			rttr.addAttribute("amount", cri.getAmount());
+			
 		}
 		return "redirect:/product/product_read";
 	}
 	
-	
+	// 상품 리스트 보여주기
 	@GetMapping("/product_list")
 	public void list(int userNo, Model model,@ModelAttribute("cri") Criteria cri) {
-		log.info("리스트 요청");
+		log.info("상품 리스트 요청");
 		
 		List<ProductDTO> list = service.getList(cri, userNo);
+		// 페이징
 		int total = service.getTotalCnt(userNo);
 		log.info("pageDTO : " + new PageDTO(cri, total));
 		model.addAttribute("userNo", userNo);
@@ -90,12 +117,13 @@ public class ProductController {
 
 	}
 	
+	// 장터 리스트 보여주기
 	@GetMapping("/product_market_list")
 	public void marketList(int userNo,Model model,@ModelAttribute("cri") Criteria cri) {
 		log.info("마켓 리스트 요청");
 		
 		List<MarketDTO> marketList = service.marketList(cri, userNo);
-	
+		// 페이징
 		int total = service.marketTotal(cri);
 		log.info("pageDTO : " + new PageDTO(cri, total));
 		model.addAttribute("userNo", userNo);
@@ -103,14 +131,20 @@ public class ProductController {
 		model.addAttribute("marketList",marketList);
 	}
 	
-	//검색 폼 보여주기
-	@GetMapping("/product_search")
-	public String search(String productName, Model model) {
-		log.info("상품 정보 검색" + productName);
-		
-//		List<ProductDTO> list = service.getSearchList(productName);
-//		model.addAttribute("list",list);
-		
-		return "/search_list"; 
+	// 장터 종료 후 남은 상품 보여주기 상품 상태 == 4 
+	@GetMapping("/product_remain_list")
+	public void remainList(int userNo,Model model,@ModelAttribute("cri") Criteria cri) {
+		log.info("마켓 종료 후 상품 리스트 요청");
+		List<ProductDTO> remainList = service.remainList(cri, userNo);
+		// 페이징
+		int total = service.remainTotal(userNo);
+		log.info("pageDTO : " + new PageDTO(cri, total));
+		model.addAttribute("userNo", userNo);
+		model.addAttribute("pageDto", new PageDTO(cri, total));
+		model.addAttribute("remainList",remainList);
 	}
+	
+	
+	
+
 }
