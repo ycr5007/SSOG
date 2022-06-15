@@ -309,3 +309,4 @@
 		player.stopVideo();
 	}
 </script>
+<%@ include file="../include/footer.jsp"%>
