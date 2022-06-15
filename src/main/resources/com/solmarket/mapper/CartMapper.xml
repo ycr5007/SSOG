@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.CartMapper">
+
+<insert id="addCart">
+	
+	insert into cart(userNo, productNo, productQN)
+	values(#{userNo}, #{productNo}, #{productQN}) 
+
+</insert>
+
+<delete id="deleteCart">
+	delete from cart where cartId = #{cartId}
+</delete>
+	
+	<!-- 카트 수량 수정 -->
+<update id="modifyCount">
+	update cart set productQN=#{productQN} where cartId = #{cartId}
+</update>
+
+	
+	<!-- 카트 목록 -->
+<select id="getCart" resultType="com.solmarket.dto.CartDTO">
+	
+	select c.cartId, u.userNo, p.productNo, p.productQN, p.productName, p.productPrice, p.productSale
+	from cart c left outer join product p on c.productNo = p.productNo left outer join u.userNo = p.userNo
+	where userNo = #{userNo}
+</select>
+	
+<!-- 카트 확인 -->
+<select id="checkCart" resultType="com.solmarket.dto.CartDTO">
+
+	select * from cart 
+	where userNo = #{userNo} and productNo = #{productNo}
+	
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

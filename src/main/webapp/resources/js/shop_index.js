@@ -8,6 +8,10 @@ $(function(){
 	$(".page-item a").click(function(e){
 		e.preventDefault();   // a 속성 중지
 		
+		if(actionForm.find("[name='keyword']") == ""){
+			actionForm.find("[name='keyword']").remove();
+		}
+		
 		//사용자가 선택한 페이지 번호 가져오기
 		let pageNum = $(this).attr('href');		
 		//가져온 번호를 actionForm 안의 pageNum 값으로 대체
@@ -17,6 +21,14 @@ $(function(){
 	
 	})
 	
+	$(".category-data").click(function(e){
+		e.preventDefault();
+		
+		let keyword = $(this).attr('href');
+		actionForm.find("[name='keyword']").val(keyword);
+		actionForm.find("[name='pageNum']").val(1);
+		actionForm.submit();
+	})
 	
 	// 상품보기 클릭시
 	$(".btn btn-outline-primary").click(function(e){
