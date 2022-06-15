@@ -13,7 +13,7 @@ ALTER TABLE recruit_img ADD CONSTRAINT FK_RECRUIT_IMG FOREIGN KEY(market_no) REF
 create table visitor(
 	visit_id number,
 	visit_time date default sysdate,
-	session_id varchar2(100) not null
+	session_id varchar2(100) not null unique
 );
 
 alter table visitor add constraint PK_VISITOR primary key(visit_id);
