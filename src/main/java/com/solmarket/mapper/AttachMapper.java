@@ -1,5 +1,6 @@
 package com.solmarket.mapper;
 
+import java.util.List;
 import com.solmarket.dto.*;
 
 public interface AttachMapper {
@@ -8,11 +9,14 @@ public interface AttachMapper {
 	public int userInsertImg(AttachDTO attachDto);
 	
 	/* ====================== 장터 등록 시 장터 이미지 삽입 ====================== */
-	public int insertImg(AttachDTO attachDTO);
+	public int insertMarketImg(AttachDTO attachDTO);
+	
+	/* ====================== 장터 승인 후 셀러 모집 이미지 삽입 ====================== */
+	public int insertRecruitImg(AttachDTO attachDTO);
 	
 	/* ================= 장터 이미지 불러오기 ================= */
-	public AttachDTO selectMarketImg(int marketNo);
+	public List<AttachDTO> selectMarketImg(int marketNo);
 	
 	/* ================= 상품 이미지 불러오기 ================= */
-	public AttachDTO selectProductImg(int productNo);
+	public List<AttachDTO> selectProductImg(int productNo);
 }
