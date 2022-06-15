@@ -1,19 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-	<!-- Start Footer -->
-	<section>
-	    <footer class="bg-light" id="tempaltemo_footer" style="width:auto; height:auto;">
-	      <div class="container">
-	        <div class="row">
-	           <img
-	             src="../resources/img/footerimg.png"
-	           />
-	        </div>
-	      </div>
-	    </footer>
-    </section>
-    <!-- End Footer -->
 
     <!-- jquery cdn -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -112,5 +99,19 @@
     </script>
     <!-- 마켓리스트 hover 지도 연결 종료 -->
 
+	<!-- Start Footer -->
+	<section>
+	    <footer class="bg-light" id="tempaltemo_footer" style="width:auto; height:auto;">
+	      <div class="container">
+	        <div class="row">
+	           <img
+	             src="../resources/img/footerimg.png"
+	           />
+	        </div>
+	      </div>
+	    </footer>
+    </section>
+    <!-- End Footer -->
+    
   </body>
 </html>

@@ -4,7 +4,7 @@
 
 
 <section class="bg-dark">
-	<div id="searchlist" style="overflow:auto; width:auto; height:720px; color: white; padding: 50px 50px 50px 50px">      	
+	<div id="signup1" style="overflow:auto; width:auto; height:720px; color: white; padding: 50px 50px 50px 50px">      	
 		<img src="../resources/img/signup_logo.png" style="max-width: 100%; height: auto; padding-bottom: 20px; align-content: center"/>
 	<div class="container">
 		<form action="signUp2" style="background-color:#212934; color:white;" method="post">	
