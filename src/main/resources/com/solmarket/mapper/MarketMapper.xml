@@ -158,10 +158,6 @@
 	</select>
 
 <!-- ====================== 장터 후기 등록 ====================== -->
-	<select id="selectReveiwer" resultType="int">
-		SELECT user_no FROM market WHERE user_no = #{userNo} AND market_no = #{marketNo}
-	</select>
-
 	<insert id="insertReview">
 		INSERT INTO review(review_no, user_no, market_no, review_content, review_date, review_rate, review_status) VALUES(review_seq.nextval, #{userNo}, #{marketNo}, #{reviewContent}, SYSDATE, #{reviewRate}, 1)
 	</insert>

@@ -62,9 +62,8 @@ public interface MarketService {
 	public double MarketRate(int marketNo);
 	
 	/* ====================== 장터 후기 등록 ====================== */
-	public boolean findReveiwer(@Param("marketNo")int marketNo, @Param("userNo")int userNo); // 후기 작성한 적 있는지 확인
 	public boolean registerReview(ReviewDTO reviewDTO);
-	public boolean ReviewRate(ReviewDTO reviewDTO); // 장터 등록 시 장터 평점 업데이트
+	public boolean ReviewRate(int marketNo); // 장터 등록 시 장터 평점 업데이트
 	
 	/* ====================== 장터 후기 삭제 (운영자) ====================== */
 	public boolean deleteReview(int reviewNo);

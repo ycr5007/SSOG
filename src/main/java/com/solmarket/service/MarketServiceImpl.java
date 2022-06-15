@@ -161,11 +161,6 @@ public class MarketServiceImpl implements MarketService {
 	public double MarketRate(int marketNo) {
 		return mapper.selectMarketRate(marketNo);
 	}
-	
-	@Override
-	public boolean findReveiwer(int marketNo, int userNo) {
-		return mapper.selectReveiwer(marketNo, userNo) >= 0 ? true : false;
-	}
 
 	@Override
 	public boolean registerReview(ReviewDTO reviewDTO) {
@@ -176,8 +171,8 @@ public class MarketServiceImpl implements MarketService {
 	}
 	
 	@Override
-	public boolean ReviewRate(ReviewDTO reviewDTO) {
-		return mapper.updateReviewRate(reviewDTO) == 1 ? true : false;
+	public boolean ReviewRate(int marketNo) {
+		return mapper.updateReviewRate(marketNo) == 1 ? true : false;
 	}
 
 	/* ==================== 장터 후기 삭제 (운영자) ==================== */

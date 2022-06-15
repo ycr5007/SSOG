@@ -56,9 +56,8 @@ public interface MarketMapper {
 	public double selectMarketRate(int marketNo); // 장터 총 평점 불러오기
 	
 	/* ====================== 장터 후기 등록 ====================== */
-	public int selectReveiwer(@Param("marketNo")int marketNo, @Param("userNo")int userNo); // 후기 작성한 적 있는지 확인
 	public int insertReview(ReviewDTO reviewDTO); // 장터 한 줄 후기 등록
-	public int updateReviewRate(ReviewDTO reviewDTO); // 장터 등록 시 장터 평점 업데이트
+	public int updateReviewRate(int marketNo); // 장터 등록 시 장터 평점 업데이트
 	
 	/* ====================== 장터 후기 삭제 (운영자) ====================== */
 	public int deleteReview(int reviewNo);

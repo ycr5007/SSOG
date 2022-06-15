@@ -3,6 +3,16 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../include/market_header.jsp"%>
+<script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
 
 <div class="row justify-content-center align-items-center">
 
@@ -49,8 +59,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -62,8 +72,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -75,8 +85,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -96,8 +106,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -109,8 +119,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -122,8 +132,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -143,8 +153,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -156,8 +166,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -169,8 +179,8 @@
 										alt="Card image cap">
 									<div class="card-body">
 										<h4 class="card-title">상품명</h4>
-										<p class="card-text">Some quick example text to build on
-											the card title and make up the bulk of the card's content.</p>
+										<p class="card-text">가격</p>
+										<p class="card-text">판매자</p>
 									</div>
 								</div>
 							</div>
@@ -218,46 +228,46 @@
 				<div class="card-body">
 					<h4 class="card-title mb-3">
 						<c:choose>
-							<c:when test="${marketDTO.marketRate == 0.0}">
+							<c:when test="${marketRate == 0.0}">
 								<i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
 							</c:when>
-							<c:when test="${marketDTO.marketRate > 0.0 && marketDTO.marketRate < 1.0}">
+							<c:when test="${marketRate > 0.0 && marketRate < 1.0}">
 								<i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
 						    </c:when>
-						    <c:when test="${marketDTO.marketRate == 1.0}">
+						    <c:when test="${marketRate == 1.0}">
 								<i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
 						    </c:when>
-						    <c:when test="${marketDTO.marketRate > 1.0 && marketDTO.marketRate < 2.0}">
+						    <c:when test="${marketRate > 1.0 && marketRate < 2.0}">
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
 						    </c:when>
-						    <c:when test="${marketDTO.marketRate == 2.0}">
+						    <c:when test="${marketRate == 2.0}">
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
 						    </c:when>
-						    <c:when test="${marketDTO.marketRate > 2.0 && marketDTO.marketRate < 3.0}">
+						    <c:when test="${marketRate > 2.0 && marketRate < 3.0}">
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
 						    </c:when>
-						    <c:when test="${marketDTO.marketRate == 3.0}">
+						    <c:when test="${marketRate == 3.0}">
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
 						    </c:when>
-						    <c:when test="${marketDTO.marketRate > 3.0 && marketDTO.marketRate < 4.0}">
+						    <c:when test="${marketRate > 3.0 && marketRate < 4.0}">
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i><i class="far fa-fw fa-star"></i>
 						    </c:when>
-						     <c:when test="${marketDTO.marketRate == 4.0}">
+						     <c:when test="${marketRate == 4.0}">
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="far fa-fw fa-star"></i>
 						    </c:when>
-						    <c:when test="${marketDTO.marketRate > 4.0 && marketDTO.marketRate < 5.0}">
+						    <c:when test="${marketRate > 4.0 && marketRate < 5.0}">
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star-half-alt"></i>
 						    </c:when>
-						     <c:when test="${marketDTO.marketRate == 5.0}">
+						     <c:when test="${marketRate == 5.0}">
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i>
 						    </c:when>
 						</c:choose>
-						${marketDTO.marketRate}
+						${marketRate}
 					</h4>
 					<ul>
 						<c:forEach var="review" items="${review}" end="5">
 							<li style="list-style:circle; text-align:left; line-height:40px">
-								${fn:substring(review.reviewContent, "0", "10")}...
+								${fn:substring(review.reviewContent, "0", "13")}...
 							</li>
 						</c:forEach>
 					</ul>
@@ -284,6 +294,13 @@
 </div>
 
 <input type="hidden" name="marketNo" value="${marketDTO.marketNo}"/>
+
+	<!-- 캐러셀 슬라이드 넘어가는 시간 조절 -->
+	<script>
+		$("#multi-item-example").carousel(
+			interval:2000
+		);
+	</script>
 
 <!-- 네이버 지도 API Script -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i"></script>
