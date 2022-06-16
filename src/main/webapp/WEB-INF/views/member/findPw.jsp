@@ -1,31 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-<link rel="stylesheet" href="/resources/css/y.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
-<script>
-	$(function() {
-		$('form').submit(function() {
-			var idLength = $('#userId').val().length;
-			var mailLength = $('#userMail').val().length;
-			if (idLength == 0) {
-				alert('아이디를 입력해주세요.');
-				return false;
-			}
-			if (mailLength == 0) {
-				alert('이메일을 입력해주세요.');
-				return false;
-			}
-		});
-	});
-</script>
-<link rel="stylesheet" href="/resources/css/y.css">
+<link rel="stylesheet" href="/resources/css/formctrl.css">
+
 <section class="bg-dark">
-	<div id="login1"
-		style="overflow: auto; width: auto; height: 550px; color: white; padding: 50px 50px 50px 50px">
-		<div class="center card mb-1 border-0 bg-dark"
-			style="width: auto; height: 420px; align-content: center">
+	<div id="findId" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">
+	    <div class="container border-0 bg-dark" style="width:300px; height:420px;  align-content: center; padding-top: 50px">
 			<h1>비밀번호 찾기</h1>
 			<form action="/member/findPwResult" method="post">
 				<div class="txt_field">
@@ -46,6 +26,25 @@
 </section>
 
 
+<!--  스크릡트 -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script>
+	$(function() {
+		$('form').submit(function() {
+			var idLength = $('#userId').val().length;
+			var mailLength = $('#userMail').val().length;
+			if (idLength == 0) {
+				alert('아이디를 입력해주세요.');
+				return false;
+			}
+			if (mailLength == 0) {
+				alert('이메일을 입력해주세요.');
+				return false;
+			}
+		});
+	});
+</script>
 <script>
 let csrfHeaderName = "${_csrf.headerName}";
 let csrfTokenValue = "${_csrf.token}";
@@ -80,4 +79,5 @@ let csrfTokenValue = "${_csrf.token}";
 	});
 
 </script>
+<!--  스크릡트 -->
 <%@include file="../include/footer.jsp"%>

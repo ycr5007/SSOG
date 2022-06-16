@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
 <link rel="stylesheet" href="/resources/css/formctrl.css">
+
 <section class="bg-dark">
 	<div id="pwCheck" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">
 	    <div class="container border-0 bg-dark" style="width:300px; height:420px;  align-content: center; padding-top: 50px">
