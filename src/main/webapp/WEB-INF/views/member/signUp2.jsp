@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
-<link rel="stylesheet" href="/resources/css/y.css">
+<link rel="stylesheet" href="/resources/css/formctrl.css">
 <!-- validation 사용자 작성 코드 삽입-->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
@@ -78,7 +78,7 @@
 			          </div>
 			        </div>
 			        
-			        <!-- 핸드폰 폼 -->
+			        <!-- 핸드폰-->
 			        <div class="form-group row justify-content-center">
 			          <label for="phone" class="col-sm-5 col-form-label">핸드폰 </label>
 			          <div class="textForm col-sm-7">
