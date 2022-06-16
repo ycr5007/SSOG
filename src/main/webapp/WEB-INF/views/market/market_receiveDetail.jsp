@@ -65,8 +65,8 @@
 <form action="/market/market_receiveDetail" id="actionForm">
 	<input type="hidden" name="productNo" value="${product.productNo}" />
 	<input type="hidden" name="marketNo" value="${marketNo}" />
-	<input type="hidden" name="pageNum" value="${criteria.pageNum }" />
-	<input type="hidden" name="amount" value="${criteria.amount }" />
+	<input type="hidden" name="pageNum" value="${cri.pageNum }" />
+	<input type="hidden" name="amount" value="${cri.amount }" />
 </form>
 
 <script>

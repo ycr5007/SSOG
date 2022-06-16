@@ -1,10 +1,15 @@
 package com.solmarket.dto;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+=======
+import java.util.*;
+import lombok.*;
+>>>>>>> branch 'main' of https://github.com/ycr5007/SolMarket.git
 
 @AllArgsConstructor
 @NoArgsConstructor

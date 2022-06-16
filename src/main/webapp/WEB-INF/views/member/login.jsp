@@ -33,6 +33,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script> 
        
 <script>
+	let error = "${error}";
+	if(error != ""){
+		alert(error);
+	}
+	
 	$(function(){	
 		
 		// submit 전 이벤트
@@ -49,15 +54,6 @@
 			}
 		});
 	});
-</script>
-
-<script>
-	$(function(){
-		let error = ${error};
-		if(!error){
-			alert(error);
-		}
-	})
 </script>
 
 <%@ include file="../include/footer.jsp" %>

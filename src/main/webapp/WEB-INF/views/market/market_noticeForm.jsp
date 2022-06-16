@@ -29,32 +29,27 @@
 						<label>내용</label>
 						<textarea class="form-control" rows="3" name="noticeContent" id="noticeContent"></textarea>
 					</div>
-
-					<!-- 파일 첨부 -->
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="panel panel-default">
-								<div class="panel-heading">파일첨부</div>
-								<div class="panel-body">
-									<div class="form-group uploaddiv">
-										<input type="file" name="marketImg" id="marketImg" />
-									</div>
-									<div class="uploadResult">
-										<!-- 첨부파일 정보 -->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				</div>
+			</div>
 					
+			<div class="card shadow mb-4 col-xl-7">
+				<div class="card-body">
+					<div class="form-group">
+						<label>이미지 첨부</label><br>
+						<input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display:none" required>
+						<label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
+							<h5 class="card-title text-center">업로드 사진</h5>
+							<div class="card-text text-center uploadResult">
+								<ul></ul>
+							</div>
+					</div>
 					<!-- 버튼 -->
 					<div class="row justify-content-center">
 						<button type="button" class="btn btn-primary m-2">등록</button>
-						<button type="button" class="btn btn-secondary m-2">취소</button>
+						<button type="button" class="btn btn-secondary m-2">뒤로</button>
 					</div>
+					<input type="hidden" name="${_csrf.parameterName }"	value="${_csrf.token }" />
 				</form>
-				<!-- form 종료 -->
-				
 			</div>
 		</div>
 	</div>
@@ -63,10 +58,11 @@
 <!-- URL + 페이징 처리 -->
 <form action="/market/market_noticeForm" id="actionForm">
 	<input type="hidden" name="marketNo" value="${marketNo}" />
-	<input type="hidden" name="pageNum" value="${criteria.pageNum }" />
-	<input type="hidden" name="amount" value="${criteria.amount }" />
+	<input type="hidden" name="pageNum" value="${cri.pageNum }" />
+	<input type="hidden" name="amount" value="${cri.amount }" />
 </form>
 
+<script src="/resources/js/util/upload.js"></script>
 <script>
 let marketNo = ${marketNo};
 

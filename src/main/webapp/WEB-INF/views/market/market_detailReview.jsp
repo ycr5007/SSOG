@@ -58,7 +58,7 @@
 								<i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i><i class="fas fa-fw fa-star"></i>
 						    </c:when>
 						</c:choose>
-					<span class="marketRate">${marketRate}</span>
+					<span class="marketRate"><fmt:formatNumber value="${marketRate}" pattern="#.#"/></span>
 				</h4>
 				<hr />
 				<form action="" method="post" class="mt-2" id="reviewForm">
@@ -72,15 +72,14 @@
 					</select>
 					<!-- 후기 작성 및 등록 버튼 -->
 					<div>
-						<input class="p-2" type="text" name="reviewContent" id="reviewContent" placeholder="이 장터 어떠셨나요?" size="50"/>
+						<input class="p-2" type="text" name="reviewContent" id="reviewContent" placeholder="이 장터 어떠셨나요?" size="40"/>
 						<button class="btn btn-outline-primary btn-icon-split btn-sm" type="button">등록</button>
 					</div>
 				</form>
 				<!-- 장터 후기 목록 -->
 				<ul class="reviewList mt-4" style="overflow-y:scroll">
 					<c:forEach var="review" items="${review}">
-						<li class="mb-2 px-2 align-items-left" style="float:left">
-							${review.userName}&nbsp;&nbsp;
+						<li class="mb-2 px-2 align-items-left" style="float:left; list-style:none; text-align:left">
 							<c:choose>
 							    <c:when test="${review.reviewRate == 1.0}">
 									★☆☆☆☆

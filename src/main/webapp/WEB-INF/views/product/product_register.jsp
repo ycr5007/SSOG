@@ -83,10 +83,10 @@
             <label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
             <div class="card-body">
                <p class="card-title text-center">
-                     <p class="card-text text-center pt-5 uploadResult">                
-                     업로드 사진
-                  <ul> </ul>
-                     </p>
+                     <div class="card-text text-center pt-5 uploadResult">  
+                     업로드 사진              
+                      <ul> </ul>
+                   	 </div> 
                </p>
             </div>
          </div>

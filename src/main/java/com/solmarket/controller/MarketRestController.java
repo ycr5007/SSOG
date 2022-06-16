@@ -1,29 +1,14 @@
 package com.solmarket.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.io.*;
+import java.net.*;
+import java.util.*;
 import javax.net.ssl.HttpsURLConnection;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.FileCopyUtils;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 public class MarketRestController {
 
@@ -31,10 +16,13 @@ public class MarketRestController {
 	@RequestMapping(value = "/map")
 	@ResponseBody
 	public ResponseEntity<List<String>> trans(String address) throws UnsupportedEncodingException {
-		String searchaddr = address.substring(6, address.length());
+		String searchaddr = address;
 		System.out.println(searchaddr);
 		if(searchaddr.contains("지하")) {
 			searchaddr = searchaddr.replace("지하", "");
+		}
+		if(searchaddr.contains("서울특별시")) {
+			searchaddr = searchaddr.replace("서울특별시", "");
 		}
 		System.out.println(searchaddr);
 
@@ -70,7 +58,6 @@ public class MarketRestController {
 			System.out.println(sb.toString());
 		
 			jsonObject = (JSONObject)parser.parse(sb.toString());
-			// jsonObject = (JSONObject)jsonObject.get("result");
 			jsonArray = (JSONArray)jsonObject.get("addresses");
 			
 			for(int i=0;i<jsonArray.size();i++){
@@ -94,25 +81,5 @@ public class MarketRestController {
 		}
 		
 		return new ResponseEntity<List<String>>(list, HttpStatus.OK);  
-	} 
-
-	/* ===================== 이미지 보여주기 =====================*/
-//	@GetMapping("/display")
-//	public ResponseEntity<byte[]> getFile(String uploadPath, String uuid, String fileName) {
-//		log.info("썸네일 요청");
-//		File file = new File(uploadPath + "\\" + uuid + "_" + fileName);
-//
-//		ResponseEntity<byte[]> image = null;
-//
-//		HttpHeaders header = new HttpHeaders();
-//
-//		try {
-//			header.add("Content-Type", Files.probeContentType(file.toPath()));
-//			image = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//		return image;
-//	}
+	}
 }
