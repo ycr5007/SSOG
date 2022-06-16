@@ -53,27 +53,19 @@ public class MemberServiceImpl implements MemberService {
 
 	@Transactional
 	@Override
-	public boolean updateUser(UserDTO updateUser, @RequestParam("authority") String authority) {
+	public boolean updateUser(UserDTO updateUser,@RequestParam("authority") String authority) {
 
-		log.info(authority);
-
-		// 넘어온 정보 중에서 권한 여부 정보가 있느냐?
-		if (!authority.equals("")) {
-
-		}
+		//log.info(authority);
 
 		updateUser.setUserPw(encoder.encode(updateUser.getUserPw()));
 		boolean result = mapper.updateUser(updateUser) > 0;
-
-		if (result) {
-
-		}
-
-		if (!(authority.equals("ROLE_USER"))) {
-			mapper.insertAuth(new AuthDTO(updateUser.getUserId(), authority));
-		}
+		mapper.updateUser(updateUser);
+	
 		return result;
-	}
+			
+		}
+		
+	
 
 	@Override
 	public int delete(String userId) {

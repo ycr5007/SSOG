@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<head><title>임시비밀번호 변경</title>
+<head><title>접근 금지</title>
 <style type="text/css">
 body {
 	font-family: Tahoma, Arial, sans-serif;
@@ -39,13 +39,18 @@ a {
 </style>
 </head>
 <body>
-	<h1>임시비밀번호 변경</h1>
+	<h1>접근 금지</h1>
 	<hr class="line" />
 	<p>
-		<b>설명</b> 임시비밀번호로 변경되었습니다.
+		<b>설명</b>접근 권한이 없습니다.
 	</p>
 	<hr class="line" />
-	<button type="button" onclick="javascript:location.href = '/member/login'">로그인</button>
+	<div class="links">
+		<div class="link">
+			<a href="/">처음으로</a>
+		</div>
+	</div>
+	<button type="button" onclick="javascript:history.back()">뒤로</button>
 </body>
 </html>
 

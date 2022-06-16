@@ -19,11 +19,13 @@
 	
 	<!-- 로그인 성공 이후 처리 작업을 담당 -->
  	<bean id="customLoginSuccessHandler" class="com.solmarket.handler.CustomLoginSuccessHandler"/> 
+ 	
 	<security:http>
 		<!-- 정적 리소스는 모두 접근 허용 -->
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>	
 		<!-- <security:intercept-url pattern="/member/jusoPopup" access="permitAll"/>	 -->
-		<security:intercept-url pattern="/shop/**" access="hasRole('admin')" />
+		<security:intercept-url pattern="/admin/**" access="hasRole('admin')" />
+		<security:intercept-url pattern="/product/**" access="hasRole('SELLER')" />
 		
 		
 		<!-- login-page : 컨트롤러 지정 -->
@@ -32,7 +34,7 @@
 		<security:logout logout-url="/member/logout" invalidate-session="true" delete-cookies="JSESSION_ID"
 		logout-success-url="/" />
 		
-		<security:access-denied-handler error-page="/"/>
+		<security:access-denied-handler ref="customAccessDeniedHandler"/>
 		
 		<security:csrf request-matcher-ref="csrfSecurityRequestMatcher"/>
 	</security:http>
