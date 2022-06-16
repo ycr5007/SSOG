@@ -31,7 +31,7 @@
 		<security:form-login login-page="/member/login"	authentication-failure-url="/member/login-error" login-processing-url="/member/login"
 		authentication-success-handler-ref="customLoginSuccessHandler"/>
 		<security:logout logout-url="/member/logout" invalidate-session="true" delete-cookies="JSESSION_ID"
-		logout-success-url="/" />
+		logout-success-url="/"  />
 		
 		<security:access-denied-handler ref="customAccessDeniedHandler"/>
 		

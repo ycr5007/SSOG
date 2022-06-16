@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.solmarket.dto.MarketDTO;
+import com.solmarket.dto.UserDTO;
 import com.solmarket.service.AdminService;
 import com.solmarket.service.IndexService;
 
@@ -52,7 +53,20 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/manager_index", method = RequestMethod.GET)
-	public String manager_home() {
+	public String manager_home(Model model, HttpServletRequest request) {
+		// userNo 가져오기
+		String userId = request.getSession().getId();
+		UserDTO userDTO = new UserDTO();
+		userDTO.setUserId(userId);
+		int userNo = userDTO.getUserNo();
+		
+		// marketDTO 가져오기
+		MarketDTO marketDTO = new MarketDTO();
+		marketDTO.setUserNo(userNo);
+		model.addAttribute("userNo", userNo);
+		model.addAttribute("marketStatus", marketDTO.getMarketStatus());
+		model.addAttribute("marketNo", marketDTO.getMarketNo());
+		
 		return "manager_index";
 	}
 	
