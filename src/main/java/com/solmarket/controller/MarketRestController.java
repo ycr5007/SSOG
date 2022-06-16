@@ -1,29 +1,14 @@
 package com.solmarket.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
-
+import java.io.*;
+import java.net.*;
+import java.util.*;
 import javax.net.ssl.HttpsURLConnection;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.FileCopyUtils;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
 public class MarketRestController {
 
