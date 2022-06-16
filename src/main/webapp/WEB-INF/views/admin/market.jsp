@@ -17,7 +17,6 @@
 						<div class="card-body">
 							<table class="table">
 								<tr class="column-header">
-									<th class="col-lg-1">번호</th>
 									<th class="col-lg-3">장터명</th>
 									<th class="col-lg-2">운영자</th>
 									<th class="col-lg-2">지역</th>
@@ -28,14 +27,13 @@
 								</tr>
 							<c:forEach items="${list }" var="market" varStatus="status">
 								<tr class="row-data">
-									<td>${status.count }</td>
 									<td style="text-align: left; text-indent: 10px;">${market.marketName }</td>
 									<td>${market.dummy }</td>
 									<td>${market.marketLoc }</td>
 									<td><fmt:formatDate value="${market.marketSD }" pattern="MM-dd"/></td>
 									<td><fmt:formatDate value="${market.marketED }" pattern="MM-dd"/></td>
-									<td><button type="button" class="btn btn-outline-primary btn-sm approval" value="${market.marketNo }">승인</button></td>
-									<td><button type="button" class="btn btn-outline-danger btn-sm refusal" value="${market.marketNo }">거부</button></td>
+									<td><button type="button" class="btn btn-outline-primary btn-sm access" value="${market.marketNo }">승인</button></td>
+									<td><button type="button" class="btn btn-outline-danger btn-sm refuse" value="${market.marketNo }">거부</button></td>
 								</tr>
 							</c:forEach>
 							</table>
@@ -64,4 +62,5 @@
 	</div>
 </div>
 <!-- End of Main Content -->
+<script src="/resources/js/admin/marketList.js"></script>
 <%@ include file="../include/manager_footer.jsp" %>

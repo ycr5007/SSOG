@@ -25,4 +25,12 @@ public interface AdminMapper {
 	// Market Request List
 	public List<MarketDTO> getreqMakretList(Criteria cri);
 	public int getMarketCount();
+	public int accessMarket(int marketNo);
+	public int refuseMarket(int marketNo);
+	
+	// Notice Request Count
+	public List<NoticeDTO> getreqNoticeList(Criteria cri);
+	public int getNoticeCount();
+	public int accessNotice(int noticeNo);
+	public int refuseNotice(int noticeNo);
 }

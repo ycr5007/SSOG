@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.solmarket.dto.Criteria;
@@ -59,4 +60,40 @@ public class AdminController {
 		model.addAttribute("list", marketList);
 	}
 	
+	@PostMapping("/marketAccess")
+	public String reqMarketAccess(int marketNo) {
+		log.info("[POST] <<<<< Market Access >>>>> " + marketNo);
+		adminService.accessMarket(marketNo);
+		return "redirect:/admin/market";
+	}
+	
+	@PostMapping("/marketRefuse")
+	public String reqMarketRefuse(int marketNo) {
+		log.info("[POST] <<<<< Market Access >>>>> " + marketNo);
+		adminService.refuseMarket(marketNo);
+		return "redirect:/admin/market";
+	}
+
+	@GetMapping("/notice")
+	public void reqNoticeManager(Criteria cri, Model model) {
+		log.info("[GET] <<<<< Notice 승인 페이지 요청 >>>>>");
+		int total = adminService.getNoticeCount();
+		List<NoticeDTO> noticeList = adminService.getreqNoticeList(cri);
+		model.addAttribute("pageDto", new PageDTO(cri, total));
+		model.addAttribute("list", noticeList);
+	}
+	
+	@PostMapping("/noticeAccess")
+	public String reqNoticeAccess(int noticeNo) {
+		log.info("[POST] <<<<< Notice Access >>>>> " + noticeNo);
+		adminService.accessNotice(noticeNo);
+		return "redirect:/admin/notice";
+	}
+	
+	@PostMapping("/noticeRefuse")
+	public String reqNoticeRefuse(int noticeNo) {
+		log.info("[POST] <<<<< Notice Access >>>>> " + noticeNo);
+		adminService.refuseNotice(noticeNo);
+		return "redirect:/admin/notice";
+	}
 }

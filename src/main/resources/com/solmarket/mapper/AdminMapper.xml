@@ -21,11 +21,28 @@
 		(select count(*) from myuser_auth where authority = 'ROLE_SELLER') || '/' || 
 		(select count(*) from myuser_auth where authority = 'ROLE_MANAGER') as data from dual
 	</select>
-
+	<resultMap type="com.solmarket.dto.UserDTO" id="myUser">
+		<id property="userNo" column="user_no"/>
+		<result property="userId" column="user_id"/>
+		<result property="userPw" column="user_pw"/>
+		<result property="userName" column="user_name"/>
+		<result property="userMail" column="user_mail"/>
+		<result property="userStatus" column="user_status"/>
+		<result property="userProfile" column="user_profile"/>
+		<result property="userPhone" column="user_phone"/>
+		<result property="userAddress" column="user_address"/>
+		<result property="enabled" column="enabled"/>
+		<collection property="authorities" resultMap="authList"></collection>
+	</resultMap>
+		
+	<resultMap type="com.solmarket.dto.AuthDTO" id="authList">
+		<result property="userId" column="user_id" />
+		<result property="authority" column="authority" />
+	</resultMap>
 	<!-- 회원관리 > 전체회원 리스트 출력 -->
-	<select id="getUserList" resultType="com.solmarket.dto.UserDTO">
+	<select id="getUserList" resultMap="myUser">
 		select * from (select rownum as pagingNum, userList.* from 
-			(select user_no as userNo, user_Id as userId, user_Name as userName, user_Mail as userMail, user_Status as userStatus from myuser order by user_no desc)
+			(select user_no, use.user_Id, user_pw, user_Name, user_Mail, user_Status, enabled, authority from myuser use left outer join myuser_auth auth on use.user_id = auth.user_id order by user_no desc)
 		userList where rownum <![CDATA[ <= ]]> (#{pageNum} * #{amount})) where pagingNum > ((#{pageNum} - 1) * #{amount})
 	</select>
 	
@@ -33,9 +50,9 @@
 		select count(*) from myUser
 	</select>
 	
-	<select id="getUserDetail" resultType="com.solmarket.dto.UserDTO">
-		select user_no as userNo, user_id as userId, user_name as userName, user_mail as userMail, user_profile as userProfile, user_status as userStatus, user_phone as userPhone, user_address as userAddress
-		from myUser where user_no = #{userNo}
+	<select id="getUserDetail" resultMap="myUser">
+		select user_no, use.user_id, user_name, user_mail, user_profile, user_status, user_phone, user_address, enabled, authority
+		from myUser use left outer join myuser_auth auth on use.user_id = auth.user_id where user_no = #{userNo}
 	</select>
 	
 	<delete id="deleteUserData">
@@ -52,4 +69,32 @@
 	<select id="getMarketCount" resultType="Integer">
 		select count(*) from market where market_status = 0
 	</select>
+	
+	<update id="accessMarket">
+		update market set market_status = 1 where market_no = #{marketNo}
+	</update>
+	
+	<delete id="refuseMarket">
+		delete from market where market_no = #{marketNo}
+	</delete>
+	
+	<!-- 공지사항 신청 관리 -->
+	<select id="getreqNoticeList" resultType="com.solmarket.dto.NoticeDTO">
+		select * from (select rownum as pagingNum, notice.* from
+		(select notice_no as noticeNo, notice_title as noticeTitle, notice_date as noticeDate, notice_category as noticeCategory, notice_status as noticeStatus, market_name as dummy from notice n left outer join market m on n.market_no = m.market_no where notice_status = 0 order by notice_date desc)
+		notice where rownum <![CDATA[ <= ]]> (#{pageNum} * #{amount})) where pagingNum > ((#{pageNum} - 1) * #{amount})
+	</select>
+	
+	<select id="getNoticeCount" resultType="Integer">
+		select count(*) from notice where notice_status = 0
+	</select>
+	
+	<update id="accessNotice">
+		update notice set notice_status = 1 where notice_no = #{noticeNo}
+	</update>
+	
+	<delete id="refuseNotice">
+		delete from notice where notice_no = #{noticeNo}
+	</delete>
+	
 </mapper>

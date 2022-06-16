@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.NoticeMapper">
+	<select id="getNoticeList" resultType="com.solmarket.dto.NoticeDTO">
+	select * from (select rownum as paging, notice.* from
+		(select notice_no as noticeNo, market_name as dummy1, market_loc as dummy2, notice_title as noticeTitle, notice_date as noticeDate from notice noti left outer join market m on noti.market_no = m.market_no where notice_status = 1 and notice_no > 0 order by notice_no desc) notice
+	where rownum <![CDATA[ <= ]]> (#{pageNum} * #{amount})) where paging > ((#{pageNum} - 1) * #{amount})
+	</select>
+	
+	<select id="getNoticeCount" resultType="Integer">
+		select count(*) from notice where notice_status = 1 and notice_no > 0
+	</select>
+	
+	<resultMap type="com.solmarket.dto.NoticeDTO" id="notice">
+		<id property="noticeNo" column="notice_no"/>
+		<result property="marketNo" column="market_no"/>
+		<result property="noticeTitle" column="notice_title"/>
+		<result property="noticeContent" column="notice_content"/>
+		<result property="noticeDate" column="notice_date"/>
+		<result property="noticeCategory" column="notice_category"/>
+		<result property="noticeStatus" column="notice_status"/>
+		<collection property="market" resultMap="market"></collection>
+		<collection property="attachList" resultMap="attachList"></collection>
+	</resultMap>
+		
+	<resultMap type="com.solmarket.dto.MarketDTO" id="market">
+		<result property="marketLoc" column="market_loc" />
+		<result property="marketName" column="market_name" />
+	</resultMap>
+
+	<resultMap type="com.solmarket.dto.AttachDTO" id="attachList">
+		<id property="uuid" column="uuid"/>
+		<result property="uploadPath" column="uploadpath" />
+		<result property="fileName" column="filename" />
+		<result property="no" column="notice_no" />
+	</resultMap>
+	
+	<select id="getReadDetail" resultMap="notice">
+		select * from (select notice_no, n.market_no, notice_title, notice_content, notice_category, m.market_name, m.market_loc from notice n left outer join market m on n.market_no = m.market_no where notice_no = #{noticeNo}) noti left outer join notice_img img on noti.notice_no = img.notice_no
+	</select>
+	
+</mapper>
