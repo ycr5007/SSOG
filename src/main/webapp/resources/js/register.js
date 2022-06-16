@@ -25,10 +25,12 @@ $(function () {
 	  },
       userPhone: {
         required: true,
+		validPhone: true,
       },
       userMail: {
         required: true,
         email: true,
+		validMail: true,
         remote:{  //ajax
 			url:'/member/checkMail',
 			type:'post',
@@ -97,4 +99,22 @@ $.validator.addMethod(
   },
   "비밀번호는 영문자,숫자,특수문자의 조합으로 8~15자리로 만들어야 합니다"
 );
+
+$.validator.addMethod(
+	"validPhone",
+	function (data) {
+		const regPhone = /^\d{3}-\d{3,4}-\d{4}$/;
+		return regPhone.test(data);
+		
+	},
+	"휴대폰 양식에 맞춰주세요"
+);
+
+$.validator.addMethod(
+	"validMail",
+	function (data){
+		const regMail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		return regMail.test(data);
+	}
+)
 
