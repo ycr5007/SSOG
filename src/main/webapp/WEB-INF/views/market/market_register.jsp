@@ -13,7 +13,7 @@
 			<div class="card-body">
 				
 				<form action="" method="post">
-				<input type="hidden" value='<c:out value="${user.userNo }"  />'/>
+					<input type="hidden" value='<c:out value="${user.userNo }"  />'/>
 					<div class="form-group">
 						<label>장터 이름</label>
 						<input class="form-control" name="marketName" id="marketName" required>
@@ -53,6 +53,7 @@
 				</form>
 			</div>
 		</div>
+		
 	</div>
 </div>
 

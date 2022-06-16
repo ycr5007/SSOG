@@ -3,6 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script scr="/resources/js/bootstrap.bundle.min.js"></script>
 <script src="/resources/js/jquery.min.js"></script>
 <link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/upload.css" />
@@ -11,7 +12,6 @@
 <body>
 	<div class="card shadow mb-4 col-xl-6">
 		<div class="card-body">
-			<h4>이미지 첨부</h4>
 			<div class="form-group">
 				<input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display: none">
 				<label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>

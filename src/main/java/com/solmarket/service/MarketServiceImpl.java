@@ -25,8 +25,8 @@ public class MarketServiceImpl implements MarketService {
 
 	/* ================= 장터 참여 신청 목록 보기 ================= */
 	@Override
-	public List<ProductDTO> showReceive(int marketNo, Criteria criteria) {
-		return mapper.selectReceive(marketNo, criteria);
+	public List<ProductDTO> showReceive(int marketNo, Criteria cri) {
+		return mapper.selectReceive(marketNo, cri);
 	}
 	
 	@Override
@@ -53,8 +53,8 @@ public class MarketServiceImpl implements MarketService {
 
 	/* ================= 장터 참여 승인 목록 보기 ================= */
 	@Override
-	public List<ProductDTO> showProductAcceptList(int marketNo, Criteria criteria) {
-		return mapper.selectAcceptList(marketNo, criteria);
+	public List<ProductDTO> showProductAcceptList(int marketNo, Criteria cri) {
+		return mapper.selectAcceptList(marketNo, cri);
 	}
 	
 	@Override
@@ -70,8 +70,8 @@ public class MarketServiceImpl implements MarketService {
 	
 	/* ====================== 장터 공지 목록 보기 ====================== */
 	@Override
-	public List<NoticeDTO> showNoticeList(int marketNo, Criteria criteria) {
-		return mapper.selectNoticeList(marketNo, criteria);
+	public List<NoticeDTO> showNoticeList(int marketNo, Criteria cri) {
+		return mapper.selectNoticeList(marketNo, cri);
 	}
 	
 	@Override
@@ -87,8 +87,8 @@ public class MarketServiceImpl implements MarketService {
 	
 	/* ================== 장터 판매 상품 목록 보기 ================== */
 	@Override
-	public List<ProductDTO> ProductList(int marketNo, Criteria criteria) {
-		return mapper.selectProductList(marketNo, criteria);
+	public List<ProductDTO> ProductList(int marketNo, Criteria cri) {
+		return mapper.selectProductList(marketNo, cri);
 	}
 	
 	@Override
@@ -122,8 +122,8 @@ public class MarketServiceImpl implements MarketService {
 
 	/* ====================== 장터 후기 ====================== */
 	@Override
-	public List<ReviewDTO> ReviewList(int marketNo, Criteria criteria) {
-		return mapper.selectReviewList(marketNo, criteria);
+	public List<ReviewDTO> ReviewList(int marketNo, Criteria cri) {
+		return mapper.selectReviewList(marketNo, cri);
 	}
 	
 	@Override

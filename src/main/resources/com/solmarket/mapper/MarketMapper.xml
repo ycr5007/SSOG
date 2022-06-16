@@ -18,8 +18,8 @@
 					FROM (SELECT m.market_no as marketNo, p.product_no as productNo, p.user_no as userNo, p.product_name as productName, p.product_qn as productQN, p.product_price as productPrice, p.product_status as productStatus, p.product_date as productDate
 						FROM market m left outer join product p on m.market_no = p.market_no
 						WHERE p.market_no = #{marketNo} and product_status = 0) p left outer join myUser u on p.userNo = u.user_no) statusList
-				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
-			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+				WHERE rownum <= (#{cri.pageNum} * #{cri.amount}))
+			WHERE r > ((#{cri.pageNum} - 1) * #{cri.amount})
 		]]>
 	</select>
 <!-- ====================== 신청 상품 총 개수 (상품 상태 0 & 장터 번호) ====================== --> 
@@ -54,8 +54,8 @@
 					FROM (SELECT m.market_no as marketNo, p.product_no as productNo, p.user_no as userNo, p.product_name as productName, p.product_qn as productQN, p.product_price as productPrice, p.product_status as productStatus, p.product_date as productDate
 						FROM market m left outer join product p on m.market_no = p.market_no
 						WHERE p.market_no = #{marketNo} and product_status = 1) p left outer join myUser u on p.userNo = u.user_no) list
-				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
-			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+				WHERE rownum <= (#{cri.pageNum} * #{cri.amount}))
+			WHERE r > ((#{cri.pageNum} - 1) * #{cri.amount})
 		]]>
 	</select>
 <!-- ====================== 승인 상품 총 개수 (상품 상태 1 & 장터 번호) ====================== -->
@@ -89,8 +89,8 @@
 				FROM notice
 				WHERE market_no = #{marketNo}
 				ORDER BY notice_no DESC) list
-			WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
-		WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+			WHERE rownum <= (#{cri.pageNum} * #{cri.amount}))
+		WHERE r > ((#{cri.pageNum} - 1) * #{cri.amount})
 	]]>
 	</select>
 <!-- ====================== 장터 공지 총 개수 ====================== -->
@@ -113,8 +113,8 @@
 					FROM (SELECT m.market_no as marketNo, p.product_no as productNo, p.user_no as userNo, p.product_name as productName, p.product_qn as productQN, p.product_price as productPrice, p.product_status as productStatus, p.product_date as productDate
 						FROM market m left outer join product p on m.market_no = p.market_no
 						WHERE p.market_no = #{marketNo} and product_status = 3) p left outer join myUser u on p.userNo = u.user_no) list
-				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
-			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+				WHERE rownum <= (#{cri.pageNum} * #{cri.amount}))
+			WHERE r > ((#{cri.pageNum} - 1) * #{cri.amount})
 		]]>
 	</select>
 <!-- ====================== 판매 상품 총 개수 ====================== -->
@@ -143,8 +143,8 @@
 						FROM market m left outer join review r on m.market_no = r.market_no
 						WHERE r.market_no = #{marketNo} and r.review_status = 1
 						ORDER BY m.market_no DESC) review left outer join myUser u on review.userNo = u.user_no) list
-				WHERE rownum <= (#{criteria.pageNum} * #{criteria.amount}))
-			WHERE r > ((#{criteria.pageNum} - 1) * #{criteria.amount})
+				WHERE rownum <= (#{cri.pageNum} * #{cri.amount}))
+			WHERE r > ((#{cri.pageNum} - 1) * #{cri.amount})
 		]]>
 	</select>
 <!-- ====================== 장터 후기 총 개수 ====================== -->

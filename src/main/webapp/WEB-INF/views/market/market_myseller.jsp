@@ -52,7 +52,7 @@
 	
 							<c:forEach var="idx" begin="${pageDTO.startPage}" end="${pageDTO.endPage}">
 								<!-- 선택한 페이지 번호 색 채우기 -->
-								<li class="page-item ${pageDTO.criteria.pageNum==idx?'active':''}">
+								<li class="page-item ${pageDTO.cri.pageNum==idx?'active':''}">
 									<a class="page-link" href="${idx}">${idx}</a>
 								</li>
 							</c:forEach>
@@ -82,8 +82,8 @@
 <!-- URL + 페이징 처리 -->
 <form action="/market/market_myseller" id="actionForm">
 	<input type="hidden" name="marketNo" value="${marketNo}" />
-	<input type="hidden" name="pageNum" value="${criteria.pageNum }" />
-	<input type="hidden" name="amount" value="${criteria.amount }" />
+	<input type="hidden" name="pageNum" value="${cri.pageNum }" />
+	<input type="hidden" name="amount" value="${cri.amount }" />
 </form>
 
 <%@ include file="../include/manager_footer.jsp"%>

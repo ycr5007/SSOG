@@ -58,9 +58,9 @@
 										src="https://cdn.pixabay.com/photo/2017/01/06/18/28/essential-oils-1958550_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">에센셜 오일</h4>
+										<p class="card-text">10,000원</p>
+										<p class="card-text">판매자 김모씨</p>
 									</div>
 								</div>
 							</div>
@@ -71,9 +71,9 @@
 										src="https://cdn.pixabay.com/photo/2018/09/14/11/12/food-3676796_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">한 입 스테이크</h4>
+										<p class="card-text">20,000원</p>
+										<p class="card-text">판매자 이모씨</p>
 									</div>
 								</div>
 							</div>
@@ -84,9 +84,9 @@
 										src="https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">스트라이프 니트</h4>
+										<p class="card-text">19,900원</p>
+										<p class="card-text">판매자 박모씨</p>
 									</div>
 								</div>
 							</div>
@@ -105,9 +105,9 @@
 										src="https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">스트라이프 니트</h4>
+										<p class="card-text">19,900원</p>
+										<p class="card-text">판매자 박모씨</p>
 									</div>
 								</div>
 							</div>
@@ -118,9 +118,9 @@
 										src="https://cdn.pixabay.com/photo/2017/01/06/18/28/essential-oils-1958550_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">에센셜 오일</h4>
+										<p class="card-text">10,000원</p>
+										<p class="card-text">판매자 김모씨</p>
 									</div>
 								</div>
 							</div>
@@ -131,9 +131,9 @@
 										src="https://cdn.pixabay.com/photo/2018/09/14/11/12/food-3676796_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">한 입 스테이크</h4>
+										<p class="card-text">20,000원</p>
+										<p class="card-text">판매자 이모씨</p>
 									</div>
 								</div>
 							</div>
@@ -152,9 +152,9 @@
 										src="https://cdn.pixabay.com/photo/2018/09/14/11/12/food-3676796_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">한 입 스테이크</h4>
+										<p class="card-text">20,000원</p>
+										<p class="card-text">판매자 이모씨</p>
 									</div>
 								</div>
 							</div>
@@ -165,9 +165,9 @@
 										src="https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">스트라이프 니트</h4>
+										<p class="card-text">19,900원</p>
+										<p class="card-text">판매자 박모씨</p>
 									</div>
 								</div>
 							</div>
@@ -178,9 +178,9 @@
 										src="https://cdn.pixabay.com/photo/2017/01/06/18/28/essential-oils-1958550_960_720.jpg"
 										alt="Card image cap">
 									<div class="card-body">
-										<h4 class="card-title">상품명</h4>
-										<p class="card-text">가격</p>
-										<p class="card-text">판매자</p>
+										<h4 class="card-title">에센셜 오일</h4>
+										<p class="card-text">10,000원</p>
+										<p class="card-text">판매자 김모씨</p>
 									</div>
 								</div>
 							</div>

@@ -33,12 +33,12 @@
 
 			<!-- 장터 상태가 1 or 2인 경우 -->			
 			<!-- 장터 이미지 -->
-			<c:if test="${marketStatus == 1 || marketStatus == 2}">
+			<c:if test="${marketStatus != null}">
 				<div class="col-xl-12 col-lg-7">
 					<div class="card mb-4">
 						<div class="card-body">
 							<div class="chart-area">
-								<a href="/market/market_detail">
+								<a href="/market/market_detail?marketNo=${marketNo}">
 									<!-- marketNo에 해당하는 이미지 가져오기 -->
 									<img src="/resources/img/market.PNG" style="width: 100%; height: 100%" />
 								</a>
@@ -168,7 +168,8 @@
 					</div>
 				</div>
 			</div>
-
+		</div>
+		
 <!-- URL + 페이징 처리 -->
 <form action="/manager_index" id="actionForm">
 	<input type="hidden" value='<c:out value="${userNo}"  />'/>
