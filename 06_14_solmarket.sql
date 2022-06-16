@@ -8,6 +8,8 @@ CREATE TABLE auth_request(
 	authority varchar2(50) NOT NULL
 );
 
+
+
 ALTER TABLE auth_request ADD constraint FK_REQ_AUTH foreign key(user_id) references myuser(user_id) ON DELETE CASCADE;
 
 -- 테이블 추가
