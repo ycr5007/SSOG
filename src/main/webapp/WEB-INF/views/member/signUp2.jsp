@@ -8,9 +8,7 @@
 <!-- 콘텐츠 시작 -->
 <section class="bg-dark">
 	<div id="bodystyle" style="overflow:auto; width:auto; height:600px; color: white; ">      	
-		<div class="container border-0 bg-dark" style="width:550px; height:420px; align-content: center">
-			    
-			<div class="container" style="padding: 10px 10px 10px 10px">
+		<div class="container border-0 bg-dark" style="width:550px; height:420px; align-content: center; padding: 10px 10px 10px 10px" >
 				<img src="../resources/img/signup_logo.png"/>
 				
 				<form id="regist" method="post" action="/member/regist">
@@ -86,22 +84,22 @@
 			                id="userPhone"
 			                name="userPhone"
 			                class="form-control"
-			                placeholder="010 xxxx xxxx"
+			                placeholder="010 0000 0000"
 			              />
 			              <small id="userPhone" class="text-info"></small>
 			          </div>
 			        </div>
 			        
 			        <!-- 이메일 -->
-			   		<div class="form-group row justify-content-center">
-			          <label for="email" class="col-sm-5 col-form-label">이메일</label>
+			        <div class="form-group row justify-content-center">
+			          <label for="email" class="col-sm-5 col-form-label">이메일 </label>
 			          <div class="textForm col-sm-7">
 			            <input
 			              type="email"
 			              name="userMail"
 			              id="userMail"
-			              class="mail_input"
-			              placeholder="example@gmail.com"
+			              class="form-control mail_input"
+			              placeholder="example@mail.com"
 			              required
 			            />
 			            <small id="userMail" class="text-info"></small>
@@ -110,13 +108,13 @@
 			        
 			        <!-- 인증번호 전송 -->
 			        <div class="form-group row justify-content-center">
-			            <div class="mail_input_box_warn">	
-							<div class="textForm col-sm-7">
+			        	<label for="confirmemail" class="mail_check_button col-sm-5 col-form-label">
+									<button type="button" class="btn btn-info">인증번호전송</button>
+			        	</label>			        	
+						<div class="textForm col-sm-7">
+			            	<div class="mail_input_box_warn form-control">	
 								<div class="mail_check_input_box" id="mail_check_input_box_false">
 									<input class="mail_check_input" disabled="disabled">
-								</div>
-								<div class="mail_check_button">
-									<span>인증번호 전송</span>
 								</div>
 								<div class="clearfix"></div>
 									<span id="mail_check_input_box_warn"></span>
@@ -125,10 +123,13 @@
 					</div>
 					
 					<!-- 주소검색 + 주소입력 -->
-					<div class="d-flex justify-content-start">
-					<!-- <button type="button" class="btn btn-info" onClick="location.href='/member/jusoPopup'" >주소 검색</button> -->
-						<button type="button" class="btn btn-info" onClick="goPopup();" style="width:50%;" >주소검색</button>
-			        	<input type="text" name="userAddress" id="userAddress" class="form-control" placeholder="Enter Address" required readonly>
+					<div class="form-group row justify-content-center">
+						<label for="adress" class="col-sm-5 col-form-label">
+							<button type="button" class="btn btn-info" onClick="goPopup();">주소검색</button>
+						</label>
+						<div class="textForm col-sm-7">
+				        	<input type="text" name="userAddress" id="userAddress" class="form-control" placeholder="상세주소입력" required readonly>
+			        	</div>
 			        </div>
 			        
 			        <!-- 가입하기-->
@@ -141,7 +142,6 @@
 				</form>
 			</div>
 	     </div>     
-     </div>
 </section>
 <!-- 콘텐츠 종료 -->
      

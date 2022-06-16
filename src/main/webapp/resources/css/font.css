@@ -1,0 +1,37 @@
+
+/* 퐅트 */
+
+@font-face {
+    font-family: 'PyeongChangPeace-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KOTRA_BOLD-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Typography */
+body, ul, li, p, a, label, input, div {
+  font-family: 'PyeongChangPeace-Light', sans-serif;
+  font-size: 18px ;
+  font-weight: 300;
+}
+.h1 {
+  font-family: 'PyeongChangPeace-Light', sans-serif;
+  font-size: 48px !important;
+  font-weight: 200 !important;
+}
+.h2 {
+  font-family: 'PyeongChangPeace-Light', sans-serif;
+  font-size: 30px !important;
+  font-weight: 300;
+}
+.h3 {
+  font-family: 'PyeongChangPeace-Light', sans-serif;
+  font-size: 22px !important;
+}
