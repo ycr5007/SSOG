@@ -3,7 +3,6 @@
 	
 <script>
 	alert('계정이 비활성화 되었습니다.');
-	history.back();
 </script>
 
 
