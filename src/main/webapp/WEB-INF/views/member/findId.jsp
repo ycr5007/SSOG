@@ -19,10 +19,11 @@
 		});
 	});
 </script>
+<link rel="stylesheet" href="/resources/css/formctrl.css">
 
-<link rel="stylesheet" href="/resources/css/y.css">
-<div class="wrapper">
-    <div class="center">
+<section class="bg-dark">
+	<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">      	
+		<div class="container border-0 bg-dark" style="width:400px; height:420px;  align-content: center">
       <h1>아이디 찾기</h1>
       <form action="/member/findId" method="post">
         <div class="txt_field">
@@ -36,5 +37,5 @@
       </form>
     </div>
 </div>
-
+</section>
 <%@ include file="../include/footer.jsp" %>
