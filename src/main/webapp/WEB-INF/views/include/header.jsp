@@ -150,16 +150,19 @@
 						
 						<sec:authorize access="isAuthenticated()">
 							<sec:authentication property="principal" var="info"/>
-							<c:if test="${info.authorities = 'ROLE_ADMIN'}">
-							<a class="dropdown-item" href="/member/logout">로그아웃</a>
+							<c:if test="${info.authorities == 'ROLE_ADMIN'}">
 							<a class="dropdown-item" href="/admin/index">관리자페이지</a>
 							</c:if>
 						</sec:authorize>
 						
-				<%-- 		<sec:authorize access="hasROLE('seller')">
-							<a class="dropdown-item" href="/member/logout">로그아웃</a>
+						<sec:authorize access="isAuthenticated()">
+							<sec:authentication property="principal" var="info"/>
+							<c:if test="${info.username == 'xxx'}">
 							<a class="dropdown-item" href="/product/product_index">판매자페이지</a>
-						</sec:authorize> --%>
+							</c:if>
+						</sec:authorize>
+						
+						
 					   </div>
 					 </div>
 					 <!-- 마이메뉴 icon + 드롭다운창 종료 -->   

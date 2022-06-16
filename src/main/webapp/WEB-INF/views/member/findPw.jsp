@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp"%>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/resources/css/y.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 <script>
@@ -28,7 +27,7 @@
 		<div class="center card mb-1 border-0 bg-dark"
 			style="width: auto; height: 420px; align-content: center">
 			<h1>비밀번호 찾기</h1>
-			<form action="/member/findPw" method="post">
+			<form action="/member/findPwResult" method="post">
 				<div class="txt_field">
 					<input type="text" name="userId" id="userId" placeholder = "아이디" required/>
 				</div>
@@ -50,8 +49,7 @@
 						<span id="pw_check_input_box_warn"></span>
 					</div>
 				</div>
-				<input type="submit" value="임시비밀번호">
-				</button>
+				<input type="submit" value="임시비밀번호" />
 				<input type="hidden" name="${_csrf.parameterName }"
 					value="${_csrf.token }" />
 			</form>
@@ -61,6 +59,9 @@
 
 
 <script>
+let csrfHeaderName = "${_csrf.headerName}";
+let csrfTokenValue = "${_csrf.token}";
+
 	var code = ""; // 인증번호 저장
 
 	$(".pw_check_button").click(function() {
@@ -73,8 +74,11 @@
 
 		$.ajax({
 
-			type : "GET",
+			type : "POST",
 			url : "pwMail?userMail= " + userMail,
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(csrfHeaderName, csrfTokenValue);
+			},
 			success : function(data) {
 
 				// console.log("data :" + data);

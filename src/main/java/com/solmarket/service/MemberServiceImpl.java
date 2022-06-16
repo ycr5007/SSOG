@@ -175,8 +175,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 
 	@Override
-	public String updatePw(String userMail) {
-		return mapper.updatePw(userMail);
+	public void updatePw(String userMail) {
 	}
 
 	@Override

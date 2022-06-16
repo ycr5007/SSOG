@@ -3,6 +3,9 @@
 <%@ include file="../include/header.jsp" %>
 <link rel="stylesheet" href="/resources/css/y.css">
 <!-- validation 사용자 작성 코드 삽입-->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script>
 <script src="/resources/js/register.js"></script>
 
 <!-- 콘텐츠 시작 -->

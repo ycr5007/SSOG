@@ -22,7 +22,7 @@ public interface MemberMapper {
 	
 	public int delete(String userId);
 
-	public String updatePw(String userMail);
+	public void updatePw(String userMail);
 	
 	public String authMail(String userMail);
 	
