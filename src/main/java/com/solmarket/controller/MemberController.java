@@ -6,16 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-//import com.solmarket.dto.ChangeDTO;
-import com.solmarket.dto.AuthDTO;
 import com.solmarket.dto.UserDTO;
 import com.solmarket.service.MemberService;
 
@@ -48,10 +44,11 @@ public class MemberController {
 	}
 
 	@PostMapping("/regist")
-	public String regist(UserDTO regist) {
+	public String regist(UserDTO regist, RedirectAttributes rttr) {
 		log.info("회원가입 요청" + regist);
 
 		if (service.register(regist)) {
+			rttr.addFlashAttribute("regist", "회원가입되었습니다.");
 			return "redirect:/member/login";
 		}
 		return "/member/signUp2";
@@ -65,13 +62,14 @@ public class MemberController {
 
 	@GetMapping("/login-error")
 	public String loginError(RedirectAttributes rttr) {
-		rttr.addFlashAttribute("error", "아이디 비밀번호 확인");
-		return "/member/login";
+		rttr.addFlashAttribute("error", "아이디 비밀번호 확인해주세요");
+		return "redirect:/member/login";
 	}
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		log.info("로그아웃");
+		
 		session.invalidate();
 		return "redirect:/";
 	}
