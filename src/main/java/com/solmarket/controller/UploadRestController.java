@@ -49,8 +49,8 @@ public class UploadRestController {
 			height = 200;
 			break;
 		case "market" : // market_img
-			width = 0;
-			height = 0;
+			width = 150;
+			height = 200;
 			break;
 		case "product" : // product_img
 			width = 150;
@@ -61,8 +61,8 @@ public class UploadRestController {
 			height = 0;
 			break;
 		case "recruit" : // recruit_img
-			width = 0;
-			height = 0;
+			width = 150;
+			height = 200;
 			break;
 		case "board" : // board_img
 			width = 0;
