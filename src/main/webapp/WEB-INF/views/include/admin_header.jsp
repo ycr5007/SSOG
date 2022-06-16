@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 	<!-- Style -->
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
-	<!-- MetisMenu CSS -->
+	<link rel="stylesheet" href="/resources/css/admin.css" />
 	<script src="/resources/vendor/chart.js/Chart.min.js"></script>
 	<script src="/resources/js/jquery.min.js"></script>
 	<title>쏠장터 사이트 관리자</title>
@@ -63,11 +63,19 @@
 
 			<!-- 공지사항 - 마켓운영자로부터 공지사항 요청 확인 및 승인 작업 -->
 			<li class="nav-item">
-				<a class="nav-link" href="#">
-					<i class="fas fa-fw fa-edit"></i>
-					<span>공지사항</span>
-				</a>
-			</li>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-edit"></i>
+                    <span>공지사항</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/admin/notice">공지사항 요청확인</a>
+                        <a class="collapse-item" href="/notice/notice_list">공지사항 페이지</a>
+                    </div>
+                </div>
+            </li>
+			
 
 			<!-- 게시판 관리 - 악성 및 광고성 게시글 삭제 -->
 			<li class="nav-item">

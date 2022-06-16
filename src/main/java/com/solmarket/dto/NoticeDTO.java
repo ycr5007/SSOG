@@ -19,6 +19,9 @@ public class NoticeDTO {
 	private String noticeCategory; // 공지 구분
 	private int noticeStatus; // 공지 상태
 	
-	private String dummy; // Join 활용 추가 데이터
+	private String dummy1; // Join 활용 추가 데이터
+	private String dummy2; // Join 활용 추가 데이터
+	
+	private MarketDTO market;
 	private List<AttachDTO> attachList; // 파일첨부 리스트
 }

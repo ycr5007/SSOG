@@ -7,7 +7,7 @@
 
 <!-- 콘텐츠 시작 -->
 <section class="bg-dark">
-	<div id="signup2" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px;">      	
+	<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px;">      	
 		<div class="center card mb-3 border-0 bg-dark" style="width:auto; height:420px; align-content: center">
 			    
 			<div class="container">

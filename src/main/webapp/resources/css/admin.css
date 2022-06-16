@@ -48,7 +48,6 @@
 	display: none;
 	top: 0%;
 	width: 100%;
-	height: 100%;
 	background-color: #dfdfdf;
 	z-index: 10;
 }
@@ -56,4 +55,15 @@
 .detail-data{
 	position: relative;
 	display: flex;
+}
+
+.col-height{
+	height: 50px;
+}
+
+
+/* notice 디자인 */
+.notice-row:hover{
+	transform: scale(1.01);
+	font-weight: bold;
 }

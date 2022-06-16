@@ -30,5 +30,12 @@ public interface AdminService {
 	// Market Request List
 	List<MarketDTO> getreqMakretList(Criteria cri);
 	int getMarketCount();
+	boolean accessMarket(int marketNo);
+	boolean refuseMarket(int marketNo);
 	
+	// Notice Request Count
+	List<NoticeDTO> getreqNoticeList(Criteria cri);
+	int getNoticeCount();
+	boolean accessNotice(int noticeNo);
+	boolean refuseNotice(int noticeNo);
 }

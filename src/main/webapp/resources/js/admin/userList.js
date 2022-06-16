@@ -18,21 +18,6 @@ $(function(){
 		operForm.attr('action','/admin/user');
 		operForm.submit();
 	})
-	
-	
-	// 회원 권한별 검색
-	$("#inlineFormCustomSelect").change(function(){
-		let keyword = operForm.find("[name='keyword']");
-		if(keyword.val() == ''){
-			keyword.remove();
-		}
-		
-		operForm.find("[name='pageNum']").val(1);
-		operForm.attr('action','/admin/user');
-		operForm.submit();
-	})
-	
-
 })
 
 
@@ -41,6 +26,7 @@ function getDetailUser(userNo){
 	$.getJSON({
 		url:'/admin/user/' + userNo,
 		success:function(result){
+			console.log(result);
 			showDetail(result);
 		}
 	})
@@ -48,20 +34,20 @@ function getDetailUser(userNo){
 
 function showDetail(data){
 	let str = "";
-	str += "<div class='row'>";
+	str += "<div class='row' style='width: 50%'>";
 	str += "<div class='col-lg-12'>";
-	str += "<div class='card shadow m-5' style='width: 34rem; height:88%;'>";
+	str += "<div class='card shadow m-5 h-75 w-75'>";
 	str += "<div class='card-header py-3 d-flex flex-row align-items-center justify-content-between'><h6 class='m-0 font-weight-bold text-primary'>회원정보</h6></div>"
-	str += "<div class='card-body'><table class='table table-bordered'>"
+	str += "<div class='card-body'><table class='table table-bordered text-center'>"
 	str += "<tr><th class='col-lg-2'>아이디</th>"
 	str += "<td class='col-lg-2'>" + data.userId + "</td>"
 	str += "<th class='col-lg-2'>권한</th>"
-	str += "<td class='col-lg-2'>" + data.userAuth + "</td>"
+	str += "<td class='col-lg-2'>" + (data.authorities.length > 1 ? data.authorities[1].authority : data.authorities[0].authority) + "</td>"
 	str += "<th class='col-lg-2'>상태</th>"
 	str += "<td class='col-lg-2'>" + (data.userStatus > 0 ? '회원' : '탈퇴') + "</td></tr>"
 	str += "<tr><td rowspan='2' colspan='2'><img src='https://via.placeholder.com/150x200'></td>"
-	str += "<th colspan='4'>프로필 문구</th></tr>"
-	str += "<tr><td colspan='4'>" + data.userProfile + "</td></tr>"
+	str += "<th colspan='4' class='col-height'>프로필 문구</th></tr>"
+	str += "<tr><td colspan='4'>" + (data.userProfile == null ? '' : data.userProfile) + "</td></tr>"
 	str += "<tr><th colspan='2'>이름</th>"
 	str += "<td colspan='4'>" + data.userName + "</td></tr>"
 	str += "<tr><th colspan='2'>주소</th>"
@@ -75,9 +61,9 @@ function showDetail(data){
 	str += "</table>"
 	str += "</div></div></div></div>";
 	
-	str += "<div class='row'>";
+	str += "<div class='row' style='width: 50%'>";
 	str += "<div class='col-lg-12'>";
-	str += "<div class='card shadow m-5' style='width: 32rem; height:88%;'>";
+	str += "<div class='card shadow m-5 h-75 w-75'>";
 	str += "<div class='card-header py-3 d-flex flex-row align-items-center justify-content-between'><h6 class='m-0 font-weight-bold text-primary'>최근활동 ( 미완 )</h6></div>"
 	str += "<div class='card-body'><table class='table table-bordered'>"
 	str += "<tr><th class='col-lg-2'>분류</th>"
@@ -91,7 +77,7 @@ function showDetail(data){
 	str += "</div></div></div></div>";	
 	$(".data-wrapper").css("display", "flex").show();
 	$(".detail-data").css("width", "100%");
-	$(".detail-data").css("height", "100%");
+	$(".detail-data").css("height", "880px");
 	$(".detail-data").html(str);
 }
 

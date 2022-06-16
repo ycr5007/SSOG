@@ -9,9 +9,9 @@
 				<div class="card shadow mb-4">
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">장터신청</h6>
-						<a href="#">more</a>
+						<a href="/admin/market">more</a>
 					</div>
-					<div class="card-body list-card">
+					<div class="card-body list-card section">
 						<table class="table">
 							<tr>
 								<th>번호</th>
@@ -36,9 +36,9 @@
 				<div class="card shadow mb-4">
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">공지사항 신청</h6>
-						<a href="#">more</a>
+						<a href="/admin/notice">more</a>
 					</div>
-					<div class="card-body list-card">
+					<div class="card-body list-card section">
 						<table class="table">
 							<tr>
 								<th>번호</th>

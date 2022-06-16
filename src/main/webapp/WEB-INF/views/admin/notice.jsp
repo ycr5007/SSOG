@@ -1,44 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../include/admin_header.jsp" %>
-<link rel="stylesheet" href="/resources/css/admin.css" />
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="card shadow mb-4">
 					<form action="" id="operForm">
 						<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-							<h6 class="m-0 font-weight-bold text-primary">회원목록</h6>
+							<h6 class="m-0 font-weight-bold text-primary">공지사항 요청목록</h6>
 							<div class="col-auto my-1">
 								<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
 							</div>
 						</div>
-						<div class="data-wrapper">
-							<div class="detail-data"></div>
-						</div>
 						<div class="card-body">
 							<table class="table">
 								<tr class="column-header">
-									<th>권한</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>이메일</th>
-									<th>회원상태</th>
+									<th class="col-lg-1">분류</th>
+									<th class="col-lg-3">장터명</th>
+									<th class="col-lg-4">제목</th>
+									<th class="col-lg-2">작성일</th>
+									<th class="col-lg-1">승인</th>
+									<th class="col-lg-1">거부</th>
 								</tr>
-							<c:forEach items="${list }" var="user">
-								<tr class="list-select row-data" onclick="getDetailUser(${user.userNo})">
-									<td>
-										<c:choose>
-											<c:when test="${fn:length(user.authorities) > 1 }">${user.authorities[1].authority }</c:when>
-											<c:otherwise>${user.authorities[0].authority }</c:otherwise>
-										</c:choose>
-									</td>
-									<td>${user.userId }</td>
-									<td>${user.userName }</td>
-									<td>${user.userMail }</td>
-									<td>${user.userStatus }</td>
-									
+							<c:forEach items="${list }" var="notice">
+								<tr class="row-data">
+									<td>${notice.noticeCategory }</td>
+									<td>${notice.dummy }</td>
+									<td>${notice.noticeTitle }</td>
+									<td><fmt:formatDate value="${notice.noticeDate }" pattern="yyyy-MM-dd"/></td>
+									<td><button type="button" class="btn btn-outline-primary btn-sm access" value="${notice.noticeNo }">승인</button></td>
+									<td><button type="button" class="btn btn-outline-danger btn-sm refuse" value="${notice.noticeNo }">거부</button></td>
 								</tr>
 							</c:forEach>
 							</table>
@@ -59,7 +51,7 @@
 						<!-- 페이징 처리 -->
 						</div>
 						<input type="hidden" name="pageNum" value="1" />
-						<input type="hidden" name="amount" value="10" />
+						<input type="hidden" name="amount" value="25" />
 					</form>
 				</div>
 			</div>
@@ -67,9 +59,5 @@
 	</div>
 </div>
 <!-- End of Main Content -->
-<script>
-	let csrfHeaderName = "${_csrf.headerName}";
-	let csrfTokenValue = "${_csrf.token}";
-</script>
-<script src="/resources/js/admin/userList.js"></script>
+<script src="/resources/js/admin/noticeList.js"></script>
 <%@ include file="../include/manager_footer.jsp" %>

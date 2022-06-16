@@ -83,5 +83,33 @@ public class AdminServiceImpl implements AdminService{
 	public int getMarketCount() {
 		return adminMapper.getMarketCount();
 	}
+	@Override
+	public boolean accessMarket(int marketNo) {
+		return adminMapper.accessMarket(marketNo) > 0;
+	}
+	@Override
+	public boolean refuseMarket(int marketNo) {
+		return adminMapper.refuseMarket(marketNo) > 0;
+	}
+	
+	// noticeRequest 페이지
+	@Override
+	public List<NoticeDTO> getreqNoticeList(Criteria cri) {
+		return adminMapper.getreqNoticeList(cri);
+	}
+	@Override
+	public int getNoticeCount() {
+		return adminMapper.getNoticeCount();
+	}
+	
+	@Override
+	public boolean accessNotice(int noticeNo) {
+		return adminMapper.accessNotice(noticeNo) > 0;
+	}
+	
+	@Override
+	public boolean refuseNotice(int noticeNo) {
+		return adminMapper.refuseNotice(noticeNo) > 0;
+	}
 	
 }
