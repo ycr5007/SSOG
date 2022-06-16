@@ -27,7 +27,7 @@
 						<c:forEach var="product" items="${product}" varStatus="status">
 							<tr>
 								<td>${status.count}</td>
-								<td>${img}&nbsp;${product.productName}</td>
+								<td>${product.productName}</td>
 								<td>${product.userName}</td>
 								<td>${product.productQN}</td>
 								<td>${product.productPrice}</td>

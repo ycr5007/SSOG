@@ -4,8 +4,8 @@
 
 <!-- ====================== 장터 등록 (장터 상태 0) ====================== --> 
 	<insert id="insert">
-		INSERT INTO market(market_no, user_no, market_name, market_loc, market_sd, market_ed, market_rate, market_status) 
-		VALUES(market_seq.nextval, #{userNo}, #{marketName}, #{marketLoc}, to_date(replace(#{marketSD},'T',''), 'YYYY-MM-DD HH:MI'), to_date(replace(#{marketED},'T',''), 'YYYY-MM-DD HH:MI'), 0.0, 0)
+		INSERT INTO market(market_no, user_no, market_name, market_loc, market_sd, market_ed) 
+		VALUES(market_seq.nextval, #{userNo}, #{marketName}, #{marketLoc}, to_date(replace(#{marketSD},'T',''), 'YYYY-MM-DD HH:MI'), to_date(replace(#{marketED},'T',''), 'YYYY-MM-DD HH:MI'))
 	</insert>
 
 <!-- ========================= 장터 참여 신청 목록 보기 ========================= --> 

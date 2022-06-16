@@ -132,7 +132,22 @@ $(function() {
 			return;
 		}
 		
-		$("form").submit();
+		let str = "";
+		
+		// li 태그 정보 수집하기
+		$(".uploadResult ul li").each(function(idx, obj) {
+			var img = $(obj);
+			
+			str += "<input type='hidden' name='attachList[" + idx + "].uuid' value='" + img.data("uuid") + "'>";
+			str += "<input type='hidden' name='attachList[" + idx + "].uploadPath' value='" + img.data("path") + "'>";
+			str += "<input type='hidden' name='attachList[" + idx + "].fileName' value='" + img.data("filename") + "'>";
+			str += "<input type='hidden' name='attachList[" + idx + "].no' value='" + ${marketNo} + "'>";
+		})
+		
+		console.log("form 태그 삽입 전 : " + str);
+		
+		// form 보내기
+		$("form").append(str).submit();
 	});
 	
 	// 뒤로가기 버튼 클릭 시

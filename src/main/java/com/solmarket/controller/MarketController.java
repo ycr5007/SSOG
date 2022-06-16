@@ -158,10 +158,8 @@ public class MarketController {
 	public void seller_list(int marketNo, @ModelAttribute("cri")Criteria cri, Model model) {
 		log.info("[GetMapping] ========== 장터 참여자 리스트 호출 ==========");
 		List<ProductDTO> list = service.ProductList(marketNo, cri);
-		List<AttachDTO> img = service.showProductImg(marketNo);
 		PageDTO pageDTO = new PageDTO(cri, service.TotalProduct(marketNo));
 		model.addAttribute("marketNo", marketNo);
-		model.addAttribute("img", img);
 		model.addAttribute("product", list);
 		model.addAttribute("pageDTO", pageDTO);
 	}
