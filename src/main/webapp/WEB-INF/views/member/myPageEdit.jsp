@@ -92,7 +92,7 @@
 						<button type="submit" class="btn btn-secondary send-data"
 							formaction="/member/update">정보수정</button>
 						<button type="submit" class="btn btn-secondary"
-							formaction="/member/leave">회원탈퇴</button>
+							formaction="/member/leaveResult">회원탈퇴</button>
 					</div>	
 					<input type="hidden" name="${_csrf.parameterName }"
 						value="${_csrf.token }" />
@@ -107,8 +107,7 @@
 </section>
 <!-- 콘텐츠 종료 -->
 
-<!-- validation 사용자 작성 코드 삽입-->
-	<script src="/resources/js/register.js"></script>
+
 <!-- 스크립트 -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

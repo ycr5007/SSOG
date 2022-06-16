@@ -1,7 +1,7 @@
 -- user테이블 칼럼추가
 -- req_auth : 권한요청(SELLER : 1 / MANAGER : 2)
 ALTER TABLE myuser add req_auth number(2) default 0;
-select * from myuser;
+
 -- 권한요청 테이블 추가
 CREATE TABLE auth_request(
 	user_id VARCHAR2(12) NOT NULL,
@@ -9,8 +9,7 @@ CREATE TABLE auth_request(
 );
 
 ALTER TABLE auth_request ADD constraint FK_REQ_AUTH foreign key(user_id) references myuser(user_id) ON DELETE CASCADE;
-select * from myuser_auth;
-update myuser_auth set authority = 'ROLE_MANAGER' where user_id = 'aaa';
+
 -- 테이블 추가
 CREATE TABLE recruit_img (
 	uuid varchar2(100) not null,
