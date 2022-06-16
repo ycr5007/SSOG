@@ -53,8 +53,8 @@ public class UploadRestController {
 			height = 0;
 			break;
 		case "product" : // product_img
-			width = 0;
-			height = 0;
+			width = 150;
+			height = 200;
 			break;
 		case "notice" : // notice_img
 			width = 0;

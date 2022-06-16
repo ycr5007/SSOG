@@ -104,8 +104,7 @@
 									<c:forEach var="dto" items="${mList}" end="4">
 										<tr>
 											<td>${dto.marketName}</td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
-													value="${dto.marketSD}" /></td>
+											<td>${dto.marketSD}</td>
 											<td>${dto.marketLoc}</td>
 										</tr>
 									</c:forEach>
@@ -116,7 +115,7 @@
 				</div>
 			</div><!-- 오픈 예정 장터 end -->
 			
-			
+
 			<!-- 상품 리스트 start-->
 			<div class="col-xl-6">
 				<div class="card shadow mb-4">
