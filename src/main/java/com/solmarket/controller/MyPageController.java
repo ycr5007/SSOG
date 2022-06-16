@@ -78,13 +78,13 @@ public class MyPageController {
 	}
 	
 	// 탈퇴 폼(leave) 보여주기
-	@GetMapping("/leave")
+	@GetMapping("/leaveResult")
 	public void leave() {
 		log.info("탈퇴 요청");
 	}
 			
 	// 탈퇴 post
-	@PostMapping("/leave")
+	@PostMapping("/leaveResult")
 	public String leavePost(String userId, HttpSession session) {
 		log.info("탈퇴 요청"+ userId);
 		
@@ -92,7 +92,7 @@ public class MyPageController {
 		
 		if (result > 0 ) {
 			session.invalidate();
-			return "redirect:/member/leaveResult";
+			return "redirect:/";
 		} else {
 			return "redirect:/member/myPageEdit";
 		}

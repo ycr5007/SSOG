@@ -76,8 +76,8 @@
 				<div class="form-group text-center">
 					<button type="submit" class="btn btn-primary2 send-data"
 						formaction="/member/update">정보수정</button>
-					<button type="submit" class="btn btn-secondary"
-						formaction="/member/leave">회원탈퇴</button>
+					<button type="submit" class="btn btn-secondary send-data"
+						formaction="/member/leaveResult">회원탈퇴</button>
 				</div>
 
 				<input type="hidden" name="${_csrf.parameterName }"
