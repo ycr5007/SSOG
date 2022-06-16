@@ -9,7 +9,7 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			<h2 class="page-header">재고 상점 등록</h2>
+			<h2 class="page-header">온라인 상품 등록</h2>
 		</div>
 	</div>
 	<div class="row">

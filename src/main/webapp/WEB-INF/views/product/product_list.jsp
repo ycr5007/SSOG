@@ -41,7 +41,7 @@
 									<td>${dto.userName}</td>
 									<td><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
 									<td>${dto.productPrice}</td>
-									<td>${dto.productDate}</td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
 									<td>${dto.productStatus}</td>
 								</tr>
 							</c:forEach>
