@@ -38,5 +38,6 @@ public interface ProductService {
 	public List<ProductDTO> remainList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
 	// 장터 종료 후 남은 상품 리스트 페이징
 	public int remainTotal(int userNo);
-
+	// 검색
+	public List<ProductDTO> getSearchList(String productName);
 }

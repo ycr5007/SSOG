@@ -7,10 +7,10 @@
 
 <!-- 콘텐츠 시작 -->
 <section class="bg-dark">
-	<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px;">      	
-		<div class="center card mb-3 border-0 bg-dark" style="width:auto; height:420px; align-content: center">
+	<div id="bodystyle" style="overflow:auto; width:auto; height:600px; color: white; ">      	
+		<div class="container border-0 bg-dark" style="width:550px; height:420px; align-content: center">
 			    
-			<div class="container">
+			<div class="container" style="padding: 10px 10px 10px 10px">
 				<img src="../resources/img/signup_logo.png"/>
 				
 				<form id="regist" method="post" action="/member/regist">
@@ -18,7 +18,7 @@
 			        <!-- 아이디 -->
 			        <div class="form-group row justify-content-center">
 			          <label for="userid" class="col-sm-5 col-form-label">아이디</label>
-			          <div class="textForm ">
+			          <div class="textForm col-sm-7">
 			            <input
 			              type="text"
 			              name="userId"
@@ -33,7 +33,7 @@
 			        <!-- 비밀번호 -->
 			        <div class="form-group row justify-content-center">
 			          <label for="pass1" class="col-sm-5 col-form-label">비밀번호</label>
-			          <div class="textForm">
+			          <div class="textForm col-sm-7">
 			            <input
 			              type="password"
 			              name="userPw"
@@ -50,7 +50,7 @@
 			          <label for="pass2" class="col-sm-5 col-form-label"
 			            >비밀번호 확인
 			          </label>
-			          <div class="textForm">
+			          <div class="textForm col-sm-7">
 			            <input
 			              type="password"
 			              name="userPwCheck"
@@ -64,8 +64,8 @@
 			        
 			        <!-- 이름 -->
 			        <div class="form-group row justify-content-center">
-			          <label for="name" class="col-sm-2 col-form-label">이름 </label>
-			          <div class="textForm">
+			          <label for="name" class="col-sm-5 col-form-label">이름 </label>
+			          <div class="textForm col-sm-7">
 			            <input
 			              type="text"
 			              name="userName"
@@ -80,7 +80,7 @@
 			        <!-- 핸드폰 폼 -->
 			        <div class="form-group row justify-content-center">
 			          <label for="phone" class="col-sm-5 col-form-label">핸드폰 </label>
-			          <div class="textForm">
+			          <div class="textForm col-sm-7">
 			              <input
 			                type="text"
 			                id="userPhone"
@@ -95,7 +95,7 @@
 			        <!-- 이메일 -->
 			   		<div class="form-group row justify-content-center">
 			          <label for="email" class="col-sm-5 col-form-label">이메일</label>
-			          <div class="textForm">
+			          <div class="textForm col-sm-7">
 			            <input
 			              type="email"
 			              name="userMail"
@@ -111,7 +111,7 @@
 			        <!-- 인증번호 전송 -->
 			        <div class="form-group row justify-content-center">
 			            <div class="mail_input_box_warn">	
-							<div class="textForm">
+							<div class="textForm col-sm-7">
 								<div class="mail_check_input_box" id="mail_check_input_box_false">
 									<input class="mail_check_input" disabled="disabled">
 								</div>
@@ -127,7 +127,7 @@
 					<!-- 주소검색 + 주소입력 -->
 					<div class="d-flex justify-content-start">
 					<!-- <button type="button" class="btn btn-info" onClick="location.href='/member/jusoPopup'" >주소 검색</button> -->
-						<button type="button" class="btn btn-info" onClick="goPopup();" >주소검색</button>
+						<button type="button" class="btn btn-info" onClick="goPopup();" style="width:50%;" >주소검색</button>
 			        	<input type="text" name="userAddress" id="userAddress" class="form-control" placeholder="Enter Address" required readonly>
 			        </div>
 			        
