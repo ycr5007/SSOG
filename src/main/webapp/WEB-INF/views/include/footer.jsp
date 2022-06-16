@@ -12,7 +12,7 @@
     <!-- 반응형 이미지 맵 스크립트 종료-->
     
     <!-- bootstrap Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="/resources/js/bootstrap.bundle.min.js"></script>
     <script src="/resources/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="/resources/js/templatemo.js"></script>
     <!-- /bootstrap Script -->

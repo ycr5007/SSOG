@@ -14,8 +14,6 @@
 	<link rel="stylesheet" href="/resources/css/upload.css" />
 	<!-- jQuery -->
 	<script src="/resources/js/jquery.min.js"></script>
-    <!-- 장터 페이징 javascript -->
-    <script src="/resources/js/market_pagination.js"></script>
 	<title>관리자 메인 페이지</title>
 </head>
 

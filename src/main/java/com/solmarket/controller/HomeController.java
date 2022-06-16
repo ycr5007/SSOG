@@ -63,8 +63,8 @@ public class HomeController {
 		// marketDTO 가져오기
 		MarketDTO marketDTO = new MarketDTO();
 		marketDTO.setUserNo(userNo);
+		model.addAttribute("userId", userId);
 		model.addAttribute("userNo", userNo);
-		model.addAttribute("marketStatus", marketDTO.getMarketStatus());
 		model.addAttribute("marketNo", marketDTO.getMarketNo());
 		
 		return "manager_index";
