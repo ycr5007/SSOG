@@ -1,6 +1,12 @@
 package com.solmarket.dto;
 
+import java.time.LocalDateTime;
 import java.util.*;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.*;
 
 @AllArgsConstructor
@@ -11,11 +17,12 @@ public class MarketDTO {
 	private int userNo; // 회원 번호 ( myUser 테이블 참조 )
 	private String marketName; // 장터명
 	private String marketLoc; // 지역
-	private Date marketSD; // 시작일
-	private Date marketED; // 종료일
+//	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private String marketSD; // 시작일
+//	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private String marketED; // 종료일
 	private double marketRate; // 총 평점
 	private int marketStatus; // 장터 상태
 	
 	private List<AttachDTO> attachList; // 첨부파일
-	private String dummy; // join 활용 추가 데이터
 }

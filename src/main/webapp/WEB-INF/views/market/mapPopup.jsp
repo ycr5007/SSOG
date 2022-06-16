@@ -7,7 +7,7 @@
 <% 
 	request.setCharacterEncoding("UTF-8");
 	String inputYn = request.getParameter("inputYn"); 
-	String roadFullAddr = request.getParameter("roadFullAddr"); 
+	String roadAddrPart2 = request.getParameter("roadFullAddr"); 
 %>
 </head>
 <script>
@@ -24,7 +24,8 @@ function init(){
 		document.form.action="https://www.juso.go.kr/addrlink/addrLinkUrl.do"; //인터넷망
 		document.form.submit();
 	}else{
-		opener.jusoCallBack("<%=roadFullAddr%>");
+		console.log("url"+url);
+		opener.jusoCallBack("<%=roadAddrPart2%>");
 		window.close();
 	}
 }
