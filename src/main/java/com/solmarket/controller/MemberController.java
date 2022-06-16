@@ -75,10 +75,10 @@ public class MemberController {
 	}
 
 	// 비밀번호 변경 폼 요청
-	@GetMapping("/changePwd")
-	public void changePwd() {
-		log.info("비밀번호 변경 폼 요청");
-	}
+	/*
+	 * @GetMapping("/changePwd") public void changePwd() { log.info("비밀번호 변경 폼 요청");
+	 * }
+	 */
 
 	// 비밀번호 변경 - post
 	/*

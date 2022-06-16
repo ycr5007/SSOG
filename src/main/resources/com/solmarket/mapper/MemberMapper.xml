@@ -17,6 +17,7 @@
 	<!-- 로그인 : userId, 비밀번호 : userPw -->
 	<resultMap type="com.solmarket.dto.UserDTO" id="myUser">
 		<id property="userId" column="user_id"/>
+		<result property="userNo" column="user_no"/>
 		<result property="userPw" column="user_pw"/>
 		<result property="enabled" column="enabled"/>
 		<result property="userName" column="user_name"/>
