@@ -9,6 +9,8 @@
 	<!-- Style -->
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	<script src="/resources/js/jquery.min.js"></script>
+	<!-- 파일 업로드 css -->
+	<link rel="stylesheet" href="/resources/css/upload.css" />
 	<title>판매자 메인 페이지</title>
 </head>
 

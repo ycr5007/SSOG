@@ -20,11 +20,7 @@ public class MarketServiceImpl implements MarketService {
 	/* ====================== 장터 등록 ====================== */
 	@Override
 	public boolean registerMarket(MarketDTO insertDTO) {
-		mapper.insert(insertDTO);
-		if(insertDTO.getAttachList() == null || insertDTO.getAttachList().size() <= 0) {
-			return false;
-		}
-		return true;
+		return mapper.insert(insertDTO) == 1 ? true : false;
 	}
 
 	/* ================= 장터 참여 신청 목록 보기 ================= */

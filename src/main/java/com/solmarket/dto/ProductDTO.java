@@ -21,6 +21,7 @@ public class ProductDTO {
 	private int productPrice; // 판매가
 	private int productStatus; // 상품 등록 상태
 	private Date productDate; // 상품 등록일 추가 필요
+	private int productSale; // 재고 상점 등록시 할인율
 	
 	private String userName; // 회원 이름 ( myUser 테이블 )
 	private List<AttachDTO> attachList; // 파일첨부 리스트

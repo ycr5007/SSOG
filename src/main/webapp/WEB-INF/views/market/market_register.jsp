@@ -65,8 +65,10 @@
 <script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/js/bootstrap.bundle.min.js"></script>
 <script>
-	var y = "";
-	var x = "";
+	var y = "37.565474690";
+	var x = "126.977199586";
+	
+	move(x, y);
 
 	<!-- 주소 검색 팝업창 호출 -->
 	function goPopup() {
@@ -75,14 +77,15 @@
 	
 	<!-- 주소 → 좌표 변환 -->
 	<!-- 좌표에 해당하는 지점 마크 -->
-	function jusoCallBack(roadFullAddr) {
+	function jusoCallBack(roadAddrPart2) {
 		var addr = document.querySelector("#marketLoc");
-		addr.value = roadFullAddr;
+		addr.value = roadAddrPart2;
 
 		$.ajax({
+			url : '/map',
 			type : 'post',
 			data : {
-				'address' : encodeURIComponent(roadFullAddr)
+				'address' : roadAddrPart2
 			},
 			dataType : 'json',
 			error : function(x, e) {
@@ -91,24 +94,28 @@
 			},
 			success : function(data) {
 				console.log(data);
-				x = data.result.addresses[0].x;
-				y = data.result.addresses[0].y;
+				x = data[0];
+				y = data[1];
 				console.log(x);
 				console.log(y);
-			}
+				move(x, y);
+			},
 		});
 	}
 	
-	var mapOptions = {
-		center : new naver.maps.LatLng(37.565474690, 126.977199586),
-		zoom : 15,
-	};
-	var map = new naver.maps.Map("map", mapOptions);
-	var markerOptions = {
-		position : new naver.maps.LatLng(y, x),
-		map : map
-	};
-	var marker = new naver.maps.Marker(markerOptions);
+	function move(x,y) {
+		var mapOptions = {
+			center : new naver.maps.LatLng(y, x),
+			zoom : 15,
+		};
+		var map = new naver.maps.Map("map", mapOptions);
+		var markerOptions = {
+			position : new naver.maps.LatLng(y, x),
+			map : map
+		};
+		var marker = new naver.maps.Marker(markerOptions);
+	}
+	
 </script>
 
 <script>

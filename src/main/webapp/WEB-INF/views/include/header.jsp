@@ -149,18 +149,16 @@
 							<a class="dropdown-item" href="#">장바구니</a>
 						</sec:authorize>
 						
-						<sec:authorize access="isAuthenticated()">
-							<sec:authentication property="principal" var="info"/>
-							<c:if test="${info.authorities == 'ROLE_ADMIN'}">
-							<a class="dropdown-item" href="/admin/index">관리자페이지</a>
-							</c:if>
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<a class="dropdown-item" href="/admin/index">관리자페이지</a>
 						</sec:authorize>
 						
-						<sec:authorize access="isAuthenticated()">
-							<sec:authentication property="principal" var="info"/>
-							<c:if test="${info.username == 'xxx'}">
+						<sec:authorize access="hasRole('ROLE_SELLER')">
 							<a class="dropdown-item" href="/product/product_index">판매자페이지</a>
-							</c:if>
+						</sec:authorize>
+						
+						<sec:authorize access="hasRole('ROLE_MANAGER')">
+							<a class="dropdown-item" href="/manager_index">운영자페이지</a>
 						</sec:authorize>
 						
 						

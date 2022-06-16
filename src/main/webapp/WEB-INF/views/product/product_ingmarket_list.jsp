@@ -43,8 +43,8 @@
           		<td>${status.count}</td>          		
           		<td>${dto.marketName }</td>
           			<%-- <a href="${dto.marketNo}" class="move">${dto.marketName}</a> --%>         	 	
-          		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.marketSD}"/></td>
-          		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.marketED}"/></td>
+          		<td>${dto.marketSD}</td>
+          		<td>${dto.marketED}</td>
           		<td>${dto.marketLoc}</td>
          	 </tr>
           	</c:forEach>

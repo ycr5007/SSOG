@@ -36,20 +36,8 @@
 						class="pwmail_input" placeholder = "이메일" required />
 					<small id="userMail" class="text-info"></small>
 				</div>
-				<div class="form-group row justify-content-center">
-					<div class="pw_input_box_warn"></div>
-					<div class="textForm">
-						<div class="pw_check_input_box" id="pw_check_input_box_false">
-							<input class="pw_check_input" disabled="disabled">
-						</div>
-						<div class="pw_check_button">
-							<span>임시 비밀번호 발급</span>
-						</div>
-						<div class="clearfix"></div>
-						<span id="pw_check_input_box_warn"></span>
-					</div>
-				</div>
-				<input type="submit" value="임시비밀번호" />
+				
+				<input type="submit" value="임시비밀번호 발급" />
 				<input type="hidden" name="${_csrf.parameterName }"
 					value="${_csrf.token }" />
 			</form>
@@ -91,26 +79,5 @@ let csrfTokenValue = "${_csrf.token}";
 
 	});
 
-	//인증번호 비교
-	$(".pw_check_input").blur(function() {
-
-		var inputCode = $(".pw_check_input").val(); // 입력코드
-		var checkResult = $("#pw_check_input_box_warn"); // 비교결과
-
-		//console.log("inputCode : " + inputCode);
-
-		if (inputCode == code) {
-			checkResult.html("인증번호가 일치합니다");
-			checkResult.attr("class", "correct");
-		} else {
-			checkResult.html("인증번호를 다시 확인해주세요");
-			checkResult.attr("class", "incorrect");
-		}
-
-		console.log(checkResult.attr("class"));
-		if (checkResult.attr("class") == "incorrect") {
-			$(".send-data").attr("disabled", "disabled");
-		}
-	});
 </script>
 <%@include file="../include/footer.jsp"%>

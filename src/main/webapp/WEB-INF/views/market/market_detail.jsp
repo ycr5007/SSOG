@@ -31,8 +31,8 @@
 
 	<!-- 마켓 이미지 -->
 	<div class="col-xl-7 px-xl-5">
-		<div class="card mb-2">
-				<img src="/resources/img/market_detail.jpg" />
+		<div class="card mb-2" id="marketImg">
+			<img src="/resources/img/market_detail.jpg" />
 		</div>
 	</div>
 	<!-- 마켓 이미지 끝 -->
@@ -293,14 +293,43 @@
 	</div>
 </div>
 
-<input type="hidden" name="marketNo" value="${marketDTO.marketNo}"/>
+<!-- 장터 이미지 불러오기 -->
+<script>
+	$.ajax({
+		url : '/display/' + market
+		type : 'get',
+		processData : false,
+		contentType : false,
+		data : formData,
+		dataType : 'json',
+		success : function(result){
+			
+			showUploadFile(result);
+		}
+	})
+	
+	function showUploadFile(result){
+		let marketImg = $('#marketImg');
+		
+		let str = "";
+		
+		$(result).each(function(idx, obj){
+			// 원본파일 이미지 경로
+			let oriPath = obj.uploadPath + "\\" + obj.uuid + "_" + obj.fileName;
+			oriPath = oriPath.replace(new RegExp(/\\/g), "/");
+			
+			str += "<img class='img' src='/display/market?fileName=" + oripath + "' width='800' height='1000'>";
+		})
+		marketImg.append(str);
+	}
+</script>
 
-	<!-- 캐러셀 슬라이드 넘어가는 시간 조절 -->
-	<script>
-		$("#multi-item-example").carousel(
-			interval:2000
-		);
-	</script>
+<!-- 캐러셀 슬라이드 넘어가는 시간 조절 -->
+<script>
+	$("#multi-item-example").carousel(
+		interval:2000
+	);
+</script>
 
 <!-- 네이버 지도 API Script -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i"></script>
