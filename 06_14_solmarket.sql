@@ -7,7 +7,7 @@ CREATE TABLE auth_request(
 	user_id VARCHAR2(12) NOT NULL,
 	authority varchar2(50) NOT NULL
 );
-
+drop table myuser cascade constraint;
 ALTER TABLE auth_request ADD constraint FK_REQ_AUTH foreign key(user_id) references myuser(user_id) ON DELETE CASCADE;
 select * from myuser_auth;
 update myuser_auth set authority = 'ROLE_MANAGER' where user_id = 'aaa';
