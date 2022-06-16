@@ -80,8 +80,8 @@
 				<input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display:none" required>
 				<label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
 				<div class="card-body">
-					<h5 class="card-title text-center">업로드 사진</h5>
 					<div class="card-text text-center uploadResult">
+					<h5 class="card-title text-center">업로드 사진</h5>
 						<ul></ul>
 					</div>
 				</div>

@@ -34,24 +34,12 @@
 					<label>상품상태</label>
 					<input type="text" name="productStatus" id="productStatus" class="form-control" value="${dto.productStatus}" readonly />
 				</div>
-				
-				
-				<!-- 파일첨부 -->
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">파일첨부</div>
-							<div class="panel-body">
-								<div class="form-group uploaddiv">
-									<input type="file" name="uploadFile" id="" multiple />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+
+
 			
-					<button type="button" class="btn btn-info" id="registerBtn">목록</button>
-					<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
+
+				<button type="button" class="btn btn-info" id="registerBtn">목록</button>
+				<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
 			
 		</form>
 	</div>
@@ -72,6 +60,6 @@
 
 
 
-
+<script src="/resources/js/util/upload.js"></script>
 <script src="/resources/js/product/product_read.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>
