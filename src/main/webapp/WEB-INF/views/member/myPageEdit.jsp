@@ -6,9 +6,17 @@
 
 <!-- 콘텐츠 시작 -->
 <section class="bg-dark">
-	<div id="bodystyle" style="overflow:auto; width:auto; height:600px; color: white; ">      	
-		<div class="container border-0 bg-dark" style="width:550px; height:420px; align-content: center; padding: 10px 10px 10px 10px" >
+	<div id="bodystyle" style="overflow:auto; width:auto; height:750px; color: white; ">      	
+		<div class="container border-0 bg-dark" style="width:550px; height:700px; align-content: center; padding: 10px 10px 10px 10px" >
 				<img src="../resources/img/mypagelogo.png"/>
+				
+				<!-- seller or manager -->
+				<div class="mb-3" style="text-align:center;">
+					<sec:authorize access="hasRole('ROLE_USER')">
+						<button type="button" class="btn btn-primary send-data">SELLER</button>
+						<button type="button" class="btn btn-success send-data">MANAGER</button>
+					</sec:authorize>
+				</div>
 				
 				<form id="edit" method="post" action="/member/update">
 			        <!-- 아이디 -->
@@ -68,7 +76,7 @@
 					</div>
 						
 			        <!-- 프로필 -->		
-			        <div class="form-group row justify-content-center">
+			        <div class="form-group row justify-content-center mb-5">
 						<label for="userprofile" class="col-sm-5 col-form-label">프로필</label>
 						<div class="textForm col-sm-7">
 							<input type="text" name="userProfile" id="userProfile" class="form-control"
@@ -77,9 +85,10 @@
 								id="userProfile" class="text-info"></small>
 						</div>
 					</div>
+				</form>
 	
 			        <!-- 정보수정 회원탈퇴 -->
-					<div class="form-group text-center">
+					<div class="mb-2" style="text-align:center;">
 						<button type="submit" class="btn btn-secondary send-data"
 							formaction="/member/update">정보수정</button>
 						<button type="submit" class="btn btn-secondary"
@@ -87,11 +96,7 @@
 					</div>	
 					<input type="hidden" name="${_csrf.parameterName }"
 						value="${_csrf.token }" />
-					</form>
-					<sec:authorize access="hasRole('ROLE_USER')">
-						<button type="button" class="btn btn-primary send-data">SELLER</button>
-						<button type="button" class="btn btn-success send-data">MANAGER</button>
-					</sec:authorize>
+
 					<form action="" method="post" id="authForm">
 						<input type="hidden" name="userId"
 							value='<sec:authentication property="principal.username"/>' /> <input
