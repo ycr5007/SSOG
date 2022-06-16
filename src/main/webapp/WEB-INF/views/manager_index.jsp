@@ -166,9 +166,11 @@
 
 <!-- URL + 페이징 처리 -->
 <form action="/manager_index" id="actionForm">
+	<input type="hidden" value='<c:out value="${user.userNo }"  />'/>
 	<input type="hidden" name="marketNo" value="${marketNo}" />
 	<input type="hidden" name="pageNum" value="${criteria.pageNum }" />
 	<input type="hidden" name="amount" value="${criteria.amount }" />
+	<input type="hidden" name="${_csrf.parameterName }"	value="${_csrf.token }" />
 </form>	
 		
 <script>

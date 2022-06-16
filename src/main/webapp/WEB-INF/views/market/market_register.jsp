@@ -13,6 +13,7 @@
 			<div class="card-body">
 				
 				<form action="" method="post">
+				<input type="hidden" value='<c:out value="${user.userNo }"  />'/>
 					<div class="form-group">
 						<label>장터 이름</label>
 						<input class="form-control" name="marketName" id="marketName" required>
@@ -48,6 +49,7 @@
 						<button type="button" class="btn btn-primary m-2">등록</button>
 						<button type="button" class="btn btn-secondary m-2">뒤로</button>
 					</div>
+					<input type="hidden" name="${_csrf.parameterName }"	value="${_csrf.token }" />
 				</form>
 			</div>
 		</div>
