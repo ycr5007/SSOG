@@ -143,8 +143,16 @@ public class ProductController {
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("remainList",remainList);
 	}
-	
-	
+	//검색 폼 보여주기
+	@GetMapping("/product_search")
+	public String search(String productName, Model model) {
+		log.info("상품 정보 검색" + productName);
+		
+		List<ProductDTO> list = service.getSearchList(productName);
+		model.addAttribute("list",list);
+		
+		return "/search_list"; 
+	}
 	
 
 }

@@ -49,4 +49,6 @@ public interface ProductMapper {
 	// 재고상점 상품 삭제
 	public int deleteProduct();
 	
+	//검색
+	public List<ProductDTO> search(String productName);
 }

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="./include/header.jsp" %>
 
-
 <section class="bg-dark">
             <div id="searchlist" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">      	
             	<img src="../resources/img/productlist_logo.png" style="max-width: 100%; height: auto; align-content: center"/>

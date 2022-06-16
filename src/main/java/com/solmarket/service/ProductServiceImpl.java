@@ -105,7 +105,10 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.remainTotal(userNo);
 	}
 
-
+	@Override
+	public List<ProductDTO> getSearchList(String productName) {
+		return mapper.search(productName);
+	}
 	
 
 }

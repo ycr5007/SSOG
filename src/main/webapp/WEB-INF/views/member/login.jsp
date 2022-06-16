@@ -5,7 +5,7 @@
 
 <section class="bg-dark">
 	<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">      	
-		<div class="center card mb-1 border-0 bg-dark" style="width:auto; height:420px;  align-content: center">
+		<div class="container border-0 bg-dark" style="width:400px; height:420px;  align-content: center">
 			<form action="login" method="post">
 				<img src="../resources/img/login_logo.png"/>
 		        <div class="txt_field">
