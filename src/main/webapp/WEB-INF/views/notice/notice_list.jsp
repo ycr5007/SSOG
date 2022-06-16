@@ -3,9 +3,12 @@
 <%@ include file="../include/header.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <link rel="stylesheet" href="/resources/css/admin.css" />
-<div class="contetnt" style="height: 600px;">
+
+<section class="bg-dark">
+	<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">    
+<div class="contetnt">
 	<div class="container mt-4 mb-4 h-75">
-		<table class="table table-striped">
+		<table class="table table-striped" style="color: white;">
 			<thead>
 				<tr class="text-center">
 					<th class="col-lg-2">장터</th>
@@ -48,6 +51,9 @@
 	<input type="hidden" name="pageNum" value="1"/>
 	<input type="hidden" name="amount" value="10"/>
 </form>
+
+	</div>
+</section> 
 
 <script src="/resources/js/notice/noticeList.js"></script>
 <%@ include file="../include/footer.jsp" %>

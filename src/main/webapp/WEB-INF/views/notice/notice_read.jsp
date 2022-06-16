@@ -2,10 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jsp" %>
 <link rel="stylesheet" href="/resources/css/admin.css" />
-<div class="contetnt" style="height: 600px;">
+
+<section class="bg-dark">
+	<div id="login1" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">    
+<div class="contetnt">
 	<div class="container mt-4 mb-4 h-100 section" style="overflow-y: scroll">
 		
 	</div>
 </div>
+
+
+	</div>
+</section> 
 
 <%@ include file="../include/footer.jsp" %>
