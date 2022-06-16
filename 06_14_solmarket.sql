@@ -9,7 +9,8 @@ CREATE TABLE auth_request(
 );
 
 ALTER TABLE auth_request ADD constraint FK_REQ_AUTH foreign key(user_id) references myuser(user_id) ON DELETE CASCADE;
-
+select * from myuser_auth;
+update myuser_auth set authority = 'ROLE_MANAGER' where user_id = 'aaa';
 -- 테이블 추가
 CREATE TABLE recruit_img (
 	uuid varchar2(100) not null,
