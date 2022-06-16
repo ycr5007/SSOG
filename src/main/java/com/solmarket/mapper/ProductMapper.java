@@ -25,21 +25,28 @@ public interface ProductMapper {
 	public int update(ProductDTO updateDto);
 	// 장터 이름 가져오기
 	public String marketName(int martketNo);
-	// 마켓 리스트 보여주기
+	//오픈 예정 장터 리스트 보여주기
 	public List<MarketDTO> marketList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
-	// 마켓 리스트 페이징 처리
+	// 장터 리스트 페이징 처리
 	public int marketTotal(Criteria cri);
-	// 인덱스에서 참여 중인 마켓 리스트 보여주기
+	// 인덱스에서 참여 중인 장터 리스트 보여주기
 	public List<MarketDTO> mList();
-	// 인덱스에서 오픈 예정 마켓 리스트 보여주기
+	// 인덱스에서 오픈 예정 장터 리스트 보여주기
 	public List<MarketDTO> oList();
 	// 인덱스에서 상품 리스트 보여주기
 	public List<ProductDTO> pList();
-	// 마켓 종료 후 재고 상품 리스트 보여주기
+	// 장터 종료 후 재고 상품 리스트 보여주기
 	public List<ProductDTO> remainList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
-	// 마켓 종료 후 재고 상품 리스트 페이징
+	// 장터 종료 후 재고 상품 리스트 페이징
 	public int remainTotal(int userNo);
-	
+	// 온라인 상품 리스트 보여주기
+	public List<ProductDTO> onlineList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
+	// 온라인 상품 리스트 페이징 처리
+	public int onlineTotal(int userNo);
+	// 참여중인 장터 리스트 보여주기
+	public List<MarketDTO> ingMarketList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
+	// 장터 리스트 페이징 처리
+	public int ingMarketTotal(Criteria cri);
 	
 	
 	// 마켓 등록한 상품 삭제
@@ -49,6 +56,4 @@ public interface ProductMapper {
 	// 재고상점 상품 삭제
 	public int deleteProduct();
 	
-	//검색
-	public List<ProductDTO> search(String productName);
 }

@@ -68,7 +68,7 @@
 <script>
 $(function(){
 	$(".btn-danger").click(function(){
-		location.href="/product/product_remain_list";
+		location.href="/product/product_list?userNo=";
 	})
 })
 </script>

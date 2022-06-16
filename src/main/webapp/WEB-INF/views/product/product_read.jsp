@@ -73,5 +73,5 @@
 
 
 
-<script src="/resources/js/product_read.js"></script>
+<script src="/resources/js/product/product_read.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

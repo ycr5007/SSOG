@@ -31,7 +31,9 @@ $(function(){
 	$(".form-control").change(function(){
 		
 	//actionForm 안의 amount 값을 변경하기
-	actionForm.find("[name='amount']").val($(this).val());		
+	actionForm.find("[name='amount']").val($(this).val());	
+	// amount 값을 변경하면 1페이지로 보내기
+	actionForm.find("[name='pageNum']").val(1);		
 
 	//actionForm 보내기
 	actionForm.submit();
@@ -45,9 +47,7 @@ $(function(){
 		//a가 가지고 있는 href 가지고 오기
 		let href = $(this).attr("href");		
 		
-		//actionForm 안에 bno 태그를 추가하기(bno 값은 href가 가지고 있는 값으로)
-		//내용 보기에 들어갔을 때 사용자가 리스트 버튼이 아닌 뒤로 가기 버튼을 눌러서
-		//목록으로 돌아올때 bno가 계속 추가되는 것 방지
+		//actionForm 안에
 		if(actionForm.find("[name='productNo']").length != 0){
 			
 			actionForm.find("[name='productNo']").val(href);

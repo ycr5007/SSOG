@@ -8,7 +8,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12 pl-2">
-			<h1 class="page-header">재고 상품 목록</h1>
+			<h1 class="page-header">온라인 상품 목록</h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -19,7 +19,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				List After Shop Listing Product List Page
+				Online Shop Product List Page
 				</div>
 				<!-- /.panel-heading 종료-->
 
@@ -29,7 +29,7 @@
 							<tr>
 								<th>상품명</th>
 								<th>가 격</th>
-								<th>유효 기간 </th>
+								<th>배송 상태</th>
 								<th>수량 </th>
 								
 							</tr>
@@ -37,7 +37,7 @@
 						<!-- thead 종료 -->
 						<tbody>
 							<!-- 게시판 리스트 반복문 -->
-							<c:forEach var="dto" items="${remainList}">
+							<c:forEach var="dto" items="${onlineList}">
 								<tr>
 									<td><a href="${dto.productNo}" class="move">${dto.productName}</a>
 									</td>
@@ -109,13 +109,13 @@
 	</div>
 
 	<%-- URL + 페이지 링크 처리할 폼 --%>
-	<form action="/product/product_remain_list" id="actionForm">
+	<form action="/product/product_online_list" id="actionForm">
 		<!-- pageNum, amount, type, keyword 값을 부를 때
 			①pageDto(pageDto.cri.pageNum)
 			②cri(criteria.pageNum( @ModelAttribute가 사용 안된 경우), cri.pageNum)
 			 
 		  -->
-		<input type="hidden" name="userNo" value="${dto.userNo}" />
+		<input type="hidden" name="userNo" value="7" />
 		<input type="hidden" name="pageNum" value="${pageDto.cri.pageNum}" />
 		<input type="hidden" name="amount" value="${pageDto.cri.amount}" />
 	</form>
@@ -124,5 +124,5 @@
 <!-- div class="panel-body" 종료 -->
 
 
-<script src="/resources/js/product/product_remain_list.js"></script>
+<script src="/resources/js/product_remain_list.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

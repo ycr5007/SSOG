@@ -74,21 +74,20 @@
 					<label>상품가격</label>
 					<input type="text" name="productPrice" id="productPrice" class="form-control" />
 				</div>
-		
-				<!-- 상품이미지 -->
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">상품 이미지 등록</div>
-							<div class="panel-body">
-								<div class="form-group uploaddiv">
-									<input type="file" name="uploadFile" id="" multiple />
-								</div>
-							</div>
-						</div>
+
+			<!-- 파일 업로드 INPUT 카드 -->
+			<div class="card" style="width: 18rem;">
+				<input type="file" name="uploadFile" class="custom-file-input"
+					id="customFileLangHTML"> <label class="custom-file-label"
+					for="customFileLangHTML" data-browse="파일찾기"></label>
+				<div class="card-body">
+					<h5 class="card-title text-center">업로드 사진</h5>
+					<div class="card-text text-center uploadResult">
+						<ul></ul>
 					</div>
 				</div>
-			</form> <!-- form 종료 -->
+			</div>
+		</form> <!-- form 종료 -->
 		</div>
 			
 		<!-- form 시작  -->
@@ -131,6 +130,11 @@
 	let marketName = "${marketName}";
 	let marketNo = "${marketNo}";
 	let userNo = "${userNo}";
+	
+	// 컨트롤러 하나를 가지고 섹션값 가지고오기
+	let section = "product";
 </script>
+
+<script src="/resources/js/util/upload.js"></script>
 <script src="/resources/js/product_register.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>
