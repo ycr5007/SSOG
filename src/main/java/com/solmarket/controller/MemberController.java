@@ -1,5 +1,7 @@
 package com.solmarket.controller;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -155,34 +157,47 @@ public class MemberController {
 		log.info("비밀번호 찾기 폼 요청");
 	}
 	
-	@ResponseBody
-	@PostMapping("/pwMail")
-	public String pwMail(String userMail) {
 
-		log.info("이메일 데이터 전송확인");
-		log.info("입력한 메일 : " + userMail);
+	private String tempPw() {
+		// 인증번호 생성기
+		StringBuffer temp = new StringBuffer();
+		Random rnd = new Random();
+		for (int i = 0; i < 10; i++) {
+			int rIndex = rnd.nextInt(3);
+			switch (rIndex) {
+			case 0:
+				// a-z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+				break;
+			case 1:
+				// A-Z
+				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+				break;
+			case 2:
+				// 0-9
+				temp.append((rnd.nextInt(10)));
+				break;
+			}
+		}
 
-		String tempPw = service.pwMail(userMail);
-		log.info(tempPw);
-
-		return tempPw;
-	}
-
+		return temp.toString();
+		}
 	// 임시비밀번호 발급 완료... -> 창에 입력 -> 비밀번호 변경 submit -> findPwResult -> 로그인창
-	//
-	@GetMapping("/findPwResult")
-	public void findPwResultGet() {
-		log.info("패스워드 결과 페이지 요청");
-	}
+
 
 	@PostMapping("/findPwResult")
-	public void findPwResultPost(String userMail) {
+	public String findPwResultPost(String userId, String userMail) {
 		log.info("패스워드 결과 페이지 요청");
+		log.info("userId :" + userId);
+		log.info("userMail :" + userMail);
+
 		
-		/*
-		 * if (service.updatePw(userMail)) { return "redirect:/member/login"; } else {
-		 * return "redirect:/member/findPw"; }
-		 */
+		 if (service.updatePw(userId, userMail, tempPw())) { 
+			 return "redirect:/member/login"; 
+		 } else {
+			 return "redirect:/member/findPw"; 
+		 }
+		
 	}
 
 	// 메일인증

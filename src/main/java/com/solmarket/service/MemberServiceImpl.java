@@ -123,31 +123,18 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.checkPw(userId);
 	}
 
-	@Override
-	public String pwMail(String userMail) {
-		// 인증번호 생성기
-		StringBuffer temp = new StringBuffer();
-		Random rnd = new Random();
-		for (int i = 0; i < 10; i++) {
-			int rIndex = rnd.nextInt(3);
-			switch (rIndex) {
-			case 0:
-				// a-z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 97));
-				break;
-			case 1:
-				// A-Z
-				temp.append((char) ((int) (rnd.nextInt(26)) + 65));
-				break;
-			case 2:
-				// 0-9
-				temp.append((rnd.nextInt(10)));
-				break;
-			}
-		}
 
+	
+
+	@Override
+	public boolean updatePw(String userId, String userMail, String tempPw) {
+		
+		String encPw = encoder.encode(tempPw);
+		boolean result = mapper.updatePw(userId, encPw)==1?true:false;
+		
+		//임시 비밀번호 메일 전송
 		String sub = "안녕하세요. sol market 인증메일입니다.";
-		String con = "임시비밀번호 = " + temp + " 입니다.";
+		String con = "임시비밀번호 = " + tempPw + " 입니다.";
 
 		String from = "ekor11@naver.com";
 
@@ -170,15 +157,8 @@ public class MemberServiceImpl implements MemberService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		return temp.toString();
-		}
-
-	@Override
-	public void updatePw(String userMail, String userPw) {
 		
-		String encPw = encoder.encode(userPw);
-		mapper.updatePw(userMail, encPw);
+		return result;
 	}
 
 	@Override

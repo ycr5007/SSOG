@@ -27,9 +27,9 @@ public interface MemberService {
 	// 가입시 이메일 인증
 	public String authMail(String userMail);
 	
+	
 	// 임시비밀번호 메일 발송
-	public String pwMail(String userMail);
-	public void updatePw(String userMail, String userPw);
+	public boolean updatePw(String userId, String userMail, String tempPw);
 	
 	// 비밀번호 재확인
 	public String checkPw(String userPw);
