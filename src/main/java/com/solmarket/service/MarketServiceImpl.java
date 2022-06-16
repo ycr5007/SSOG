@@ -66,17 +66,6 @@ public class MarketServiceImpl implements MarketService {
 		return mapper.selectTotalAccept(marketNo);
 	}
 
-	/* ====================== 장터 오픈 ====================== */
-	@Override
-	public boolean MarketOn(int marketNo) {
-		return mapper.updateMarketOn(marketNo) == 1 ? true : false;
-	}
-
-	@Override
-	public boolean ProductOn(int productNo) {
-		return mapper.updateProductOn(productNo) == 1 ? true : false;
-	}
-
 	/* ====================== 장터 위치 정보 불러오기 ====================== */
 	@Override
 	public String showMarketLoc(int marketNo) {
@@ -109,17 +98,6 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public int TotalProduct(int marketNo) {
 		return mapper.selectTotalProduct(marketNo);
-	}
-
-	/* ====================== 장터 종료 ====================== */
-	@Override
-	public boolean MarketOff(int marketNo) {
-		return mapper.updateMarketOff(marketNo) == 1 ? true : false;
-	}
-
-	@Override
-	public boolean ProductOff(int productNo) {
-		return mapper.updateProductOff(productNo) == 1 ? true : false;
 	}
 
 	/* ====================== 첨부 파일 ====================== */
@@ -161,11 +139,6 @@ public class MarketServiceImpl implements MarketService {
 	public double MarketRate(int marketNo) {
 		return mapper.selectMarketRate(marketNo);
 	}
-	
-	@Override
-	public boolean findReveiwer(int marketNo, int userNo) {
-		return mapper.selectReveiwer(marketNo, userNo) >= 0 ? true : false;
-	}
 
 	@Override
 	public boolean registerReview(ReviewDTO reviewDTO) {
@@ -176,8 +149,8 @@ public class MarketServiceImpl implements MarketService {
 	}
 	
 	@Override
-	public boolean ReviewRate(ReviewDTO reviewDTO) {
-		return mapper.updateReviewRate(reviewDTO) == 1 ? true : false;
+	public boolean ReviewRate(int marketNo) {
+		return mapper.updateReviewRate(marketNo) == 1 ? true : false;
 	}
 
 	/* ==================== 장터 후기 삭제 (운영자) ==================== */

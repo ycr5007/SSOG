@@ -61,25 +61,25 @@
 					<span class="marketRate">${marketRate}</span>
 				</h4>
 				<hr />
-				<!-- 평점 선택 -->
-				<select name="reviewRate" id="reviewRate">
-					<option value="1">★☆☆☆☆ 1점</option>
-					<option value="2">★★☆☆☆ 2점</option>
-					<option value="3">★★★☆☆ 3점</option>
-					<option value="4">★★★★☆ 4점</option>
-					<option value="5">★★★★★ 5점</option>
-				</select>
-				<!-- 후기 작성 및 등록 버튼 -->
-				<div>
-					<form action="/" method="post" class="mt-2" id="reviewForm">
+				<form action="" method="post" class="mt-2" id="reviewForm">
+					<!-- 평점 선택 -->
+					<select name="reviewRate" id="reviewRate" class="mb-2">
+						<option value="1">★☆☆☆☆ 1점</option>
+						<option value="2">★★☆☆☆ 2점</option>
+						<option value="3">★★★☆☆ 3점</option>
+						<option value="4">★★★★☆ 4점</option>
+						<option value="5">★★★★★ 5점</option>
+					</select>
+					<!-- 후기 작성 및 등록 버튼 -->
+					<div>
 						<input class="p-2" type="text" name="reviewContent" id="reviewContent" placeholder="이 장터 어떠셨나요?" size="50"/>
-						<button class="btn btn-outline-primary btn-icon-split btn-sm" type="submit">등록</button>
-					</form>
-				</div>
+						<button class="btn btn-outline-primary btn-icon-split btn-sm" type="button">등록</button>
+					</div>
+				</form>
 				<!-- 장터 후기 목록 -->
 				<ul class="reviewList mt-4" style="overflow-y:scroll">
 					<c:forEach var="review" items="${review}">
-						<li class="mb-2 px-2" style="float:left">
+						<li class="mb-2 px-2 align-items-left" style="float:left">
 							${review.userName}&nbsp;&nbsp;
 							<c:choose>
 							    <c:when test="${review.reviewRate == 1.0}">
@@ -107,67 +107,22 @@
 				<div class="review-footer"></div>
 			</div>
 		</div>
-		
 	</div>
 </div>
 
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/bootstrap.bundle.min.js"></script>
 <script>
 	// 등록 버튼 클릭 시
-	$(".btn-primary").click(function(e) {
-		e.preventDefault();		
-		
-		let message = '${error}';
-		
-		if(message != "") {
-			alert(error); // 후기 작성한 이력이 있는 사용자인 경우, "후기를 작성한 이력이 있습니다." 경고창 띄우기
-		}else {
-			if($('#reviewContent') == null) {
-				alert('후기를 작성해주세요.');
-				return;
-			}
-			
-			form.attr('action', '/market/market_detailReview');
-			
-			form.submit();
-		}
+	$(".btn-outline-primary").click(function(e) {
+		e.preventDefault();
 		
 		if($("#reviewContent").val() == "") {
-			alert('입력되지 않은 항목이 있습니다.');
+			alert('후기를 작성해주세요.');
 			return;
 		}
 		
 		$("#reviewForm").submit();
 	});
-	
-	$(function() {
-		let form = $("#reviewForm");
-		
-		let error = '${error}';
-		
-		if(error != '') {
-			alert(error);
-		}
-		
-		$(":submit").click(function(e) {
-			e.preventDefault(); // submit 속성 막기
-			
-			let message = '${error}';
-			
-			if(message != "") {
-				// 후기 작성한 이력이 있는 사용자인 경우, "후기를 작성한 이력이 있습니다." 경고창 띄우기
-				alert(error);
-			}else {
-				
-				if($('#reviewContent') == null) {
-					alert('후기를 작성해주세요.');
-					return;
-				}
-				
-				form.attr('action', '/market/market_detailReview');
-				
-				form.submit();
-			}
-		}
-	}
 </script>
 <%@ include file="../include/footer.jsp"%>

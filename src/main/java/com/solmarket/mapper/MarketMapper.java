@@ -28,7 +28,7 @@ public interface MarketMapper {
 	
 	/* ====================== 장터 오픈 ====================== */
 	public int updateMarketOn(int marketNo); // 장터 오픈 (장터 상태 1 → 2)
-	public int updateProductOn(int productNo); // 장터 오픈 (상품 상태 1 → 3)
+	public int updateProductOn(int marketNo); // 장터 오픈 (상품 상태 1 → 3)
 	
 	/* ====================== 장터 위치 불러오기 ====================== */
 	public String selectMarketLoc(int marketNo); // 장터 위치 정보 조회
@@ -46,7 +46,7 @@ public interface MarketMapper {
 	
 	/* ====================== 장터 종료 ====================== */
 	public int updateMarketOff(int marketNo); // 장터 종료 (장터 상태 2 → 3)
-	public int updateProductOff(int productNo); // 장터 종료 (상품 상태 3 → 4)
+	public int updateProductOff(int marketNo); // 장터 종료 (상품 상태 3 → 4)
 	
 	/* ====================== 장터 후기 목록 보기 ====================== */
 	public List<ReviewDTO> selectReviewList(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 한 줄 후기 조회 (장터 번호)
@@ -56,9 +56,8 @@ public interface MarketMapper {
 	public double selectMarketRate(int marketNo); // 장터 총 평점 불러오기
 	
 	/* ====================== 장터 후기 등록 ====================== */
-	public int selectReveiwer(@Param("marketNo")int marketNo, @Param("userNo")int userNo); // 후기 작성한 적 있는지 확인
 	public int insertReview(ReviewDTO reviewDTO); // 장터 한 줄 후기 등록
-	public int updateReviewRate(ReviewDTO reviewDTO); // 장터 등록 시 장터 평점 업데이트
+	public int updateReviewRate(int marketNo); // 장터 등록 시 장터 평점 업데이트
 	
 	/* ====================== 장터 후기 삭제 (운영자) ====================== */
 	public int deleteReview(int reviewNo);

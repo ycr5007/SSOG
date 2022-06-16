@@ -16,8 +16,8 @@
 	});
 </script>
 <link rel="stylesheet" href="/resources/css/y.css">
-<div class="wrapper">
-    <div class="center">
+<div id="pwCheck" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">
+    <div class="center card mb-1 border-0 bg-dark" style="width:auto; height:420px;  align-content: center">
       <h2>비밀번호 재확인</h2>
       <form action="myPagePwCheck" method="post">
         <div class="txt_field">

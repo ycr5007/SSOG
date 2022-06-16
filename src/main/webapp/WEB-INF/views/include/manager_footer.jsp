@@ -12,9 +12,8 @@
 
     </div>
     <!-- End of Page Wrapper -->
-    
-    <!-- JavaScript-->
-    <script src="/resources/js/bootstrap.bundle.min.js"></script>
-    <script src="/resources/js/sb-admin-2.min.js"></script>
+
+<script src="/resources/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/js/sb-admin-2.min.js"></script>
 </body>
 </html>

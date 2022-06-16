@@ -1,7 +1,7 @@
 -- user테이블 칼럼추가
 -- req_auth : 권한요청(SELLER : 1 / MANAGER : 2)
 ALTER TABLE myuser add req_auth number(2) default 0;
-
+select * from myuser;
 -- 권한요청 테이블 추가
 CREATE TABLE auth_request(
 	user_id VARCHAR2(12) NOT NULL,
@@ -50,7 +50,6 @@ CREATE TABLE myuser (
 	user_status NUMBER(2) DEFAULT 1,
     enabled CHAR(1) DEFAULT '1'
 );
-
 
 ALTER TABLE myuser ADD CONSTRAINT PK_USER PRIMARY KEY (user_no);
 

@@ -26,10 +26,6 @@ public interface MarketService {
 	public List<ProductDTO> showProductAcceptList(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 상품 조회 (상품 상태 1 & 장터 번호)
 	public int TotalAccept(int marketNo); // 총 승인 개수
 	
-	/* ====================== 장터 오픈 ====================== */
-	public boolean MarketOn(int marketNo); // 장터 오픈 (장터 상태 1 → 2)
-	public boolean ProductOn(int productNo); // 장터 오픈 (상품 상태 1 → 3)
-	
 	/* ====================== 장터 위치 불러오기 ====================== */
 	public String showMarketLoc(int marketNo); // 장터 위치 정보 조회
 	
@@ -43,10 +39,6 @@ public interface MarketService {
 	/* ================== 장터 판매 상품 목록 보기 ================== */
 	public List<ProductDTO> ProductList(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 상품 조회 (상품 상태 3 & 장터 번호)
 	public int TotalProduct(int marketNo); // 판매 상품 총 개수
-	
-	/* ====================== 장터 종료 ====================== */
-	public boolean MarketOff(int marketNo); // 장터 종료 (장터 상태 2 → 3)
-	public boolean ProductOff(int productNo); // 장터 종료 (상품 상태 3 → 4)
 
 	/* ====================== 첨부파일 ====================== */
 	public boolean MarketImg(AttachDTO attachDTO); // 장터 이미지 삽입
@@ -62,9 +54,8 @@ public interface MarketService {
 	public double MarketRate(int marketNo);
 	
 	/* ====================== 장터 후기 등록 ====================== */
-	public boolean findReveiwer(@Param("marketNo")int marketNo, @Param("userNo")int userNo); // 후기 작성한 적 있는지 확인
 	public boolean registerReview(ReviewDTO reviewDTO);
-	public boolean ReviewRate(ReviewDTO reviewDTO); // 장터 등록 시 장터 평점 업데이트
+	public boolean ReviewRate(int marketNo); // 장터 등록 시 장터 평점 업데이트
 	
 	/* ====================== 장터 후기 삭제 (운영자) ====================== */
 	public boolean deleteReview(int reviewNo);

@@ -127,6 +127,7 @@ public class MarketController {
 //		model.addAttribute("marketImg", marketImg);
 //		model.addAttribute("productImg", productImg);
 		model.addAttribute("marketLoc", service.showMarketLoc(marketNo));
+		model.addAttribute("marketRate", service.MarketRate(marketNo));
 		model.addAttribute("marketDTO", marketDTO);
 		model.addAttribute("product", list);
 		model.addAttribute("review", review);
@@ -137,24 +138,19 @@ public class MarketController {
 	public void market_detailReview(int marketNo, @ModelAttribute("criteria")Criteria criteria, Model model) {
 		log.info("[GetMapping] ========== 장터 후기 더보기 호출 ==========");
 		List<ReviewDTO> review = service.ReviewList(marketNo, criteria);
-		MarketDTO marketDTO = new MarketDTO();
-		marketDTO.setMarketNo(marketNo);
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("review", review);
-		model.addAttribute("marketRate", marketDTO.getMarketRate());
+		model.addAttribute("marketRate", service.MarketRate(marketNo));
 	}
 	
 	@PostMapping("/market_detailReview")
-	public void market_registerReview(ReviewDTO reviewDTO, int marketNo, RedirectAttributes rttr) {
+	public String market_registerReview(ReviewDTO reviewDTO, int marketNo, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 장터 후기 작성 등록 ==========");
-		if(service.findReveiwer(marketNo, reviewDTO.getUserNo())) {
-			rttr.addFlashAttribute("error", "후기를 작성한 이력이 있습니다.");
-			return;
-		}
 		if(service.registerReview(reviewDTO)) {
-			service.ReviewRate(reviewDTO);
+			service.ReviewRate(marketNo);
 			rttr.addAttribute("marketNo", marketNo);
 		}
+		return "redirect:/market/market_detailReview";
 	}
 	
 	/* ================== 장터 판매 상품 목록 보기 ================== */

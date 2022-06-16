@@ -62,7 +62,8 @@
 
 <!-- 네이버 지도 API Script -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bbgkngo31i&submodules=geocoder"></script>
-
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/bootstrap.bundle.min.js"></script>
 <script>
 	var y = "";
 	var x = "";
@@ -82,17 +83,18 @@
 			type : 'post',
 			data : {
 				'address' : encodeURIComponent(roadFullAddr)
-			}, // encodeURIComponent로 인코딩하여 넘기기
+			},
 			dataType : 'json',
 			error : function(x, e) {
+				console.log(x);
 				alert('주소를 다시 확인해주세요.');
 			},
 			success : function(data) {
 				console.log(data);
-				x = data.result.items[0].point.x;
-				y = data.result.items[0].point.y;
-				console.log(lng);
-				console.log(lat);
+				x = data.result.addresses[0].x;
+				y = data.result.addresses[0].y;
+				console.log(x);
+				console.log(y);
 			}
 		});
 	}
