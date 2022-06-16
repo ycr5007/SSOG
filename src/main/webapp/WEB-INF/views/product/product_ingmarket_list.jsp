@@ -8,7 +8,7 @@
 	<div class="container">
 	<div class="row">
 	  <div class="col-lg-12 pl-2" >
-	    <h1 class="page-header">오픈 예정 장터 목록</h1>
+	    <h1 class="page-header">참여 중인 장터 목록</h1>
 	  </div>
 	  <!-- /.col-lg-12 -->
 	</div>
@@ -19,8 +19,8 @@
 	  <div class="col-lg-12">
 	    <div class="panel panel-default">
 	      <div class="panel-heading">
-		  Market List Page
-		  </div>
+	       ~ing Market List Page
+	      </div>
 	     <!-- /.panel-heading 종료-->
       
       <div class="panel-body">
@@ -38,12 +38,11 @@
           
          <tbody>
           <!-- 게시판 리스트 반복문 -->
-          	<c:forEach var="dto" items="${marketList}" varStatus="status">
+          	<c:forEach var="dto" items="${ingMarketList}" varStatus="status">
          	 <tr>
           		<td>${status.count}</td>          		
-          		<td>
-          			<a href="${dto.marketNo}" class="move">${dto.marketName}</a>
-         	 	</td>
+          		<td>${dto.marketName }</td>
+          			<%-- <a href="${dto.marketNo}" class="move">${dto.marketName}</a> --%>         	 	
           		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.marketSD}"/></td>
           		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.marketED}"/></td>
           		<td>${dto.marketLoc}</td>
@@ -103,7 +102,7 @@
 </div>
 
 	<%--페이지 링크 처리할 폼 --%>
-	<form action="/product/product_market_list" id="actionForm">
+	<form action="/product/product_ingmarket_list" id="actionForm">
 		<!-- pageNum, amount, type, keyword 값을 부를 때
 			①pageDto(pageDto.cri.pageNum)
 			②cri(criteria.pageNum( @ModelAttribute가 사용 안된 경우), cri.pageNum)
@@ -119,5 +118,5 @@
 
 
 
-<script src="/resources/js/product/product_market_list.js"></script>
+<script src="/resources/js/product/product_ingmarket_list.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

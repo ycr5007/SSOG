@@ -29,7 +29,7 @@ public interface MemberService {
 	
 	// 임시비밀번호 메일 발송
 	public String pwMail(String userMail);
-	public String updatePw(String userMail);
+	public void updatePw(String userMail, String userPw);
 	
 	// 비밀번호 재확인
 	public String checkPw(String userPw);

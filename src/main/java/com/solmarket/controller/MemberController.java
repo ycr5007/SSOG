@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -74,10 +75,10 @@ public class MemberController {
 	}
 
 	// 비밀번호 변경 폼 요청
-	@GetMapping("/changePwd")
-	public void changePwd() {
-		log.info("비밀번호 변경 폼 요청");
-	}
+	/*
+	 * @GetMapping("/changePwd") public void changePwd() { log.info("비밀번호 변경 폼 요청");
+	 * }
+	 */
 
 	// 비밀번호 변경 - post
 	/*
@@ -153,8 +154,9 @@ public class MemberController {
 	public void findPw() {
 		log.info("비밀번호 찾기 폼 요청");
 	}
-
-	@GetMapping("/pwMail")
+	
+	@ResponseBody
+	@PostMapping("/pwMail")
 	public String pwMail(String userMail) {
 
 		log.info("이메일 데이터 전송확인");
@@ -174,12 +176,13 @@ public class MemberController {
 	}
 
 	@PostMapping("/findPwResult")
-	public String findPwResultPost(String userMail) {
-		if (service.updatePw(userMail) != null) {
-			return "redirect:/member/login";
-		} else {
-			return "redirect:/member/findPw";
-		}
+	public void findPwResultPost(String userMail) {
+		log.info("패스워드 결과 페이지 요청");
+		
+		/*
+		 * if (service.updatePw(userMail)) { return "redirect:/member/login"; } else {
+		 * return "redirect:/member/findPw"; }
+		 */
 	}
 
 	// 메일인증

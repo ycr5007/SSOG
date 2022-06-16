@@ -25,7 +25,7 @@
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>	
 		<security:intercept-url pattern="/admin/**" access="hasRole('admin')" />
 	<!-- 	<security:intercept-url pattern="/product/**" access="hasRole('SELLER')" /> -->
-		
+			
 		
 		<!-- login-page : 컨트롤러 지정 -->
 		<security:form-login login-page="/member/login"	authentication-failure-url="/member/login-error" login-processing-url="/member/login"

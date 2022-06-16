@@ -175,8 +175,10 @@ public class MemberServiceImpl implements MemberService {
 		}
 
 	@Override
-	public String updatePw(String userMail) {
-		return mapper.updatePw(userMail);
+	public void updatePw(String userMail, String userPw) {
+		
+		String encPw = encoder.encode(userPw);
+		mapper.updatePw(userMail, encPw);
 	}
 
 	@Override

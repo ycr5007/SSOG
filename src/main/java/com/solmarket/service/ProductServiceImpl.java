@@ -63,13 +63,13 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.marketName(marketNo);
 	}
 
-	// 장터 리스트 보여주기
+	// 오픈 예정 장터 리스트 보여주기
 	@Override
 	public List<MarketDTO> marketList(Criteria cri, int userNo) {	
 		return mapper.marketList(cri, userNo);
 	}
 
-	// 장터 리스트 페이징
+	// 오픈 예정 장터 리스트 페이징
 	@Override
 	public int marketTotal(Criteria cri) {
 		return mapper.marketTotal(cri);
@@ -104,11 +104,32 @@ public class ProductServiceImpl implements ProductService {
 	public int remainTotal(int userNo) {		
 		return mapper.remainTotal(userNo);
 	}
-
+	
+	// 온라인 상품 리스트 보여주기
 	@Override
-	public List<ProductDTO> getSearchList(String productName) {
-		return mapper.search(productName);
+	public List<ProductDTO> onlineList(Criteria cri, int userNo) {
+		return mapper.onlineList(cri, userNo);
 	}
+	
+	// 온라인 상품 리스트 페이징
+	@Override
+	public int onlineTotal(int userNo) {
+		return mapper.onlineTotal(userNo);
+	}
+	
+	// 참여중인 장터 리스트 보여주기
+	@Override
+	public List<MarketDTO> ingMarketList(Criteria cri, int userNo) {
+		return mapper.ingMarketList(cri, userNo);
+	}
+	
+	// 참여중인 장터 리스트 페이징
+	@Override
+	public int ingMarketTotal(Criteria cri) {
+		return mapper.ingMarketTotal(cri);
+	}
+
+
 	
 
 }

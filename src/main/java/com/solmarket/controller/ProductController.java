@@ -120,7 +120,7 @@ public class ProductController {
 	// 장터 리스트 보여주기
 	@GetMapping("/product_market_list")
 	public void marketList(int userNo,Model model,@ModelAttribute("cri") Criteria cri) {
-		log.info("마켓 리스트 요청");
+		log.info("오픈 예정 장터 리스트 요청");
 		
 		List<MarketDTO> marketList = service.marketList(cri, userNo);
 		// 페이징
@@ -134,7 +134,7 @@ public class ProductController {
 	// 장터 종료 후 남은 상품 보여주기 상품 상태 == 4 
 	@GetMapping("/product_remain_list")
 	public void remainList(int userNo,Model model,@ModelAttribute("cri") Criteria cri) {
-		log.info("마켓 종료 후 상품 리스트 요청");
+		log.info("장터 종료 후 상품 리스트 요청");
 		List<ProductDTO> remainList = service.remainList(cri, userNo);
 		// 페이징
 		int total = service.remainTotal(userNo);
@@ -143,16 +143,35 @@ public class ProductController {
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("remainList",remainList);
 	}
-	//검색 폼 보여주기
-	@GetMapping("/product_search")
-	public String search(String productName, Model model) {
-		log.info("상품 정보 검색" + productName);
+	
+	// 온라인 상품 보여주기, 상품 상태 == 5
+	@GetMapping("/product_online_list")
+	public void onlineList(int userNo, Model model,@ModelAttribute("cri") Criteria cri) {
+		log.info("온라인 판매 상품 보내주기");
 		
-		List<ProductDTO> list = service.getSearchList(productName);
-		model.addAttribute("list",list);
-		
-		return "/search_list"; 
+		List<ProductDTO> onlineList = service.onlineList(cri, userNo);
+		// 페이징
+		int total = service.onlineTotal(userNo);
+		log.info("pageDTO : " + new PageDTO(cri, total));
+		model.addAttribute("userNo", userNo);
+		model.addAttribute("pageDto", new PageDTO(cri, total));
+		model.addAttribute("onlineList",onlineList);
 	}
+	
+	// 참여중인 장터 보여주기
+	@GetMapping("/product_ingmarket_list")
+	public void ingMarketList(int userNo, Model model, @ModelAttribute("cri") Criteria cri) {
+		log.info("참여 중인 장터 리스트 요청");
+
+		List<MarketDTO> ingMarketList = service.ingMarketList(cri, userNo);
+		// 페이징
+		int total = service.ingMarketTotal(cri);
+		log.info("pageDTO : " + new PageDTO(cri, total));
+		model.addAttribute("userNo", userNo);
+		model.addAttribute("pageDto", new PageDTO(cri, total));
+		model.addAttribute("ingMarketList", ingMarketList);
+	}
+	
 	
 
 }

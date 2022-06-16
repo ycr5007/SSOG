@@ -24,9 +24,9 @@ public interface ProductService {
 	public boolean update(ProductDTO updateDto);
 	// 장터 이름 가져오기
 	public String marketName(int marketNo);
-	// 장터 리스트 보여주기
+	// 오픈예정 장터 리스트 보여주기
 	public List<MarketDTO> marketList(@Param("cri")Criteria cri,@Param("userNo")int userNo); 
-	// 장터 리스트 페이징 처리
+	// 오픈 예정 장터 리스트 페이징 처리
 	public int marketTotal(Criteria cri);
 	// 인덱스에서 참여 중인 장터 리스트 보여주기
 	public List<MarketDTO> mList();
@@ -38,6 +38,13 @@ public interface ProductService {
 	public List<ProductDTO> remainList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
 	// 장터 종료 후 남은 상품 리스트 페이징
 	public int remainTotal(int userNo);
-	// 검색
-	public List<ProductDTO> getSearchList(String productName);
+	// 온라인 상품 리스트 보여주기
+	public List<ProductDTO> onlineList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
+	// 온라인 상품 리스트 페이징 처리
+	public int onlineTotal(int userNo);
+	// 참여 중인 장터 리스트 보여주기
+	public List<MarketDTO> ingMarketList(@Param("cri") Criteria cri, @Param("userNo") int userNo);
+	// 참여 중인 장터 리스트 페이징 처리
+	public int ingMarketTotal(Criteria cri);
+
 }

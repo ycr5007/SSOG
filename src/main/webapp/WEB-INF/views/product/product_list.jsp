@@ -123,5 +123,5 @@
 
 
 
-<script src="/resources/js/product_list.js"></script>
+<script src="/resources/js/product/product_list.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

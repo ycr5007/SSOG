@@ -76,7 +76,7 @@
 		where product_no=#{productNo}
 	</update>
 
-	<!-- 장터 리스트 보여주기 -->
+	<!-- 오픈 예정 장터 리스트 보여주기 -->
 	<select id="marketList" resultType="com.solmarket.dto.MarketDTO">	
 		<![CDATA[
 		select num, marketNo, marketName,  marketSD,marketED,  marketLoc
@@ -88,7 +88,7 @@
 		]]>
 	</select>
 	
-	<!-- 장터 리스트 갯수 -->
+	<!-- 오픈 예정 장터 리스트 페이징 -->
 	<select id="marketTotal" resultType="int">
 		select count(*) from market
 		where market_status = 1
@@ -140,8 +140,54 @@
 		select count(*) from product
 		where user_no =#{userNo} and product_status = 4
 	</select>
-
-
+	
+	<!-- 온라인 상품 리스트 보여주기 -->
+	<select id="onlineList" resultType="com.solmarket.dto.ProductDTO">
+	<![CDATA[
+		select * from 
+			(select rownum as num, statusList.* from
+				(select user_name as userName, p.* from 
+					(select p.product_no as productNo, m.market_name as dummy,
+							p.user_no as userNo,
+							p.product_name as productName, 
+							p.product_price as productPrice,
+							p.product_content as productContent, 
+							p.product_date as productDate,
+							p.product_qn as productQN
+					from product p left outer join market m on p.market_no = m.market_no 
+					where p.user_no = #{userNo} and product_qn >= 1 and product_status = 5) p 
+				left outer join myUser u on p.userNo = u.user_no) statusList
+				where rownum <= (#{cri.pageNum} * #{cri.amount}))
+			where num > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
+	</select>
+	
+	<!-- 온라인 상품 페이징 처리 -->
+	<select id="onlineTotal" resultType="int">
+		select count(*) from product
+		where user_no =#{userNo} and product_status = 5
+	</select>
+	
+	<!-- 참여 중인 장터 리스트 보여주기 -->
+	<select id="ingMarketList" resultType="com.solmarket.dto.MarketDTO">	
+		<![CDATA[
+		select num, marketNo, marketName,  marketSD,marketED,  marketLoc
+		from (select /*+INDEX_DESC(market pk_market)*/
+				 rownum as num, market_no as marketNo, market_name as marketName, market_sd as marketSD,market_ed as marketED, market_loc as marketLoc
+			 from market
+			 where rownum <= (#{cri.pageNum} * #{cri.amount}) and market_status = 2)
+		where num > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
+	</select>
+	
+	<!-- 참여 중인 장터 리스트 페이징 -->
+	<select id="ingMarketTotal" resultType="int">
+		select count(*) from market
+		where market_status = 2
+	</select>
+	
+	
+	
 	<!-- 상품 삭제 -->
 	<delete id="delete">
 		delete from product
@@ -149,11 +195,7 @@
 	</delete>
 
 
-	<!-- 상품 검색 -->
-	<select id="search" resultType="com.solmarket.dto.ProductDTO">
-		select * from product
-		where product_Name like '%' || #{productName} || '%'
-	</select>
+	
 
 
 </mapper>

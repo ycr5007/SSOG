@@ -31,97 +31,61 @@
 						<a href="#">more</a>
 					</div>
 					<!-- body -->
-					<div class="card-body">
-						<div class="panel-body">
-						 <div
-          id="carouselExampleCaptions"
-          class="carousel slide"
-          data-ride="carousel"
-        >
-          <ol class="carousel-indicators">
-            <li
-              data-target="#carouselExampleCaptions"
-              data-slide-to="0"
-              class="active"
-            ></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img
-                src="/resources/img/market.PNG"
-                class="d-block w-100"
-                alt="..."
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>
-                  Some representative placeholder content for the first slide.
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="/resources/img/product_single_01.jpg"
-                class="d-block w-100"
-                alt="..."
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>
-                  Some representative placeholder content for the second slide.
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img
-                src="/resources/img/product_single_02.jpg"
-                class="d-block w-100"
-                alt="..."
-              />
-              <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>
-                  Some representative placeholder content for the third slide.
-                </p>
-              </div>
-            </div>
-          </div>
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-target="#carouselExampleCaptions"
-            data-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-target="#carouselExampleCaptions"
-            data-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </button>
-        </div>
-					</div>
+				<div class="card-body">
+					<div class="panel-body">
+						<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+								<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+								<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<img src="/resources/img/market.PNG" class="d-block w-100" alt="..." />
+									<div class="carousel-caption d-none d-md-block">
+										<h5>First slide label</h5>
+										<p>Some representative placeholder content for the first slide.</p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img src="/resources/img/product_single_01.jpg" class="d-block w-100" alt="..." />
+									<div class="carousel-caption d-none d-md-block">
+										<h5>Second slide label</h5>
+										<p>Some representative placeholder content for the second slide.</p>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<img src="/resources/img/product_single_02.jpg" class="d-block w-100" alt="..." />
+									<div class="carousel-caption d-none d-md-block">
+										<h5>Third slide label</h5>
+										<p>Some representative placeholder content for the third slide.</p>
+									</div>
+								</div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</button>
+						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 	
 		<!-- row 안에 오픈 예정 장터, 상품 목록을 보여줌 -->
 		<div class="row">
-			<!-- 오픈 예정 장터 start -->
+			<!-- 참여 예정 장터 start -->
 			<div class="col-xl-6">
 				<div class="card shadow mb-4">
 					<!-- header -->
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">참여 중인 장터</h6>
-						<a href="">more</a>
+						<a href="/product/product_ingmarket_list?userNo=${userNo}">more</a>
 					</div>
 					<!-- card body start -->
 					<div class="card-body">
@@ -159,7 +123,7 @@
 					<!-- header -->
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">상품 목록</h6>
-						<a href="#">more</a>
+						<a href="/product/product_list?userNo=${userNo}">more</a>
 					</div>
 					<!-- body -->
 					<div class="card-body">
