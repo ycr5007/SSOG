@@ -10,4 +10,5 @@ public interface NoticeService {
 	int getNoticeCount();
 	
 	NoticeDTO getReadDetail(int noticeNo);
+	
 }

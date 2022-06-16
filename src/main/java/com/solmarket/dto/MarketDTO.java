@@ -1,13 +1,10 @@
 package com.solmarket.dto;
 
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,6 +20,8 @@ public class MarketDTO {
 	private String marketED; // 종료일
 	private double marketRate; // 총 평점
 	private int marketStatus; // 장터 상태
+	
+	private String dummy;
 	
 	private List<AttachDTO> attachList; // 첨부파일
 }

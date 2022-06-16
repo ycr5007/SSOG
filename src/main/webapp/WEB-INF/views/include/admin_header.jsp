@@ -47,11 +47,18 @@
 
 			<!-- 회원관리 - 현재 회원 수 및 회원 권한 확인 ( 필터링 작업 ) -->
 			<li class="nav-item">
-				<a class="nav-link" href="/admin/user">
-					<i class="fas fa-fw fa-bookmark"></i>
-					<span>회원관리</span>
-				</a>
-			</li>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-edit"></i>
+                    <span>회원관리</span>
+                </a>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/admin/user">회원관리</a>
+                        <a class="collapse-item" href="/admin/request_auth">권한요청</a>
+                    </div>
+                </div>
+            </li>
 
 			<!-- 장터관리 - 마켓운영자로부터 장터 오픈 요청 확인 및 승인 작업 -->
 			<li class="nav-item">

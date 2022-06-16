@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.solmarket.dto.Criteria;
@@ -33,7 +34,7 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/notice_read")
-	public void noticeRead(Criteria cri, int noticeNo, Model model) {
+	public void noticeRead(@ModelAttribute("cri") Criteria cri, int noticeNo, Model model) {
 		log.info("[GET] <<<<< Notice Read 페이지 >>>>>");
 		NoticeDTO dto = noticeService.getReadDetail(noticeNo);
 		log.info("[GET] READ DATA ::::: " + dto);

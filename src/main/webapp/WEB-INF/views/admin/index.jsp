@@ -50,7 +50,7 @@
 							<tr>
 								<td>${status.count }</td>
 								<td>${noticeDTO.noticeTitle }</td>
-								<td><fmt:formatDate value="${noticeDTO.noticeDate }" pattern="yyyy-MM-dd"/></td>
+								<td>${noticeDTO.noticeDate }</td>
 								<td>${noticeDTO.dummy }</td>
 							</tr>
 						</c:forEach>

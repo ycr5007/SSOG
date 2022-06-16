@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.solmarket.dto.AuthDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.NoticeDTO;
@@ -65,6 +67,11 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
+	public List<AuthDTO> getAuthRequest() {
+		return adminMapper.getAuthRequest();
+	}
+	
+	@Override
 	public UserDTO getUserDetail(int userNo) {
 		return adminMapper.getUserDetail(userNo);
 	}
@@ -72,6 +79,19 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public boolean deleteUserData(int userNo) {
 		return adminMapper.deleteUserData(userNo) > 0 ? true : false;
+	}
+	
+	@Transactional
+	@Override
+	public boolean accessAuth(String userId) {
+		boolean result = adminMapper.accessAuth(userId) > 0;
+		result = adminMapper.deleteAuth(userId) > 0;
+		return result;
+	}
+	
+	@Override
+	public boolean deleteAuth(String userId) {
+		return adminMapper.deleteAuth(userId) > 0;
 	}
 	
 	// marketRequest 페이지

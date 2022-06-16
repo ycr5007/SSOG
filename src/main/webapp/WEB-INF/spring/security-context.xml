@@ -23,7 +23,7 @@
 	<security:http>
 		<!-- 정적 리소스는 모두 접근 허용 -->
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>	
-		<security:intercept-url pattern="/admin/**" access="hasRole('admin')" />
+		<security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
 	<!-- 	<security:intercept-url pattern="/product/**" access="hasRole('SELLER')" /> -->
 			
 		
