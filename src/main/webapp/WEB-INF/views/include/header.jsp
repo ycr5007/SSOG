@@ -13,6 +13,7 @@
 	<!-- 템플릿 -->
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/resources/css/templatemo.css" />
+    <link rel="stylesheet" href="/resources/css/font.css" />
     <!-- 템플릿 종료-->
     
     <!-- jquery cdn -->
