@@ -59,7 +59,7 @@
 	
 	<!-- PW 찾기 -->
 	<update id="updatePw">
-		update myuser set user_pw = #{userPw} where user_id = #{userId]
+		update myuser set user_pw = #{userPw} where user_mail = #{userMail]
 	</update>
 	
 	<!-- PW Check -->

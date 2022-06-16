@@ -67,8 +67,9 @@ public class MemberController {
 	}
 
 	@GetMapping("/logout")
-	public String logout() {
+	public String logout(HttpSession session) {
 		log.info("로그아웃");
+		session.invalidate();
 		return "redirect:/";
 	}
 
@@ -147,33 +148,38 @@ public class MemberController {
 	public void findIdGet(String userName, String userMail) {
 	}
 
+	// 비밀번호 찾기
+	@GetMapping("/findPw")
+	public void findPw() {
+		log.info("비밀번호 찾기 폼 요청");
+	}
+
 	@GetMapping("/pwMail")
 	public String pwMail(String userMail) {
 
-		// jsp로부터 넘어온 데이터 확인
 		log.info("이메일 데이터 전송확인");
 		log.info("입력한 메일 : " + userMail);
 
 		String tempPw = service.pwMail(userMail);
 		log.info(tempPw);
-		
-		return tempPw;
-		}
-	
 
-	@GetMapping("/findPwResult")
-	public String findPwResultGet(String userMail) {
-		if(!(service.updatePw(userMail)==null)) {
-			return "redirect:/member/login";
-		}else {
-			return "redirect:/member/findPw";
-		}
+		return tempPw;
 	}
 
-	// 비밀번호 찾기
-	@GetMapping("/findPw")
-	public void findPw() {
-		log.info("비밀번호 찾기 폼 요청");
+	// 임시비밀번호 발급 완료... -> 창에 입력 -> 비밀번호 변경 submit -> findPwResult -> 로그인창
+	//
+	@GetMapping("/findPwResult")
+	public void findPwResultGet() {
+		log.info("패스워드 결과 페이지 요청");
+	}
+
+	@PostMapping("/findPwResult")
+	public String findPwResultPost(String userMail) {
+		if (service.updatePw(userMail) != null) {
+			return "redirect:/member/login";
+		} else {
+			return "redirect:/member/findPw";
+		}
 	}
 
 	// 메일인증
@@ -200,6 +206,12 @@ public class MemberController {
 	@PostMapping("/jusoPopup")
 	public void jusoPopupPost() {
 		log.info("주소 팝업 요청;");
+	}
+	
+	// accessdenied mapping
+	@GetMapping("/access-denied")
+	public void deniedGet() {
+		log.info("access-denied 페이지 요청");
 	}
 
 }

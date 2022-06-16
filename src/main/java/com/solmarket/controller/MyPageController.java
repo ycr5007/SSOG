@@ -36,10 +36,7 @@ public class MyPageController {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
-	@GetMapping("/myPage")
-	public void myPage() {
-		log.info("myPage 페이지 요청");
-	}
+
 	
 	@GetMapping("/myPagePwCheck")
 	public void myPagePwCheckGet() {

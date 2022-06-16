@@ -143,7 +143,7 @@
 						</sec:authorize>
 						<sec:authorize access="isAuthenticated()">
 							<a class="dropdown-item" href="/member/logout">로그아웃</a>
-							<a class="dropdown-item" href="/member/myPage">마이페이지</a>
+							<a class="dropdown-item" href="/member/myPagePwCheck">마이페이지</a>
 							<a class="dropdown-item" href="#">장바구니</a>
 						</sec:authorize>
 					   </div>
