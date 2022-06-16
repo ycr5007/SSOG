@@ -51,7 +51,6 @@ CREATE TABLE myuser (
     enabled CHAR(1) DEFAULT '1'
 );
 
-
 ALTER TABLE myuser ADD CONSTRAINT PK_USER PRIMARY KEY (user_no);
 
 CREATE TABLE myuser_auth(
