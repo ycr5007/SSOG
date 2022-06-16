@@ -27,8 +27,8 @@ public interface MarketMapper {
 	public int selectTotalAccept(int marketNo); // 총 승인 개수
 	
 	/* ====================== 장터 오픈 ====================== */
-	public int updateMarketOn(int marketNo); // 장터 오픈 (장터 상태 1 → 2)
-	public int updateProductOn(int marketNo); // 장터 오픈 (상품 상태 1 → 3)
+	public int updateMarketOn(); // 장터 오픈 (장터 상태 1 → 2)
+	public int updateProductOn(); // 장터 오픈 (상품 상태 1 → 3)
 	
 	/* ====================== 장터 위치 불러오기 ====================== */
 	public String selectMarketLoc(int marketNo); // 장터 위치 정보 조회
@@ -45,8 +45,8 @@ public interface MarketMapper {
 	public int selectTotalProduct(int marketNo); // 판매 상품 총 개수
 	
 	/* ====================== 장터 종료 ====================== */
-	public int updateMarketOff(int marketNo); // 장터 종료 (장터 상태 2 → 3)
-	public int updateProductOff(int marketNo); // 장터 종료 (상품 상태 3 → 4)
+	public int updateMarketOff(); // 장터 종료 (장터 상태 2 → 3)
+	public int updateProductOff(); // 장터 종료 (상품 상태 3 → 4)
 	
 	/* ====================== 장터 후기 목록 보기 ====================== */
 	public List<ReviewDTO> selectReviewList(@Param("marketNo")int marketNo, @Param("cri")Criteria cri); // 한 줄 후기 조회 (장터 번호)
