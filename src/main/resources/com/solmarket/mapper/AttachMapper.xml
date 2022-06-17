@@ -17,6 +17,30 @@
 		INSERT INTO recruit_img values(#{uuid}, #{uploadPath}, #{fileName}, #{no})
 	</insert>
 	
+	<select id="getImg" resultType="com.solmarket.dto.AttachDTO">
+		SELECT uuid, uploadPath as uploadPath, filename as fileName, 
+		<choose>
+			<when test="section == 'user'">
+				user_no as no from user_img where user_no = #{no}
+			</when>
+			<when test="section == 'product'">
+				product_no as no from product_img where product_no = #{no}
+			</when>
+			<when test="section == 'market'">
+				market_no as no from market_img where market_no = #{no}
+			</when>
+			<when test="section == 'recruit'">
+				recruit_no as no from recruit_img where recruit_no = #{no}
+			</when>
+			<when test="section == 'notice'">
+				notice_no as no from notice_img where notice_no = #{no}
+			</when>
+			<when test="section == 'board'">
+				board_no as no from board_img where board_no = #{no}
+			</when>
+		</choose>
+	</select>
+	
 	<!-- ================= 장터 이미지 불러오기 ================= -->
 	<select id="selectMarketImg" resultType="com.solmarket.dto.AttachDTO">
 		SELECT uuid, uploadpath as uploadPath, filename as fileName, market_no as no FROM market_img WHERE market_no = #{marketNo}

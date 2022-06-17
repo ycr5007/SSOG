@@ -12,5 +12,9 @@
 
     </div>
     <!-- End of Page Wrapper -->
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/market_pagination.js"></script>
+<script src="/resources/js/bootstrap.bundle.min.js"></script>
+<script src="/resources/js/sb-admin-2.min.js"></script>
 </body>
 </html>

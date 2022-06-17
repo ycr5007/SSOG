@@ -17,11 +17,11 @@
 						<div class="card-body">
 							<table class="table">
 								<tr class="column-header">
-									<th class="col-lg-3">장터명</th>
+									<th class="col-lg-2">장터명</th>
 									<th class="col-lg-2">운영자</th>
 									<th class="col-lg-2">지역</th>
-									<th class="col-lg-1">시작일</th>
-									<th class="col-lg-1">종료일</th>
+									<th class="col-lg-2">시작일</th>
+									<th class="col-lg-2">종료일</th>
 									<th class="col-lg-1">승인</th>
 									<th class="col-lg-1">거부</th>
 								</tr>
@@ -30,8 +30,8 @@
 									<td style="text-align: left; text-indent: 10px;">${market.marketName }</td>
 									<td>${market.dummy }</td>
 									<td>${market.marketLoc }</td>
-									<td><fmt:formatDate value="${market.marketSD }" pattern="MM-dd"/></td>
-									<td><fmt:formatDate value="${market.marketED }" pattern="MM-dd"/></td>
+									<td>${market.marketSD }</td>
+									<td>${market.marketED }</td>
 									<td><button type="button" class="btn btn-outline-primary btn-sm access" value="${market.marketNo }">승인</button></td>
 									<td><button type="button" class="btn btn-outline-danger btn-sm refuse" value="${market.marketNo }">거부</button></td>
 								</tr>

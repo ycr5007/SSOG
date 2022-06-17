@@ -1,9 +1,13 @@
 package com.solmarket.mapper;
 
 import java.util.List;
-import com.solmarket.dto.*;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.solmarket.dto.AttachDTO;
 
 public interface AttachMapper {
+	public AttachDTO getImg(@Param("section") String section, @Param("no") int no);
 	
 	/* ====================== 회원 프로필 이미지 등록 ====================== */
 	public int userInsertImg(AttachDTO attachDto);
@@ -12,7 +16,7 @@ public interface AttachMapper {
 	public int insertMarketImg(AttachDTO attachDTO);
 	
 	/* ====================== 장터 승인 후 셀러 모집 이미지 삽입 ====================== */
-	public int insertRecruitImg(AttachDTO attachDTO);
+	public int insertRecruitImg(int marketNo, AttachDTO attachDTO);
 	
 	/* ================= 장터 이미지 불러오기 ================= */
 	public List<AttachDTO> selectMarketImg(int marketNo);

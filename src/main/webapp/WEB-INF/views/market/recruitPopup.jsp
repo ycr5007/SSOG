@@ -10,29 +10,49 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="card shadow mb-4 col-xl-6">
-		<div class="card-body">
-			<div class="form-group">
-				<input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display: none">
-				<label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
-				<h5 class="card-title text-center">이미지</h5>
-				<div class="card-text text-center uploadResult">
-					<ul></ul>
+	<!-- 파일 업로드 INPUT 카드 -->
+	<form action="" id="recruitForm">
+		<div class="card mb-3">
+			<input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display: none" required>
+			<label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
+			<div class="card-body">
+				<p class="card-title text-center">
+					<div class="card-text text-center pt-5 uploadResult">
+						업로드 사진
+						<ul>
+						</ul>
+					</div>
+				</p>
+				<div class="row justify-content-center">
+					<button type="submit" class="btn btn-outline-primary m-2">등록</button>
 				</div>
 			</div>
-			<div class="row justify-content-center">
-				<button type="button" class="btn btn-outline-primary m-2">등록</button>
-			</div>
 		</div>
-	</div>
-	
+	</form>
+
 	<!-- 파일 업로드 -->
 	<script>
-		let section = "market";
+		let section = "recruit";
 		
-		$(".btn-outline-primary").click(function() {
-			document.form.submit();
-			window.close();
+		$("[type='submit']").click(function(e) {
+			e.preventDefault();
+			
+			let str = "";
+			
+			// li 태그 정보 수집하기
+			$(".uploadResult ul li").each(function(idx, obj) {
+				var img = $(obj);
+				
+				str += "<input type='hidden' name='attachList[" + idx + "].uuid' value='" + img.data("uuid") + "'>";
+				str += "<input type='hidden' name='attachList[" + idx + "].uploadPath' value='" + img.data("path") + "'>";
+				str += "<input type='hidden' name='attachList[" + idx + "].fileName' value='" + img.data("filename") + "'>";
+				str += "<input type='hidden' name='attachList[" + idx + "].no' value='" + ${marketNo} + "'>";
+			})
+			
+			console.log("form 태그 삽입 전 : " + str);
+			
+			// form 보내기
+			$("#recruitForm").append(str).submit();
 		});
 	</script>
 	<script src="/resources/js/util/upload.js"></script>

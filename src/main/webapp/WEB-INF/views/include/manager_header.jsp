@@ -12,9 +12,9 @@
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	<!-- 파일 업로드 css -->
 	<link rel="stylesheet" href="/resources/css/upload.css" />
-	<script src="/resources/js/market_pagination.js"></script>
-	<script src="/resources/js/bootstrap.bundle.min.js"></script>
 	<script src="/resources/js/jquery.min.js"></script>
+	<script src="/resources/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/js/market_pagination.js"></script>
 	<script src="/resources/js/sb-admin-2.min.js"></script>
 	<title>관리자 메인 페이지</title>
 </head>

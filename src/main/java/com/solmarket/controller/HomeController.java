@@ -1,5 +1,6 @@
 package com.solmarket.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,9 +54,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/manager_index", method = RequestMethod.GET)
-	public String manager_home(Model model, HttpServletRequest request) {
+	public String manager_home(Model model, Principal principal) {
 		// userNo 가져오기
-		String userId = request.getSession().getId();
+		String userId = principal.getName();
 		UserDTO userDTO = new UserDTO();
 		userDTO.setUserId(userId);
 		int userNo = userDTO.getUserNo();
