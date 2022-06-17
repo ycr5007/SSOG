@@ -10,6 +10,10 @@ public interface MarketService {
 	
 	/* ====================== 장터 등록 ====================== */
 	public boolean registerMarket(MarketDTO insertDTO); // 장터 등록 (장터 상태 0)
+	public boolean MarketImg(AttachDTO attachDTO); // 장터 이미지 삽입
+	
+	/* ================= 장터 셀러 모집 이미지 등록 ================= */
+	public boolean RecruitImg(int marketNo, AttachDTO attachDTO); 
 	
 	/* ================= 장터 참여 신청 목록 보기 ================= */
 	public List<ProductDTO> showReceive(@Param("marketNo")int marketNo, @Param("cri")Criteria cri); // 상품 조회 (상품 상태 0 & 장터 번호)
@@ -41,8 +45,8 @@ public interface MarketService {
 	public int TotalProduct(int marketNo); // 판매 상품 총 개수
 
 	/* ====================== 첨부파일 ====================== */
-	public boolean MarketImg(AttachDTO attachDTO); // 장터 이미지 삽입
-	public boolean RecruitImg(AttachDTO attachDTO); // 셀러 모집 이미지 삽입
+	 // 장터 이미지 삽입
+	 // 셀러 모집 이미지 삽입
 	public List<AttachDTO> showMarketImg(int marketNo); // 장터 이미지 가져오기
 	public List<AttachDTO> showProductImg(int marketNo); // 상품 이미지 가져오기
 	

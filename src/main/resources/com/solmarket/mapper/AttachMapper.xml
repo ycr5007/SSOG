@@ -41,8 +41,6 @@
 		</choose>
 	</select>
 	
-	
-	
 	<!-- ================= 장터 이미지 불러오기 ================= -->
 	<select id="selectMarketImg" resultType="com.solmarket.dto.AttachDTO">
 		SELECT uuid, uploadpath as uploadPath, filename as fileName, market_no as no FROM market_img WHERE market_no = #{marketNo}

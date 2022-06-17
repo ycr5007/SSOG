@@ -51,9 +51,11 @@ public class MarketController {
 	}
 	
 	@PostMapping("/recruitPopup")
-	public void recruitPost(AttachDTO attachDTO) {
+	public void recruitPost(int marketNo, AttachDTO attachDTO, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 셀러 모집 파일 업로드 팝업 전송 ==========");
-		service.RecruitImg(attachDTO);
+		if(service.RecruitImg(marketNo, attachDTO)) {
+			rttr.addAttribute("marketNo", marketNo);
+		}
 	}
 	
 	/* ============ 장터 참여 신청 목록 보기 (상품 상태 0 & 장터 번호) ============ */
