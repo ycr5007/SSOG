@@ -26,7 +26,7 @@
          <form action="/product/product_register" method="post" role="form">
             <div class="form-group">
                <label>판매자</label>
-               <input class="form-control" name="seller" value=<%-- '<sec:authentication property="principal.username"/>' --%>"${userName}" readonly>
+               <input class="form-control" name="seller" value=<%-- '<sec:authentication property="principal.username"/>' --%>"${user.userName}" readonly>
             </div>
             
             <div class="form-group">
@@ -128,10 +128,10 @@
 <script>
    // 등록 폼 전송 자료 
    // 변수 선언 해주기
-   let userName = "${userName}";
+   let userName = "${user.userName}";
    let marketName = "${marketName}";
    let marketNo = "${marketNo}";
-   let userNo = "${userNo}";
+   let userNo = "${user.userNo}";
    
    // 컨트롤러 하나를 가지고 섹션값 가지고오기
    let section = "product";

@@ -13,7 +13,7 @@ public interface MemberService {
 	//public boolean changePwd(ChangeDTO changeDto);
 	
 	// 회원정보변경
-	public boolean updateUser(UserDTO updateUser, String authority);
+	public boolean updateUser(UserDTO updateUser);
 			
 	// 회원상태변경
 	public int delete(String userId);

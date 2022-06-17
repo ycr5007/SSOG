@@ -1,7 +1,5 @@
 package com.solmarket.dto;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,5 +21,5 @@ public class MarketDTO {
 	
 	private String dummy;
 	
-	private List<AttachDTO> attachList; // 첨부파일
+	private AttachDTO attach; // 첨부파일
 }

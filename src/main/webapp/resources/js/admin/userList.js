@@ -45,7 +45,7 @@ function showDetail(data, userNo){
 	str += "<td class='col-lg-2'>" + (data.authorities.length > 1 ? data.authorities[1].authority : data.authorities[0].authority) + "</td>"
 	str += "<th class='col-lg-2'>상태</th>"
 	str += "<td class='col-lg-2'>" + (data.userStatus > 0 ? '회원' : '탈퇴') + "</td></tr>"
-	str += "<tr><td rowspan='2' colspan='2'><img src='http://localhost:9090/display/user/" + userNo + "' ></td>" // onerror='this.src=\"https://via.placeholder.com/150x200\"'
+	str += "<tr><td rowspan='2' colspan='2'><img src='/display/user/" + userNo + "' ></td>" // onerror='this.src=\"https://via.placeholder.com/150x200\"'
 	str += "<th colspan='4' class='col-height'>프로필 문구</th></tr>"
 	str += "<tr><td colspan='4'>" + (data.userProfile == null ? '' : data.userProfile) + "</td></tr>"
 	str += "<tr><th colspan='2'>이름</th>"

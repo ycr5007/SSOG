@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -107,7 +108,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/notice")
-	public void reqNoticeManager(Criteria cri, Model model) {
+	public void reqNoticeManager(@ModelAttribute("cri") Criteria cri, Model model) {
 		log.info("[GET] <<<<< Notice 승인 페이지 요청 >>>>>");
 		int total = adminService.getNoticeCount();
 		List<NoticeDTO> noticeList = adminService.getreqNoticeList(cri);
