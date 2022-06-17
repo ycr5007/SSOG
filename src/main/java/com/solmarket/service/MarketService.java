@@ -8,12 +8,17 @@ import com.solmarket.dto.*;
 
 public interface MarketService {
 	
+	
+	
+	/* ====================== 장터 번호 가져오기 ====================== */
+	public Integer getMarketNo(int userNo);
+	
 	/* ====================== 장터 등록 ====================== */
 	public boolean registerMarket(MarketDTO insertDTO); // 장터 등록 (장터 상태 0)
 	public boolean MarketImg(AttachDTO attachDTO); // 장터 이미지 삽입
 	
 	/* ================= 장터 셀러 모집 이미지 등록 ================= */
-	public boolean RecruitImg(int marketNo, AttachDTO attachDTO); 
+	public boolean RecruitImg(AttachDTO attachDTO); 
 	
 	/* ================= 장터 참여 신청 목록 보기 ================= */
 	public List<ProductDTO> showReceive(@Param("marketNo")int marketNo, @Param("cri")Criteria cri); // 상품 조회 (상품 상태 0 & 장터 번호)

@@ -34,7 +34,7 @@
 	<!-- 마켓 이미지 -->
 	<div class="col-xl-7 px-xl-5">
 		<div class="card mb-2" id="marketImg">
-			<img src="/resources/img/market_detail.jpg" />
+			<img src="/display/market/${marketNo}" />
 		</div>
 	</div>
 	<!-- 마켓 이미지 끝 -->

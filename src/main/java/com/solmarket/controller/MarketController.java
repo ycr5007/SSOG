@@ -2,6 +2,7 @@ package com.solmarket.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +21,14 @@ public class MarketController {
 	
 	/* ====================== 장터 등록 (장터 상태 0) ====================== */
 	@GetMapping("/market_register")
-	public void market_register() {
+	public void market_register(Model model) {
 		log.info("[GetMapping] ========== 장터 등록 폼 호출 ==========");
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		CustomUser customUser = (CustomUser)principal;		
+	
+		UserDTO userDTO = customUser.getUserDto();
+		
+		model.addAttribute("userDTO", userDTO);
 	}
 
 	@GetMapping("/mapPopup")
@@ -37,8 +44,12 @@ public class MarketController {
 	@PostMapping("/market_register")
 	public String market_registerMarket(MarketDTO insertDTO, AttachDTO attachDTO, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 장터 등록 폼 전송 ==========");
-		if(service.registerMarket(insertDTO) && service.MarketImg(attachDTO)) {
+		log.info("inserDTO : " + insertDTO);
+		log.info("attachDTO : " + attachDTO);
+		
+		if(service.registerMarket(insertDTO)) {
 			rttr.addAttribute("marketNo", insertDTO.getMarketNo());
+			
 			return "redirect:/manager_index";
 		}
 		return "redirect:/market/market_register";
@@ -46,15 +57,17 @@ public class MarketController {
 	
 	/* ====================== 장터 참여자 모집 ====================== */
 	@GetMapping("/recruitPopup")
-	public void recruitGet() {
+	public void recruitGet(int marketNo, Model model) {
 		log.info("[GetMapping] ========== 셀러 모집 파일 업로드 팝업 호출 ==========");
+		model.addAttribute("marketNo", marketNo);
 	}
 	
 	@PostMapping("/recruitPopup")
-	public void recruitPost(int marketNo, AttachDTO attachDTO, RedirectAttributes rttr) {
+	public void recruitPost(AttachDTO attachDTO, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 셀러 모집 파일 업로드 팝업 전송 ==========");
-		if(service.RecruitImg(marketNo, attachDTO)) {
-			rttr.addAttribute("marketNo", marketNo);
+		log.info("attachDTO" + attachDTO);
+		if(service.RecruitImg(attachDTO)) {
+			rttr.addAttribute("marketNo", attachDTO.getNo());
 		}
 	}
 	

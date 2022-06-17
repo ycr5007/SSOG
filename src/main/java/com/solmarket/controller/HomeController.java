@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.solmarket.dto.CustomUser;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.UserDTO;
 import com.solmarket.mapper.MemberMapper;
 import com.solmarket.service.AdminService;
 import com.solmarket.service.IndexService;
+import com.solmarket.service.MarketService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,6 +41,9 @@ public class HomeController {
 	
 	@Autowired
 	private MemberMapper memberMapper;
+	
+	@Autowired
+	private MarketService marketService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest req) {
@@ -57,22 +64,48 @@ public class HomeController {
 		return "index";
 	}
 	
+//	@RequestMapping(value = "/manager_index", method = RequestMethod.GET)
+//	public String manager_home(Model model, Principal principal) {
+//		
+//		
+//		
+//		// userNo 가져오기
+////		String userId = principal.getName();
+////		UserDTO userDTO = memberMapper.read(userId);
+//////		int userNo = userDTO.getUserNo();
+//////		
+////		// marketDTO 가져오기
+//		MarketDTO marketDTO = new MarketDTO();
+//		marketDTO.setUserNo(userNo);
+//		model.addAttribute("userId", userId);
+//		model.addAttribute("userNo", userNo);
+//		model.addAttribute("marketNo", marketDTO.getMarketNo());
+////		
+//		return "manager_index";
+//	}
+	
 	@RequestMapping(value = "/manager_index", method = RequestMethod.GET)
-	public String manager_home(Model model, Principal principal) {
-		// userNo 가져오기
-		String userId = principal.getName();
-		UserDTO userDTO = memberMapper.read(userId);
-		int userNo = userDTO.getUserNo();
+	public String index(Model model) {
+			
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		CustomUser customUser = (CustomUser)principal;		
+	
+		UserDTO userDTO = customUser.getUserDto();
 		
-		// marketDTO 가져오기
-		MarketDTO marketDTO = new MarketDTO();
-		marketDTO.setUserNo(userNo);
-		model.addAttribute("userId", userId);
-		model.addAttribute("userNo", userNo);
-		model.addAttribute("marketNo", marketDTO.getMarketNo());
 		
-		return "manager_index";
-	}
+		//마켓 no 가져오기
+		Integer marketNo = marketService.getMarketNo(userDTO.getUserNo());
+		if(marketNo == null) {
+			marketNo = 0;
+		}
+		
+		
+		//model.addAttribute("userDTO", userDTO);
+		model.addAttribute("marketNo", marketNo);
+		
+        
+        return "manager_index";
+    }
 	
 	@ResponseBody
 	@GetMapping("/auth")

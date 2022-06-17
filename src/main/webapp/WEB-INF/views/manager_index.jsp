@@ -35,7 +35,7 @@
 							<div class="chart-area">
 								<a href="/market/market_detail?marketNo=${marketNo}">
 									<!-- marketNo에 해당하는 이미지 가져오기 -->
-									<img src="/resources/img/market.PNG" style="width: 100%; height: 100%" />
+									<img src="/display/market/${marketNo}" style="width: 100%; height: 50%" />
 								</a>
 							</div>
 						</div>
@@ -166,8 +166,7 @@
 		
 <!-- URL + 페이징 처리 -->
 <form action="/manager_index" id="actionForm">
-	<input type="hidden" name="userId" value="${userId}"/>
-	<input type="hidden" name="userNo" value="${userNo}"/>
+	<input type="hidden" name="userNo" value="${userDTO.userNo}"/>
 	<input type="hidden" name="marketNo" value="${marketNo}" />
 	<input type="hidden" name="pageNum" value="${cri.pageNum }" />
 	<input type="hidden" name="amount" value="${cri.amount }" />
@@ -175,12 +174,18 @@
 </form>	
 		
 <script>
-$(function() {
-	if(${marketNo} == null || ${marketNo} == 0) {
-		alert('장터 등록 후 이용해주세요.');
-		location.href = "/market/market_register";
-	}
-})
+	let marketNo = '${marketNo}';
+
+	$(".nav-link").click(function(e) {
+		//e.preventDefault();
+		
+		if(marketNo == '0') {
+			alert('장터 등록 후 이용해주세요.');
+			
+			$(this).attr("href", "/market/market_register"); 
+			
+		}
+	})
 </script>
 	
 <%@ include file="./include/manager_footer.jsp"%>

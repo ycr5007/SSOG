@@ -17,9 +17,15 @@ public class MarketServiceImpl implements MarketService {
 	@Autowired
 	public AttachMapper attachMapper;
 
+	
+	
 	/* ====================== 장터 등록 ====================== */
 	@Override
 	public boolean registerMarket(MarketDTO insertDTO) {
+		
+		 boolean result=mapper.insert(insertDTO) == 1 ? true : false;
+		
+		
 		// 첨부파일 삽입 - 첨부파일이 없다면 되돌려보내기
 		if (insertDTO.getAttachList() == null || insertDTO.getAttachList().size() <= 0) {
 			return false;
@@ -31,13 +37,13 @@ public class MarketServiceImpl implements MarketService {
 			attachMapper.insertMarketImg(attach);
 		});
 			
-		return mapper.insert(insertDTO) == 1 ? true : false;
+		return result;
 	}
 
 	/* ================= 장터 셀러 모집 이미지 등록 ================= */
 	@Override
-	public boolean RecruitImg(int marketNo, AttachDTO attachDTO) {
-		return attachMapper.insertRecruitImg(marketNo, attachDTO) == 1 ? true : false;
+	public boolean RecruitImg(AttachDTO attachDTO) {
+		return attachMapper.insertRecruitImg(attachDTO) == 1 ? true : false;
 	}
 	
 	
@@ -166,6 +172,11 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public boolean deleteReview(int reviewNo) {
 		return mapper.deleteReview(reviewNo) == 1 ? true : false;
+	}
+
+	@Override
+	public Integer getMarketNo(int userNo) {
+		return mapper.getMarketNo(userNo);
 	}
 
 }

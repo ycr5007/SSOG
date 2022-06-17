@@ -11,7 +11,7 @@
 		<!-- 마켓 이미지 -->
 		<div class="col-xl-6 px-xl-5">
 			<div class="card">
-				<img src="/resources/img/market_detail.jpg" />
+				<img src="/display/market/${marketNo}" />
 			</div>
 		</div>
 

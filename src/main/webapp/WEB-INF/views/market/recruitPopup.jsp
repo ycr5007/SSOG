@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!-- 파일 업로드 INPUT 카드 -->
-	<form action="" id="recruitForm">
+	<form action="" method="post" id="recruitForm">
 		<div class="card mb-3">
 			<input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display: none" required>
 			<label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
@@ -43,16 +43,18 @@
 			$(".uploadResult ul li").each(function(idx, obj) {
 				var img = $(obj);
 				
-				str += "<input type='hidden' name='attachList[" + idx + "].uuid' value='" + img.data("uuid") + "'>";
-				str += "<input type='hidden' name='attachList[" + idx + "].uploadPath' value='" + img.data("path") + "'>";
-				str += "<input type='hidden' name='attachList[" + idx + "].fileName' value='" + img.data("filename") + "'>";
-				str += "<input type='hidden' name='attachList[" + idx + "].no' value='" + ${marketNo} + "'>";
+				str += "<input type='hidden' name='uuid' value='" + img.data("uuid") + "'>";
+				str += "<input type='hidden' name='uploadPath' value='" + img.data("path") + "'>";
+				str += "<input type='hidden' name='fileName' value='" + img.data("filename") + "'>";
+				str += "<input type='hidden' name='no' value='" + ${marketNo} + "'>";
 			})
 			
 			console.log("form 태그 삽입 전 : " + str);
 			
 			// form 보내기
 			$("#recruitForm").append(str).submit();
+			
+			window.close();
 		});
 	</script>
 	<script src="/resources/js/util/upload.js"></script>

@@ -13,7 +13,8 @@
 			<div class="card-body">
 				
 				<form action="" method="post">
-					<input type="hidden" value='<c:out value="${user.userNo }"  />'/>
+				
+					<input type="hidden" name="userNo" value='<c:out value="${userDTO.userNo}"  />'/>
 					<div class="form-group">
 						<label>장터 이름</label>
 						<input class="form-control" name="marketName" id="marketName" required>
@@ -141,7 +142,6 @@ $(function() {
 			str += "<input type='hidden' name='attachList[" + idx + "].uuid' value='" + img.data("uuid") + "'>";
 			str += "<input type='hidden' name='attachList[" + idx + "].uploadPath' value='" + img.data("path") + "'>";
 			str += "<input type='hidden' name='attachList[" + idx + "].fileName' value='" + img.data("filename") + "'>";
-			str += "<input type='hidden' name='attachList[" + idx + "].no' value='" + ${marketNo} + "'>";
 		})
 		
 		console.log("form 태그 삽입 전 : " + str);
