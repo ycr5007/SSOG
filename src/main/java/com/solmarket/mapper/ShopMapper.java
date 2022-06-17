@@ -13,6 +13,7 @@ public interface ShopMapper {
 	public int totalCnt(Criteria cri);
 	public ProductDTO getDetail(int productNo);
 	
+	
 	public UserDTO getOrderUser(int userNo);
 	public ProductDTO getOrderProduct(int productNo);
 }

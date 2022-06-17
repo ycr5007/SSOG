@@ -67,10 +67,7 @@
 	        </button> -->
 		<!-- 축소했을때 collapse end -->
 	    	
-	        <div
-	          class="container flex-fill d-lg-flex justify-content-lg-between"
-	          id="templatemo_main_nav"
-	        >	        
+	        <div class="container flex-fill d-lg-flex justify-content-between" id="templatemo_main_nav">	        
 		    	<!-- 마켓로고 -->
 		    	<div class="flex-fill" style="padding-top:9px">
 			        <a class="navbar-brand text-success logo" href="/">
@@ -84,9 +81,9 @@
 		    	<!-- 마켓로고 종료 -->
 		    	
         		<!-- nav 메뉴 -->
-				<div class="flex-fill" style="padding:50px">
+				<div class="flex-fill" style="padding:50px 15px 15px 15px">
 				  <ul
-				    class="nav navbar-nav flex-fill justify-content-between mx-lg-auto"
+				    class="nav flex-fill justify-content-between mx-auto"
 				  >
 				    <li class="nav-item">
 				      	<a class="nav-link" href="/">홈</a>
@@ -138,10 +135,10 @@
 							</svg>
 						</a>
 			          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<sec:authorize access="isAnonymous()">
+						<!-- <sec:authorize access="isAnonymous()"> -->
 							<a class="dropdown-item" href="/member/signUp1">회원가입</a>
 							<a class="dropdown-item" href="/member/login">로그인</a>
-						</sec:authorize>
+						<!--</sec:authorize>-->
 						
 						<sec:authorize access="isAuthenticated()">
 							<a class="dropdown-item" href="/member/logout">로그아웃</a>
