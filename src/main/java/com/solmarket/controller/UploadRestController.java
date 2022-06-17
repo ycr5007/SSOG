@@ -139,7 +139,7 @@ public class UploadRestController {
 		log.info("[GET] 썸네일 파일 보여주기 " + no);
 		AttachDTO dto = attachService.getImg(section, no); 
 		
-		String fileName = dto.getUploadPath() + "s_" + dto.getUuid() + "_" + dto.getFileName();
+		String fileName = dto.getUploadPath() + "\\s_" + dto.getUuid() + "_" + dto.getFileName();
 		log.info("fileName ::: " + fileName);
 		File file = new File("c:\\solmarket\\" + section + "\\" + fileName);
 		ResponseEntity<byte[]> image = null;

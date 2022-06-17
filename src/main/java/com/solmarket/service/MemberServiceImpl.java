@@ -53,7 +53,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Transactional
 	@Override
-	public boolean updateUser(UserDTO updateUser,@RequestParam("authority") String authority) {
+	public boolean updateUser(UserDTO updateUser) {
 
 		//log.info(authority);
 

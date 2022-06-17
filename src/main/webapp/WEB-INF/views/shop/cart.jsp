@@ -3,6 +3,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/shop_header.jsp"%>
+<style>
+.updown{
+	
+}
+</style>
+<div class="container mt-4">
 <form name="orderform" id="orderform" method="post" class="orderform" action="/shop/order" onsubmit="return false;">
 
         <input type="hidden" name="cmd" value="order">
@@ -46,7 +52,7 @@
                             <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
                         </div>
                     </div>
-                    <div class="sum"><fmt:parseNumber value="${(product.productPrice - (product.productPrice*product.productSale * 0.01)) * orderQN}" integerOnly="true" /></div>
+                    <div class="sum"><fmt:parseNumber value="${(product.productPrice - (product.productPrice*product.productSale * 0.01)) * orderQN}" integerOnly="true" />원</div>
                 </div>
                 <div class="subdiv">
                     <div class="basketcmd"><a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delItem();">삭제</a></div>
@@ -106,8 +112,8 @@
             <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
         </div>
 
-        <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: 5개</div>
-        <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: 74,200원</div>
+        <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${orderQN + 2}</div>
+        <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: <fmt:parseNumber value="${(product.productPrice - (product.productPrice*product.productSale * 0.01)) * orderQN + 34200}" integerOnly="true" />원</div>
 
         <div id="goorder" class="">
             <div class="clear"></div>
@@ -116,7 +122,7 @@
             </div>
         </div>
     </form>
-    
+</div>
 
 <script src="/resources/js/shop_cart.js"></script>
 <%@ include file="../include/footer.jsp" %>

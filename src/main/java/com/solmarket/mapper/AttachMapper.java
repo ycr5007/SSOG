@@ -8,6 +8,7 @@ import com.solmarket.dto.AttachDTO;
 
 public interface AttachMapper {
 	public AttachDTO getImg(@Param("section") String section, @Param("no") int no);
+	public void insertImg(@Param("attach") AttachDTO attach, @Param("section") String section);
 	
 	/* ====================== 회원 프로필 이미지 등록 ====================== */
 	public int userInsertImg(AttachDTO attachDto);

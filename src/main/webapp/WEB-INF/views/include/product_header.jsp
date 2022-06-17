@@ -46,7 +46,7 @@
             
             <!-- 사이드바 - 현재 오픈된 장터 정보 -->
             <li class="nav-item">
-                <a class="nav-link" href="/product/product_market_list?userNo=${userNo}&pageNum=${pageNum}&amount=${amount}">
+                <a class="nav-link" href="/product/product_market_list">
                     <i class="fas fa-fw fa-map-marker-alt"></i>
                     <span>현재 오픈 예정 장터</span>
                 </a>
@@ -55,7 +55,7 @@
 			 
              <!-- 사이드바 - 상품 관리 -->
 		     <li class="nav-item">
-		         <a class="nav-link" href="/product/product_list?userNo=${userNo}">
+		         <a class="nav-link" href="/product/product_list">
 		              <i class="fas fa-fw fa-folder"></i>
 		              <span>상품 목록</span>
 		         </a>
@@ -63,14 +63,14 @@
             
             <!-- 사이드바 : 마켓 종료 후 남은 상품 리스트 -->
             <li class="nav-item">
-		         <a class="nav-link" href="/product/product_remain_list?userNo=${userNo}">
+		         <a class="nav-link" href="/product/product_remain_list">
 		              <i class="fas fa-fw fa-folder"></i>
 		              <span>재고 상품 목록</span>
 		         </a>
             </li>
             <!-- 사이드바 : 온라인 상품 리스트 -->
 			  <li class="nav-item">
-		         <a class="nav-link" href="/product/product_online_list?userNo=${userNo}">
+		         <a class="nav-link" href="/product/product_online_list">
 		              <i class="fas fa-fw fa-folder"></i>
 		              <span>온라인 상품 목록</span>
 		         </a>

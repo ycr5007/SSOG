@@ -37,7 +37,7 @@
 					<!-- header -->
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">오픈 예정 장터</h6>
-						<a href="/product/product_market_list?userNo=${userNo}">more</a>
+						<a href="/product/product_market_list">more</a>
 					</div>
 					<!-- body -->
 				<div class="card-body">
@@ -82,7 +82,7 @@
 					<!-- header -->
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">참여 중인 장터</h6>
-						<a href="/product/product_ingmarket_list?userNo=${userNo}">more</a>
+						<a href="/product/product_ingmarket_list">more</a>
 					</div>
 					<!-- card body start -->
 					<div class="card-body">
@@ -119,7 +119,7 @@
 					<!-- header -->
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">상품 목록</h6>
-						<a href="/product/product_list?userNo=${userNo}">more</a>
+						<a href="/product/product_list">more</a>
 					</div>
 					<!-- body -->
 					<div class="card-body">

@@ -58,7 +58,7 @@
 								</nav>
 						<!-- 페이징 처리 -->
 						</div>
-						<input type="hidden" name="pageNum" value="1" />
+						<input type="hidden" name="pageNum" value="${cri.pageNum }" />
 						<input type="hidden" name="amount" value="10" />
 					</form>
 				</div>

@@ -39,8 +39,7 @@
 							<!-- 게시판 리스트 반복문 -->
 							<c:forEach var="dto" items="${onlineList}">
 								<tr>
-									<td><a href="${dto.productNo}" class="move">${dto.productName}</a>
-									</td>
+									<td><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
 									<td>${dto.productPrice}</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
 									<td>${dto.productQN}</td>
@@ -124,5 +123,5 @@
 <!-- div class="panel-body" 종료 -->
 
 
-<script src="/resources/js/product_remain_list.js"></script>
+<script src="/resources/js/product/product_remain_list.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

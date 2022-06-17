@@ -91,6 +91,11 @@ $(function(){
 			data += "<input type='hidden' name='proList["+idx+"].productContent' value='" + productContent + "'/>";
 			data += "<input type='hidden' name='proList["+idx+"].productPrice' value='" + productPrice + "'/>";	
 			
+			data += '<input type="hidden" name="proList['+idx+'].attach.uuid" value="' + fileData[0].uuid + '" />';
+			data += '<input type="hidden" name="proList['+idx+'].attach.uploadPath" value="' + fileData[0].uploadPath + '" />';
+			data += '<input type="hidden" name="proList['+idx+'].attach.fileName" value="' + fileData[0].fileName + '" />';
+			data += '<input type="hidden" name="proList['+idx+'].attach.no" value="' + 0 + '" />';
+			
 			registerForm.append(data);	
 		})
 		
@@ -98,7 +103,7 @@ $(function(){
 		
 		//추가된 상품 확인
 		console.log(registerForm.html());
-		registerForm.attr('action', 'product_register')
+		registerForm.attr('action', '/product/product_register')
 		//registerForm 전송
 		registerForm.submit();
 		

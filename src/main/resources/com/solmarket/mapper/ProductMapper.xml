@@ -46,7 +46,7 @@
 							p.product_content as productContent, p.product_date as productDate,
 							p.product_status as productStatus
 					from product p left outer join market m on p.market_no = m.market_no 
-					where p.user_no = #{userNo} order by p.product_status asc) p 
+					where p.user_no = #{userNo} order by p.product_status asc, p.product_no desc) p 
 				left outer join myUser u on p.userNo = u.user_no) statusList
 				where rownum <= (#{cri.pageNum} * #{cri.amount}))
 			where num > (#{cri.pageNum} - 1) * #{cri.amount}
