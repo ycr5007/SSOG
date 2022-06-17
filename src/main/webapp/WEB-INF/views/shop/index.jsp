@@ -111,7 +111,7 @@ font-size: 16px;
 <nav aria-label="Page navigation example">
   <ul class="pagination">
 	  <c:if test="${pageDto.prev}"> <!-- prev가 true여야 이전버튼 활성화 -->
-	  	<li class="paginate_button previous">
+	  	<li class="paginate_button page-item previous">
 	      <a class="page-link" href="${pageDto.startPage-1}" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
@@ -125,7 +125,7 @@ font-size: 16px;
     </c:forEach>
     
     <c:if test="${pageDto.next}">
-	    <li class="paginate_button next">
+	    <li class="paginate_button page-item next">
 	      <a class="page-link" href="${pageDto.endPage+1}" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
@@ -137,7 +137,7 @@ font-size: 16px;
 
 <!-- 페이지 링크를 처리할 폼 -->
 <form action="/shop/index" id="actionForm">
-	<input type="hidden" name="keyword" value="0" />
+	<input type="hidden" name="keyword" value="${cri.keyword }" />
 	<input type="hidden" name="pageNum" value="${cri.pageNum}" />
 	<input type="hidden" name="amount" value="9" />
 </form>
