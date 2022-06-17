@@ -34,11 +34,11 @@
   <tbody>
     <tr>
       <th scope="row">이름</th>
-      <td>곽승환</td>
+      <td class="form-buyer">곽승환</td>
     </tr>
     <tr>
       <th scope="row">이메일</th>
-      <td>ksh7353@naver.com</td>
+      <td class="form-mail" data-order="hihi@naver.com">ksh7353@naver.com</td>
     </tr>
   </tbody>
 </table>
@@ -52,11 +52,11 @@
   <tbody>
     <tr>
       <th scope="row">이름</th>
-      <td class="form-name" data-order="이름">곽승환</td>
+      <td class="form-name" data-order="ㅂㅇㅂㅇ">ㅂㅇㅂㅇ</td>
     </tr>
     <tr>
       <th scope="row">배송주소</th>
-      <td class="form-loc" data-order="서울 중구">서울 중구 </td>
+      <td class="form-addr" data-order="서울 중구">서울 중구 </td>
     </tr>
     <tr>
       <th scope="row">연락처</th>
@@ -85,7 +85,7 @@
     </tr>
     <tr>
       <th scope="row">결제 금액</th>
-      <td><fmt:parseNumber value ="${(product.productPrice - (product.productPrice*product.productSale * 0.01))* orderQN}" integerOnly= "true" />원</td>
+      <td class="form-pay" data-order="<fmt:parseNumber value ="${(product.productPrice - (product.productPrice*product.productSale * 0.01))* orderQN}" integerOnly= "true" />"><fmt:parseNumber value ="${(product.productPrice - (product.productPrice*product.productSale * 0.01))* orderQN}" integerOnly= "true" />원</td>
     </tr>
   </tbody>
 </table>
@@ -97,21 +97,58 @@
 
 <script>
 	$(function(){
-		
+		let name = $(".form-name").data("order");
+		let mail = $(".form-mail").data("order");
+		let phone = $(".form-phone").data("order");
+		let addr = $(".form-addr").data("order");
+		let request = $(".form-request").data("order");	
+		let orderPay = $(".form-pay").data("order");	
 		let orderForm = $("#orderForm");
 		
 		$(".btn-primary").click(function(){
-			let name = $(".form-name").data('order');
+			
 			console.log(name);
+			console.log(mail);
+			console.log(phone);
+			console.log(addr);
+			console.log(request);
+			console.log(orderPay);
 			str = ""
 			str += '<input type="hidden" name="userName" value="' + name + '" />';
-			str += '<input type="hidden" name="" value="" />'
-			str += '<input type="hidden" name="" value="" />'
-			str += '<input type="hidden" name="" value="" />'
+			str += '<input type="hidden" name="userMail" value="' + mail + '" />'
+			str += '<input type="hidden" name="userPhone" value="' + phone + '" />'
+			str += '<input type="hidden" name="userAddress" value="' + addr +'" />'
+			str += '<input type="hidden" name="orderPay" value="' + orderPay + '" />'
 			
 			
 			orderForm.append(str);
 			orderForm.submit();
+		})
+		
+		$(".form-name").click(function(){
+			var change_data = prompt("변경할 이름을 입력해주세요");
+			let formName = $(".form-name");
+			formName.text(change_data);
+			formName.attr("data-order", change_data);
+		})
+
+		$(".form-addr").click(function(){
+			var change_data = prompt("변경할 배송주소 입력해주세요");
+			let formName = $(".form-addr");
+			formName.text(change_data);
+			formName.attr("data-order", change_data);
+		})
+		$(".form-phone").click(function(){
+			var change_data = prompt("변경할 번호를 입력해주세요");
+			let formName = $(".form-phone");
+			formName.text(change_data);
+			formName.attr("data-order", change_data);
+		})
+		$(".form-request").click(function(){
+			var change_data = prompt("변경할 요청사항을 입력해주세요");
+			let formName = $(".form-request");
+			formName.text(change_data);
+			formName.attr("data-order", change_data);
 		})
 	})
 </script>

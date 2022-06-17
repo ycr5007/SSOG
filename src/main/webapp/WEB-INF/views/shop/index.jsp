@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ include file="../include/shop_header.jsp" %>
 <style>
 .card{
 color: black;
@@ -11,7 +11,7 @@ margin:20px 30px;
 .card-wrapper{
 align-items: center;
 justify-content: center;
-margin-left:150px;
+margin-left:200px;
 }
 .card-title-price{
 text-decoration:line-through;
@@ -60,15 +60,16 @@ font-size: 16px;
 .sidebar-nav li a:hover {
   color: #72aee6;
 }
-
+	
 .sidebar-nav > .sidebar-brand {
   font-size: 2.3em;
-  
+  color: white;
   line-height: 3em;
 }
 
 .pagination{
 	justify-content: center;
+	padding: 20px;
 }
 </style>
 <section class="bg-dark">
@@ -84,7 +85,6 @@ font-size: 16px;
       <c:forEach var="category" items="${categoryList}" >
       	<li><a href="${category.categoryNo }" class="category-data">${category.categoryName}</a></li>
       </c:forEach>
-
     </ul>
   </div>
 </div>
@@ -111,7 +111,7 @@ font-size: 16px;
 <nav aria-label="Page navigation example">
   <ul class="pagination">
 	  <c:if test="${pageDto.prev}"> <!-- prev가 true여야 이전버튼 활성화 -->
-	  	<li class="paginate_button previous">
+	  	<li class="paginate_button page-item previous">
 	      <a class="page-link" href="${pageDto.startPage-1}" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
@@ -125,7 +125,7 @@ font-size: 16px;
     </c:forEach>
     
     <c:if test="${pageDto.next}">
-	    <li class="paginate_button next">
+	    <li class="paginate_button page-item next">
 	      <a class="page-link" href="${pageDto.endPage+1}" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
@@ -137,13 +137,18 @@ font-size: 16px;
 
 <!-- 페이지 링크를 처리할 폼 -->
 <form action="/shop/index" id="actionForm">
-	<input type="hidden" name="keyword" value="0" />
+	<input type="hidden" name="keyword" value="${cri.keyword }" />
 	<input type="hidden" name="pageNum" value="${cri.pageNum}" />
 	<input type="hidden" name="amount" value="9" />
 </form>
 
 
 </section>
+
+
+
+
+
 
 
 

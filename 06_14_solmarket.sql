@@ -223,7 +223,10 @@ CREATE TABLE myorder(
 	user_no NUMBER NOT NULL,
 	order_qn NUMBER(4) NOT NULL,
 	order_pay NUMBER(16) NOT NULL,
-	order_send VARCHAR2(128) NOT NULL
+	order_send VARCHAR2(128) NOT NULL,
+	order_state NUMBER(2) NOT NULL,
+	order_date date default sysdate,
+	order_memo VARCHAR2(50)
 );
 
 ALTER TABLE myorder ADD CONSTRAINT PK_ORDER PRIMARY KEY (order_no);
