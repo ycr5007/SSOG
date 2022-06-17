@@ -5,7 +5,7 @@
 <%@ include file="../include/shop_header.jsp"%>
 <style>
 .updown{
-	
+	position: relative; bottom:13px;
 }
 </style>
 <div class="container mt-4">
@@ -34,7 +34,7 @@
             <div class="row data">
                 <div class="subdiv">
                     <div class="check"><input type="checkbox" name="buy" value="260" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                    <div class="img"><img src="./img/basket1.jpg" width="60"></div>
+                    <div class="img"><img src="/display/product/${productNo}" width="80" height="80"></div>
                     <div class="pname">
                         <span>${product.productName}</span>
                     </div>
@@ -47,7 +47,7 @@
 									integerOnly="true" />원</div>
                     <div class="num">
                         <div class="updown">
-                            <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="${orderQN}" onkeyup="javascript:basket.changePNum(1);">
+                            <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num"  value="${orderQN}" onkeyup="javascript:basket.changePNum(1);">
                             <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
                             <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
                         </div>
@@ -61,7 +61,7 @@
             <div class="row data">
                 <div class="subdiv">
                     <div class="check"><input type="checkbox" name="buy" value="261" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                    <div class="img"><img src="./img/basket2.jpg" width="60"></div>
+                    <div class="img"><img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" width="80" height="80"></div>
                     <div class="pname">
                         <span>남녀 공용 오버핏 반팔티</span>
                     </div>
@@ -84,7 +84,7 @@
             <div class="row data">
                 <div class="subdiv">
                     <div class="check"><input type="checkbox" name="buy" value="262" checked="" onclick="javascript:basket.checkItem();">&nbsp;</div>
-                    <div class="img"><img src="./img/basket3.jpg" width="60"></div>
+                    <div class="img"><img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" width="80" height="80"></div>
                     <div class="pname">
                         <span>보스톤 가방 18인치 (ab-380)</span>
                     </div>
@@ -112,7 +112,7 @@
             <a href="javascript:void(0)" class="abutton" onclick="javascript:basket.delAllItem();">장바구니비우기</a>
         </div>
 
-        <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${orderQN + 2}</div>
+        <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${orderQN + 2}개</div>
         <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: <fmt:parseNumber value="${(product.productPrice - (product.productPrice*product.productSale * 0.01)) * orderQN + 34200}" integerOnly="true" />원</div>
 
         <div id="goorder" class="">
