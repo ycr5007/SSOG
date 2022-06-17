@@ -80,10 +80,10 @@ public class UploadRestController {
 		// 업로드 세부 폴더 지정
 		String uploadFolderPath = getFolder();
 		
-		log.info("" + uploadFolderPath);
+		log.info(uploadBasicPath + "" + uploadFolderPath);
 		// 전체 업로드 경로 지정
 		File uploadPath = new File(uploadBasicPath, uploadFolderPath);
-		
+		log.info(uploadPath.getPath());
 		if(!uploadPath.exists()) { // 폴더가 없다면 폴더들 생성
 			uploadPath.mkdirs();
 		}
@@ -140,6 +140,24 @@ public class UploadRestController {
 		AttachDTO dto = attachService.getImg(section, no); 
 		
 		String fileName = dto.getUploadPath() + "s_" + dto.getUuid() + "_" + dto.getFileName();
+		log.info("fileName ::: " + fileName);
+		File file = new File("c:\\solmarket\\" + section + "\\" + fileName);
+		ResponseEntity<byte[]> image = null;
+		HttpHeaders header = new HttpHeaders();
+		try {
+			header.add("Content-type", Files.probeContentType(file.toPath()));
+			image = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return image;
+	}
+
+	// 썸네일 이미지 보여주기
+	@GetMapping(path = "/display/{section}")
+	public ResponseEntity<byte[]> getFile(@PathVariable("section") String section, String fileName){
+		log.info("[GET] 썸네일 파일 보여주기 " + fileName);
+		
 		log.info("fileName ::: " + fileName);
 		File file = new File("c:\\solmarket\\" + section + "\\" + fileName);
 		ResponseEntity<byte[]> image = null;
