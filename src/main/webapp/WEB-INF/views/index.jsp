@@ -4,17 +4,17 @@
 
 <!-- 컨텐트 시작 -->
 <section class="bg-dark">
-    <div class="container pb-5">
+    <div class="container pb-5 pt-3">
       <div class="row">
       
 	<!-- 지도 -->
-		<div class="col-lg-6 mt-5">
-            <div class="card mb-3 border-0 bg-dark" style="width:auto; height:420px;">
-          	<div  style="padding: 50px 50px 50px 50px"> 
+		<div class="row col-lg-6">
+            <div class="card border-0 bg-dark" style="width:auto; height:420px; padding: 20px 20px 20px 20px; align-content: center">
+          	<div> 
 	            <img
 	              src="../resources/img/geo.png"
 	              usemap="#image-map"
-	              class="geomap"
+	              class="geomap d-flex"
 	              style="max-width: 100%; height: auto; align-content: center"
 	            />
           	</div>
@@ -221,15 +221,12 @@
 	            />
 	          </map>
         	</div>
-		<div class="row">
-     	</div>
       	</div>
 	<!-- 지도 종료-->
       
 	<!-- 마켓리스트 -->
-		<div class="col-lg-6 mt-5">
-	          <div class="card border-0 bg-dark">
-	            <div class="card-body" id="marketlist" style="overflow:auto; width:auto; height:420px;">
+		<div class="col-lg-6 mt-1 flex-fill">
+	            <div id="marketlist" style="overflow:auto; width:auto; height:420px; align-content: center">
 	            <div  style="padding: 10px 20px 20px 20px"> 
 	            <div class="col-lg-12">
 	                  <div>
@@ -273,7 +270,6 @@
 	            </div>   
 	     		</div>
 	    		</div>
-		  	</div>
 		</div>
 	<!-- 마켓리스트 종료 -->
 	
