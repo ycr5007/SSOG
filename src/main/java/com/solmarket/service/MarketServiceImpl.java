@@ -20,9 +20,27 @@ public class MarketServiceImpl implements MarketService {
 	/* ====================== 장터 등록 ====================== */
 	@Override
 	public boolean registerMarket(MarketDTO insertDTO) {
+		// 첨부파일 삽입 - 첨부파일이 없다면 되돌려보내기
+		if (insertDTO.getAttachList() == null || insertDTO.getAttachList().size() <= 0) {
+			return false;
+		}
+
+		// 첨부파일 개수만큼 루프 돌기
+		insertDTO.getAttachList().forEach(attach -> {
+			attach.setNo((insertDTO.getMarketNo()));
+			attachMapper.insertMarketImg(attach);
+		});
+			
 		return mapper.insert(insertDTO) == 1 ? true : false;
 	}
 
+	/* ================= 장터 셀러 모집 이미지 등록 ================= */
+	@Override
+	public boolean RecruitImg(int marketNo, AttachDTO attachDTO) {
+		return attachMapper.insertRecruitImg(marketNo, attachDTO) == 1 ? true : false;
+	}
+	
+	
 	/* ================= 장터 참여 신청 목록 보기 ================= */
 	@Override
 	public List<ProductDTO> showReceive(int marketNo, Criteria cri) {
@@ -100,11 +118,6 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public boolean MarketImg(AttachDTO attachDTO) {
 		return attachMapper.insertMarketImg(attachDTO) == 1 ? true : false;
-	}
-	
-	@Override
-	public boolean RecruitImg(AttachDTO attachDTO) {
-		return attachMapper.insertRecruitImg(attachDTO) == 1 ? true : false;
 	}
 	
 	@Override
