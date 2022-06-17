@@ -36,7 +36,7 @@
 					<div class="img-small-wrap">
 						<div class="item-gallery">
 							<img
-								src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
+								src="/display/product/${productNo}"
 								width="400" height="400">
 						</div>
 					</div>
