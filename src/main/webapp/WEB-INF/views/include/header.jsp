@@ -138,10 +138,10 @@
 							</svg>
 						</a>
 			          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<sec:authorize access="isAnonymous()">
+						<!-- <sec:authorize access="isAnonymous()"> -->
 							<a class="dropdown-item" href="/member/signUp1">회원가입</a>
 							<a class="dropdown-item" href="/member/login">로그인</a>
-						</sec:authorize>
+						<!--</sec:authorize>-->
 						
 						<sec:authorize access="isAuthenticated()">
 							<a class="dropdown-item" href="/member/logout">로그아웃</a>

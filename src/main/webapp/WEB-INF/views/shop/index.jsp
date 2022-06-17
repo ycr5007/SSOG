@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ include file="../include/shop_header.jsp" %>
 <style>
 .card{
 color: black;
@@ -11,7 +11,7 @@ margin:20px 30px;
 .card-wrapper{
 align-items: center;
 justify-content: center;
-margin-left:150px;
+margin-left:200px;
 }
 .card-title-price{
 text-decoration:line-through;
@@ -60,15 +60,16 @@ font-size: 16px;
 .sidebar-nav li a:hover {
   color: #72aee6;
 }
-
+	
 .sidebar-nav > .sidebar-brand {
   font-size: 2.3em;
-  
+  color: white;
   line-height: 3em;
 }
 
 .pagination{
 	justify-content: center;
+	padding: 20px;
 }
 </style>
 <section class="bg-dark">
@@ -84,7 +85,6 @@ font-size: 16px;
       <c:forEach var="category" items="${categoryList}" >
       	<li><a href="${category.categoryNo }" class="category-data">${category.categoryName}</a></li>
       </c:forEach>
-
     </ul>
   </div>
 </div>
@@ -144,6 +144,11 @@ font-size: 16px;
 
 
 </section>
+
+
+
+
+
 
 
 
