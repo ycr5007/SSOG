@@ -97,7 +97,7 @@ function showUploadFile(result){
 
 // 첨부파일 확장자 및 사이즈 확인
 function checkExtension(fileName, fileSize){
-	let regex = new RegExp("(.*?)\.(png|gif|jpg)$");
+	let regex = new RegExp("(.*?)\.(png|gif|jpg|PNG)$");
 	
 	// 파일크기
 	let maxSize = 3145728; // 3MB
