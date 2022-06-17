@@ -7,8 +7,8 @@
 
 <!-- 콘텐츠 시작 -->
 <section class="bg-dark">
-	<div id="bodystyle" style="overflow:auto; width:auto; height:750px; color: white; ">      	
-		<div class="container border-0 bg-dark" style="width:550px; height:700px; align-content: center; padding: 10px 10px 10px 10px" >
+	<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; ">      	
+		<div class="container border-0 bg-dark" style="width:550px; height:auto; align-content: center; padding: 10px 10px 10px 10px" >
 				<img src="../resources/img/mypagelogo.png"/>
 				
 				<!-- seller or manager -->
@@ -86,7 +86,7 @@
 							<label for="adress" class="col-sm-5 col-form-label">
 								<button type="button" class="btn btn-info" onClick="goPopup();">주소변경</button>
 							</label>
-			<!--  			<label for="email" class="col-sm-5 col-form-label">주소 </label> -->
+					<!--  <label for="email" class="col-sm-5 col-form-label">주소 </label> -->
 						<div class="textForm col-sm-7">
 							<input type="text" name="userAddress" id="userAddress" class="form-control"
 							value='<c:out value="${user.userAddress }"  /> ' />
@@ -95,7 +95,7 @@
 					</div>
 
 				<!-- 프로필 -->		
-			        <div class="form-group row justify-content-center mb-5">
+			        <div class="form-group row justify-content-center mb-2">
 						<label for="userprofile" class="col-sm-5 col-form-label">프로필</label>
 						<div class="textForm col-sm-7">
 							<input type="text" name="userProfile" id="userProfile" class="form-control"
@@ -104,33 +104,40 @@
 							<small id="userProfile" class="text-info"></small>
 						</div>
 					</div>
+					
 				<!-- 프로필 사진 업로드 -->
-				<div class="card" style="width: 18rem;">
-					<input type="file" name="uploadFile" class="custom-file-input"
-						id="customFileLangHTML"> <label class="custom-file-label"
-						for="customFileLangHTML" data-browse="파일찾기"></label>
-					<div class="card-body">
-						<h5 class="card-title text-center">업로드 사진</h5>
-						<div class="card-text text-center uploadResult">
-							<ul></ul>
+					<div class="form-group row justify-content-center mb-2">
+						<label for="userprofile" class="col-sm-5 col-form-label">파일업로드</label>
+						<div class="textForm col-sm-7 mb-2">
+							<input type="file" name="uploadFile" class="custom-file-input" id="customFileLangHTML">
+							<label class="custom-file-label" for="customFileLangHTML" data-browse="파일찾기"></label>
+							<div class="card-body">
+								<h5 class="card-title text-center">업로드 사진</h5>
+								<div class="card-text text-center uploadResult">
+									<ul></ul>
+								</div>
+							</div>
 						</div>
 					</div>
+					<input type="hidden" name="${_csrf.parameterName }"
+							value="${_csrf.token }" />
+						
+				
+			</form>
+			<form action="" method="post" id="authForm">
+					<input type="hidden" name="userId"
+						value='<sec:authentication property="principal.username"/>' /> <input
+						type="hidden" name="authority" value="" />
+			</form>
+			
+		        <!-- 정보수정 회원탈퇴 -->
+				<div class="pb-2" style="text-align:center;">
+					<button type="submit" class="btn btn-secondary send-data"
+						formaction="/member/update">정보수정</button>
+					<button type="submit" class="btn btn-secondary"
+						formaction="/member/leaveResult">회원탈퇴</button>
 				</div>
-				<input type="hidden" name="${_csrf.parameterName }"
-						value="${_csrf.token }" />
-			        <!-- 정보수정 회원탈퇴 -->
-					<div class="mb-2" style="text-align:center;">
-						<button type="submit" class="btn btn-secondary send-data"
-							formaction="/member/update">정보수정</button>
-						<button type="submit" class="btn btn-secondary"
-							formaction="/member/leaveResult">회원탈퇴</button>
-					</div>
-				</form>
-				<form action="" method="post" id="authForm">
-						<input type="hidden" name="userId"
-							value='<sec:authentication property="principal.username"/>' /> <input
-							type="hidden" name="authority" value="" />
-				</form>
+					
 		</div>
 	</div>
 </section>
