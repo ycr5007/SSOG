@@ -2,6 +2,7 @@ package com.solmarket.service;
 
 import java.util.List;
 
+import com.solmarket.dto.AuthDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.NoticeDTO;
@@ -23,9 +24,14 @@ public interface AdminService {
 	// User Page
 	List<UserDTO> getUserList(Criteria cri);
 	int getUserCount();
+	List<AuthDTO> getAuthRequest();
+	
 	// User Detail
 	UserDTO getUserDetail(int userNo);
 	boolean deleteUserData(int userNo);
+	
+	boolean accessAuth(String userId);
+	boolean deleteAuth(String userId);
 	
 	// Market Request List
 	List<MarketDTO> getreqMakretList(Criteria cri);

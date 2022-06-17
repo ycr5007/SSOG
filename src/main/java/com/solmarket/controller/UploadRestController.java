@@ -39,7 +39,7 @@ public class UploadRestController {
 		List<AttachDTO> attachList = new ArrayList<AttachDTO>();
 		
 		// 업로드 기본 폴더 지정
-		String uploadBasicPath = "d:\\solmarket\\" + section;
+		String uploadBasicPath = "c:\\solmarket\\" + section;
 		int width = 0, height = 0;
 		
 		// 페이지 별 썸네일 이미지 사이즈 지정
@@ -133,7 +133,7 @@ public class UploadRestController {
 	@GetMapping(path = "/display/{section}")
 	public ResponseEntity<byte[]> getFile(@PathVariable("section") String section, String fileName){
 		log.info("[GET] 썸네일 파일 보여주기 " + fileName);
-		File file = new File("d:\\solmarket\\" + section + "\\" + fileName);
+		File file = new File("c:\\solmarket\\" + section + "\\" + fileName);
 		ResponseEntity<byte[]> image = null;
 		HttpHeaders header = new HttpHeaders();
 		try {
@@ -151,7 +151,7 @@ public class UploadRestController {
 		log.info("[POST] 파일 삭제 요청 " + fileName);
 		
 		try {
-			File file = new File("d:\\solmarket\\" + section + "\\" +  URLDecoder.decode(fileName, "UTF-8"));
+			File file = new File("c:\\solmarket\\" + section + "\\" +  URLDecoder.decode(fileName, "UTF-8"));
 			file.delete(); // Image 의 경우 썸네일 삭제, 일반 파일의 경우 원본 파일 삭제
 			
 			String largeName = file.getAbsolutePath().replace("s_", "");

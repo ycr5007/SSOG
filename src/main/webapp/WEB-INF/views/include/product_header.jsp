@@ -53,30 +53,27 @@
             </li>
 
 			 
-             <!--사이드바 - 마켓에 신청, 신청시 상품등록 같이-->
-            <li class="nav-item">
-                <a class="nav-link" href="/product/product_register?userNo=${userNo}&marketNo=${marketNo}">
-              	  <i class="fas fa-fw fa-marker"></i>
-                    <span>장터 참여 신청</span>
-                </a>
-            </li> 
-           
-            <!--
-             사이드바 - 등록된 상품 수정 
-            <li class="nav-item">
-                <a class="nav-link" href="/product/product_modify">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Product Modify</span>
-                </a>
+             <!-- 사이드바 - 상품 관리 -->
+		     <li class="nav-item">
+		         <a class="nav-link" href="/product/product_list?userNo=${userNo}">
+		              <i class="fas fa-fw fa-folder"></i>
+		              <span>상품 목록</span>
+		         </a>
             </li>
-             -->
-
-            <!-- 사이드바 - 상품 관리 -->
+            
+            <!-- 사이드바 : 마켓 종료 후 남은 상품 리스트 -->
             <li class="nav-item">
-                <a class="nav-link" href="/product/product_list?userNo=${userNo}&pageNum=${pageNum}&amount=${amount}">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>상품 목록</span>
-                </a>
+		         <a class="nav-link" href="/product/product_remain_list?userNo=${userNo}">
+		              <i class="fas fa-fw fa-folder"></i>
+		              <span>재고 상품 목록</span>
+		         </a>
+            </li>
+            <!-- 사이드바 : 온라인 상품 리스트 -->
+			  <li class="nav-item">
+		         <a class="nav-link" href="/product/product_online_list?userNo=${userNo}">
+		              <i class="fas fa-fw fa-folder"></i>
+		              <span>온라인 상품 목록</span>
+		         </a>
             </li>
 
             
@@ -124,13 +121,13 @@
 							</a>
 							<!-- 프로필 드롭다운 -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#">
+								<a class="dropdown-item" href="/member/myPagePwCheck">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									마이페이지
 								</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+								<a class="dropdown-item" href="/member/logout" data-toggle="modal" data-target="#logoutModal">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>									
 									로그아웃
 								</a>
 							</div>

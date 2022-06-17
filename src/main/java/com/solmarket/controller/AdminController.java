@@ -1,5 +1,6 @@
 package com.solmarket.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.solmarket.dto.AuthDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.NoticeDTO;
@@ -48,6 +50,36 @@ public class AdminController {
 		
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("list", userList);
+	}
+	
+	@GetMapping("/request_auth")
+	public void userRequestAuth(Model model) {
+		log.info("[GET] <<<<< ADMIN User Auth Request 관리 페이지 요청 >>>>>");
+		List<AuthDTO> authList = adminService.getAuthRequest();
+		List<AuthDTO> sellerList = new ArrayList<AuthDTO>();
+		List<AuthDTO> managerList = new ArrayList<AuthDTO>();
+		for(AuthDTO auth : authList) {
+			if(auth.getAuthority().equals("ROLE_SELLER")) {
+				sellerList.add(auth);
+			}else {
+				managerList.add(auth);
+			}
+		}
+		model.addAttribute("sellerList", sellerList);
+		model.addAttribute("managerList", managerList);
+		
+	}
+	
+	@PostMapping("/authAccess")
+	public String accessAuth(String userId) {
+		adminService.accessAuth(userId);
+		return "redirect:/admin/request_auth";
+	}
+
+	@PostMapping("/authRefuse")
+	public String refuseAuth(String userId) {
+		adminService.deleteAuth(userId);
+		return "redirect:/admin/request_auth";
 	}
 	
 	@GetMapping("/market")

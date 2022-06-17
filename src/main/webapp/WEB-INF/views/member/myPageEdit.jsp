@@ -18,7 +18,7 @@
 					</sec:authorize>
 				</div>
 				
-				<form id="edit" method="post" action="/member/update">
+				<form id="edit" method="post" action="">
 			        <!-- 아이디 -->
 			        <div class="form-group row justify-content-center">
 			          <label for="userid" class="col-sm-5 col-form-label">아이디</label>
@@ -85,30 +85,27 @@
 								id="userProfile" class="text-info"></small>
 						</div>
 					</div>
-				</form>
-	
+					<input type="hidden" name="${_csrf.parameterName }"
+						value="${_csrf.token }" />
 			        <!-- 정보수정 회원탈퇴 -->
 					<div class="mb-2" style="text-align:center;">
 						<button type="submit" class="btn btn-secondary send-data"
 							formaction="/member/update">정보수정</button>
 						<button type="submit" class="btn btn-secondary"
-							formaction="/member/leave">회원탈퇴</button>
-					</div>	
-					<input type="hidden" name="${_csrf.parameterName }"
-						value="${_csrf.token }" />
-
-					<form action="" method="post" id="authForm">
+							formaction="/member/leaveResult">회원탈퇴</button>
+					</div>
+				</form>
+				<form action="" method="post" id="authForm">
 						<input type="hidden" name="userId"
 							value='<sec:authentication property="principal.username"/>' /> <input
 							type="hidden" name="authority" value="" />
-					</form>
+				</form>
 		</div>
 	</div>
 </section>
 <!-- 콘텐츠 종료 -->
 
-<!-- validation 사용자 작성 코드 삽입-->
-	<script src="/resources/js/register.js"></script>
+
 <!-- 스크립트 -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -137,7 +134,16 @@
 			})
 
 		})
+		
 	</script>
+<script>
+$(function(){
+	let success = ${success};
+	if(!success){
+		alert(success);
+	}
+})
+</script>
 <!-- 스크립트 종료-->
 
 <%@ include file="../include/footer.jsp"%>

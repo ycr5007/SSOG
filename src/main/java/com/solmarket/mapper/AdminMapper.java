@@ -2,6 +2,7 @@ package com.solmarket.mapper;
 
 import java.util.List;
 
+import com.solmarket.dto.AuthDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.NoticeDTO;
@@ -16,10 +17,13 @@ public interface AdminMapper {
 	// User List 
 	public List<UserDTO> getUserList(Criteria cri);
 	public int getUserCount();
+	public List<AuthDTO> getAuthRequest();
 	// User Detail
 	public UserDTO getUserDetail(int userNo);
 	// delete UserData
 	public int deleteUserData(int userNo);
+	public int accessAuth(String userId);
+	public int deleteAuth(String userId);
 	
 	
 	// Market Request List

@@ -5,7 +5,6 @@
 <!-- validation 사용자 작성 코드 삽입-->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
-<script>
 <script src="/resources/js/register.js"></script>
 
 <!-- 콘텐츠 시작 -->
@@ -42,7 +41,7 @@
 			              class="form-control"
 			              placeholder="비밀번호를 입력하세요"
 			            />
-			            <small id="userPwd" class="text-info"></small>
+			            <small id="userPw" class="text-info"></small>
 			          </div>
 			        </div>
 			        
@@ -87,7 +86,7 @@
 			                id="userPhone"
 			                name="userPhone"
 			                class="form-control"
-			                placeholder="010 0000 0000"
+			                placeholder="010-0000-0000"
 			              />
 			              <small id="userPhone" class="text-info"></small>
 			          </div>
@@ -214,6 +213,13 @@
     	var addr = document.querySelector("#userAddress");
     	addr.value = roadFullAddr;
     }
+</script>
+
+<script>
+let regist = "${regist}";
+if(regist != ""){
+	alert(regist);
+}
 </script>
 
 <%@ include file="../include/footer.jsp" %>

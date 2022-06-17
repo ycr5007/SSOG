@@ -76,23 +76,18 @@ public class MyPageController {
 		}
 		return "/member/myPageEdit";
 	}
-	
-	// 탈퇴 폼(leave) 보여주기
-	@GetMapping("/leave")
-	public void leave() {
-		log.info("탈퇴 요청");
-	}
-			
+		
 	// 탈퇴 post
-	@PostMapping("/leave")
-	public String leavePost(String userId, HttpSession session) {
+	@PostMapping("/leaveResult")
+	public String leavePost(String userId, HttpSession session, RedirectAttributes rttr) {
 		log.info("탈퇴 요청"+ userId);
 		
 		int result = service.delete(userId);
 		
 		if (result > 0 ) {
 			session.invalidate();
-			return "redirect:/member/leaveResult";
+			rttr.addFlashAttribute("success", "회원탈퇴완료");
+			return "redirect:/";
 		} else {
 			return "redirect:/member/myPageEdit";
 		}

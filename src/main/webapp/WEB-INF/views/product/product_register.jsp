@@ -78,13 +78,15 @@
       </form> <!-- form 종료 -->
       </div>
          <!-- 파일 업로드 INPUT 카드 -->
-         <div class="card" style="width: 18rem;">
+         <div class="card mb-3" style="width: 18rem;">
             <input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display:none" required>
             <label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
             <div class="card-body">
-               <p class="card-title text-center uploadResult">
-               		<p class="card-text text-center pt-5">업로드 사진</p>
-                  <ul></ul>
+               <p class="card-title text-center">
+                     <div class="card-text text-center pt-5 uploadResult">  
+                     업로드 사진              
+                      <ul> </ul>
+                       </div> 
                </p>
             </div>
          </div>

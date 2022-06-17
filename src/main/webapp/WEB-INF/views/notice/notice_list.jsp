@@ -19,7 +19,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${list }" var="notice">
-					<tr class="notice-row" data-notice="${notice.noticeNo }">
+					<tr class="notice-row" data-notice="${notice.noticeNo }" style="color: white;">
 						<td>${notice.dummy1 }</td>
 						<td>${notice.dummy2 }</td>
 						<td>${notice.noticeTitle }</td>

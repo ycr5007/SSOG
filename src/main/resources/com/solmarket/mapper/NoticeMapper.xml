@@ -36,7 +36,7 @@
 	</resultMap>
 	
 	<select id="getReadDetail" resultMap="notice">
-		select * from (select notice_no, n.market_no, notice_title, notice_content, notice_category, m.market_name, m.market_loc from notice n left outer join market m on n.market_no = m.market_no where notice_no = #{noticeNo}) noti left outer join notice_img img on noti.notice_no = img.notice_no
+		select * from (select notice_no, n.market_no, notice_title, notice_content, notice_category,notice_date , m.market_name, m.market_loc from notice n left outer join market m on n.market_no = m.market_no where notice_no = #{noticeNo}) noti left outer join notice_img img on noti.notice_no = img.notice_no
 	</select>
 	
 </mapper>

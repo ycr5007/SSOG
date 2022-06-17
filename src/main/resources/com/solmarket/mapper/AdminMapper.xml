@@ -50,6 +50,10 @@
 		select count(*) from myUser
 	</select>
 	
+	<select id="getAuthRequest" resultType="com.solmarket.dto.AuthDTO">
+		select user_id as userId, authority from auth_request
+	</select>
+	
 	<select id="getUserDetail" resultMap="myUser">
 		select user_no, use.user_id, user_name, user_mail, user_profile, user_status, user_phone, user_address, enabled, authority
 		from myUser use left outer join myuser_auth auth on use.user_id = auth.user_id where user_no = #{userNo}
@@ -57,6 +61,14 @@
 	
 	<delete id="deleteUserData">
 		delete from myuser where user_no = #{userNo}
+	</delete>
+	
+	<insert id="accessAuth">
+		insert into myuser_auth(user_id, authority) (select user_id, authority from auth_request where user_id = #{userId})
+	</insert>
+	
+	<delete id="deleteAuth">
+		delete from auth_request where user_id = #{user_id}
 	</delete>
 	
 	<!-- 장터 신청 관리 -->

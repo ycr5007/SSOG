@@ -30,16 +30,18 @@
 					<input type="text" name="productprice" value="${dto.productPrice}"class="form-control" readonly />
 				</div>
 				
-				<div class="form-group">
-					<label>상품상태</label>
-					<input type="text" name="productStatus" id="productStatus" class="form-control" value="${dto.productStatus}" readonly />
-				</div>
-
+				
+					<div class="form-group">
+						<label>상품상태</label>
+						<input type="text" name="productStatus" id="productStatus" class="form-control" value="${dto.productStatus}" readonly />
+					</div>
+				
 
 			
-
 				<button type="button" class="btn btn-info" id="registerBtn">목록</button>
-				<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
+				<c:if test="${dto.productStatus == 4}">
+					<button type="button" class="btn btn-primary" id="modifyBtn">온라인 상품 등록</button>
+				</c:if>
 			
 		</form>
 	</div>

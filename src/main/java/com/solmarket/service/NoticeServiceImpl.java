@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.solmarket.dto.AttachDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.NoticeDTO;
+import com.solmarket.mapper.AttachMapper;
 import com.solmarket.mapper.NoticeMapper;
 
 @Service
@@ -14,6 +16,9 @@ public class NoticeServiceImpl implements NoticeService{
 	
 	@Autowired
 	private NoticeMapper noticeMapper;
+	
+	@Autowired
+	private AttachMapper attachMapper;
 	
 	@Override
 	public List<NoticeDTO> getNoticeList(Criteria cri) {
@@ -29,4 +34,5 @@ public class NoticeServiceImpl implements NoticeService{
 	public NoticeDTO getReadDetail(int noticeNo) {
 		return noticeMapper.getReadDetail(noticeNo);
 	}
+	
 }

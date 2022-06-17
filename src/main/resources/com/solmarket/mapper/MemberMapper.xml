@@ -33,7 +33,7 @@
 		<result property="authority" column="authority" />
 	</resultMap>
 	<select id="read" resultMap="myUser">
-		select use.user_id, user_pw, enabled, user_name, user_phone, user_mail, user_address, user_profile, authority from 
+		select user_no, use.user_id, user_pw, enabled, user_name, user_phone, user_mail, user_address, user_profile, authority from 
 		myuser use join myuser_auth auth on use.user_id = auth.user_id where use.user_id = #{userId}
 	</select>
 	

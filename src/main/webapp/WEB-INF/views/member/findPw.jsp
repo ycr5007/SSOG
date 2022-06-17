@@ -6,6 +6,8 @@
 <section class="bg-dark">
 	<div id="findId" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">
 	    <div class="container border-0 bg-dark" style="width:300px; height:420px;  align-content: center; padding-top: 50px">
+
+
 			<h1>비밀번호 찾기</h1>
 			<form action="/member/findPwResult" method="post">
 				<div class="txt_field">
@@ -23,10 +25,29 @@
 			</form>
 		</div>
 	</div>
+
 </section>
 
 
 <!--  스크릡트 -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script>
+	$(function() {
+		$('form').submit(function() {
+			var idLength = $('#userId').val().length;
+			var mailLength = $('#userMail').val().length;
+			if (idLength == 0) {
+				alert('아이디를 입력해주세요.');
+				return false;
+			}
+			if (mailLength == 0) {
+				alert('이메일을 입력해주세요.');
+				return false;
+			}
+		});
+	});
+</script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
 <script>

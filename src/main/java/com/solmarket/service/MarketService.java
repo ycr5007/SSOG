@@ -12,7 +12,7 @@ public interface MarketService {
 	public boolean registerMarket(MarketDTO insertDTO); // 장터 등록 (장터 상태 0)
 	
 	/* ================= 장터 참여 신청 목록 보기 ================= */
-	public List<ProductDTO> showReceive(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 상품 조회 (상품 상태 0 & 장터 번호)
+	public List<ProductDTO> showReceive(@Param("marketNo")int marketNo, @Param("cri")Criteria cri); // 상품 조회 (상품 상태 0 & 장터 번호)
 	public int TotalReceive(int marketNo); // 총 신청 개수
 	
 	/* ================= 장터 참여 신청 상품 상세 ================= */
@@ -23,21 +23,21 @@ public interface MarketService {
 	public boolean ProductDeny(int productNo); // 상품 거부 (상품 상태 0 → 2)
 	
 	/* ================= 장터 참여 승인 목록 보기 ================= */
-	public List<ProductDTO> showProductAcceptList(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 상품 조회 (상품 상태 1 & 장터 번호)
+	public List<ProductDTO> showProductAcceptList(@Param("marketNo")int marketNo, @Param("cri")Criteria cri); // 상품 조회 (상품 상태 1 & 장터 번호)
 	public int TotalAccept(int marketNo); // 총 승인 개수
 	
 	/* ====================== 장터 위치 불러오기 ====================== */
 	public String showMarketLoc(int marketNo); // 장터 위치 정보 조회
 	
 	/* ====================== 장터 공지 목록 보기 ====================== */
-	public List<NoticeDTO> showNoticeList(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 공지 게시판 조회
+	public List<NoticeDTO> showNoticeList(@Param("marketNo")int marketNo, @Param("cri")Criteria cri); // 공지 게시판 조회
 	public int TotalNotice(int marketNo); // 공지 총 개수
 	
 	/* ====================== 장터 공지 등록 ====================== */
 	public boolean registerNotice(NoticeDTO noticeDTO); // 공지, 이벤트 게시글 등록
 	
 	/* ================== 장터 판매 상품 목록 보기 ================== */
-	public List<ProductDTO> ProductList(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 상품 조회 (상품 상태 3 & 장터 번호)
+	public List<ProductDTO> ProductList(@Param("marketNo")int marketNo, @Param("cri")Criteria cri); // 상품 조회 (상품 상태 3 & 장터 번호)
 	public int TotalProduct(int marketNo); // 판매 상품 총 개수
 
 	/* ====================== 첨부파일 ====================== */
@@ -47,7 +47,7 @@ public interface MarketService {
 	public List<AttachDTO> showProductImg(int marketNo); // 상품 이미지 가져오기
 	
 	/* ====================== 장터 후기 목록 보기 ====================== */
-	public List<ReviewDTO> ReviewList(@Param("marketNo")int marketNo, @Param("criteria")Criteria criteria); // 한 줄 후기 조회 (장터 번호)
+	public List<ReviewDTO> ReviewList(@Param("marketNo")int marketNo, @Param("cri")Criteria cri); // 한 줄 후기 조회 (장터 번호)
 	public int TotalReview(int marketNo); // 후기 총 개수
 	
 	/* ====================== 장터 총 평점 불러오기 ====================== */
