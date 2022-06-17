@@ -8,10 +8,11 @@ import com.solmarket.dto.*;
 
 public interface MarketService {
 	
-	
-	
 	/* ====================== 장터 번호 가져오기 ====================== */
 	public Integer getMarketNo(int userNo);
+	
+	/* ====================== 장터 상태 가져오기 ====================== */
+	public Integer getMarketStatus(int marketNo);
 	
 	/* ====================== 장터 등록 ====================== */
 	public boolean registerMarket(MarketDTO insertDTO); // 장터 등록 (장터 상태 0)

@@ -17,6 +17,10 @@ public class MarketServiceImpl implements MarketService {
 	@Autowired
 	public AttachMapper attachMapper;
 
+	@Override
+	public Integer getMarketStatus(int marketNo) {
+		return mapper.getMarketStatus(marketNo);
+	}
 	
 	
 	/* ====================== 장터 등록 ====================== */

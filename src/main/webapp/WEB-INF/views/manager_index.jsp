@@ -8,6 +8,7 @@
 		
 			<!-- 등록된 장터가 없는 경우 장터 등록 버튼이 보이도록 (장터 상태가 0 or 3인 경우) -->
 			<!-- SELECT * FROM market WHERE market_status = 3 OR NULL -->
+			<c:if test="${marketNo == '0'}">
 				<div class="col-xl-12 col-lg-7">
 					<div class="card mb-4">
 						<div class="card-body">
@@ -16,9 +17,11 @@
 						</div>
 					</div>
 				</div>
+			</c:if>
 			
 			<!-- 장터 승인 전인 경우, 승인 요청 중이라는 문구가 뜨도록 -->
 			<!-- SELECT * FROM market WHERE market_status = 0 -->
+			<c:if test="${marketStatus == 0}">
 				<div class="col-xl-12 col-lg-7">
 					<div class="card mb-4">
 						<div class="card-body">
@@ -26,21 +29,24 @@
 						</div>
 					</div>
 				</div>
+			</c:if>
 
 			<!-- 장터 상태가 1 or 2인 경우 -->			
 			<!-- 장터 이미지 -->
+			<c:if test="${marketStatus == 0 || marketStatus == 1 || marketStatus == 2}">
 				<div class="col-xl-12 col-lg-7">
 					<div class="card mb-4">
 						<div class="card-body">
 							<div class="chart-area">
 								<a href="/market/market_detail?marketNo=${marketNo}">
 									<!-- marketNo에 해당하는 이미지 가져오기 -->
-									<img src="/display/market/${marketNo}" style="width: 100%; height: 50%" />
+									<img src="/display/market/${marketNo}" style="width: 100%; height: 100%" />
 								</a>
 							</div>
 						</div>
 					</div>
 				</div>
+			</c:if>
 			
 			<div class="row col-xl-12 px-xl-5">
 				<!-- 장터 참여 신청 리스트 -->

@@ -7,7 +7,9 @@
 		select market_no from market where user_no = #{userNo}
 	</select>
 
-
+	<select id="getMarketStatus" resultType="Integer">
+		select market_status from market where market_no = #{marketNo}
+	</select>
 
 
 

@@ -99,9 +99,13 @@ public class HomeController {
 			marketNo = 0;
 		}
 		
+		// 장터 상태 가져오기
+		int marketStatus = marketService.getMarketStatus(marketNo);
+		
 		
 		//model.addAttribute("userDTO", userDTO);
 		model.addAttribute("marketNo", marketNo);
+		model.addAttribute("marketStatus", marketStatus);
 		
         
         return "manager_index";

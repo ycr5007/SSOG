@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Param;
 import com.solmarket.dto.*;
 
 public interface MarketMapper {
+	
 	public Integer getMarketNo(int userNo);
+	public Integer getMarketStatus(int marketNo);
 	
 	/* ====================== 장터 등록 ====================== */
 	public int insert(MarketDTO insertDTO); // 장터 등록 (장터 상태 0)
