@@ -176,7 +176,7 @@
 		
 <script>
 $(function() {
-	if(${marketNo} == null) {
+	if(${marketNo} == null || ${marketNo} == 0) {
 		alert('장터 등록 후 이용해주세요.');
 		location.href = "/market/market_register";
 	}

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.UserDTO;
+import com.solmarket.mapper.MemberMapper;
 import com.solmarket.service.AdminService;
 import com.solmarket.service.IndexService;
 
@@ -33,6 +34,9 @@ public class HomeController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private MemberMapper memberMapper;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model, HttpServletRequest req) {
@@ -57,8 +61,7 @@ public class HomeController {
 	public String manager_home(Model model, Principal principal) {
 		// userNo 가져오기
 		String userId = principal.getName();
-		UserDTO userDTO = new UserDTO();
-		userDTO.setUserId(userId);
+		UserDTO userDTO = memberMapper.read(userId);
 		int userNo = userDTO.getUserNo();
 		
 		// marketDTO 가져오기

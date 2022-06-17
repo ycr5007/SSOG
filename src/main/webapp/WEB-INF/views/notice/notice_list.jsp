@@ -5,9 +5,10 @@
 <link rel="stylesheet" href="/resources/css/admin.css" />
 
 <section class="bg-dark">
-	<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 50px 50px 50px 50px">    
+	<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 20px 20px 20px 20px">    
 <div class="contetnt">
-	<div class="container mt-4 mb-4 h-75">
+	<div class="container border-0 bg-dark mt-4 mb-4 h-75" style="height:auto;  align-content: center">
+		<img src="../resources/img/noticelogo.png"/>
 		<table class="table table-striped" style="color: white;">
 			<thead>
 				<tr class="text-center">
