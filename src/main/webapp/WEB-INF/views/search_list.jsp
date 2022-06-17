@@ -16,21 +16,12 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						  <%-- 도서목록 --%>
-						  	<%-- <% for(BookDTO dto:list){ %> 
-						  		<tr>
-						  			<td><%= dto.getCode() %></td>
-						  			<td><%= dto.getTitle() %></td>
-						  			<td><%= dto.getWriter() %></td>
-						  			<td><%= dto.getPrice() %></td>
-						  		</tr>
-							 <% } %> --%>
 						   	<c:forEach var="dto" items='${list}'>
 						  		<tr>
-						  			<td> ${dto.code}</td>
-						  			<td> ${dto.title}</td>
-						  			<td> ${dto.writer}</td>
-						  			<td> ${dto.price}</td>
+						  			<td> ${dto.productName}</td>
+						  			<td> ${dto.seller}</td>
+						  			<td> ${dto.marketNo}</td>
+						  			<td> ${dto.marketStatus}</td>
 						  		</tr>
 						  	</c:forEach>
 						  </tbody>
@@ -38,8 +29,5 @@
 		    	</div>
 </section>
 
-
-
-  
   
 <%@ include file="./include/footer.jsp" %>
