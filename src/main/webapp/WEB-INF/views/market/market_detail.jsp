@@ -298,7 +298,7 @@
 <!-- 장터 이미지 불러오기 -->
 <script>
 	$.ajax({
-		url : '/display/' + market
+		url : '/display/market/' + ${marketNo},
 		type : 'get',
 		processData : false,
 		contentType : false,
