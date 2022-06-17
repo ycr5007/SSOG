@@ -1,7 +1,9 @@
 -- user테이블 칼럼추가
 -- req_auth : 권한요청(SELLER : 1 / MANAGER : 2)
 ALTER TABLE myuser add req_auth number(2) default 0;
-
+insert into myuser_auth(user_id, authority)
+values (authority = 'ROLE_SELLER')
+where user_id = 'hhhh';
 -- 권한요청 테이블 추가
 CREATE TABLE auth_request(
 	user_id VARCHAR2(12) NOT NULL,

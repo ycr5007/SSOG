@@ -134,7 +134,8 @@ public class MemberServiceImpl implements MemberService {
 		
 		//임시 비밀번호 메일 전송
 		String sub = "안녕하세요. sol market 인증메일입니다.";
-		String con = "임시비밀번호 = " + tempPw + " 입니다.";
+		String con = "임시비밀번호 = " + tempPw + " 입니다. \n"
+					+ " *** 마이페이지에서 비밀번호 변경을 해주세요 *** ";
 
 		String from = "ekor11@naver.com";
 
