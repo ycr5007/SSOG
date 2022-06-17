@@ -23,19 +23,16 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public boolean registerMarket(MarketDTO insertDTO) {
 		
-		 boolean result=mapper.insert(insertDTO) == 1 ? true : false;
-		
+		boolean result=mapper.insert(insertDTO) == 1 ? true : false;
 		
 		// 첨부파일 삽입 - 첨부파일이 없다면 되돌려보내기
-		if (insertDTO.getAttachList() == null || insertDTO.getAttachList().size() <= 0) {
+		if (insertDTO.getAttach() == null) {
 			return false;
 		}
 
 		// 첨부파일 개수만큼 루프 돌기
-		insertDTO.getAttachList().forEach(attach -> {
-			attach.setNo((insertDTO.getMarketNo()));
-			attachMapper.insertMarketImg(attach);
-		});
+		insertDTO.getAttach().setNo(insertDTO.getMarketNo());
+		attachMapper.insertMarketImg(insertDTO.getAttach());
 			
 		return result;
 	}
