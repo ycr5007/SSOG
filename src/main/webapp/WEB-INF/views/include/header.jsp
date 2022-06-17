@@ -25,9 +25,13 @@
       div {
         text-align: center;
       }
-      .card {
+      .mapmap {
         max-width: 500px;
-      }      
+        max-width: auto;
+        align-content: center;
+        text-align:center;
+
+      }
       #marketlist {
           overflow: auto;
       }      
