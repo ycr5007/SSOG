@@ -56,8 +56,6 @@
                   <input type="radio" name="productQN" value="150" />150
                </div>
                
-               <button type="button" class="btn btn-primary" id="addProductBtn">상품 추가</button>
-               
             </div>
    
             <div class="form-group">
@@ -89,7 +87,10 @@
                        </div> 
                </p>
             </div>
-         </div>
+                
+
+                
+                </div>
          
       <!-- form 시작  -->
       <div class="form-group">         
@@ -113,7 +114,7 @@
             <!--  -->
          </div>
          <!-- table 감싸기 종료-->
-               
+         <button type="button" class="btn btn-primary" id="addProductBtn">상품 추가</button>       
          <button type="submit" class="btn btn-warning" id="registerBtn">등록</button>
          <button type="button" class="btn btn-danger" id="deleteBtn">취소</button>      
    </div>
@@ -137,5 +138,5 @@
 </script>
 
 <script src="/resources/js/util/upload.js"></script>
-<script src="/resources/js/product_register.js"></script>
+<script src="/resources/js/product/product_register.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

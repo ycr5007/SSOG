@@ -19,6 +19,15 @@
       integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
       crossorigin="anonymous"
     ></script>
+  <style>  
+     .carousel-inner > .item > img {
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 400px;
+    } 
+</style>
+
 	<!-- content 시작 -->
 	<div class="container-fluid">
 		<!-- 현재 참여중인 장터 -->
@@ -28,7 +37,7 @@
 					<!-- header -->
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 						<h6 class="m-0 font-weight-bold text-primary">오픈 예정 장터</h6>
-						<a href="#">more</a>
+						<a href="/product/product_market_list?userNo=${userNo}">more</a>
 					</div>
 					<!-- body -->
 				<div class="card-body">
@@ -40,27 +49,15 @@
 								<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
 							</ol>
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img src="/resources/img/market.PNG" class="d-block w-100" alt="..." />
-									<div class="carousel-caption d-none d-md-block">
-										<h5>First slide label</h5>
-										<p>Some representative placeholder content for the first slide.</p>
+								<c:forEach var="dto" items="${oList}" end="3"  varStatus="status">													
+									<div class='carousel-item <c:out value="${status.count == 1? 'active':''}"/>'>
+										<img src="/resources/img/market.PNG" class="d-block w-100" alt="..." />
+										<div class="carousel-caption d-none d-md-block">
+											<h5>${dto.marketName}</h5>
+											<p>${dto.marketSD}</p>
+										</div>
 									</div>
-								</div>
-								<div class="carousel-item">
-									<img src="/resources/img/product_single_01.jpg" class="d-block w-100" alt="..." />
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Second slide label</h5>
-										<p>Some representative placeholder content for the second slide.</p>
-									</div>
-								</div>
-								<div class="carousel-item">
-									<img src="/resources/img/product_single_02.jpg" class="d-block w-100" alt="..." />
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Third slide label</h5>
-										<p>Some representative placeholder content for the third slide.</p>
-									</div>
-								</div>
+								</c:forEach>								
 							</div>
 							<button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
 								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
