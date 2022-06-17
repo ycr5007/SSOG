@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.solmarket.dto.AttachDTO;
+import com.solmarket.service.AttachService;
 
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnailator;
@@ -32,6 +34,9 @@ import net.coobird.thumbnailator.Thumbnailator;
 @RestController
 public class UploadRestController {
 
+	@Autowired
+	private AttachService attachService;
+	
 	@PostMapping("/uploadAjax/{section}")
 	public ResponseEntity<List<AttachDTO>> uploadAjaxPost(@PathVariable("section") String section ,MultipartFile[] uploadFile) {
 		log.info("[POST] ajax 업로드 폼 요청 " + section);
@@ -69,8 +74,7 @@ public class UploadRestController {
 			height = 0;
 			break;
 		default :
-			
-			break;
+			return new ResponseEntity<List<AttachDTO>>(new ArrayList<AttachDTO>() , HttpStatus.BAD_REQUEST);
 		}
 		
 		// 업로드 세부 폴더 지정
@@ -130,9 +134,13 @@ public class UploadRestController {
 	}
 	
 	// 썸네일 이미지 보여주기
-	@GetMapping(path = "/display/{section}")
-	public ResponseEntity<byte[]> getFile(@PathVariable("section") String section, String fileName){
-		log.info("[GET] 썸네일 파일 보여주기 " + fileName);
+	@GetMapping(path = "/display/{section}/{no}")
+	public ResponseEntity<byte[]> getFile(@PathVariable("section") String section, @PathVariable("no") int no){
+		log.info("[GET] 썸네일 파일 보여주기 " + no);
+		AttachDTO dto = attachService.getImg(section, no); 
+		
+		String fileName = dto.getUploadPath() + "s_" + dto.getUuid() + "_" + dto.getFileName();
+		log.info("fileName ::: " + fileName);
 		File file = new File("c:\\solmarket\\" + section + "\\" + fileName);
 		ResponseEntity<byte[]> image = null;
 		HttpHeaders header = new HttpHeaders();

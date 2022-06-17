@@ -27,16 +27,16 @@ function getDetailUser(userNo){
 		url:'/admin/user/' + userNo,
 		success:function(result){
 			console.log(result);
-			showDetail(result);
+			showDetail(result, userNo);
 		}
 	})
 }
 
-function showDetail(data){
+function showDetail(data, userNo){
 	let str = "";
 	str += "<div class='row' style='width: 50%'>";
-	str += "<div class='col-lg-12'>";
-	str += "<div class='card shadow m-5 h-75 w-75'>";
+	str += "<div class='col-lg-12 p-5'>";
+	str += "<div class='card shadow m-5 h-75 w-100'>";
 	str += "<div class='card-header py-3 d-flex flex-row align-items-center justify-content-between'><h6 class='m-0 font-weight-bold text-primary'>회원정보</h6></div>"
 	str += "<div class='card-body'><table class='table table-bordered text-center'>"
 	str += "<tr><th class='col-lg-2'>아이디</th>"
@@ -45,7 +45,7 @@ function showDetail(data){
 	str += "<td class='col-lg-2'>" + (data.authorities.length > 1 ? data.authorities[1].authority : data.authorities[0].authority) + "</td>"
 	str += "<th class='col-lg-2'>상태</th>"
 	str += "<td class='col-lg-2'>" + (data.userStatus > 0 ? '회원' : '탈퇴') + "</td></tr>"
-	str += "<tr><td rowspan='2' colspan='2'><img src='https://via.placeholder.com/150x200'></td>"
+	str += "<tr><td rowspan='2' colspan='2'><img src='http://localhost:9090/display/user/" + userNo + "' ></td>" // onerror='this.src=\"https://via.placeholder.com/150x200\"'
 	str += "<th colspan='4' class='col-height'>프로필 문구</th></tr>"
 	str += "<tr><td colspan='4'>" + (data.userProfile == null ? '' : data.userProfile) + "</td></tr>"
 	str += "<tr><th colspan='2'>이름</th>"
@@ -61,13 +61,13 @@ function showDetail(data){
 	str += "</table>"
 	str += "</div></div></div></div>";
 	
-	str += "<div class='row' style='width: 50%'>";
-	str += "<div class='col-lg-12'>";
+	str += "<div class='row' style='width: 90%'>";
+	str += "<div class='col-lg-12 p-5'>";
 	str += "<div class='card shadow m-5 h-75 w-75'>";
 	str += "<div class='card-header py-3 d-flex flex-row align-items-center justify-content-between'><h6 class='m-0 font-weight-bold text-primary'>최근활동 ( 미완 )</h6></div>"
 	str += "<div class='card-body'><table class='table table-bordered'>"
-	str += "<tr><th class='col-lg-2'>분류</th>"
-	str += "<th class='col-lg-7'>내용...</th>"
+	str += "<tr><th class='col-lg-3'>분류</th>"
+	str += "<th class='col-lg-6'>내용...</th>"
 	str += "<th class='col-lg-3'>활동일</th></tr>"
 	str += "<tr><td>게시판</td><td>잘 부탁드리...</td><td>22-06-11</td></tr>"
 	str += "<tr><td>댓글</td><td>좋은 생각인거 같...</td><td>22-06-11</td></tr>"
