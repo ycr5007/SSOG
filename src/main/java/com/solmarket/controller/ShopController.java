@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.solmarket.dto.Criteria;
+import com.solmarket.dto.OrderDTO;
 import com.solmarket.dto.PageDTO;
 import com.solmarket.dto.ProductDTO;
 import com.solmarket.dto.UserDTO;
@@ -60,15 +61,16 @@ public class ShopController {
 //		return "redirect:/shop/order";
 //	}
 	
-	
-	@GetMapping("/")
-	public void getFilter() {
-		log.info("카테고리 선택시 상품리스트 요청");
-	}
-	
 	@GetMapping("/cart") 
-	public void getCart() {
+	public void getCart(Model model, int productNo,int orderQN,int userNo) {
 		log.info("Cart 페이지 요청");
+		log.info("" + productNo);
+		UserDTO userDto = service.getOrderUser(userNo);
+		ProductDTO productDto = service.getOrderProduct(productNo);
+		log.info("" + productDto);
+		model.addAttribute("user", userDto);
+		model.addAttribute("product", productDto);
+		model.addAttribute("orderQN", orderQN);
 	}
 	
 	
@@ -83,7 +85,22 @@ public class ShopController {
 		model.addAttribute("user", userDto);
 		model.addAttribute("product", productDto);
 		model.addAttribute("orderQN", orderQN);
-		
+	}
+	
+	@PostMapping("/iamport")
+	public String payinfo(Model model,UserDTO userDto,OrderDTO orderDto) {
+		log.info("payInfo");
+		log.info("userDto" + userDto);
+		log.info("orderDto" + orderDto);
+//		log.info("userName",userDto);
+		model.addAttribute("user",userDto);
+		model.addAttribute("order",orderDto);
+		return "/shop/iamport";
+	}
+	
+	@GetMapping("/orderDetail")
+	public void orderDetail() {
+		log.info("orderDetail 페이지 요청");
 	}
 	
 //	@PostMapping("/detail")
