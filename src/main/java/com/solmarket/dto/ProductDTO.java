@@ -1,7 +1,6 @@
 package com.solmarket.dto;
 
 import java.util.Date;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,5 +23,5 @@ public class ProductDTO {
 	private int productSale; // 재고 상점 등록시 할인율
 	
 	private String userName; // 회원 이름 ( myUser 테이블 )
-	private List<AttachDTO> attachList; // 파일첨부 리스트
+	private AttachDTO attach; // 파일첨부 리스트
 }

@@ -13,8 +13,10 @@
 		</div>
 	</div>
  */
+let fileData;
 
 $(function(){
+	
 	
 	$(".custom-file-input").change(function(){
 		// form 객체 생성
@@ -43,6 +45,7 @@ $(function(){
 			data : formData,
 			dataType : 'json',
 			success : function(result){
+				fileData = result;
 				$(":file").val("");
 				showUploadFile(result);
 			}

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.solmarket.dto.AttachDTO;
 import com.solmarket.dto.AuthDTO;
 import com.solmarket.dto.UserDTO;
+import com.solmarket.mapper.AttachMapper;
 import com.solmarket.mapper.MemberMapper;
 import com.solmarket.service.MemberService;
 
@@ -32,6 +33,9 @@ public class MyPageController {
 	
 	@Autowired
 	private MemberMapper mapper;
+	
+	@Autowired
+	private AttachMapper attachMapper;
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
@@ -67,14 +71,24 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/update")
-	public String regist(UserDTO update, String authority) {
+	public String regist(UserDTO update, AttachDTO attach) {
 		log.info("회원정보 수정 요청" + update);
-		log.info("회원정보 수정 요청" + authority);
+		log.info("회원정보 수정 요청" + attach);
+		boolean result = service.updateUser(update);
 		
-		if(service.updateUser(update, authority)) {
-			return "redirect:/member/login";
+		if(attach == null) {
+			return "/member/myPageEdit";
 		}
-		return "/member/myPageEdit";
+		String section = "user";
+		// 첨부 파일 개수만큼 반복 ( forEach : 함수형 )
+		update.setAttach(attach);
+		attachMapper.insertImg(update.getAttach(), section);
+		
+		if(result) {
+			return "redirect:/member/login";
+		}else {
+			return "/member/myPageEdit";
+		}
 	}
 		
 	// 탈퇴 post

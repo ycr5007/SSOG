@@ -23,5 +23,5 @@ public class UserDTO {
 	private List<AuthDTO> authorities;
 	private int reqAuth;
 	
-	private List<AttachDTO> attachList; // 파일첨부 리스트
+	private AttachDTO attach; // 파일첨부
 }

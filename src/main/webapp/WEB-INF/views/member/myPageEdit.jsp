@@ -19,8 +19,9 @@
 					</sec:authorize>
 				</div>
 				
-				<form id="regist" method="post" action=""  encType="multipart/form-data">
+				<form id="regist" method="post" action="" role="form">
 			        <!-- 아이디 -->
+			        <sec:csrfInput/>
 			        <div class="form-group row justify-content-center">
 			          <label for="userid" class="col-sm-5 col-form-label">아이디</label>
 			          <div class="textForm col-sm-7">
@@ -104,7 +105,6 @@
 							<small id="userProfile" class="text-info"></small>
 						</div>
 					</div>
-					
 				<!-- 프로필 사진 업로드 -->
 					<div class="form-group row justify-content-center mb-2">
 						<label for="userprofile" class="col-sm-5 col-form-label">파일업로드</label>
@@ -119,24 +119,21 @@
 							</div>
 						</div>
 					</div>
-					<input type="hidden" name="${_csrf.parameterName }"
-							value="${_csrf.token }" />
+			        <!-- 정보수정 회원탈퇴 -->
+					<div class="pb-2" style="text-align:center;">
+						<button type="button" class="btn btn-secondary send-data update-user">정보수정</button>
+						<button type="submit" class="btn btn-secondary"
+							formaction="/member/leaveResult">회원탈퇴</button>
+					</div>
+			</form>
 						
 				
-			</form>
 			<form action="" method="post" id="authForm">
 					<input type="hidden" name="userId"
 						value='<sec:authentication property="principal.username"/>' /> <input
 						type="hidden" name="authority" value="" />
 			</form>
 			
-		        <!-- 정보수정 회원탈퇴 -->
-				<div class="pb-2" style="text-align:center;">
-					<button type="submit" class="btn btn-secondary send-data"
-						formaction="/member/update">정보수정</button>
-					<button type="submit" class="btn btn-secondary"
-						formaction="/member/leaveResult">회원탈퇴</button>
-				</div>
 					
 		</div>
 	</div>
@@ -147,7 +144,7 @@
 <!-- 스크립트 -->
 	<script>
 		let section = "user";
-	
+		let userNo = "${user.userNo}";
 	</script>
 	<script src="/resources/js/util/upload.js"></script>
 	<script>
@@ -191,7 +188,7 @@
     }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
-<script src="/resources/js/register.js"></script>
+<script src="/resources/js/modify.js"></script>
 <!-- 스크립트 종료-->
 
 <%@ include file="../include/footer.jsp"%>

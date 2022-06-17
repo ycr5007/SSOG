@@ -41,6 +41,31 @@
 		</choose>
 	</select>
 	
+	<insert id="insertImg">
+		insert into 
+			<choose>
+				<when test="section == 'user'">
+					user_img
+				</when>
+				<when test="section == 'product'">
+					product_img
+				</when>
+				<when test="section == 'market'">
+					market_img
+				</when>
+				<when test="section == 'recruit'">
+					recruit_img
+				</when>
+				<when test="section == 'notice'">
+					notice_img
+				</when>
+				<when test="section == 'board'">
+					board_img
+				</when>
+			</choose>
+		values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
+	</insert>
+	
 	<!-- ================= 장터 이미지 불러오기 ================= -->
 	<select id="selectMarketImg" resultType="com.solmarket.dto.AttachDTO">
 		SELECT uuid, uploadpath as uploadPath, filename as fileName, market_no as no FROM market_img WHERE market_no = #{marketNo}
