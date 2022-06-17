@@ -38,7 +38,7 @@
 							<!-- 게시판 리스트 반복문 -->
 							<c:forEach var="dto" items="${list}" varStatus="status">
 								<tr>
-									<td>${dto.userName}</td>
+									<td>${dto.userNo}</td>
 									<td><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
 									<td>${dto.productPrice}</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
