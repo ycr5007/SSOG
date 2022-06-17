@@ -19,4 +19,6 @@ public class BoardDTO {
 	private int boardRepl; // 댓글 수
 	
 	private AttachDTO attach; // 파일첨부 리스트
+	private String userName;
+
 }
