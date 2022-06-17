@@ -120,7 +120,7 @@ $(function(){
 
 	//취소 버튼 클릭시
 	$(".btn-danger").click(function() {
-		location.href = "/product/product_list?userNo=7";
+		location.href = "/product/product_list";
 	})
 })
 

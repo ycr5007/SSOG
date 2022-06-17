@@ -51,7 +51,7 @@
 							<div class="carousel-inner">
 								<c:forEach var="dto" items="${oList}" end="3"  varStatus="status">													
 									<div class='carousel-item <c:out value="${status.count == 1? 'active':''}"/>'>
-										<img src="/resources/img/market.PNG" class="d-block w-100" alt="..." />
+										<img src="/display/market/${dto.marketNo}" onerror="src='/resources/img/market.PNG'" class="d-block w-100" alt="..." />
 										<div class="carousel-caption d-none d-md-block">
 											<h5>${dto.marketName}</h5>
 											<p>${dto.marketSD}</p>

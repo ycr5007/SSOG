@@ -109,7 +109,7 @@
 			②cri(criteria.pageNum( @ModelAttribute가 사용 안된 경우), cri.pageNum)
 			 
 		  -->
-		<input type="hidden" name="userNo" value="${userNo}" />
+		<input type="hidden" name="userNo" value="${user.userNo}" />
 		<input type="hidden" name="pageNum" value="${cri.pageNum}" />
 		<input type="hidden" name="amount" value="${cri.amount}" />
 	</form>

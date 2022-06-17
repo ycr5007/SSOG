@@ -38,7 +38,7 @@
 							<!-- 게시판 리스트 반복문 -->
 							<c:forEach var="dto" items="${list}" varStatus="status">
 								<tr>
-									<td>${dto.userNo}</td>
+									<td>${dto.marketNo}</td>
 									<td><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
 									<td>${dto.productPrice}</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
@@ -113,7 +113,7 @@
 			②cri(criteria.pageNum( @ModelAttribute가 사용 안된 경우), cri.pageNum)
 			 
 		  -->
-		<input type="hidden" name="userNo" value="${dto.userNo}" />
+		<input type="hidden" name="userNo" value="${user.userNo}" />
 		<input type="hidden" name="pageNum" value="${pageDto.cri.pageNum}" />
 		<input type="hidden" name="amount" value="${pageDto.cri.amount}" />
 	</form>
