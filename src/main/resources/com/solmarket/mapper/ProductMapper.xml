@@ -83,7 +83,7 @@
 		from (select /*+INDEX_DESC(market pk_market)*/
 				 rownum as num, market_no as marketNo, market_name as marketName, market_sd as marketSD,market_ed as marketED, market_loc as marketLoc
 			 from market
-			 where rownum <= (#{cri.pageNum} * #{cri.amount}) and market_status = 1)
+			 where rownum <= (#{cri.pageNum} * #{cri.amount}) and market_status = 1 )
 		where num > (#{cri.pageNum} - 1) * #{cri.amount}
 		]]>
 	</select>
@@ -105,7 +105,7 @@
 	<select id="oList" resultType="com.solmarket.dto.MarketDTO">
 		select market_no as marketNo, market_name as marketName, market_sd as marketSD, market_loc as marketLoc
 		from market
-		where market_status = 1
+		where market_status = 1 order by market_no desc
 	</select>
 
 	<!-- 인덱스에서 상품 리스트 보여주기 -->
