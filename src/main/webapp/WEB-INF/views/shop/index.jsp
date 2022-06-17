@@ -93,7 +93,7 @@ font-size: 16px;
 <div class="card-wrapper">
 	<c:forEach var="product" items="${product}" >
 	<div class="card" style="width: 20rem;">
-	  <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
+	  <img src="/display/product/${productNo}"
 	  style="width:318px; heigth:300px;" class="card-img-top" alt="...">
 	  <div class="card-body">
 	    <h5 class="card-title">${product.productName}</h5>
