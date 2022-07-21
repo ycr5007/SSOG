@@ -70,7 +70,7 @@
 
 			<!-- 사이드바 - 내 장터 참여 신청자 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_receive?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
+				<a class="nav-link" href="/market/market_receive?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-edit"></i>
 					<span>장터 참여 신청 목록</span>
 				</a>
@@ -78,7 +78,7 @@
 			
 			<!-- 사이드바 - 참여 승인 상품 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_accept?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
+				<a class="nav-link" href="/market/market_accept?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-check-square"></i>
 					<span>참여 승인 목록</span>
 				</a>
@@ -86,7 +86,7 @@
 
 			<!-- 사이드바 - 내 장터 참여자 보기 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_myseller?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
+				<a class="nav-link" href="/market/market_myseller?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-shopping-basket"></i>
 					<span>장터 판매 상품 목록</span>
 				</a>
@@ -94,7 +94,7 @@
 
 			<!-- 사이드바 - 내 장터 한 줄 리뷰 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_review?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
+				<a class="nav-link" href="/market/market_review?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-star"></i>
 					<span>장터 후기</span>
 				</a>
@@ -102,7 +102,7 @@
 
 			<!-- 사이드바 - 내 장터 공지 및 이벤트 -->
 			<li class="nav-item">
-				<a class="nav-link" href="/market/market_notice?marketNo=${marketNo}&pageNum=${pageNum}&amount=${amount}">
+				<a class="nav-link" href="/market/market_notice?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-table"></i>
 					<span>장터 공지</span>
 				</a>

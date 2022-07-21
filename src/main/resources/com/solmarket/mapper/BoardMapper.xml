@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.BoardMapper">
+
+
+	
+	
+	
+	<insert id="insert">
+		insert into board(board_no, user_no, board_title, board_content) values(board_seq.nextval, #{userNo}, #{boardTitle}, #{boardContent})
+	</insert>
+	
+
+	<select id="select" resultType="com.solmarket.dto.BoardDTO">
+		select board_no as boardNo, b.user_no as userNo, board_title as boardTitle, board_date as boardDate, board_hit as boardHit, u.user_name as userName from board b left outer join myuser u on b.user_no = u.user_no order by board_no desc
+	</select>
+	
+	
+	<select id="read" resultType="com.solmarket.dto.BoardDTO">
+		select board_no as boardNo, user_no as userNo, board_title as boardTitle,board_content as boardContent, board_hit as boardHit from board where board_no = #{boardNo}
+	</select>
+
+
+
+
+</mapper>

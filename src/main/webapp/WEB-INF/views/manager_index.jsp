@@ -55,7 +55,7 @@
 						<div
 							class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 							<h6 class="m-0 font-weight-bold text-primary text-gray-800">참여 신청 목록</h6>
-							<a href="/market/market_receive">more</a>
+							<a href="/market/market_receive?marketNo=${marketNo}&pageNum=1&amount=10">more</a>
 						</div>
 						<div class="card-body">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center">
@@ -85,7 +85,7 @@
 					<div class="card mb-4">
 						<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 							<h6 class="m-0 font-weight-bold text-primary text-gray-800">장터 공지</h6>
-							<a href="/market/market_notice">more</a>
+							<a href="/market/market_notice?marketNo=${marketNo}&pageNum=1&amount=10">more</a>
 						</div>
 						<div class="card-body">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center">
@@ -115,7 +115,7 @@
 					<div class="card mb-4">
 						<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 							<h6 class="m-0 font-weight-bold text-primary text-gray-800">장터 판매 상품</h6>
-							<a href="/market/market_myseller">more</a>
+							<a href="/market/market_myseller?marketNo=${marketNo}&pageNum=1&amount=10">more</a>
 						</div>
 						<div class="card-body">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center">
@@ -145,7 +145,7 @@
 					<div class="card mb-4">
 						<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 							<h6 class="m-0 font-weight-bold text-primary text-gray-800">장터 리뷰</h6>
-							<a href="/market/market_review">more</a>
+							<a href="/market/market_review?marketNo=${marketNo}&pageNum=1&amount=10">more</a>
 						</div>
 						<div class="card-body">
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center">

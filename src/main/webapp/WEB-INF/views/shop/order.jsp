@@ -34,11 +34,11 @@
   <tbody>
     <tr>
       <th scope="row">이름</th>
-      <td class="form-buyer">곽승환</td>
+      <td class="form-buyer">${user.userName}</td>
     </tr>
     <tr>
       <th scope="row">이메일</th>
-      <td class="form-mail" data-order="hihi@naver.com">ksh7353@naver.com</td>
+      <td class="form-mail" data-order="${user.userMail}">${user.userMail}</td>
     </tr>
   </tbody>
 </table>
@@ -52,19 +52,19 @@
   <tbody>
     <tr>
       <th scope="row">이름</th>
-      <td class="form-name" data-order="ㅂㅇㅂㅇ">ㅂㅇㅂㅇ</td>
+      <td class="form-name" data-order="${user.userName}">${user.userName}</td>
     </tr>
     <tr>
       <th scope="row">배송주소</th>
-      <td class="form-addr" data-order="서울 중구">서울 중구 </td>
+      <td class="form-addr" data-order="{user.userAddress">${user.userAddress}</td>
     </tr>
     <tr>
       <th scope="row">연락처</th>
-      <td class="form-phone" data-order="010-1234-1234">010-1234-1234</td>
+      <td class="form-phone" data-order="${user.userPhone}">${user.userPhone}</td>
     </tr>
     <tr>
       <th scope="row">요청사항</th>
-      <td class="form-request" data-order="ㅎㅇㅎㅇ">문앞에 놔둬주세요</td>
+      <td class="form-request" data-order="문앞에 놔둬주세요">문앞에 놔둬주세요</td>
     </tr>
   </tbody>
 </table>
@@ -77,7 +77,7 @@
   <tbody>
     <tr>
       <th scope="row">상품명</th>
-      <td>${product.productName}</td>
+      <td class="form-productName" data-order="${product.productName}">${product.productName}</td>
     </tr>
     <tr>
       <th scope="row">수량</th>
@@ -103,6 +103,7 @@
 		let addr = $(".form-addr").data("order");
 		let request = $(".form-request").data("order");	
 		let orderPay = $(".form-pay").data("order");	
+		let productName = $(".form-productName").data("order");
 		let orderForm = $("#orderForm");
 		
 		$(".btn-primary").click(function(){
@@ -113,12 +114,14 @@
 			console.log(addr);
 			console.log(request);
 			console.log(orderPay);
+			console.log(productName);
 			str = ""
 			str += '<input type="hidden" name="userName" value="' + name + '" />';
-			str += '<input type="hidden" name="userMail" value="' + mail + '" />'
-			str += '<input type="hidden" name="userPhone" value="' + phone + '" />'
-			str += '<input type="hidden" name="userAddress" value="' + addr +'" />'
-			str += '<input type="hidden" name="orderPay" value="' + orderPay + '" />'
+			str += '<input type="hidden" name="userMail" value="' + mail + '" />';
+			str += '<input type="hidden" name="userPhone" value="' + phone + '" />';
+			str += '<input type="hidden" name="userAddress" value="' + addr +'" />';
+			str += '<input type="hidden" name="orderPay" value="' + orderPay + '" />';
+			str += '<input type="hidden" name="productName" value="' + productName + '" />';
 			
 			
 			orderForm.append(str);
