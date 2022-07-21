@@ -14,7 +14,7 @@
 	</div>
  */
 let fileData;
-
+let fileCallPath;
 $(function(){
 	
 	
@@ -84,7 +84,7 @@ function showUploadFile(result){
 	$(result).each(function(idx, obj){
 		
 		// 썸네일 이미지 보여주기
-		let fileCallPath = encodeURIComponent(obj.uploadPath + "\\s_" + obj.uuid + "_" + obj.fileName);
+		fileCallPath = encodeURIComponent(obj.uploadPath + "\\s_" + obj.uuid + "_" + obj.fileName);
 		
 		// 원본파일 이미지 경로
 		let oriPath = obj.uploadPath + "\\" + obj.uuid + "_" + obj.fileName;

@@ -28,7 +28,7 @@ $(function(){
 			// 카테고리
 			let category = $("select").val();
 			// 상품수량
-			let qn = $("input[name='productQN']:checked").val();	
+			let qn = $("input[name='productQN']").val();	
 			// 상품명 
 			let productName = $("input[name='productName']").val();
 			// 상품 설명 : textarea
@@ -36,13 +36,49 @@ $(function(){
 			// 상품 가격
 			let productPrice = $("input[name='productPrice']").val();
 			
-			str = ""
 			
-			str +="<tr><td>"+ category + "</td>";
+			
+			// 비어있는란이 있다면 경고창 띄워주기
+			/*if(category  == ''){
+				alert("카테고리을 선택해주세요");
+				return;
+			}
+			if(qn  == ''){
+				alert("수량을 입력해주세요");
+				return;
+			}
+			if(!/^[0-9]+/.test(qn)){
+				alert("숫자만 입력해주세요");
+				return 
+			} 
+			if(productName  == ''){
+				alert("상품명을 입력해주세요");
+				return;
+			}
+			if(productContent  == ''){
+				alert("상품 설명을 입력해주세요");
+				return;
+			}
+			if(productPrice  == ''){
+				alert("상품 가격을 입력해주세요");
+				return;
+			}
+			if(!/^[0-9]+/.test(productPrice)){
+				alert("숫자만 입력해주세요");
+				return 
+			}*/
+			table.css("display","table");	
+			
+			str = ""
+			console.log(fileData)
+			str +="<tr><td><img src='/display/product?fileName=" + fileCallPath + "'/></td>";
+			str +="<td>"+ category + "</td>";
 			str += "<td>" + qn +"</td>";
 			str += "<td>" + productName + "</td>";
 			str += "<td class='invisible'>" + productContent +"</td>";
 			str += "<td class='invisible'>" + productPrice +"</td>";
+			//이미지 등록
+			str += "<td class='invisible' data-path='" + fileData[0].uploadPath + "' data-uuid='" + fileData[0].uuid + "' data-filename='" + fileData[0].fileName + "'></td>";
 			str += "<td><button type='button' id='removeBtn'>X</button></td></tr>";
 			table.find("tbody").append(str);
 			
@@ -50,15 +86,19 @@ $(function(){
 			// 카테고리
 			$("select").val("");
 			//상품수량
-			$("input[name='productQN']:checked").val("50");	
+			$("input[name='productQN']").val("");	
 			//상품명 
 			$("input[name='productName']").val("");
 			//상품 설명
 			$("#productContent").val("");
 			//상품 가격
 			$("input[name='productPrice']").val("");
-			
-			table.css("display","block");		
+			// 업로드 사진
+			$("input[name='uploadFile']").val("");
+			//label 
+			$(".custom-file-label").html("")
+			$(".showFileImg").html("")
+				
 		}else{
 			return
 		}
@@ -74,12 +114,18 @@ $(function(){
 			
 			var tr = $(this);    
 			
-			var categoryNo = tr.find("td").eq(0).html();   
-	        var productQN = tr.find("td").eq(1).text();
-	        var productName = tr.find("td").eq(2).text();
-	        var productContent = tr.find("td").eq(3).text();
-	        var productPrice = tr.find("td").eq(4).text();
-
+			var categoryNo = tr.find("td").eq(1).html();   
+	        var productQN = tr.find("td").eq(2).text();
+	        var productName = tr.find("td").eq(3).text();
+	        var productContent = tr.find("td").eq(4).text();
+	        var productPrice = tr.find("td").eq(5).text();
+			// 이미지 등록 
+			var fileD = tr.find("td").eq(6);
+			
+			var uuid = fileD.data("uuid");
+			var path = fileD.data("path");
+			var filename = fileD.data("filename");
+			
 			console.log(categoryNo,productQN,productName,productContent,productPrice);
 			
 			let data = "";
@@ -91,10 +137,10 @@ $(function(){
 			data += "<input type='hidden' name='proList["+idx+"].productContent' value='" + productContent + "'/>";
 			data += "<input type='hidden' name='proList["+idx+"].productPrice' value='" + productPrice + "'/>";	
 			
-			data += '<input type="hidden" name="proList['+idx+'].attach.uuid" value="' + fileData[0].uuid + '" />';
-			data += '<input type="hidden" name="proList['+idx+'].attach.uploadPath" value="' + fileData[0].uploadPath + '" />';
-			data += '<input type="hidden" name="proList['+idx+'].attach.fileName" value="' + fileData[0].fileName + '" />';
-			data += '<input type="hidden" name="proList['+idx+'].attach.no" value="' + 0 + '" />';
+			data += '<input type="hidden" name="proList['+idx+'].attach.uuid" value="' + uuid + '" />';
+			data += '<input type="hidden" name="proList['+idx+'].attach.uploadPath" value="' + path + '" />';
+			data += '<input type="hidden" name="proList['+idx+'].attach.fileName" value="' + filename + '" />';
+			//data += '<input type="hidden" name="proList['+idx+'].attach.no" value="' +  + '" />';
 			
 			registerForm.append(data);	
 		})
@@ -115,14 +161,18 @@ $(function(){
 		console.log($(this).closest("tr"))
 		$(this).closest("tr").remove();
 		index --;
+		
+		let table = $("table");		
+		
+		if(index < 1 ){
+			
+			table.css("display","none");	
+		}
 	})
 
 
 	//취소 버튼 클릭시
 	$(".btn-danger").click(function() {
 		location.href = "/product/product_list";
-	})
+	})	
 })
-
- 
- 

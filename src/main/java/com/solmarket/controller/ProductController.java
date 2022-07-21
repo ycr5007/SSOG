@@ -83,12 +83,15 @@ public class ProductController {
 	// 상품 등록 : List로 받기
 	@PostMapping("/product_register")
 	public String registerPost(ProductListDTO proList, RedirectAttributes rttr) {
-		log.info("상품 등록 폼 전송 "+ proList);				
+		log.info("상품 등록 폼 전송 "+ proList);
 		
-		service.insert(proList);			
+		
+		boolean rs =  service.insert(proList);			
 		int userNo = proList.getProList().get(0).getUserNo();
 			log.info("" +userNo);
 		rttr.addAttribute("userNo", userNo);
+		
+		rttr.addFlashAttribute("msg", "성공적으로 등록 ~");
 		
 		return "redirect:/product/product_list";
 		

@@ -26,8 +26,7 @@
       <div class="panel-body">
         <table class="table table-striped table-bordered table-hover">
           <thead>
-            <tr>
-              <th>번 호</th>
+            <tr>              
               <th>장터명</th>
               <td>장터 시작일</td>
               <td>장터 종료일</td>
@@ -39,8 +38,7 @@
          <tbody>
           <!-- 게시판 리스트 반복문 -->
           	<c:forEach var="dto" items="${marketList}" varStatus="status">
-         	 <tr>
-          		<td>${status.count}</td>          		
+         	 <tr>          		          		
           		<td>
           			<a href="${dto.marketNo}" class="move">${dto.marketName}</a>
          	 	</td>

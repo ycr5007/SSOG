@@ -3,6 +3,9 @@
 <%@taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ include file="../include/product_header.jsp"%>
 <script src="/resources/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+
+
 <style>
    .custom-form{
    display: inline-block;
@@ -23,7 +26,7 @@
       
       <!-- form 시작 -->
       <div class="form-group">
-         <form action="/product/product_register" method="post" role="form">
+         <form action="/product/product_register" method="post" role="form" id="productReg">
             <div class="form-group">
                <label>판매자</label>
                <input class="form-control" name="seller" value=<%-- '<sec:authentication property="principal.username"/>' --%>"${user.userName}" readonly>
@@ -50,10 +53,8 @@
                </div>
    
                <div class="custom-form">
-                  <label>상품 수량</label>
-                  <input type="radio" name="productQN" value="50" checked />50&nbsp;&nbsp;&nbsp;
-                  <input type="radio" name="productQN" value="100" />100&nbsp;&nbsp;&nbsp;
-                  <input type="radio" name="productQN" value="150" />150
+                  <label>상품 수량</label>                 
+                  <input type="text" name="productQN" />
                </div>
                
             </div>
@@ -76,30 +77,30 @@
       </form> <!-- form 종료 -->
       </div>
          <!-- 파일 업로드 INPUT 카드 -->
-         <div class="card mb-3" style="width: 18rem;">
+         <div class="card mb-3" style="width: 100%;">
             <input type="file" name="uploadFile" class="custom-file-input form-control" id="customFileLangHTML" style="display:none" required>
             <label class="custom-file-label form-control" for="customFileLangHTML" data-browse="파일찾기"></label>
             <div class="card-body">
                <p class="card-title text-center">
                      <div class="card-text text-center pt-5 uploadResult">  
                      업로드 사진              
-                      <ul> </ul>
+                      <ul class="showFileImg"> </ul>
                        </div> 
                </p>
-            </div>
-                
-
-                
-                </div>
+            </div>                
+          </div>
+          
+          
          
       <!-- form 시작  -->
       <div class="form-group">         
          <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-12">
                <!-- 상품 추가시 추가되는 테이블 -->               
-               <table class="table table-bordered" style="display: none">
+               <table class="table table-bordered" style="display: none" >  <!--  -->
                   <thead>
                      <tr>
+                     	<th scope="col">이미지</th>
                         <th scope="col">카테고리</th>
                         <th scope="col">상품 수량</th>
                         <th scope="col">상품명</th>                           
@@ -124,7 +125,20 @@
    <form action="" id="registerForm" method="post">
       
    </form>
-   
+ 
+<!-- 등록이 되면 성공 msg 띄우기  -->  
+<script>
+	$(function(){
+		let msg = "${msg}"
+		if(msg != ""){
+			
+			alert(msg)
+		}
+	})
+</script>
+
+
+
 <script>
    // 등록 폼 전송 자료 
    // 변수 선언 해주기

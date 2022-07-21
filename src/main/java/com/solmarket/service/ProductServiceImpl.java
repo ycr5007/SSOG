@@ -10,6 +10,7 @@ import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.ProductDTO;
 import com.solmarket.dto.ProductListDTO;
+import com.solmarket.mapper.AttachMapper;
 import com.solmarket.mapper.ProductMapper;
 
 @Service
@@ -18,13 +19,22 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductMapper mapper;
 	
+	@Autowired
+	private AttachMapper attachMapper;
+	
 	// 상품 등록
+	@Transactional
 	@Override
-	public void insert(ProductListDTO proList) {
+	public boolean insert(ProductListDTO proList) {
 		//불린값으로 리턴, 0보다 크면 true, 작으면 false
 		proList.getProList().forEach(product -> {
-			mapper.insert(product);			
-		});			
+			System.out.println(product);
+			mapper.insert(product);		
+			attachMapper.insertImg(product.getAttach(), "product");	
+			
+			
+		});	
+		return true;
 	}
 	
 	// 판매자 이름 가지고 오기

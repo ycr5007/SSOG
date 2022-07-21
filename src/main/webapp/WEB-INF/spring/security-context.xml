@@ -35,7 +35,7 @@
 		
 		<security:access-denied-handler ref="customAccessDeniedHandler"/>
 		
-		<security:csrf request-matcher-ref="csrfSecurityRequestMatcher"/>
+		<security:csrf request-matcher-ref="csrfSecurityRequestMatcher"/> 
 	</security:http>
 	
 	<security:authentication-manager>

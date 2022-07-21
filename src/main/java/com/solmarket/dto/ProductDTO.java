@@ -22,6 +22,8 @@ public class ProductDTO {
 	private Date productDate; // 상품 등록일 추가 필요
 	private int productSale; // 재고 상점 등록시 할인율
 	
+	
 	private String userName; // 회원 이름 ( myUser 테이블 )
 	private AttachDTO attach; // 파일첨부 리스트
+	private String marketName; // 마켓 테이블에서 마켓 이름 가져오기
 }

@@ -11,7 +11,7 @@ import com.solmarket.dto.ProductListDTO;
 
 public interface ProductService {
 	// 상품 등록 
-	public void insert(ProductListDTO proList);
+	public boolean insert(ProductListDTO proList);
 	//판매자 이름 가져오기
 	public String userName(int userNo);
 	// 리스트보여주기

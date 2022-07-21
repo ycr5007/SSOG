@@ -45,25 +45,24 @@
 		insert into 
 			<choose>
 				<when test="section == 'user'">
-					user_img
+					user_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
 				</when>
 				<when test="section == 'product'">
-					product_img
+					product_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, product_seq.currval)
 				</when>
 				<when test="section == 'market'">
-					market_img
+					market_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
 				</when>
 				<when test="section == 'recruit'">
-					recruit_img
+					recruit_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
 				</when>
 				<when test="section == 'notice'">
-					notice_img
+					notice_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
 				</when>
 				<when test="section == 'board'">
-					board_img
+					board_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
 				</when>
 			</choose>
-		values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
 	</insert>
 	
 	<!-- ================= 장터 이미지 불러오기 ================= -->

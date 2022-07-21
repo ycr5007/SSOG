@@ -40,7 +40,7 @@
 		select * from 
 			(select rownum as num, statusList.* from
 				(select user_name as userName, p.* from 
-					(select p.product_no as productNo, m.market_name as dummy,
+					(select p.product_no as productNo, m.market_name as marketName,
 							p.user_no as userNo, p.market_no as marketNo,
 							p.product_name as productName, p.product_price as productPrice,
 							p.product_content as productContent, p.product_date as productDate,

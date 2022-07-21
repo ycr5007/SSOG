@@ -7,7 +7,9 @@
 <!-- 상세페이지 -->
 		<div class="form-group">
 			<form action="" method="post" role="form">
-					
+				<div>
+					<img src="/display/product/${dto.productNo }"/>
+				</div>
 				<div class="form-group"">
 						<label>상품명</label>
 						<input class="form-control" name="product" value="${dto.productName}"<%-- '<sec:authentication property="principal.username"/>' --%>	readonly>
@@ -56,10 +58,6 @@
 	<input type="hidden" value="${pageNum}" name="pageNum" />
 	<input type="hidden" value="${amount}" name="amount" />
 </form>
-
-
-
-
 
 
 <script src="/resources/js/util/upload.js"></script>
