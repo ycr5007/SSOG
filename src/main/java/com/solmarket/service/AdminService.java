@@ -3,6 +3,7 @@ package com.solmarket.service;
 import java.util.List;
 
 import com.solmarket.dto.AuthDTO;
+import com.solmarket.dto.BoardDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.NoticeDTO;
@@ -44,4 +45,9 @@ public interface AdminService {
 	int getNoticeCount();
 	boolean accessNotice(int noticeNo);
 	boolean refuseNotice(int noticeNo);
+	
+	// Manage Board ( Board / Reply / Review )
+	List<BoardDTO> getBoardList(Criteria cri);
+	int getBoardCount();
+	boolean deleteBoard(int boardNo);
 }

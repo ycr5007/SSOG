@@ -110,7 +110,6 @@
 	// pie Chart 데이터
 	let ratio = "${userRatio }";
 	let [user, seller, manager] = ratio.split("/");
-	
 	// Area Chart 데이터
 	if(!Date.prototype.adjustDate){
 	    Date.prototype.adjustDate = function(days){

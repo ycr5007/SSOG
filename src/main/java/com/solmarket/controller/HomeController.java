@@ -101,6 +101,9 @@ public class HomeController {
 		
 		// 장터 상태 가져오기
 		int marketStatus = marketService.getMarketStatus(marketNo);
+		if(marketNo == 0) {
+			marketStatus = 0;
+		}
 		
 		
 		//model.addAttribute("userDTO", userDTO);

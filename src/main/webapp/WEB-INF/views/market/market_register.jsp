@@ -138,10 +138,10 @@ $(function() {
 		// li 태그 정보 수집하기
 		$(".uploadResult ul li").each(function(idx, obj) {
 			var img = $(obj);
-			
-			str += "<input type='hidden' name='attachList[" + idx + "].uuid' value='" + img.data("uuid") + "'>";
-			str += "<input type='hidden' name='attachList[" + idx + "].uploadPath' value='" + img.data("path") + "'>";
-			str += "<input type='hidden' name='attachList[" + idx + "].fileName' value='" + img.data("filename") + "'>";
+			////////////////////////////////////////////////////////////
+			str += "<input type='hidden' name='attach.uuid' value='" + img.data("uuid") + "'>";
+			str += "<input type='hidden' name='attach.uploadPath' value='" + img.data("path") + "'>";
+			str += "<input type='hidden' name='attach.fileName' value='" + img.data("filename") + "'>";
 		})
 		
 		console.log("form 태그 삽입 전 : " + str);

@@ -34,7 +34,6 @@ public class MarketServiceImpl implements MarketService {
 			return false;
 		}
 
-		// 첨부파일 개수만큼 루프 돌기
 		insertDTO.getAttach().setNo(insertDTO.getMarketNo());
 		attachMapper.insertMarketImg(insertDTO.getAttach());
 			

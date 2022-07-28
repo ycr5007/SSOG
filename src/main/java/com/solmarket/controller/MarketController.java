@@ -24,7 +24,7 @@ public class MarketController {
 	public void market_register(Model model) {
 		log.info("[GetMapping] ========== 장터 등록 폼 호출 ==========");
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		CustomUser customUser = (CustomUser)principal;		
+		CustomUser customUser = (CustomUser)principal;
 	
 		UserDTO userDTO = customUser.getUserDto();
 		

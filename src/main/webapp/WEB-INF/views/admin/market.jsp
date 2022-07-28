@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../include/admin_header.jsp" %>
 <link rel="stylesheet" href="/resources/css/admin.css" />
 	<div class="container-fluid">
@@ -19,9 +19,8 @@
 								<tr class="column-header">
 									<th class="col-lg-2">장터명</th>
 									<th class="col-lg-2">운영자</th>
-									<th class="col-lg-2">지역</th>
-									<th class="col-lg-2">시작일</th>
-									<th class="col-lg-2">종료일</th>
+									<th class="col-lg-4">지역</th>
+									<th class="col-lg-2">기간</th>
 									<th class="col-lg-1">승인</th>
 									<th class="col-lg-1">거부</th>
 								</tr>
@@ -30,8 +29,7 @@
 									<td style="text-align: left; text-indent: 10px;">${market.marketName }</td>
 									<td>${market.dummy }</td>
 									<td>${market.marketLoc }</td>
-									<td>${market.marketSD }</td>
-									<td>${market.marketED }</td>
+									<td>${fn:substring(market.marketSD, 5, 11) } ~ ${fn:substring(market.marketED, 5, 11) }</td>
 									<td><button type="button" class="btn btn-outline-primary btn-sm access" value="${market.marketNo }">승인</button></td>
 									<td><button type="button" class="btn btn-outline-danger btn-sm refuse" value="${market.marketNo }">거부</button></td>
 								</tr>

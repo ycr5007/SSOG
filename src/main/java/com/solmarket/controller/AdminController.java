@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.solmarket.dto.AuthDTO;
+import com.solmarket.dto.BoardDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.NoticeDTO;
@@ -115,6 +116,10 @@ public class AdminController {
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("list", noticeList);
 	}
+	@GetMapping("/notice_insert")
+	public void reqNoticeInsert() {
+		log.info("[GET] <<<<< Notice 등록 페이지 요청 >>>>>");
+	}
 	
 	@PostMapping("/noticeAccess")
 	public String reqNoticeAccess(int noticeNo) {
@@ -128,5 +133,21 @@ public class AdminController {
 		log.info("[POST] <<<<< Notice Access >>>>> " + noticeNo);
 		adminService.refuseNotice(noticeNo);
 		return "redirect:/admin/notice";
+	}
+	
+	@GetMapping("/board")
+	public void manageBoard(Model model, @ModelAttribute("cri") Criteria cri) {
+		log.info("[GET] <<<<< Manage Board >>>>> ");
+		int total = adminService.getBoardCount();
+		List<BoardDTO> boardList = adminService.getBoardList(cri);
+		model.addAttribute("pageDto", new PageDTO(cri, total));
+		model.addAttribute("list", boardList);
+	}
+	
+	@PostMapping("/board_delete")
+	public String deleteBoard(int boardNo) {
+		log.info("[POST] <<<<< Delete Board >>>>>");
+		adminService.deleteBoard(boardNo);
+		return "redirect:/admin/board";
 	}
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.solmarket.dto.AuthDTO;
+import com.solmarket.dto.BoardDTO;
 import com.solmarket.dto.Criteria;
 import com.solmarket.dto.MarketDTO;
 import com.solmarket.dto.NoticeDTO;
@@ -132,4 +133,18 @@ public class AdminServiceImpl implements AdminService{
 		return adminMapper.refuseNotice(noticeNo) > 0;
 	}
 	
+	// 게시판 관리, Board List
+	@Override
+	public List<BoardDTO> getBoardList(Criteria cri) {
+		return adminMapper.getBoardList(cri);
+	}
+	
+	@Override
+	public int getBoardCount() {
+		return adminMapper.getBoardCount();
+	}
+	@Override
+	public boolean deleteBoard(int boardNo) {
+		return adminMapper.deleteBoard(boardNo) > 0;
+	}
 }

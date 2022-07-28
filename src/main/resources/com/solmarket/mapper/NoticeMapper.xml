@@ -20,7 +20,7 @@
 		<result property="noticeCategory" column="notice_category"/>
 		<result property="noticeStatus" column="notice_status"/>
 		<collection property="market" resultMap="market"></collection>
-		<collection property="attachList" resultMap="attachList"></collection>
+		<collection property="attach" resultMap="attachList"></collection>
 	</resultMap>
 		
 	<resultMap type="com.solmarket.dto.MarketDTO" id="market">

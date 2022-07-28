@@ -14,9 +14,6 @@
 								<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
 							</div>
 						</div>
-						<div class="data-wrapper">
-							<div class="detail-data"></div>
-						</div>
 						<div class="card-body">
 							<table class="table">
 								<tr class="column-header">
@@ -61,6 +58,55 @@
 						<input type="hidden" name="pageNum" value="${cri.pageNum }" />
 						<input type="hidden" name="amount" value="10" />
 					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="userModalLabel">회원정보</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table class="table table-bordered text-center">
+						<tr>
+							<th class="col-lg-2">아이디</th>
+							<td class="col-lg-2 userid"></td>
+							<th class="col-lg-2">권한</th>
+							<td class="col-lg-2 authority"></td>
+							<th class="col-lg-2">상태</th>
+							<td class="col-lg-2 status"></td>								
+						</tr>
+						<tr>
+							<td colspan="2" class="profile-img"><img src="" onerror='this.src="https://via.placeholder.com/150x150"'/></td>
+							<th class="align-middle">프로필 문구</th>
+							<td colspan="3" class="profile"></td>
+						</tr>
+						<tr>
+							<th colspan="2">이름</th>
+							<td class="username" colspan="4"></td>
+						</tr>
+						<tr>
+							<th colspan="2">주소</th>
+							<td class="address" colspan="4"></td>
+						</tr>
+						<tr>
+							<th colspan="2">휴대전화</th>
+							<td class="phone" colspan="4"></td>
+						</tr>
+						<tr>
+							<th colspan="2">이메일</th>
+							<td class="email" colspan="4"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger">Delete User</button>
 				</div>
 			</div>
 		</div>
