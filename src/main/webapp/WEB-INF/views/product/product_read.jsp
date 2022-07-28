@@ -7,20 +7,28 @@
 <!-- 상세페이지 -->
 		<div class="form-group">
 			<form action="" method="post" role="form">
+				
 				<div>
-					<img src="/display/product/${dto.productNo }"/>
+					<img src="/display/product/${dto.productNo}" class="rounded mx-auto d-block"/>
 				</div>
+				
+				
 				<div class="form-group"">
 						<label>상품명</label>
 						<input class="form-control" name="product" value="${dto.productName}"<%-- '<sec:authentication property="principal.username"/>' --%>	readonly>
 				</div>
 
-				<div class="custom-form">
+				<%-- <div class="custom-form">
 					<label>상품 수량</label>					
 						<input type="radio" ${dto.productQN==50 ? 'checked': ''} name="productQN" value="50" onclick="return(false);"/>50&nbsp;&nbsp;&nbsp;
 						<input type="radio" ${dto.productQN==100 ? 'checked': ''} name="productQN" value="100" onclick="return(false);"/>100&nbsp;&nbsp;&nbsp;
 						<input type="radio" ${dto.productQN==150 ? 'checked': ''} name="productQN" value="150" onclick="return(false);"/>150
-				</div>
+				</div> --%>
+				
+				<div class="form-group">
+                  <label>상품 수량</label>                 
+                  <input type="text" class="form-control" name="productQN" value="${dto.productQN}" readonly />
+               </div>
 	
 				<div class="form-group">
 					<label>상품설명</label>
@@ -29,7 +37,7 @@
 	
 				<div class="form-group">
 					<label>상품가격</label>
-					<input type="text" name="productprice" value="${dto.productPrice}"class="form-control" readonly />
+					<input type="text" name="productprice" value="${dto.productPrice}" class="form-control" readonly />
 				</div>
 				
 				

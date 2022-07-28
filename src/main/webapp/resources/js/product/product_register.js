@@ -2,16 +2,12 @@
  상품 등록 스크립트
  상품 2개 이상 추가 시 사용
  */
-
 $(function(){	
-	
 	// 데이터 전송 될 폼 불러오기
-	let registerForm = $("#registerForm");
-	
+	let registerForm = $("#registerForm");	
 	
 	// 3개 한도 정하기	
-	let index = 0;
-	
+	let index = 0;	
 	
 	//상품 추가 버튼 클릭시 
 	$("#addProductBtn").click(function(){
@@ -23,8 +19,7 @@ $(function(){
 		// 상품 추가 시 index 값 ++
 		// 한번에 입력 3개까지 가능
 		if(index < 3){
-			//register.jsp에서 값 가지고 오기
-			
+			//register.jsp에서 값 가지고 오기			
 			// 카테고리
 			let category = $("select").val();
 			// 상품수량
@@ -34,9 +29,7 @@ $(function(){
 			// 상품 설명 : textarea
 			let productContent = $("#productContent").val();
 			// 상품 가격
-			let productPrice = $("input[name='productPrice']").val();
-			
-			
+			let productPrice = $("input[name='productPrice']").val();			
 			
 			// 비어있는란이 있다면 경고창 띄워주기
 			/*if(category  == ''){
@@ -67,6 +60,7 @@ $(function(){
 				alert("숫자만 입력해주세요");
 				return 
 			}*/
+			
 			table.css("display","table");	
 			
 			str = ""
@@ -78,7 +72,7 @@ $(function(){
 			str += "<td class='invisible'>" + productContent +"</td>";
 			str += "<td class='invisible'>" + productPrice +"</td>";
 			//이미지 등록
-			str += "<td class='invisible' data-path='" + fileData[0].uploadPath + "' data-uuid='" + fileData[0].uuid + "' data-filename='" + fileData[0].fileName + "'></td>";
+			str += "<td class='invisible file-data' data-path='" + fileData[0].uploadPath + "' data-uuid='" + fileData[0].uuid + "' data-filename='" + fileData[0].fileName + "' data-target='"+ fileCallPath +"'></td>";
 			str += "<td><button type='button' id='removeBtn'>X</button></td></tr>";
 			table.find("tbody").append(str);
 			
@@ -144,35 +138,48 @@ $(function(){
 			
 			registerForm.append(data);	
 		})
-		
-		
-		
+				
 		//추가된 상품 확인
 		console.log(registerForm.html());
 		registerForm.attr('action', '/product/product_register')
-		//registerForm 전송
-		registerForm.submit();
 		
+		//registerForm 전송
+		registerForm.submit();		
 	})
-	
-	
+		
 	// 스크립트 동작 후 tbody안에 값이 생성 되면 버튼 기능 활성화.(x버튼)
-	$("tbody").on("click","#removeBtn",function(){
-		console.log($(this).closest("tr"))
+	$("tbody").on("click","#removeBtn",function(){				
+		// 파일 사진 삭제
+		var img = $(this).closest("tr").find(".file-data")
+		
+		let target = img.data("target");
+		let type = $(this).data("type");
+		
+		$.ajax({
+			url:'/deleteFile/product',
+			data:{
+				fileName: target,
+				type:type
+			},
+			type:'post',
+			success:function(result) {
+				console.log(result)
+			}
+		})
+		
+		// 상품추가 클릭시 보여지는 테이블 관련 삭제
+		// console.log($(this).closest("tr"))
 		$(this).closest("tr").remove();
 		index --;
-		
 		let table = $("table");		
-		
 		if(index < 1 ){
-			
-			table.css("display","none");	
+			table.css("display","none");
 		}
 	})
-
 
 	//취소 버튼 클릭시
 	$(".btn-danger").click(function() {
 		location.href = "/product/product_list";
 	})	
+	
 })
