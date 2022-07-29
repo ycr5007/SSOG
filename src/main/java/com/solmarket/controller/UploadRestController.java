@@ -133,7 +133,7 @@ public class UploadRestController {
 		return new ResponseEntity<List<AttachDTO>>(attachList, HttpStatus.OK);
 	}
 	
-	// 썸네일 이미지 보여주기
+	// 썸네일 이미지 보여주기 ( 이미지 태그 호출 )
 	@GetMapping(path = "/display/{section}/{no}")
 	public ResponseEntity<byte[]> getFile(@PathVariable("section") String section, @PathVariable("no") int no){
 		log.info("[GET] 썸네일 파일 보여주기 " + no);
@@ -152,8 +152,30 @@ public class UploadRestController {
 		}
 		return image;
 	}
+	
+	// 썸네일 이미지 보여주기 ( 이미지 태그 호출 )
+	@GetMapping(path = "/ori_display/{section}/{no}")
+	public ResponseEntity<byte[]> getOriFile(@PathVariable("section") String section, @PathVariable("no") int no){
+		log.info("[GET] 원본 파일 보여주기 " + no);
+		AttachDTO dto = attachService.getImg(section, no); 
+		
+		String fileName = dto.getUploadPath() + "\\" + dto.getUuid() + "_" + dto.getFileName();
+		log.info("fileName ::: " + fileName);
+		File file = new File("c:\\solmarket\\" + section + "\\" + fileName);
+		ResponseEntity<byte[]> image = null;
+		HttpHeaders header = new HttpHeaders();
+		try {
+			header.add("Content-type", Files.probeContentType(file.toPath()));
+			image = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return image;
+	}
 
-	// 썸네일 이미지 보여주기
+	
+	
+	// 썸네일 이미지 보여주기 ( 이미지 등록시 사용 )
 	@GetMapping(path = "/display/{section}")
 	public ResponseEntity<byte[]> getFile(@PathVariable("section") String section, String fileName){
 		log.info("[GET] 썸네일 파일 보여주기 " + fileName);
