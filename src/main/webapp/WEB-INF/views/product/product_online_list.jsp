@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!-- 페이지 제목 -->
-<div class="container">
+<div class="container" style="height:80%;">
 	<div class="row">
 		<div class="col-lg-12 pl-2">
 			<h1 class="page-header">온라인 상품 목록</h1>
@@ -23,8 +23,8 @@
 				</div>
 				<!-- /.panel-heading 종료-->
 
-				<div class="panel-body">
-					<table class="table table-striped table-bordered table-hover" style="text-align: center;">
+				<div class="panel-body" style="height:80%;">
+					<table class="table table-striped table-bordered table-hover" style="text-align:center">
 						<thead>
 							<tr>
 								<th>상품명</th>
@@ -40,11 +40,11 @@
 							<!-- 게시판 리스트 반복문 -->
 							<c:forEach var="dto" items="${onlineList}">
 								<tr>
-									<td><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
+									<td class="align-middle"><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
 									<td><img src="/display/product/${dto.productNo}" onerror="src='https://via.placeholder.com/100'"/></td>
-									<td>${dto.productPrice}</td>
-									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
-									<td>${dto.productQN}</td>
+									<td class="align-middle">${dto.productPrice}</td>
+									<td class="align-middle"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
+									<td class="align-middle">${dto.productQN}</td>
 								</tr>
 							</c:forEach>
 						</tbody>

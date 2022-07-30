@@ -16,7 +16,7 @@
    }
 </style>
    <!-- content 시작 -->
-   <div class="container-fluid">
+   <div class="container">
    
       <div class="row">
          <div class="col-lg-12">

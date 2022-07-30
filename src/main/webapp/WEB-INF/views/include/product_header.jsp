@@ -61,6 +61,14 @@
 		         </a>
             </li>
             
+             <!-- 사이드바 : 마켓에서 판매 중인 상품 리스트 -->
+            <li class="nav-item">
+		         <a class="nav-link" href="/product/product_sell_list">
+		              <i class="fas fa-fw fa-folder"></i>
+		              <span>판매 상품 목록</span>
+		         </a>
+            </li>
+            
             <!-- 사이드바 : 마켓 종료 후 남은 상품 리스트 -->
             <li class="nav-item">
 		         <a class="nav-link" href="/product/product_remain_list">
