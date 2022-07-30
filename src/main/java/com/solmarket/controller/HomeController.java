@@ -13,12 +13,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.solmarket.dto.Criteria;
 import com.solmarket.dto.CustomUser;
 import com.solmarket.dto.MarketDTO;
+import com.solmarket.dto.NoticeDTO;
+import com.solmarket.dto.PageDTO;
+import com.solmarket.dto.ProductDTO;
+import com.solmarket.dto.ReviewDTO;
 import com.solmarket.dto.UserDTO;
 import com.solmarket.mapper.MemberMapper;
 import com.solmarket.service.AdminService;
@@ -27,11 +33,9 @@ import com.solmarket.service.MarketService;
 
 import lombok.extern.slf4j.Slf4j;
 
-
 @Slf4j
 @Controller
-public class HomeController {	
-	
+public class HomeController {
 
 	@Autowired
 	private IndexService service;
@@ -64,49 +68,40 @@ public class HomeController {
 		return "index";
 	}
 	
-//	@RequestMapping(value = "/manager_index", method = RequestMethod.GET)
-//	public String manager_home(Model model, Principal principal) {
-//		
-//		
-//		
-//		// userNo 가져오기
-////		String userId = principal.getName();
-////		UserDTO userDTO = memberMapper.read(userId);
-//////		int userNo = userDTO.getUserNo();
-//////		
-////		// marketDTO 가져오기
-//		MarketDTO marketDTO = new MarketDTO();
-//		marketDTO.setUserNo(userNo);
-//		model.addAttribute("userId", userId);
-//		model.addAttribute("userNo", userNo);
-//		model.addAttribute("marketNo", marketDTO.getMarketNo());
-////		
-//		return "manager_index";
-//	}
-	
 	@RequestMapping(value = "/manager_index", method = RequestMethod.GET)
-	public String index(Model model) {
-
+	public String index(Model model, Principal principal, @ModelAttribute("cri")Criteria cri) {
 		// userNo 가져오기 위한 작업
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		CustomUser customUser = (CustomUser)principal;		
-		UserDTO userDTO = customUser.getUserDto();
+		String userid = principal.getName();
+		UserDTO userDTO = memberMapper.read(userid);
 		
 		// 마켓 no 가져오기
 		Integer marketNo = marketService.getMarketNo(userDTO.getUserNo());
 		if(marketNo == null) {
 			marketNo = 0;
 		}
-		System.out.println("marketNo : " + marketNo);
 		
 		// 장터 상태 가져오기
 		Integer marketStatus = marketService.getMarketStatus(marketNo);
 		if(marketNo == 0) {
 			marketStatus = -1;
+		}else {
+			// 장터 참여 신청 목록 가져오기
+			List<ProductDTO> receive = marketService.showReceive(marketNo, cri);
+			model.addAttribute("product", receive);
+			
+			// 장터 공지 가져오기
+			List<NoticeDTO> notice = marketService.showNoticeList(marketNo, cri);
+			model.addAttribute("notice", notice);
+			
+			// 장터 판매 상품 가져오기
+			List<ProductDTO> product = marketService.ProductList(marketNo, cri);
+			model.addAttribute("product", product);
+			
+			// 장터 리뷰 가져오기
+			List<ReviewDTO> review = marketService.ReviewList(marketNo, cri);
+			model.addAttribute("review", review);
 		}
-		System.out.println("marketStatus : " + marketStatus);
 	
-//		model.addAttribute("userDTO", userDTO);
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("marketStatus", marketStatus);
         

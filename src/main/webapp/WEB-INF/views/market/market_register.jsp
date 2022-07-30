@@ -138,7 +138,6 @@ $(function() {
 		// li 태그 정보 수집하기
 		$(".uploadResult ul li").each(function(idx, obj) {
 			var img = $(obj);
-			////////////////////////////////////////////////////////////
 			str += "<input type='hidden' name='attach.uuid' value='" + img.data("uuid") + "'>";
 			str += "<input type='hidden' name='attach.uploadPath' value='" + img.data("path") + "'>";
 			str += "<input type='hidden' name='attach.fileName' value='" + img.data("filename") + "'>";

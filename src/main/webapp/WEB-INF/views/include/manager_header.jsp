@@ -12,10 +12,6 @@
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	<!-- 파일 업로드 css -->
 	<link rel="stylesheet" href="/resources/css/upload.css" />
-	<script src="/resources/js/jquery.min.js"></script>
-	<script src="/resources/js/bootstrap.bundle.min.js"></script>
-	<script src="/resources/js/market_pagination.js"></script>
-	<script src="/resources/js/sb-admin-2.min.js"></script>
 	<title>관리자 메인 페이지</title>
 </head>
 
@@ -51,7 +47,8 @@
 
 			<!-- 등록된 장터가 없는 경우 사이드바 장터 메뉴 이용 불가 -->
 			<!-- alert('장터 등록 후 이용 가능합니다.') 후 market_register로 이동 -->
-
+			
+			<c:if test="${marketNo != 0}">
 			<!-- 사이드바 - 내 장터 보기 -->
 			<li class="nav-item">
 				<a class="nav-link" href="/market/market_detail?marketNo=${marketNo}">
@@ -108,6 +105,7 @@
 				</a>
 			</li>
 			
+			</c:if>
 		</ul>
 		<!-- 사이드바 종료 -->
 
@@ -169,6 +167,10 @@
 				<!-- 상단바 종료 -->
 		<script>
 			function recruitPopup() {
-				var pop = window.open("/market/recruitPopup?marketNo=${marketNo}", "pop", "width=500,height=400");
+				var width = 500;
+				var height = 220;
+				var left = Math.ceil((window.screen.width - width) / 2);
+				var top = Math.ceil((window.screen.height - height ) / 2);
+				var pop = window.open("/market/recruitPopup?marketNo=${marketNo}", "pop", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
 			}
 		</script>
