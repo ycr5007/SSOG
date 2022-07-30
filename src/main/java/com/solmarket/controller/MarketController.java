@@ -1,5 +1,6 @@
 package com.solmarket.controller;
 
+import java.security.Principal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.solmarket.dto.*;
+import com.solmarket.mapper.MemberMapper;
 import com.solmarket.service.MarketService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,15 +21,16 @@ public class MarketController {
 	@Autowired
 	private MarketService service;
 	
+	@Autowired
+	private MemberMapper memberMapper;
+	
 	/* ====================== 장터 등록 (장터 상태 0) ====================== */
 	@GetMapping("/market_register")
-	public void market_register(Model model) {
+	public void market_register(Principal principal, Model model) {
 		log.info("[GetMapping] ========== 장터 등록 폼 호출 ==========");
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		CustomUser customUser = (CustomUser)principal;
-	
-		UserDTO userDTO = customUser.getUserDto();
-		
+		// userNo 가져오기
+		String userid = principal.getName();
+		UserDTO userDTO = memberMapper.read(userid);
 		model.addAttribute("userDTO", userDTO);
 	}
 
@@ -63,12 +66,16 @@ public class MarketController {
 	}
 	
 	@PostMapping("/recruitPopup")
-	public void recruitPost(AttachDTO attachDTO, RedirectAttributes rttr) {
+	public String recruitPost(AttachDTO attachDTO, RedirectAttributes rttr) {
 		log.info("[PostMapping] ========== 셀러 모집 파일 업로드 팝업 전송 ==========");
-		log.info("attachDTO" + attachDTO);
+		log.info("attachDTO : " + attachDTO);
 		if(service.RecruitImg(attachDTO)) {
-			rttr.addAttribute("marketNo", attachDTO.getNo());
+			rttr.addFlashAttribute("msg", "등록되었습니다.");
+		}else {
+			rttr.addFlashAttribute("msg", "등록 실패. 다시 등록해주세요.");
 		}
+		rttr.addAttribute("marketNo", attachDTO.getNo());
+		return "redirect:/market/recruitPopup";
 	}
 	
 	/* ============ 장터 참여 신청 목록 보기 (상품 상태 0 & 장터 번호) ============ */
@@ -133,14 +140,10 @@ public class MarketController {
 	@GetMapping("/market_detail")
 	public void market_detail(int marketNo, @ModelAttribute("cri")Criteria cri, Model model) {
 		log.info("[GetMapping] ========== 장터 상세 페이지 호출 ==========");
-//		List<AttachDTO> marketImg = service.showMarketImg(marketNo);
-//		List<AttachDTO> productImg = service.showProductImg(marketNo);
 		MarketDTO marketDTO = new MarketDTO();
 		marketDTO.setMarketNo(marketNo);
 		List<ProductDTO> list = service.showProductAcceptList(marketNo, cri);
 		List<ReviewDTO> review = service.ReviewList(marketNo, cri);
-//		model.addAttribute("marketImg", marketImg);
-//		model.addAttribute("productImg", productImg);
 		model.addAttribute("marketLoc", service.showMarketLoc(marketNo));
 		model.addAttribute("marketRate", service.MarketRate(marketNo));
 		model.addAttribute("marketDTO", marketDTO);
@@ -150,17 +153,23 @@ public class MarketController {
 	
 	/* ======================= 장터 후기 목록 보기 (사용자) ======================= */
 	@GetMapping("/market_detailReview")
-	public void market_detailReview(int marketNo, @ModelAttribute("cri")Criteria cri, Model model) {
+	public void market_detailReview(Principal principal, int marketNo, @ModelAttribute("cri")Criteria cri, Model model) {
 		log.info("[GetMapping] ========== 장터 후기 더보기 호출 ==========");
+		// user 정보 가져와 userNo 세팅
+		String userid = principal.getName();
+		UserDTO userDTO = memberMapper.read(userid);
+		int userNo = userDTO.getUserNo();
+		
 		List<ReviewDTO> review = service.ReviewList(marketNo, cri);
+		model.addAttribute("userNo", userNo);
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("review", review);
 		model.addAttribute("marketRate", service.MarketRate(marketNo));
 	}
 	
 	@PostMapping("/market_detailReview")
-	public String market_registerReview(ReviewDTO reviewDTO, int marketNo, RedirectAttributes rttr) {
-		log.info("[PostMapping] ========== 장터 후기 작성 등록 ==========");
+	public String market_registerReview(Principal principal, ReviewDTO reviewDTO, int marketNo, RedirectAttributes rttr) {
+		log.info("[PostMapping] ========== 장터 후기 작성 등록 ==========");		
 		if(service.registerReview(reviewDTO)) {
 			service.ReviewRate(marketNo);
 			rttr.addAttribute("marketNo", marketNo);

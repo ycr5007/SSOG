@@ -33,30 +33,36 @@
 	<!-- 파일 업로드 -->
 	<script>
 		let section = "recruit";
-		
-		$("[type='submit']").click(function(e) {
-			e.preventDefault();
-			
-			let str = "";
-			
-			// li 태그 정보 수집하기
-			$(".uploadResult ul li").each(function(idx, obj) {
-				var img = $(obj);
-				
-				str += "<input type='hidden' name='uuid' value='" + img.data("uuid") + "'>";
-				str += "<input type='hidden' name='uploadPath' value='" + img.data("path") + "'>";
-				str += "<input type='hidden' name='fileName' value='" + img.data("filename") + "'>";
-				str += "<input type='hidden' name='no' value='" + ${marketNo} + "'>";
-			})
-			
-			console.log("form 태그 삽입 전 : " + str);
-			
-			// form 보내기
-			$("#recruitForm").append(str).submit();
-			
-			window.close();
-		});
 	</script>
 	<script src="/resources/js/util/upload.js"></script>
+	<script>
+		$(function() {
+			let msg = "${msg}";
+			
+			if(msg != "") {
+				alert(msg);
+				window.close();
+			}
+			
+			// 등록 버튼 클릭 시
+			$(".btn-outline-primary").click(function(e) {
+				e.preventDefault();
+				
+				let str = "";
+				
+				// li 태그 정보 수집하기
+				$(".uploadResult ul li").each(function(idx, obj) {
+					var img = $(obj);
+					str += "<input type='hidden' name='uuid' value='" + img.data("uuid") + "'>";
+					str += "<input type='hidden' name='uploadPath' value='" + img.data("path") + "'>";
+					str += "<input type='hidden' name='fileName' value='" + img.data("filename") + "'>";
+					str += "<input type='hidden' name='no' value='" + ${marketNo} + "'>";
+				})
+								
+				// form 보내기
+				$("#recruitForm").append(str).submit();			
+			});
+		})
+	</script>
 </body>
 </html>

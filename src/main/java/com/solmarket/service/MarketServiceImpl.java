@@ -47,9 +47,14 @@ public class MarketServiceImpl implements MarketService {
 	/* ================= 장터 셀러 모집 이미지 등록 ================= */
 	@Override
 	public boolean RecruitImg(AttachDTO attachDTO) {
-		return attachMapper.insertRecruitImg(attachDTO) == 1 ? true : false;
+		boolean result = false;
+		
+		if(attachMapper.insertRecruitImg(attachDTO) == 1) {
+			result = true;
+		}
+		
+		return result;
 	}
-	
 	
 	/* ================= 장터 참여 신청 목록 보기 ================= */
 	@Override

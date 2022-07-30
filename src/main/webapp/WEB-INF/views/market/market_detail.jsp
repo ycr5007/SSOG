@@ -222,12 +222,12 @@
 		<div class="col-xl-5">
 			<div class="card mb-5">
 				<!-- header -->
-				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height:50px;">
 					<h6 class="m-0 font-weight-bold">장터 후기</h6>
-					<a href="/market/market_detailReview?marketNo=${marketDTO.marketNo}" onclick="marketReivew(${marketDTO.marketNo})" style="text-decoration:none">more</a>
+					<a href="/market/market_detailReview?marketNo=${marketDTO.marketNo}" onclick="marketReivew(${marketDTO.marketNo})" style="text-decoration:none; color:black;">more</a>
 				</div>
 				<!-- body -->
-				<div class="card-body">
+				<div class="card-body" style="height: 340px;">
 					<h4 class="card-title mb-3">
 						<c:choose>
 							<c:when test="${marketRate == 0.0}">
