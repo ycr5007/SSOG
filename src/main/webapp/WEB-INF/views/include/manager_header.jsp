@@ -167,6 +167,10 @@
 				<!-- 상단바 종료 -->
 		<script>
 			function recruitPopup() {
-				var pop = window.open("/market/recruitPopup?marketNo=${marketNo}", "pop", "width=500,height=400");
+				var width = 500;
+				var height = 220;
+				var left = Math.ceil((window.screen.width - width) / 2);
+				var top = Math.ceil((window.screen.height - height ) / 2);
+				var pop = window.open("/market/recruitPopup?marketNo=${marketNo}", "pop", "width=" + width + ", height=" + height + ", left=" + left + ", top=" + top);
 			}
 		</script>
