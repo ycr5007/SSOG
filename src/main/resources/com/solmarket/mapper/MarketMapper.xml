@@ -2,15 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.solmarket.mapper.MarketMapper">
 
-
+<!-- ====================== 장터 번호, 상태 가져오기 ====================== --> 
 	<select id="getMarketNo" resultType="Integer">
-		select market_no from market where user_no = #{userNo}
+		SELECT NVL(MAX(market_no), 0) FROM market WHERE user_no = #{userNo} group by market_no
 	</select>
 
 	<select id="getMarketStatus" resultType="Integer">
-		select market_status from market where market_no = #{marketNo}
+		SELECT NVL(MAX(market_status), 0) FROM market WHERE market_no = #{marketNo} group by market_status
 	</select>
-
 
 
 <!-- ====================== 장터 등록 (장터 상태 0) ====================== --> 
