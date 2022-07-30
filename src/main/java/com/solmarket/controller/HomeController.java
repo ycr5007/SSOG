@@ -86,30 +86,29 @@ public class HomeController {
 	
 	@RequestMapping(value = "/manager_index", method = RequestMethod.GET)
 	public String index(Model model) {
-			
+
+		// userNo 가져오기 위한 작업
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		CustomUser customUser = (CustomUser)principal;		
-	
 		UserDTO userDTO = customUser.getUserDto();
 		
-		
-		//마켓 no 가져오기
+		// 마켓 no 가져오기
 		Integer marketNo = marketService.getMarketNo(userDTO.getUserNo());
 		if(marketNo == null) {
 			marketNo = 0;
 		}
+		System.out.println("marketNo : " + marketNo);
 		
 		// 장터 상태 가져오기
-		int marketStatus = marketService.getMarketStatus(marketNo);
+		Integer marketStatus = marketService.getMarketStatus(marketNo);
 		if(marketNo == 0) {
-			marketStatus = 0;
+			marketStatus = -1;
 		}
-		
-		
-		//model.addAttribute("userDTO", userDTO);
+		System.out.println("marketStatus : " + marketStatus);
+	
+//		model.addAttribute("userDTO", userDTO);
 		model.addAttribute("marketNo", marketNo);
 		model.addAttribute("marketStatus", marketStatus);
-		
         
         return "manager_index";
     }

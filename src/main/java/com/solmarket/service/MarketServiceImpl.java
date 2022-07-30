@@ -17,11 +17,15 @@ public class MarketServiceImpl implements MarketService {
 	@Autowired
 	public AttachMapper attachMapper;
 
+	/* ====================== 장터 번호, 상태 가져오기 ====================== */
+	@Override
+	public Integer getMarketNo(int userNo) {
+		return mapper.getMarketNo(userNo);
+	}
 	@Override
 	public Integer getMarketStatus(int marketNo) {
 		return mapper.getMarketStatus(marketNo);
 	}
-	
 	
 	/* ====================== 장터 등록 ====================== */
 	@Override
@@ -172,11 +176,6 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public boolean deleteReview(int reviewNo) {
 		return mapper.deleteReview(reviewNo) == 1 ? true : false;
-	}
-
-	@Override
-	public Integer getMarketNo(int userNo) {
-		return mapper.getMarketNo(userNo);
 	}
 
 }
