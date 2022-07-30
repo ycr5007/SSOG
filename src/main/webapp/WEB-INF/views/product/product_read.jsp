@@ -9,7 +9,7 @@
 			<form action="" method="post" role="form">
 				
 				<div>
-					<img src="/display/product/${dto.productNo}" class="rounded mx-auto d-block"/>
+					<img src="/ori_display/product/${dto.productNo}" class="rounded mx-auto d-block"/>
 				</div>
 				
 				

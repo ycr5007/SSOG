@@ -91,7 +91,7 @@ public class ProductController {
 			log.info("" +userNo);
 		rttr.addAttribute("userNo", userNo);
 		
-		rttr.addFlashAttribute("msg", "성공적으로 등록 ~");
+		rttr.addFlashAttribute("msg", "상품 등록이 완료되었습니다!");
 		
 		return "redirect:/product/product_list";
 		

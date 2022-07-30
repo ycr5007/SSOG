@@ -125,19 +125,6 @@
    <form action="" id="registerForm" method="post">
       
    </form>
- 
-<!-- 등록이 되면 성공 msg 띄우기  -->  
-<script>
-	$(function(){
-		let msg = "${msg}"
-		if(msg != ""){
-			
-			alert(msg)
-		}
-	})
-</script>
-
-
 
 <script>
    // 등록 폼 전송 자료 

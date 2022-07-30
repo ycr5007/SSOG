@@ -24,10 +24,11 @@
 				<!-- /.panel-heading 종료-->
 
 				<div class="panel-body">
-					<table class="table table-striped table-bordered table-hover">
+					<table class="table table-striped table-bordered table-hover" style="text-align: center;">
 						<thead>
 							<tr>
 								<th>상품명</th>
+								<th>이미지</th>
 								<th>가 격</th>
 								<th>유효 기간 </th>
 								<th>수량 </th>
@@ -39,8 +40,8 @@
 							<!-- 게시판 리스트 반복문 -->
 							<c:forEach var="dto" items="${remainList}">
 								<tr>
-									<td><a href="${dto.productNo}" class="move">${dto.productName}</a>
-									</td>
+									<td><a href="${dto.productNo}" class="move">${dto.productName}</a></td>									
+									<td><img src="/display/product/${dto.productNo}" onerror="src='https://via.placeholder.com/100'"/></td>
 									<td>${dto.productPrice}</td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
 									<td>${dto.productQN}</td>
