@@ -22,12 +22,12 @@
 				<!-- /.panel-heading 종료-->
 
 				<div class="panel-body">
-					<table class="table table-striped table-bordered table-hover">
+					<table class="table table-striped table-bordered table-hover" style="text-align: center;">
 						<thead>
 							<tr>
 								<th>판매장터</th>
 								<th>상품명</th>
-								<th>미리보기</th>
+								<th>이미지</th>
 								<th>가 격</th>
 								<th>등록일</th>
 								<th>상품 상태</th>
@@ -120,10 +120,20 @@
 		<input type="hidden" name="amount" value="${pageDto.cri.amount}" />
 	</form>
 
+
 </div>
 <!-- div class="panel-body" 종료 -->
 
-
+<!-- 등록이 되면 성공 msg 띄우기    -->
+<script>
+	$(function(){
+		let msg = "${msg}"
+		if(msg != ""){
+			
+			alert(msg)
+		}
+	})
+</script>
 
 <script src="/resources/js/product/product_list.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

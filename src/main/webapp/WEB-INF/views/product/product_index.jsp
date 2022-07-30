@@ -91,8 +91,8 @@
 								<thead>
 									<tr>
 										<th>장터명</th>
-										<td>장터 종료일</td>
-										<td>장터 위치</td>
+										<th>장터 종료일</th>
+										<th>장터 위치</th>
 									</tr>
 								</thead>								
 								<!-- tbody 시작 -->
@@ -128,15 +128,15 @@
 								<thead>
 									<tr>
 										<th>상품명</th>
-										<td>상품가격</td>
+										<th>상품가격</th>
 									</tr>
 								</thead>
 								<tbody>
 									<!-- 리스트 반복문 -->
 									<c:forEach var="dto" items="${pList}" end="4">
 										<tr>
-											<th>${dto.productName}</th>
-											<th>${dto.productPrice}</th>
+											<td>${dto.productName}</td>
+											<td>${dto.productPrice}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
