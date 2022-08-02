@@ -36,7 +36,8 @@
 					<div class="img-small-wrap">
 						<div class="item-gallery">
 							<img
-								src="/display/product/${productNo}"
+								src="/ori_display/product/${productNo}"
+								onerror="this.src='https://via.placeholder.com/400x400'"
 								width="400" height="400">
 						</div>
 					</div>
