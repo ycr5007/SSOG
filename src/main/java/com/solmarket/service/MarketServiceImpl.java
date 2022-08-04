@@ -17,11 +17,15 @@ public class MarketServiceImpl implements MarketService {
 	@Autowired
 	public AttachMapper attachMapper;
 
+	/* ====================== 장터 번호, 상태 가져오기 ====================== */
+	@Override
+	public Integer getMarketNo(int userNo) {
+		return mapper.getMarketNo(userNo);
+	}
 	@Override
 	public Integer getMarketStatus(int marketNo) {
 		return mapper.getMarketStatus(marketNo);
 	}
-	
 	
 	/* ====================== 장터 등록 ====================== */
 	@Override
@@ -43,9 +47,14 @@ public class MarketServiceImpl implements MarketService {
 	/* ================= 장터 셀러 모집 이미지 등록 ================= */
 	@Override
 	public boolean RecruitImg(AttachDTO attachDTO) {
-		return attachMapper.insertRecruitImg(attachDTO) == 1 ? true : false;
+		boolean result = false;
+		
+		if(attachMapper.insertRecruitImg(attachDTO) == 1) {
+			result = true;
+		}
+		
+		return result;
 	}
-	
 	
 	/* ================= 장터 참여 신청 목록 보기 ================= */
 	@Override
@@ -172,11 +181,6 @@ public class MarketServiceImpl implements MarketService {
 	@Override
 	public boolean deleteReview(int reviewNo) {
 		return mapper.deleteReview(reviewNo) == 1 ? true : false;
-	}
-
-	@Override
-	public Integer getMarketNo(int userNo) {
-		return mapper.getMarketNo(userNo);
 	}
 
 }

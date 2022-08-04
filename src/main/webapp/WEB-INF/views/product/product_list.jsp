@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!-- 페이지 제목 -->
-<div class="container">
+<div class="container" style="overflow-y:overlay;">
 	<div class="row">
 		<div class="col-lg-12 pl-2">
 			<h1 class="page-header">상품 목록</h1>
@@ -21,13 +21,13 @@
 				<div class="panel-heading">Product List Page</div>
 				<!-- /.panel-heading 종료-->
 
-				<div class="panel-body">
-					<table class="table table-striped table-bordered table-hover">
+				<div class="panel-body" style="height:80%;" >
+					<table class="table table-striped table-bordered table-hover" style="text-align:center">
 						<thead>
 							<tr>
 								<th>판매장터</th>
 								<th>상품명</th>
-								<th>미리보기</th>
+								<th>이미지</th>
 								<th>가 격</th>
 								<th>등록일</th>
 								<th>상품 상태</th>
@@ -39,12 +39,37 @@
 							<!-- 게시판 리스트 반복문 -->
 							<c:forEach var="dto" items="${list}" varStatus="status">
 								<tr>
-									<td>${dto.marketName}</td>
-									<td><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
+									<td class="align-middle">${dto.marketName}</td>
+									<td class="align-middle"><a href="${dto.productNo}" class="move">${dto.productName}</a></td>
 									<td><img src="/display/product/${dto.productNo}" onerror="src='https://via.placeholder.com/100'"/></td>
-									<td>${dto.productPrice}</td>
-									<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
-									<td>${dto.productStatus}</td>
+									<td class="align-middle">${dto.productPrice}</td>
+									<td class="align-middle"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
+									<td class="align-middle">
+									<%-- <td>${dto.productStatus}</td> --%>
+									<c:choose>
+									<c:when test="${dto.productStatus == 0}">									
+									 신청 완료(승인전)
+									</c:when>
+									<c:when test="${dto.productStatus == 1}">									
+									 신청 승인 완료
+									</c:when>
+									<c:when test="${dto.productStatus == 2}">									
+									 신청 승인 거부
+									</c:when>
+									<c:when test="${dto.productStatus == 3}">									
+									 장터 판매중
+									</c:when>
+									<c:when test="${dto.productStatus == 4}">									
+									 장터 판매 종료
+									</c:when>
+									<c:when test="${dto.productStatus == 5}">									
+									 온라인 판매 중
+									</c:when>
+									<c:when test="${dto.productStatus == 6}">									
+									 온라인 판매 종료
+									</c:when>																		
+									</c:choose>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -120,10 +145,20 @@
 		<input type="hidden" name="amount" value="${pageDto.cri.amount}" />
 	</form>
 
+
 </div>
 <!-- div class="panel-body" 종료 -->
 
-
+<!-- 등록이 되면 성공 msg 띄우기    -->
+<script>
+	$(function(){
+		let msg = "${msg}"
+		if(msg != ""){
+			
+			alert(msg)
+		}
+	})
+</script>
 
 <script src="/resources/js/product/product_list.js"></script>
 <%@ include file="../include/manager_footer.jsp"%>

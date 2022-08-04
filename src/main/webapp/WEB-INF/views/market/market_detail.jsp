@@ -34,7 +34,7 @@
 	<!-- 마켓 이미지 -->
 	<div class="col-xl-7 px-xl-5">
 		<div class="card mb-2" id="marketImg">
-			<img src="/display/market/${marketDTO.marketNo}" />
+			<img src="/ori_display/market/${marketDTO.marketNo}" />
 		</div>
 	</div>
 	<!-- 마켓 이미지 끝 -->
@@ -222,12 +222,12 @@
 		<div class="col-xl-5">
 			<div class="card mb-5">
 				<!-- header -->
-				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="height:50px;">
 					<h6 class="m-0 font-weight-bold">장터 후기</h6>
-					<a href="/market/market_detailReview?marketNo=${marketDTO.marketNo}" onclick="marketReivew(${marketDTO.marketNo})" style="text-decoration:none">more</a>
+					<a href="/market/market_detailReview?marketNo=${marketDTO.marketNo}" onclick="marketReivew(${marketDTO.marketNo})" style="text-decoration:none; color:black;">more</a>
 				</div>
 				<!-- body -->
-				<div class="card-body">
+				<div class="card-body" style="height: 340px;">
 					<h4 class="card-title mb-3">
 						<c:choose>
 							<c:when test="${marketRate == 0.0}">

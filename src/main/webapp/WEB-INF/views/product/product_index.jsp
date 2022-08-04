@@ -77,7 +77,7 @@
 		<!-- row 안에 오픈 예정 장터, 상품 목록을 보여줌 -->
 		<div class="row">
 			<!-- 참여 예정 장터 start -->
-			<div class="col-xl-6">
+			<div class="col-lg-6">
 				<div class="card shadow mb-4">
 					<!-- header -->
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -85,14 +85,14 @@
 						<a href="/product/product_ingmarket_list">more</a>
 					</div>
 					<!-- card body start -->
-					<div class="card-body">
+					<div class="card-body" style="height:250px; overflow-y:scroll;">
 						<div class="panel-body">
 							<table class="table table-striped table-bordered table-hover">								
 								<thead>
 									<tr>
 										<th>장터명</th>
-										<td>장터 종료일</td>
-										<td>장터 위치</td>
+										<th>장터 종료일</th>
+										<th>장터 위치</th>
 									</tr>
 								</thead>								
 								<!-- tbody 시작 -->
@@ -114,7 +114,7 @@
 			
 
 			<!-- 상품 리스트 start-->
-			<div class="col-xl-6">
+			<div class="col-lg-6">
 				<div class="card shadow mb-4">
 					<!-- header -->
 					<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -122,21 +122,21 @@
 						<a href="/product/product_list">more</a>
 					</div>
 					<!-- body -->
-					<div class="card-body">
+					<div class="card-body" style="height:250px; overflow-y:scroll;">
 						<div class="panel-body">
 							<table class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
 										<th>상품명</th>
-										<td>상품가격</td>
+										<th>상품가격</th>
 									</tr>
 								</thead>
 								<tbody>
 									<!-- 리스트 반복문 -->
 									<c:forEach var="dto" items="${pList}" end="4">
 										<tr>
-											<th>${dto.productName}</th>
-											<th>${dto.productPrice}</th>
+											<td>${dto.productName}</td>
+											<td>${dto.productPrice}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -146,5 +146,6 @@
 				</div>
 			</div><!-- 상품 리스트 end -->
 		</div> <!-- <div class="row"> 종료 -->
+		
 	</div> <!-- Content 종료 -->
 <%@ include file="../include/manager_footer.jsp"%> 

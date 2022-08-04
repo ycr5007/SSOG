@@ -8,7 +8,7 @@
 <div class="container" style="height:80%;">
 	<div class="row">
 		<div class="col-lg-12 pl-2">
-			<h1 class="page-header">재고 상품 목록</h1>
+			<h1 class="page-header">판매 상품 목록</h1>
 		</div>
 		<!-- /.col-lg-12 -->
 	</div>
@@ -19,7 +19,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-				List After Shop Listing Product List Page
+				Selling Product List Page
 				</div>
 				<!-- /.panel-heading 종료-->
 
@@ -30,7 +30,6 @@
 								<th>상품명</th>
 								<th>이미지</th>
 								<th>가 격</th>
-								<th>유효 기간 </th>
 								<th>수량 </th>
 								
 							</tr>
@@ -38,12 +37,11 @@
 						<!-- thead 종료 -->
 						<tbody>
 							<!-- 게시판 리스트 반복문 -->
-							<c:forEach var="dto" items="${remainList}">
+							<c:forEach var="dto" items="${sellList}">
 								<tr>
 									<td class="align-middle"><a href="${dto.productNo}" class="move">${dto.productName}</a></td>									
 									<td><img src="/display/product/${dto.productNo}" onerror="src='https://via.placeholder.com/100'"/></td>
 									<td class="align-middle">${dto.productPrice}</td>
-									<td class="align-middle"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${dto.productDate}" /></td>
 									<td class="align-middle">${dto.productQN}</td>
 								</tr>
 							</c:forEach>

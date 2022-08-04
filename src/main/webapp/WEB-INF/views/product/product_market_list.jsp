@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 	<!-- 페이지 제목 -->
-	<div class="container">
+	<div class="container" style="height:80%;">
 	<div class="row">
 	  <div class="col-lg-12 pl-2" >
 	    <h1 class="page-header">오픈 예정 장터 목록</h1>

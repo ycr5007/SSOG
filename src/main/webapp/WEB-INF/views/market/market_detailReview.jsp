@@ -11,7 +11,7 @@
 		<!-- 마켓 이미지 -->
 		<div class="col-xl-6 px-xl-5">
 			<div class="card">
-				<img src="/display/market/${marketNo}" />
+				<img src="/ori_display/market/${marketNo}" />
 			</div>
 		</div>
 
@@ -75,6 +75,7 @@
 						<input class="p-2" type="text" name="reviewContent" id="reviewContent" placeholder="이 장터 어떠셨나요?" size="40"/>
 						<button class="btn btn-outline-primary btn-icon-split btn-sm" type="button">등록</button>
 					</div>
+					<input type="hidden" name="userNo" value="${userNo}" />
 				</form>
 				<!-- 장터 후기 목록 -->
 				<ul class="reviewList mt-4" style="overflow-y:scroll">

@@ -35,6 +35,10 @@ public interface ProductMapper {
 	public List<MarketDTO> oList();
 	// 인덱스에서 상품 리스트 보여주기
 	public List<ProductDTO> pList();
+	// 판매 상품 리스트 보여주기
+	public List<ProductDTO> sellList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
+	// 판매 상품 리스트 페이징
+	public int sellTotal(int userNo);
 	// 장터 종료 후 재고 상품 리스트 보여주기
 	public List<ProductDTO> remainList(@Param("cri")Criteria cri,@Param("userNo")int userNo);
 	// 장터 종료 후 재고 상품 리스트 페이징

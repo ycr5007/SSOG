@@ -102,6 +102,18 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductDTO> pList() {
 		return mapper.pList();
 	}
+	
+	// 판매 중인 상품 리스트 보여주기
+	@Override
+	public List<ProductDTO> sellList(Criteria cri, int userNo) {		
+		return mapper.sellList(cri, userNo);
+	}
+	
+	// 판매 중인 상품 리스트 페이징
+	@Override
+	public int sellTotal(int userNo) {		
+		return mapper.sellTotal(userNo);
+	}
 
 	// 장터 종료 후 남은 상품 리스트 보여주기
 	@Override
@@ -137,9 +149,6 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int ingMarketTotal(Criteria cri) {
 		return mapper.ingMarketTotal(cri);
-	}
-
-
-	
+	}	
 
 }

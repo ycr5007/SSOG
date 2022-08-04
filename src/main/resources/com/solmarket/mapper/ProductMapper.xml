@@ -113,6 +113,33 @@
 		select product_name as productName, product_price as productPrice
 		from product
 	</select>
+	
+	<!-- 판매 상품 리스트 보여주기 -->
+	<select id="sellList" resultType="com.solmarket.dto.ProductDTO">
+		<![CDATA[
+		select * from 
+			(select rownum as num, statusList.* from
+				(select user_name as userName, p.* from 
+					(select p.product_no as productNo, m.market_name as dummy,
+							p.user_no as userNo,
+							p.product_name as productName, 
+							p.product_price as productPrice,
+							p.product_content as productContent, 
+							p.product_date as productDate,
+							p.product_qn as productQN
+					from product p left outer join market m on p.market_no = m.market_no 
+					where p.user_no = #{userNo} and product_qn >= 1 and product_status = 3) p 
+				left outer join myUser u on p.userNo = u.user_no) statusList
+				where rownum <= (#{cri.pageNum} * #{cri.amount}))
+			where num > (#{cri.pageNum} - 1) * #{cri.amount}
+		]]>
+	</select>
+
+	<!-- 판매 상품 리스트 페이징 -->
+	<select id="sellTotal" resultType="int">
+		select count(*) from product
+		where user_no =#{userNo} and product_status = 3
+	</select>
 
 	<!-- 장터 종료 후 상품 리스트 보여주기 -->
 	<select id="remainList" resultType="com.solmarket.dto.ProductDTO">

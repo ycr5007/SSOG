@@ -91,7 +91,7 @@ public class ProductController {
 			log.info("" +userNo);
 		rttr.addAttribute("userNo", userNo);
 		
-		rttr.addFlashAttribute("msg", "성공적으로 등록 ~");
+		rttr.addFlashAttribute("msg", "상품 등록이 완료되었습니다!");
 		
 		return "redirect:/product/product_list";
 		
@@ -177,6 +177,21 @@ public class ProductController {
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("marketList",marketList);
 	}
+		// 장터 종료 후 남은 상품 보여주기 상품 상태 == 3 
+		@GetMapping("/product_sell_list")
+		public void sellerList(Principal principal,Model model,@ModelAttribute("cri") Criteria cri) {
+			log.info("장터 종료 후 상품 리스트 요청");
+			// 판매자 정보 가지고오기
+			String userid = principal.getName();
+			UserDTO userDto = mapper.read(userid);
+			List<ProductDTO> sellList = service.sellList(cri, userDto.getUserNo());
+			// 페이징
+			int total = service.sellTotal(userDto.getUserNo());
+			log.info("pageDTO : " + new PageDTO(cri, total));
+			model.addAttribute("userNo", userDto.getUserNo());
+			model.addAttribute("pageDto", new PageDTO(cri, total));
+			model.addAttribute("sellList",sellList);
+		}
 	
 	// 장터 종료 후 남은 상품 보여주기 상품 상태 == 4 
 	@GetMapping("/product_remain_list")

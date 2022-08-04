@@ -32,7 +32,7 @@ $(function(){
 			let productPrice = $("input[name='productPrice']").val();			
 			
 			// 비어있는란이 있다면 경고창 띄워주기
-			/*if(category  == ''){
+			if(category  == ''){
 				alert("카테고리을 선택해주세요");
 				return;
 			}
@@ -59,7 +59,7 @@ $(function(){
 			if(!/^[0-9]+/.test(productPrice)){
 				alert("숫자만 입력해주세요");
 				return 
-			}*/
+			}
 			
 			table.css("display","table");	
 			

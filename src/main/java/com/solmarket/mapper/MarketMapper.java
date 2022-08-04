@@ -8,6 +8,7 @@ import com.solmarket.dto.*;
 
 public interface MarketMapper {
 	
+	/* ====================== 장터 번호, 상태 가져오기 ====================== */
 	public Integer getMarketNo(int userNo);
 	public Integer getMarketStatus(int marketNo);
 	
