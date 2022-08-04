@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solmarket.mapper.ReplyMapper">
+
+	<!-- 댓글 등록 -->
+	<insert id="insert">
+		insert into reply(reply_no, user_no, board_no, reply_writer, reply_content, reply_date) 
+		values(reply_seq.nextval, #{userNo}, #{boardNo}, #{replyWriter}, #{replyContent}, sysdate)
+	</insert>
+
+	<!-- 댓글 하나 가져오기 : read -->
+	<select id="read" resultType="com.solmarket.dto.ReplyDTO">
+		select reply_no as replyNo, board_no as boardNo, reply_writer as replyWriter, reply_content as replyContent, reply_date as replyDate from reply where reply_no = #{replyNo}
+	</select>
+	
+	<!-- 댓글 전체 가져오기 : list -->
+	<select id="list" resultType="com.solmarket.dto.ReplyDTO">
+		select * from (select rownum as paging, reply.* from 
+		(select reply_no as replyNo, board_no as boardNo, reply_writer as replyWriter, reply_content as replyContent, reply_date as replyDate from reply where board_no = #{boardNo}) reply
+		where rownum <![CDATA[<=]]> (#{cri.pageNum} * #{cri.amount})) where paging > ((#{cri.pageNum} -1) * #{cri.amount} )
+	</select>
+	
+	<select id="getCountBoardNo" resultType="int">
+		select count(*) from reply where board_no = #{boardNo}
+	</select>
+	
+	<update id="update">
+		update reply set reply_content = #{replyContent}, reply_date = sysdate where reply_no = #{replyNo} 
+	</update>
+	
+	<delete id="delete">
+		delete from reply where reply_no = #{replyNo}
+	</delete>
+	
+</mapper>

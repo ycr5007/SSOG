@@ -16,6 +16,8 @@ public interface MemberMapper {
 	
 	public int userStatus(String userId);
 	
+	public String dupId(String userId);
+	
 	public String dupMail(String userMail);
 	
 	public UserDTO searchId(@Param("userName") String userName,@Param("userMail") String userMail);

@@ -67,7 +67,7 @@
 			          <label for="phone" class="col-sm-5 col-form-label">핸드폰 </label>
 			          <div class="textForm col-sm-7">
 							<input type="text" name="userPhone" id="userPhone" class="form-control"
-								value='<c:out value="${user.userPhone }"  />' readonly />
+								value='<c:out value="${user.userPhone }"  />'  />
 							<small id="userPhone" class="text-info"></small>
 						</div>
 					</div>

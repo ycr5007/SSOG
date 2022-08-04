@@ -11,7 +11,7 @@
 		<img src="../resources/img/noticelogo.png"/>
 		<table class="table table-striped" style="color: white;">
 			<thead>
-				<tr class="text-center">
+				<tr class="text-center" style="color: white;">
 					<th class="col-lg-2">장터</th>
 					<th class="col-lg-2">장소</th>
 					<th class="col-lg-6">제목</th>

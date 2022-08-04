@@ -1,3 +1,10 @@
+update board
+set board_repl = (select count(reply_no) from reply where board.board_no = reply.board_no);
+
+select * from BOARD_IMG;
+-- reply writer 추가
+ALTER TABLE reply add reply_writer varchar2(12) NOT NULL;
+select * from reply where reply_no = 16;
 -- user테이블 칼럼추가
 -- req_auth : 권한요청(SELLER : 1 / MANAGER : 2)
 ALTER TABLE myuser add req_auth number(2) default 0;

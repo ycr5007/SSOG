@@ -10,6 +10,15 @@ $(function () {
       userId: {
         required: true,
         validId: true,
+		remote:{  //ajax
+			url:'/member/checkId',
+			type:'post',
+			data:{
+				userid:function(){
+					return $("#userId").val();
+				}
+			}
+		}
       },
       userPw: {
         required: true,

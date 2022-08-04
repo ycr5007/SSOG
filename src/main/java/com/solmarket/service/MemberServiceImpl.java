@@ -65,13 +65,16 @@ public class MemberServiceImpl implements MemberService {
 			
 		}
 		
-	
-
 	@Override
 	public int delete(String userId) {
 		return mapper.delete(userId);
 	}
 
+	@Override
+	public String dupId(String userId) {
+		return mapper.dupId(userId);
+	}
+	
 	@Override
 	public String dupMail(String userMail) {
 		return mapper.dupMail(userMail);
@@ -166,5 +169,7 @@ public class MemberServiceImpl implements MemberService {
 	public int reqAuth(AuthDTO authDto) {
 		return mapper.reqAuth(authDto);
 	}
+
+	
 
 }

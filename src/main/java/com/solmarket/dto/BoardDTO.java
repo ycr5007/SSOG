@@ -20,5 +20,6 @@ public class BoardDTO {
 	
 	private AttachDTO attach; // 파일첨부 리스트
 	private String userName;
+	private String userId;
 
 }
