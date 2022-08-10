@@ -12,7 +12,7 @@ public interface MemberService {
 	// 회원정보변경
 	public boolean updateUser(UserDTO updateUser);
 			
-	// 회원상태변경
+	// 회원비활성화
 	public int delete(String userId);
 	
 	// 아이디 중복

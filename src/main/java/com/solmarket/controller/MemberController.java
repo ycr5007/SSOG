@@ -48,7 +48,7 @@ public class MemberController {
 		log.info("회원가입 요청" + regist);
 
 		if (service.register(regist)) {
-			rttr.addFlashAttribute("regist", "회원가입되었습니다.");
+			rttr.addFlashAttribute("msg", "회원가입되었습니다.");
 			return "redirect:/member/login";
 		}
 		return "/member/signUp2";
@@ -62,7 +62,7 @@ public class MemberController {
 
 	@GetMapping("/login-error")
 	public String loginError(RedirectAttributes rttr) {
-		rttr.addFlashAttribute("error", "아이디 비밀번호 확인해주세요");
+		rttr.addFlashAttribute("msg", "아이디 비밀번호 확인해주세요");
 		return "redirect:/member/login";
 	}
 
@@ -214,5 +214,7 @@ public class MemberController {
 	public void deniedGet() {
 		log.info("access-denied 페이지 요청");
 	}
+	
 
+	
 }

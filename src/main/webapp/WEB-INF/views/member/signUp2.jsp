@@ -5,7 +5,7 @@
 <!-- validation 사용자 작성 코드 삽입-->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
-<script src="/resources/js/register.js"></script>
+<script src="/resources/js/member/register.js"></script>
 
 <!-- 콘텐츠 시작 -->
 <section class="bg-dark">
@@ -215,11 +215,5 @@
     }
 </script>
 
-<script>
-let regist = "${regist}";
-if(regist != ""){
-	alert(regist);
-}
-</script>
 
 <%@ include file="../include/footer.jsp" %>

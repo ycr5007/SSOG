@@ -121,7 +121,7 @@ public class BoardController {
 		log.info("" + modify.getUserName());
 		log.info("" + modify.getBoardNo());
 		if (service.modify(modify))
-			return "redirect:/board/board_read";
+			return "redirect:/board/board_list";
 		return "redirect:/board/board_modify";
 	}
 

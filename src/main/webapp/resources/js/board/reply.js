@@ -240,8 +240,7 @@ $(function(){
 			let str = "";
 			for(var i = 0; i < list.length; i++){
 				str += '<tr>';
-				str += '<td width="5%">' + list[i].replyNo + '</td>';
-		//		str += '<li class="left clearfix" data-replyno="' + list[i].replyNo + '">';
+				str += '<td width="5%">' + (i+1) + '</td>';
 				str += '<td width="10%">' + list[i].replyWriter + '</td>';
 				str += '<td width="50%">' + list[i].replyContent + '</td>';
 				str += '<td width="10%">' + replyService.displayTime(list[i].replyDate) + '</td>';

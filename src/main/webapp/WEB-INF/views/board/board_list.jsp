@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
 }
 </style>
 <section class = "bg-dark">
-<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 20px 20px 20px 20px">    
+<div id="bodystyle" style="overflow:auto; width:auto; color: white; padding: 20px 20px 20px 20px">    
 <div class="contetnt">
 	<div class="container border-0 bg-dark mt-4 mb-4 h-75" style="height:auto;  align-content: center">
 		<img src="../resources/img/board.png"/>
@@ -144,5 +144,5 @@ pageEncoding="UTF-8"%>
 	// 게시글 작성 성공 후 result 값 확인
 	let result = '${result}';
 </script>
-<script src="/resources/js/list.js"></script>
+<script src="/resources/js/board/list.js"></script>
 <%@include file="../include/footer.jsp" %>

@@ -60,8 +60,8 @@
 						<input type="hidden" name="userNo" value="${user.userNo }" />
 						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 					</table>
-						<button type="submit" class="btn btn-primary">가입</button>              			
-						<button type="reset" class="btn btn-secondary">취소</button>
+						<button type="submit" class="btn btn-primary">글쓰기</button>              			
+						<button type="button" class="btn btn-secondary" onclick="location.href='/board/board_list'">취소</button>
 				</form>
 			</div>
 		</div>

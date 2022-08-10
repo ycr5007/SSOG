@@ -122,21 +122,47 @@
 			        <!-- 정보수정 회원탈퇴 -->
 					<div class="pb-2" style="text-align:center;">
 						<button type="button" class="btn btn-secondary send-data update-user">정보수정</button>
-						<button type="submit" class="btn btn-secondary"
-							formaction="/member/leaveResult">회원탈퇴</button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">회원탈퇴</button>
 					</div>
 			</form>
-						
+			
 				
 			<form action="" method="post" id="authForm">
 					<input type="hidden" name="userId"
-						value='<sec:authentication property="principal.username"/>' /> <input
-						type="hidden" name="authority" value="" />
+						value='<sec:authentication property="principal.username"/>' />
+					<input type="hidden" name="authority" value="" />
 			</form>
 			
 					
 		</div>
 	</div>
+<!-- 회원비활성화 Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">회원 비활성화</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form action="leaveResult" method="post">
+      <div class="modal-body">
+        	<div class="form-group">
+        		<input type="text" name="userId" id="userId" class="form-control" readonly value="${user.userId }" />
+        	</div>
+        	<div class="form-group">
+        		<p>회원을 비활성화 하시겠습니까?</p>
+        	</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="submit" class="btn btn-danger">비활성화</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
 </section>
 <!-- 콘텐츠 종료 -->
 
@@ -170,7 +196,6 @@
 			})
 
 		})
-		
 	</script>
 
 <script>
@@ -188,7 +213,7 @@
     }
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
-<script src="/resources/js/modify.js"></script>
+<script src="/resources/js/member/modify.js"></script>
 <!-- 스크립트 종료-->
 
 <%@ include file="../include/footer.jsp"%>

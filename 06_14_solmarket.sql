@@ -1,17 +1,16 @@
+-- 게시판 댓글 --
 update board
 set board_repl = (select count(reply_no) from reply where board.board_no = reply.board_no);
 
-select * from BOARD_IMG;
 -- reply writer 추가
 ALTER TABLE reply add reply_writer varchar2(12) NOT NULL;
-select * from reply where reply_no = 16;
+
 -- user테이블 칼럼추가
 -- req_auth : 권한요청(SELLER : 1 / MANAGER : 2)
 ALTER TABLE myuser add req_auth number(2) default 0;
-insert into myuser_auth(user_id, authority)
-values (authority = 'ROLE_SELLER')
-where user_id = 'hhhh';
--- 권한요청 테이블 추가
+insert into myuser_auth(user_id, authority) values (authority = 'ROLE_ADMIN') where user_id = 'admin';
+
+-- 권한요청 테이블 추가 
 CREATE TABLE auth_request(
 	user_id VARCHAR2(12) NOT NULL,
 	authority varchar2(50) NOT NULL
@@ -39,7 +38,7 @@ create table visitor(
 
 alter table visitor add constraint PK_VISITOR primary key(visit_id);
 
-select * from myuser;
+
 create table visitor_total(
     visit_date Date not null,
     visit_total number(8) not null

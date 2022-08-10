@@ -14,7 +14,7 @@
 
 </style>
 <section class = "bg-dark">
-<div id="bodystyle" style="overflow:auto; width:auto; height:550px; color: white; padding: 20px 20px 20px 20px">    
+<div id="bodystyle" style="overflow:auto; width:auto; color: white; padding: 20px 20px 20px 20px">    
 <div class="contetnt">
 	<div class="container border-0 bg-dark mt-4 mb-4 h-75" style="height:auto;  align-content: center">
 	<h2 style="color:white text-align:left;">자유게시판</h2>  
@@ -69,7 +69,7 @@
 							<sec:authentication property="principal" var="info" />
 							<sec:authorize access="isAuthenticated()">
 								<c:if test="${BoardDTO.userId == info.username}">
-									<button type="button" class="btn btn-primary"">수정하기</button>     			
+									<button type="button" class="btn btn-primary">수정하기</button>     			
 								</c:if>
 							</sec:authorize>
 							<button type="reset" class="btn btn-info">목록</button>  
@@ -89,7 +89,7 @@
 				<i class="fa fa-comments fa-fw">Reply</i>
 				<div>
 				<sec:authorize access="isAuthenticated()">
-					<button id="addReplyBtn" class="btn btn-primary btn-xs" style="float: right;">Reply Write</button>
+					<button id="addReplyBtn" class="btn" style="background-color:orange; color:white; float: right;">Reply Write</button>
 				</sec:authorize>
 				</div>
 			</div>
@@ -178,6 +178,6 @@
 	
 	
 </script>
-<script src="/resources/js/read.js"></script>
-<script src="/resources/js/reply.js"></script>
+<script src="/resources/js/board/read.js"></script>
+<script src="/resources/js/board/reply.js"></script>
 <%@include file="../include/footer.jsp" %>       

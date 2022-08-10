@@ -122,6 +122,6 @@
 		})
 	})
 </script>
-<script src="/resources/js/board_modify.js"></script>
+<script src="/resources/js/board/board_modify.js"></script>
 <script src="/resources/js/util/upload.js"></script>
 <%@include file="../include/footer.jsp" %>       
