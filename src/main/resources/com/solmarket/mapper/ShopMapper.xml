@@ -6,6 +6,7 @@
 		select category_no as categoryNo, category_name as categoryName from category
 	</select>
 	
+	<!-- 상품 리스트 불러오기 -->
 	<select id="getProduct" resultType="com.solmarket.dto.ProductDTO">
 		
 		<!-- select product_no as productNo, product_name as productName, product_price as productPrice, product_sale as productSale
@@ -16,7 +17,7 @@
 		where rn > (#{pageNum} - 1) * #{amount}
 		 -->
 		select * from (select rownum as num, productList.* from
-		(select product_name as productName, product_no as productNo, product_price as productPrice, product_sale as productSale from product <if test="keyword != '0'.toString()"> where category_no = #{keyword} </if> order by product_date desc) productList
+		(select product_name as productName, product_no as productNo, product_price as productPrice, product_sale as productSale from product where product_status = 5 <if test="keyword != '0'.toString()"> and category_no = #{keyword} </if> order by product_date desc) productList
 		where rownum <![CDATA[ <= ]]> (#{pageNum} * #{amount})) where num > ((#{pageNum} - 1) * #{amount})
 	</select>
 	
