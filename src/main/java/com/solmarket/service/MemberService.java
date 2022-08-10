@@ -8,17 +8,17 @@ public interface MemberService {
 
 	// 회원가입
 	public boolean register(UserDTO register);
-			
-	// 비밀번호 변경
-	//public boolean changePwd(ChangeDTO changeDto);
 	
 	// 회원정보변경
 	public boolean updateUser(UserDTO updateUser);
 			
-	// 회원상태변경
+	// 회원비활성화
 	public int delete(String userId);
-			
+	
 	// 아이디 중복
+	public String dupId(String userId);
+	
+	// 이메일 중복
 	public String dupMail(String userMail);
 			
 	// ID 찾기
@@ -26,7 +26,6 @@ public interface MemberService {
 			
 	// 가입시 이메일 인증
 	public String authMail(String userMail);
-	
 	
 	// 임시비밀번호 메일 발송
 	public boolean updatePw(String userId, String userMail, String tempPw);

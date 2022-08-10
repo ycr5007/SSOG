@@ -70,9 +70,11 @@ public class UploadRestController {
 			width = 150;
 			height = 200;
 			break;
-		case "board": // board_img
-			width = 0;
-			height = 0;
+
+		case "board" : // board_img
+			width = 200;
+			height = 200;
+
 			break;
 		default:
 			return new ResponseEntity<List<AttachDTO>>(new ArrayList<AttachDTO>(), HttpStatus.BAD_REQUEST);

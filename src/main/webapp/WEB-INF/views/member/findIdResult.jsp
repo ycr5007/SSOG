@@ -23,6 +23,8 @@
       	<br>
       	<button type="button" class="btn btn-secondary" onclick="location.href='/member/findPw'">비밀번호찾기</button>
       	<button type="button" class="btn btn-secondary" onclick="location.href='/member/login'">로그인</button>
+      	<button type="button" class="btn btn-secondary" onclick="location.href='/member/findId'">뒤로</button>
+
 	    </div>
 	</div>
 </section>

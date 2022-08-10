@@ -90,7 +90,7 @@ function showUploadFile(result){
 		let oriPath = obj.uploadPath + "\\" + obj.uuid + "_" + obj.fileName;
 		oriPath = oriPath.replace(new RegExp(/\\/g), "/");
 		
-		str += "<li  data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'>";
+		str += "<li data-path='" + obj.uploadPath + "' data-uuid='" + obj.uuid + "' data-filename='" + obj.fileName + "'>";
 		str += "<img class='img-thumbnail' src='/display/" + section +"?fileName=" + fileCallPath + "'>";
 		str += "<div class='form-filename'>" + obj.fileName;
 		str += "<span data-file='" + fileCallPath + "'><button type='button' class='btn btn-danger btn-sm m-2'>삭제</button></span></div></li>"

@@ -3,24 +3,77 @@
 <mapper namespace="com.solmarket.mapper.BoardMapper">
 
 
-	
-	
-	
 	<insert id="insert">
 		insert into board(board_no, user_no, board_title, board_content) values(board_seq.nextval, #{userNo}, #{boardTitle}, #{boardContent})
 	</insert>
 	
-
+<!-- 	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='T'.toString()">
+							board_title like '%' || #{keyword} || '%'
+						</when>
+						<when test="type=='C'.toString()">
+							board_content like '%' || #{keyword} || '%'
+						</when>
+						<when test="type=='W'.toString()">
+							like '%' || #{keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql> -->
+	
 	<select id="select" resultType="com.solmarket.dto.BoardDTO">
-		select board_no as boardNo, b.user_no as userNo, board_title as boardTitle, board_date as boardDate, board_hit as boardHit, u.user_name as userName from board b left outer join myuser u on b.user_no = u.user_no order by board_no desc
+		select * from 
+		(select board.*, rownum as paging from 
+		(select board_no as boardNo, b.user_no as userNo, board_title as boardTitle, board_repl as boardRepl, board_date as boardDate, board_hit as boardHit, u.user_id as userId from board b left outer join myuser u on b.user_no = u.user_no  
+		<if test="type == 'T'.toString()">
+			where board_title like '%' || #{keyword} || '%'
+		</if>
+		<if test="type == 'C'.toString()">
+			where board_content like '%' || #{keyword} || '%'
+		</if>
+		<if test="type == 'W'.toString()">
+			where u.user_id like '%' || #{keyword} || '%'
+		</if>
+		<if test="type == 'TC'.toString()">
+			where board_title like '%' || #{keyword} || '%' or board_content like '%' || #{keyword} || '%'
+		</if>
+		<if test="type == 'TW'.toString()">
+			where board_title like '%' || #{keyword} || '%' or u.user_id like '%' || #{keyword} || '%'
+		</if>
+		<if test="type == 'TCW'.toString()">
+			where board_title like '%' || #{keyword} || '%' or board_content like '%' || #{keyword} || '%' or u.user_id like '%' || #{keyword} || '%'
+		</if> 
+		and board_no > 0 order by board_no desc)
+		board where rownum <![CDATA[ <= ]]> (#{pageNum} * #{amount})) where paging > ((#{pageNum} - 1) * #{amount})
 	</select>
 	
+	<select id="boardCount" resultType="int">
+		select count(*) from board
+	</select>
 	
 	<select id="read" resultType="com.solmarket.dto.BoardDTO">
-		select board_no as boardNo, user_no as userNo, board_title as boardTitle,board_content as boardContent, board_hit as boardHit from board where board_no = #{boardNo}
+		select board_no as boardNo, b.user_no as userNo, board_title as boardTitle,board_content as boardContent, board_date as boardDate, board_hit as boardHit, u.user_id as userId from board b join myuser u on b.user_no = u.user_no where board_no = #{boardNo}
 	</select>
 
+	<update id="modify">
+		update board set board_title = #{boardTitle}, board_content = #{boardContent} where board_no = #{boardNo}
+	</update>
 
+	<delete id="remove">
+		delete from board where board_no = #{boardNo}
+	</delete>
 
-
+	<update id="updateHit">
+		update board set board_hit = board_hit + 1 where board_no = #{boardNo}
+	</update>
+	
+	<update id="updateReplyCnt">
+		update board set board_repl = board_repl + #{amount} where board_no = #{boardNo}
+	</update>
 </mapper>

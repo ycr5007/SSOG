@@ -48,7 +48,7 @@ public class MemberController {
 		log.info("회원가입 요청" + regist);
 
 		if (service.register(regist)) {
-			rttr.addFlashAttribute("regist", "회원가입되었습니다.");
+			rttr.addFlashAttribute("msg", "회원가입되었습니다.");
 			return "redirect:/member/login";
 		}
 		return "/member/signUp2";
@@ -62,7 +62,7 @@ public class MemberController {
 
 	@GetMapping("/login-error")
 	public String loginError(RedirectAttributes rttr) {
-		rttr.addFlashAttribute("error", "아이디 비밀번호 확인해주세요");
+		rttr.addFlashAttribute("msg", "아이디 비밀번호 확인해주세요");
 		return "redirect:/member/login";
 	}
 
@@ -74,41 +74,26 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	// 비밀번호 변경 폼 요청
-	/*
-	 * @GetMapping("/changePwd") public void changePwd() { log.info("비밀번호 변경 폼 요청");
-	 * }
-	 */
+	// 중복 아이디 검사
+	@ResponseBody
+	@PostMapping("/checkId")
+	public String checkId(String userId) {
+		log.info("중복 이메일 검사" + userId);
 
-	// 비밀번호 변경 - post
-	/*
-	 * @PostMapping("/changePwd") public String changePwdPost(ChangeDTO
-	 * changeDto,HttpSession session,RedirectAttributes rttr) {
-	 * log.info("비밀번호 변경 폼 요청" + changeDto);
-	 * 
-	 * // 현재 비밀번호 확인 // 일치 => 비밀번호 변경 및 세션해제 // 이유....;; AuthDTO authDto =
-	 * (AuthDTO)session.getAttribute("login");
-	 * 
-	 * // 세션에 있는 userId 를 ChangeDTO에 담아주기 changeDto.setUserId(authDto.getUserId());
-	 * 
-	 * if(service.login(changeDto.getUserId(), changeDto.getUserPw())!=null) {
-	 * service.changePwd(changeDto); session.invalidate(); return
-	 * "redirect:/member/signin"; }else { //일치 안하면 비밀번호 변경 폼으로 돌아가기
-	 * rttr.addAttribute("error", "비밀번호를 확인해주세요"); return
-	 * "redirect:/member/changePwd"; } }
-	 */
-
-	// @Controller => 컨트롤러 종료 시점에 view가 결정
-	// void + /member/checkId => WEB-INF/views/member/checkId.jsp
-	// String + "/checkId" => WEB-INF/views/checkId.jsp
-
+	// userMail 값이 있다면 중복, null 이면 사용가능
+		if (service.dupId(userId) != null) {
+			return "false"; // jsp 페이지가 아님 -> @ResponseBody (리턴값이 jsp 아님)
+		}
+		return "true";
+	}
+	
 	// 중복 이메일 검사
 	@ResponseBody
 	@PostMapping("/checkMail")
 	public String checkMail(String userMail) {
 		log.info("중복 이메일 검사" + userMail);
 
-		// userMail 값이 있다면 중복, null 이면 사용가능
+	// userMail 값이 있다면 중복, null 이면 사용가능
 		if (service.dupMail(userMail) != null) {
 			return "false"; // jsp 페이지가 아님 -> @ResponseBody (리턴값이 jsp 아님)
 		}
@@ -229,5 +214,7 @@ public class MemberController {
 	public void deniedGet() {
 		log.info("access-denied 페이지 요청");
 	}
+	
 
+	
 }

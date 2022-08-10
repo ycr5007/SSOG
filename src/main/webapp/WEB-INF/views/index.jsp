@@ -286,7 +286,14 @@ $(function(){
 	})
 	
 })
+
+let msg = "${msg}";
+	if(msg != ""){
+		alert(msg);
+	}
+
 </script>
+
 <!--  마켓리스트 마켓 연결 script 종료 -->
     
 <%@ include file="./include/footer.jsp" %>

@@ -46,11 +46,6 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
-	/*
-	 * @Override public boolean changePwd(ChangeDTO changeDto) { return
-	 * mapper.update(changeDto)==1?true:false; }
-	 */
-
 	@Transactional
 	@Override
 	public boolean updateUser(UserDTO updateUser) {
@@ -63,15 +58,13 @@ public class MemberServiceImpl implements MemberService {
 	
 		return result;
 			
-		}
-		
-	
-
-	@Override
-	public int delete(String userId) {
-		return mapper.delete(userId);
 	}
 
+	@Override
+	public String dupId(String userId) {
+		return mapper.dupId(userId);
+	}
+	
 	@Override
 	public String dupMail(String userMail) {
 		return mapper.dupMail(userMail);
@@ -124,8 +117,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
-	
-
 	@Override
 	public boolean updatePw(String userId, String userMail, String tempPw) {
 		
@@ -166,5 +157,12 @@ public class MemberServiceImpl implements MemberService {
 	public int reqAuth(AuthDTO authDto) {
 		return mapper.reqAuth(authDto);
 	}
+
+	@Override
+	public int delete(String userId) {
+		return mapper.delete(userId);
+	}
+
+	
 
 }

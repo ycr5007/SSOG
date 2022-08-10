@@ -100,7 +100,7 @@ public class MyPageController {
 		
 		if (result > 0 ) {
 			session.invalidate();
-			rttr.addFlashAttribute("success", "회원탈퇴완료");
+			rttr.addFlashAttribute("msg", "회원비활성화");
 			return "redirect:/";
 		} else {
 			return "redirect:/member/myPageEdit";

@@ -48,6 +48,11 @@
 		update myuser set user_status = 0 where user_id = #{userId}
 	</update>
 	
+	<!-- Id 중복검사 -->
+	<select id="dupId" resultType="java.lang.String">
+		select user_id as userId from myuser where user_id=#{userId}
+	</select>
+	
 	<!-- Mail 중복검사 -->
 	<select id="dupMail" resultType="java.lang.String">
 		select user_mail as userMail from myuser where user_mail=#{userMail}

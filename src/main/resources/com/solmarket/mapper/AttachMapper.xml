@@ -60,7 +60,7 @@
 					notice_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
 				</when>
 				<when test="section == 'board'">
-					board_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, #{attach.no})
+					board_img values (#{attach.uuid}, #{attach.uploadPath}, #{attach.fileName}, board_seq.currval)
 				</when>
 			</choose>
 	</insert>
