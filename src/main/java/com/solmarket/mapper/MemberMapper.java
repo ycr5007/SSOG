@@ -24,6 +24,8 @@ public interface MemberMapper {
 	
 	public int delete(String userId);
 
+	public int updatePw2(@Param("userId") String userId,@Param("userPw") String userPw);
+	
 	public int updatePw(@Param("userId") String userId,@Param("userPw") String userPw);
 	
 	public String authMail(String userMail);

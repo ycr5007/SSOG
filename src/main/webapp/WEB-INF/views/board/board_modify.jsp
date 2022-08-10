@@ -62,8 +62,7 @@
 					<sec:authentication property="principal" var="info" />
 					<sec:authorize access="isAuthenticated()">
 						<c:if test="${BoardDTO.userId == info.username}">
-							<button type="submit" data-oper='modify' class="btn btn-secondary">Modify</button>              			
-							<button type="submit" data-oper='remove' class="btn btn-danger">Remove</button>              			
+							<button type="submit" data-oper='modify' class="btn btn-secondary">Modify</button>              			            			
 						</c:if>
 					</sec:authorize>
 					<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />

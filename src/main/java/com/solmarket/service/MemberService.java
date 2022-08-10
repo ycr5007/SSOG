@@ -35,4 +35,7 @@ public interface MemberService {
 	
 	// 권한요청
 	public int reqAuth(AuthDTO authDto);
+	
+	// PW 변경
+	public boolean updatePw2(String userId, String userPw);
 }

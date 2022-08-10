@@ -16,10 +16,12 @@
 					<sec:authorize access="!hasAnyRole({'ROLE_SELLER','ROLE_MANAGER','ROLE_ADMIN'})">
 						<button type="button" class="btn btn-primary send-data">SELLER</button>
 						<button type="button" class="btn btn-success send-data">MANAGER</button>
+						<button type="button" class="btn btn-danger updatePw1" >비밀번호변경</button>
+						<button type="button" class="btn btn-warning update1" >기타정보수정</button>
 					</sec:authorize>
 				</div>
 				
-				<form id="regist" method="post" action="" role="form">
+				<form id="regist1" method="post" action="" role="form">
 			        <!-- 아이디 -->
 			        <sec:csrfInput/>
 			        <div class="form-group row justify-content-center">
@@ -31,26 +33,6 @@
 							<small id="userId" class="text-info"></small>
 			          </div>
 			        </div>
-					
-			        <!-- 비밀번호 -->					
-			        <div class="form-group row justify-content-center">
-			          <label for="pass1" class="col-sm-5 col-form-label">새 비밀번호</label>
-			          <div class="textForm col-sm-7">
-							<input type="password" name="userPw" id="userPw"
-								class="form-control" placeholder="변경할 비밀번호를 입력하세요" /> 
-							<small id="userPw" class="text-info"></small>
-						</div>
-					</div>
-					
-					 <!-- 비밀번호확인 -->					
-			        <div class="form-group row justify-content-center">
-			          <label for="pass1" class="col-sm-5 col-form-label">새 비밀번호 확인</label>
-			          <div class="textForm col-sm-7">
-							<input type="password" name="userPwCheck" id="userPwCheck"
-								class="form-control" placeholder="변경할 비밀번호를 입력하세요" /> 
-							<small id="userPwCheck" class="text-info"></small>
-						</div>
-					</div>
 					
 			        <!-- 이름 -->
 			        <div class="form-group row justify-content-center">
@@ -67,7 +49,7 @@
 			          <label for="phone" class="col-sm-5 col-form-label">핸드폰 </label>
 			          <div class="textForm col-sm-7">
 							<input type="text" name="userPhone" id="userPhone" class="form-control"
-								value='<c:out value="${user.userPhone }"  />'  />
+								value='<c:out value="${user.userPhone }" />' readonly  />
 							<small id="userPhone" class="text-info"></small>
 						</div>
 					</div>
@@ -126,12 +108,47 @@
 					</div>
 			</form>
 			
+			<form id="regist2" method="post" action="updatePw" role="form" style="display:none">
+			        <!-- 아이디 -->
+			        <sec:csrfInput/>
+			        <div class="form-group row justify-content-center">
+			          <label for="userid" class="col-sm-5 col-form-label">아이디</label>
+			          <div class="textForm col-sm-7">
+							<input type="text" name="userId" id="userId" class="form-control"
+								value='<sec:authentication property="principal.username"/>'
+								readonly />
+							<small id="userId" class="text-info"></small>
+			          </div>
+			        </div>
+			        
+				        <!-- 비밀번호 -->					
+				        <div class="form-group row justify-content-center">
+				          	<label for="pass1" class="col-sm-5 col-form-label">새 비밀번호</label>
+				        	<div class="textForm col-sm-7">
+								<input type="password" name="userPw" id="userPw"
+									class="form-control" placeholder="변경할 비밀번호를 입력하세요" /> 
+								<small id="userPw" class="text-info"></small>
+							</div>
+						</div>
+						
+						 <!-- 비밀번호확인 -->					
+				        <div class="form-group row justify-content-center">
+				          <label for="pass1" class="col-sm-5 col-form-label">새 비밀번호 확인</label>
+				         	<div class="textForm col-sm-7">
+								<input type="password" name="userPwCheck" id="userPwCheck"
+									class="form-control" placeholder="변경할 비밀번호를 입력하세요" /> 
+								<small id="userPwCheck" class="text-info"></small>
+								<button class="checkPw" style="background-color:yellow; float:right;">변경</button>
+							</div>	
+						</div>
+
+			</form>
 				
-			<form action="" method="post" id="authForm">
+			<%-- <form action="" method="post" id="authForm">
 					<input type="hidden" name="userId"
 						value='<sec:authentication property="principal.username"/>' />
 					<input type="hidden" name="authority" value="" />
-			</form>
+			</form> --%>
 			
 					
 		</div>

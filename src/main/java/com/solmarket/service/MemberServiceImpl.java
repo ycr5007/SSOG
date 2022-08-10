@@ -46,13 +46,13 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	// 기타정보수정
 	@Transactional
 	@Override
 	public boolean updateUser(UserDTO updateUser) {
 
 		//log.info(authority);
 
-		updateUser.setUserPw(encoder.encode(updateUser.getUserPw()));
 		boolean result = mapper.updateUser(updateUser) > 0;
 		mapper.updateUser(updateUser);
 	
@@ -60,21 +60,25 @@ public class MemberServiceImpl implements MemberService {
 			
 	}
 
+	// 중복아이디 검사
 	@Override
 	public String dupId(String userId) {
 		return mapper.dupId(userId);
 	}
 	
+	// 중복메일 검사
 	@Override
 	public String dupMail(String userMail) {
 		return mapper.dupMail(userMail);
 	}
 
+	// 아이디 찾기
 	@Override
 	public UserDTO findId(String userName, String userMail) {
 		return mapper.searchId(userName, userMail);
 	}
-
+	
+	// 가입시 인증메일 전송
 	@Override
 	public String authMail(String userMail) {
 		Random rnd = new Random();
@@ -111,12 +115,22 @@ public class MemberServiceImpl implements MemberService {
 		return num;
 	}
 
+	// 비밀번호 확인
 	@Override
 	public String checkPw(String userId) {
 		return mapper.checkPw(userId);
 	}
 
-
+	// 비밀번호 변경
+	@Override
+	public boolean updatePw2(String userId, String userPw) {
+		log.info(userPw);
+		userPw = encoder.encode(userPw);
+		log.info(userPw);
+		return mapper.updatePw2(userId, userPw) > 0? true : false;
+	}
+	
+	// 임시비밀번호 발급(비밀번호 찾기)
 	@Override
 	public boolean updatePw(String userId, String userMail, String tempPw) {
 		
@@ -153,15 +167,19 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	// 권한 요청(SELLER, MANAGER)
 	@Override
 	public int reqAuth(AuthDTO authDto) {
 		return mapper.reqAuth(authDto);
 	}
 
+	// 계정 비활성화
 	@Override
 	public int delete(String userId) {
 		return mapper.delete(userId);
 	}
+
+	
 
 	
 

@@ -5,6 +5,7 @@ import java.security.Principal;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,24 +72,22 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/update")
-	public String regist(UserDTO update, AttachDTO attach) {
+	public String regist(UserDTO update) {
 		log.info("회원정보 수정 요청" + update);
-		log.info("회원정보 수정 요청" + attach);
-		boolean result = service.updateUser(update);
 		
-		if(attach == null) {
-			return "/member/myPageEdit";
+		service.updateUser(update);
+		
+		//첨부파일 없는 경우
+		if(update.getAttach() == null) {
+			return "redirect:/member/myPageEdit";
 		}
+		
+		
 		String section = "user";
-		// 첨부 파일 개수만큼 반복 ( forEach : 함수형 )
-		update.setAttach(attach);
-		attachMapper.insertImg(update.getAttach(), section);
 		
-		if(result) {
-			return "redirect:/member/login";
-		}else {
-			return "/member/myPageEdit";
-		}
+		attachMapper.insertImg(update.getAttach(), section);
+		return "redirect:/member/myPageEdit";
+
 	}
 		
 	// 탈퇴 post
@@ -100,6 +99,7 @@ public class MyPageController {
 		
 		if (result > 0 ) {
 			session.invalidate();
+			SecurityContextHolder.getContext().setAuthentication(null);
 			rttr.addFlashAttribute("msg", "회원비활성화");
 			return "redirect:/";
 		} else {
@@ -120,5 +120,15 @@ public class MyPageController {
 		return "redirect:/";
 	}
 	
+	@PostMapping("/updatePw")
+	public String updatePw(String userId, String userPw, HttpSession session, RedirectAttributes rttr) {
+		service.updatePw2(userId, userPw);
+		
+		session.invalidate();
+		SecurityContextHolder.getContext().setAuthentication(null);
+		rttr.addFlashAttribute("msg", "비밀번호 변경 완료");
+		
+		return "redirect:/";
+	}
 			
 }

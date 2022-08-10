@@ -69,7 +69,8 @@
 							<sec:authentication property="principal" var="info" />
 							<sec:authorize access="isAuthenticated()">
 								<c:if test="${BoardDTO.userId == info.username}">
-									<button type="button" class="btn btn-primary">수정하기</button>     			
+									<button type="button" class="btn btn-primary">수정하기</button>
+									<button type="button" data-oper='remove' class="btn btn-danger">글삭제</button>    			
 								</c:if>
 							</sec:authorize>
 							<button type="reset" class="btn btn-info">목록</button>  

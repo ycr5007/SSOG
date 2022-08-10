@@ -30,13 +30,6 @@ $(function(){
 			
 			operForm.append(str);
 			
-		}else if(oper == "remove"){
-			if(confirm("해당 글을 삭제하시겠습니까 ?")){
-				operForm.attr('method', 'post');
-				operForm.attr('action', '/board/board_remove');
-			}else{
-				return;
-			}
 		}else if(oper == "list"){
 			operForm.find("[name='boardNo']").remove();
 			operForm.attr('action', '/board/board_list');
@@ -45,31 +38,7 @@ $(function(){
 		operForm.submit();
 	})
 	
-	// 첨부파일 가져오기 - 무조건 실행
-//	$.getJSON({
-//		url : "getAttachList",
-//		data : {
-//			boardNo : boardNo
-//		},
-//		dataType : 'json',
-//		success : function(data){
-//			console.log(data);
-//			showUploadFile(data);
-//		}
-//	})
-	
-	// 첨부파일 스크립트 종료 
-	
-	// X 버튼 활성화 ( 화면에서만 숨김처리 :: 최종 삭제는 modify submit 이 이루어졌을 때 실행한다. )
-	$(".uploadResult").on("click", "button", function(){
-		// span 태그가 속해있는 li 태그 가져오기
-		let targetLi = $(this).closest("li");
-		
-		if(confirm('삭제하시겠습니까아아아아아아아앍????????????????')){
-			// li 태그 제거
-			targetLi.remove();
-		}
-	})
+
 	
 })
 

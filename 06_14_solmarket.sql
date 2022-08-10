@@ -1,7 +1,7 @@
 -- 게시판 댓글 --
 update board
 set board_repl = (select count(reply_no) from reply where board.board_no = reply.board_no);
-
+select * from board;
 -- reply writer 추가
 ALTER TABLE reply add reply_writer varchar2(12) NOT NULL;
 
