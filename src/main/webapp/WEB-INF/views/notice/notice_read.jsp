@@ -25,10 +25,9 @@
 					<input class="form-control" style="margin-left: 50px;" name="bno" readonly="readonly" value="${dto.market.marketLoc } : ${dto.market.marketName }">                				
 				</div> 
 			</div>
-			<div class="container mt-4 mb-4 h-50">
-				<img src="https://via.placeholder.com/1000x550" alt="..." style="margin-left: 50px" />
+			<div class="mt-4">
+				<button style="width: 100%; margin-left: 50px" type="button" class="btn btn-primary btn-lg">List</button>
 			</div>
-			<button style="width: 100%; margin-left: 50px" type="button" class="btn btn-primary btn-lg">List</button>
 		</div>
 	</div>
 </section> 

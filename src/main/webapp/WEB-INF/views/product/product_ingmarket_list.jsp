@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 	<!-- 페이지 제목 -->
-	<div class="container">
+	<div class="container" style="overflow-y:overlay;">
 	<div class="row">
 	  <div class="col-lg-12 pl-2" >
 	    <h1 class="page-header">참여 중인 장터 목록</h1>
@@ -23,7 +23,7 @@
 	      </div>
 	     <!-- /.panel-heading 종료-->
       
-      <div class="panel-body">
+      <div class="panel-body" style="height:80%;">
         <table class="table table-striped table-bordered table-hover">
           <thead>
             <tr>

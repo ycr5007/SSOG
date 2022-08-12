@@ -242,7 +242,7 @@
 	                          </a>
 	                          <ul class="collapse show list-unstyled pl-3" id="openmarket">
 	                              <c:forEach items='${list}' var="item" varStatus="">
-	                              	<c:if test="${item.marketStatus==1}">
+	                              	<c:if test="${item.marketStatus==2}">
 	                                	<li><a class="text-decoration-none market-detail" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
 	                                </c:if>
 	                              </c:forEach>                              
@@ -257,7 +257,7 @@
 	                          </a>
 	                          <ul class="collapse show list-unstyled pl-3" id="willopenmarket">
 	                              <c:forEach items='${list}' var="item" varStatus="">
-	                              	<c:if test="${item.marketStatus==2}">
+	                              	<c:if test="${item.marketStatus==1}">
 	                                	<li><a class="text-decoration-none market-detail" href="${item.marketNo}" data-gu="${item.marketLoc}">${item.marketName}</a></li>
 	                                </c:if>
 	                              </c:forEach>  

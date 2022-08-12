@@ -84,7 +84,7 @@ public class MarketController {
 		log.info("[GetMapping] ========== 장터 참여 신청 리스트 호출 ==========");
 		List<ProductDTO> list = service.showReceive(marketNo, cri);
 		PageDTO pageDTO = new PageDTO(cri, service.TotalReceive(marketNo));
-		model.addAttribute("product", list);
+		model.addAttribute("productList", list);
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("marketNo", marketNo);
 	}

@@ -24,7 +24,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="product" items="${product}" varStatus="status">
+						<c:forEach var="product" items="${productList}" varStatus="status">
 							<tr>
 								<td>${status.count}</td>
 								<td><a href="/market/market_receiveDetail?marketNo=${marketNo}&productNo=${product.productNo}" class="move">${product.productName}</a></td>

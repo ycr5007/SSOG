@@ -41,9 +41,9 @@
 						<div class="col-lg-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">첨부파일</div>
-								<div class="panel-body">
+								<div class="panel-body d-flex justify-content-center">
 									<div class="uploadResult">
-										<!-- 첨부파일 정보 -->
+										<img src="/display/product/${product.productNo }" width="150" height="200"/>
 									</div>
 								</div>
 							</div>

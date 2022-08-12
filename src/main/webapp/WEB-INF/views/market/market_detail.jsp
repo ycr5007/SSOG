@@ -34,7 +34,7 @@
 	<!-- 마켓 이미지 -->
 	<div class="col-xl-7 px-xl-5">
 		<div class="card mb-2" id="marketImg">
-			<img src="/ori_display/market/${marketDTO.marketNo}" />
+			<img src="/ori_display/market/${marketDTO.marketNo}" onerror="src='/resources/img/market.PNG'" />
 		</div>
 	</div>
 	<!-- 마켓 이미지 끝 -->

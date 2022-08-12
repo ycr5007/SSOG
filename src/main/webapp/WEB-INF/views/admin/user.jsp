@@ -82,7 +82,7 @@
 							<td class="col-lg-2 status"></td>								
 						</tr>
 						<tr>
-							<td colspan="2" class="profile-img"><img src="" onerror='this.src="https://via.placeholder.com/150x150"'/></td>
+							<td colspan="2" class="profile-img"><img src="" onerror='this.src="/resources/img/default.png"' width="150" height="150"/></td>
 							<th class="align-middle">프로필 문구</th>
 							<td colspan="3" class="profile"></td>
 						</tr>

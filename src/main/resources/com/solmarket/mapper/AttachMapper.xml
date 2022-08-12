@@ -30,7 +30,7 @@
 				market_no as no from market_img where market_no = #{no}
 			</when>
 			<when test="section == 'recruit'">
-				recruit_no as no from recruit_img where recruit_no = #{no}
+				market_no as no from recruit_img where market_no = #{no}
 			</when>
 			<when test="section == 'notice'">
 				notice_no as no from notice_img where notice_no = #{no}

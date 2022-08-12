@@ -42,7 +42,7 @@
 								<div class="chart-area">
 									<a href="/market/market_detail?marketNo=${marketNo}">
 										<!-- marketNo에 해당하는 이미지 가져오기 -->
-										<img src="/ori_display/market/${marketNo}" style="width: 100%; height: 100%" />
+										<img src="/ori_display/market/${marketNo}" style="width: 100%; height: 100%" onerror="src='/resources/img/market.PNG'" />
 									</a>
 								</div>
 							</div>
@@ -70,7 +70,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="receive" items="${receive}">
+											<c:forEach var="receive" items="${receiveList}">
 												<tr>
 													<td>${receive.productName}</td>
 													<td>${receive.userName}</td>
@@ -99,7 +99,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="notice" items="${notice}">
+											<c:forEach var="notice" items="${noticeList}">
 												<tr>
 													<td>${notice.noticeTitle}</td>
 													<td><fmt:formatDate pattern="MM-dd" value="${notice.noticeDate}" /></td>
@@ -130,7 +130,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="product" items="${product}">
+											<c:forEach var="product" items="${productList}">
 												<tr>
 													<td>${product.productName}</td>
 													<td>${product.userName}</td>
@@ -159,7 +159,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="review" items="${review}">
+											<c:forEach var="review" items="${reviewList}">
 												<tr>
 													<td>${review.reviewContent}</td>
 													<td>${review.userName}</td>

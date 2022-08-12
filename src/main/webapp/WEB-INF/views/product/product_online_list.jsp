@@ -5,7 +5,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!-- 페이지 제목 -->
-<div class="container" style="height:80%;">
+<div class="container" style="overflow-y:overlay;">
 	<div class="row">
 		<div class="col-lg-12 pl-2">
 			<h1 class="page-header">온라인 상품 목록</h1>

@@ -127,7 +127,7 @@
 				FROM (SELECT u.user_name as userName, p.*
 					FROM (SELECT m.market_no as marketNo, p.product_no as productNo, p.user_no as userNo, p.product_name as productName, p.product_qn as productQN, p.product_price as productPrice, p.product_status as productStatus, p.product_date as productDate
 						FROM market m left outer join product p on m.market_no = p.market_no
-						WHERE p.market_no = #{marketNo} and product_status = 3) p left outer join myUser u on p.userNo = u.user_no) list
+						WHERE p.market_no = #{marketNo} and product_status = 1) p left outer join myUser u on p.userNo = u.user_no) list
 				WHERE rownum <= (#{cri.pageNum} * #{cri.amount}))
 			WHERE r > ((#{cri.pageNum} - 1) * #{cri.amount})
 		]]>

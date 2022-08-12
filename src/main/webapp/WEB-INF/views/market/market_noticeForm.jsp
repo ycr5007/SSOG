@@ -61,7 +61,7 @@
 	<input type="hidden" name="pageNum" value="${cri.pageNum }" />
 	<input type="hidden" name="amount" value="${cri.amount }" />
 </form>
-
+<script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/js/util/upload.js"></script>
 <script>
 let marketNo = ${marketNo};

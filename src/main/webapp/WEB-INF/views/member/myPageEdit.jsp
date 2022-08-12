@@ -16,9 +16,9 @@
 					<sec:authorize access="!hasAnyRole({'ROLE_SELLER','ROLE_MANAGER','ROLE_ADMIN'})">
 						<button type="button" class="btn btn-primary send-data">SELLER</button>
 						<button type="button" class="btn btn-success send-data">MANAGER</button>
+					</sec:authorize>
 						<button type="button" class="btn btn-danger updatePw1" >비밀번호변경</button>
 						<button type="button" class="btn btn-warning update1" >기타정보수정</button>
-					</sec:authorize>
 				</div>
 				
 				<form id="regist1" method="post" action="" role="form">
@@ -144,11 +144,11 @@
 
 			</form>
 				
-			<%-- <form action="" method="post" id="authForm">
+			<form action="" method="post" id="authForm">
 					<input type="hidden" name="userId"
 						value='<sec:authentication property="principal.username"/>' />
 					<input type="hidden" name="authority" value="" />
-			</form> --%>
+			</form> 
 			
 					
 		</div>

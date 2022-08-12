@@ -5,7 +5,7 @@
 	prefix="sec"%>
 <%@ include file="../include/product_header.jsp"%>
 
-<div class="container-fluid">
+<div class="container-fluid" >
 
 	<div class="row">
 		<div class="col-lg-12">

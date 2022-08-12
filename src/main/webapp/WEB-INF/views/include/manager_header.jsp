@@ -12,6 +12,7 @@
 	<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	<!-- 파일 업로드 css -->
 	<link rel="stylesheet" href="/resources/css/upload.css" />
+	<script src="/resources/js/jquery.min.js"></script>
 	<title>관리자 메인 페이지</title>
 </head>
 
@@ -80,14 +81,15 @@
 					<span>참여 승인 목록</span>
 				</a>
 			</li>
-
-			<!-- 사이드바 - 내 장터 참여자 보기 -->
+			
+			<!-- 사이드바 - 내 장터 참여자 보기 
 			<li class="nav-item">
 				<a class="nav-link" href="/market/market_myseller?marketNo=${marketNo}&pageNum=1&amount=10">
 					<i class="fas fa-fw fa-shopping-basket"></i>
 					<span>장터 판매 상품 목록</span>
 				</a>
 			</li>
+			-->
 
 			<!-- 사이드바 - 내 장터 한 줄 리뷰 -->
 			<li class="nav-item">

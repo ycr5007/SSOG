@@ -87,19 +87,19 @@ public class HomeController {
 		}else {
 			// 장터 참여 신청 목록 가져오기
 			List<ProductDTO> receive = marketService.showReceive(marketNo, cri);
-			model.addAttribute("product", receive);
+			model.addAttribute("receiveList", receive);
 			
 			// 장터 공지 가져오기
 			List<NoticeDTO> notice = marketService.showNoticeList(marketNo, cri);
-			model.addAttribute("notice", notice);
+			model.addAttribute("noticeList", notice);
 			
 			// 장터 판매 상품 가져오기
 			List<ProductDTO> product = marketService.ProductList(marketNo, cri);
-			model.addAttribute("product", product);
+			model.addAttribute("productList", product);
 			
 			// 장터 리뷰 가져오기
 			List<ReviewDTO> review = marketService.ReviewList(marketNo, cri);
-			model.addAttribute("review", review);
+			model.addAttribute("reviewList", review);
 		}
 	
 		model.addAttribute("marketNo", marketNo);

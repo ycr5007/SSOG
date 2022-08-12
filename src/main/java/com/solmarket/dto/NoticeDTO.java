@@ -20,6 +20,7 @@ public class NoticeDTO {
 	
 	private String dummy1; // Join 활용 추가 데이터
 	private String dummy2; // Join 활용 추가 데이터
+	private String dummy; // Join 활용 추가 데이터
 	
 	private MarketDTO market;
 	private AttachDTO attach; // 파일첨부 리스트

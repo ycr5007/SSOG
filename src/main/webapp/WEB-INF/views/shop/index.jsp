@@ -93,8 +93,7 @@ font-size: 16px;
 <div class="card-wrapper">
 	<c:forEach var="product" items="${product}" >
 	<div class="card" style="width: 20rem;">
-	  <img src="/ori_display/product/${productNo}" onerror="this.src='https://via.placeholder.com/320x300'"
-	  style="width:318px; heigth:300px;" class="card-img-top" alt="...">
+	  <img src="/ori_display/product/${product.productNo}" onerror="this.src='https://via.placeholder.com/320x300'" width="318" height="300" class="card-img-top" alt="...">
 	  <div class="card-body">
 	    <h5 class="card-title">${product.productName}</h5>
 	    <h5 class="card-title-price">${product.productPrice}원</h5>
