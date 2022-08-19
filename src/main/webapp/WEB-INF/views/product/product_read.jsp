@@ -61,7 +61,7 @@
 
 <%-- 수정 버튼 클릭시 이동할 폼 --%>
 <form action="/product/product_modify" id="operForm">
-	<input type="hidden" value="${userNo}" name="userNo" />
+	<input type="hidden" value="${user.userNo}" name="userNo" />
 	<input type="hidden" value="${dto.productNo}" name="productNo" />
 	<input type="hidden" value="${pageNum}" name="pageNum" />
 	<input type="hidden" value="${amount}" name="amount" />

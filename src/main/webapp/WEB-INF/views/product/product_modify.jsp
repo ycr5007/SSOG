@@ -64,9 +64,9 @@
 						<button type="button" class="btn btn-danger" id="deleteBtn">취소</button>
 
 						<input type="hidden" value="${dto.productNo}" name="productNo" />
-						<input type="hidden" value="${userNo}" name="userNo" /> <input
-							type="hidden" value="${pageDto.pageNum}" name="pageNum" /> <input
-							type="hidden" value="${pageDto.amount}" name="amount" />
+						<input type="hidden" value="${user.userNo}" name="userNo" />
+						<input type="hidden" value="${pageDto.pageNum}" name="pageNum" />
+						<input type="hidden" value="${pageDto.amount}" name="amount" />
 
 					</form>
 				</div>
@@ -81,7 +81,7 @@
 <script>
 	$(function() {
 		$(".btn-danger").click(function() {
-			location.href = "/product/product_list?userNo=";
+			location.href = "/product/product_list";
 		})
 	})
 </script>

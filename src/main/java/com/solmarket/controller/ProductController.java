@@ -71,9 +71,9 @@ public class ProductController {
 	// 상품 등록
 	@GetMapping("/product_register")
 	public void register(Principal principal,@ModelAttribute("marketNo") int marketNo, Model model) {
-		log.info("product_register 폼 요청");
 		// 판매자 정보 가지고오기
 		String userid = principal.getName();
+		log.info("product_register 폼 요청"+ userid);
 		UserDTO userDto = mapper.read(userid);
 
 		model.addAttribute("user", userDto);
@@ -99,10 +99,12 @@ public class ProductController {
 	
 	// 상품 수정 및 목록 보여주기
 	@GetMapping({"/product_modify","/product_read"})
-	public void modify(Principal principal, int productNo, Model model, @ModelAttribute("cri") Criteria cri) {
+	public void modify(Principal principal,@ModelAttribute("productNo") int productNo, Model model, @ModelAttribute("cri") Criteria cri) {
 		log.info("상품 내역 폼 요청");
 		// 판매자 정보 가지고오기
 		String userid = principal.getName();
+		log.info(userid);
+		
 		UserDTO userDto = mapper.read(userid);
 		ProductDTO dto = service.getRow(productNo);
 		//페이징
@@ -112,16 +114,13 @@ public class ProductController {
 		model.addAttribute("dto", dto);
 	}
 	
-	// 상품 수정하기
+	// 상품 수정하기_ 상품 수정이 완료되고 read.jsp되돌아가기 때문에 user 정보는 필요 없음
 	@PostMapping("/product_modify")
 	public String modifyPost(Principal principal, ProductDTO updateDto, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
-		log.info("수정 폼 확인");
-		// 판매자 정보 가지고오기
-		String userid = principal.getName();
-		UserDTO userDto = mapper.read(userid);
+		log.info("온라인 상품으로 등록");
+		
 		if(service.update(updateDto)) {
 			// 수정 성공 시
-			rttr.addAttribute("userNo", updateDto.getUserNo());
 			rttr.addAttribute("productNo", updateDto.getProductNo());
 			rttr.addAttribute("pageNum", cri.getPageNum());
 			rttr.addAttribute("amount", cri.getAmount());
@@ -133,16 +132,18 @@ public class ProductController {
 	// 상품 리스트 보여주기
 	@GetMapping("/product_list")
 	public void list(Principal principal, Model model,@ModelAttribute("cri") Criteria cri) {
-		log.info("상품 리스트 요청");
+		log.info("상품 리스트 요청===== "+principal.getName());
 		// 판매자 정보 가지고오기
 		String userid = principal.getName();
 		UserDTO userDto = mapper.read(userid);
+		
+		System.out.println("user정보"+userDto);
 		
 		List<ProductDTO> list = service.getList(cri, userDto.getUserNo());
 		// 페이징
 		int total = service.getTotalCnt(userDto.getUserNo());
 		log.info("pageDTO : " + new PageDTO(cri, total));
-		model.addAttribute("userNo", userDto.getUserNo());
+		model.addAttribute("user", userDto);
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("list",list);
 
@@ -173,25 +174,25 @@ public class ProductController {
 		// 페이징
 		int total = service.marketTotal(cri);
 		log.info("pageDTO : " + new PageDTO(cri, total));
-		model.addAttribute("userNo", userDto.getUserNo());
+		model.addAttribute("user", userDto);
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("marketList",marketList);
 	}
-		// 장터 종료 후 남은 상품 보여주기 상품 상태 == 3 
-		@GetMapping("/product_sell_list")
-		public void sellerList(Principal principal,Model model,@ModelAttribute("cri") Criteria cri) {
-			log.info("장터 종료 후 상품 리스트 요청");
-			// 판매자 정보 가지고오기
-			String userid = principal.getName();
-			UserDTO userDto = mapper.read(userid);
-			List<ProductDTO> sellList = service.sellList(cri, userDto.getUserNo());
-			// 페이징
-			int total = service.sellTotal(userDto.getUserNo());
-			log.info("pageDTO : " + new PageDTO(cri, total));
-			model.addAttribute("userNo", userDto.getUserNo());
-			model.addAttribute("pageDto", new PageDTO(cri, total));
-			model.addAttribute("sellList",sellList);
-		}
+	// 장터 종료 후 남은 상품 보여주기 상품 상태 == 3 
+	@GetMapping("/product_sell_list")
+	public void sellerList(Principal principal,Model model,@ModelAttribute("cri") Criteria cri) {
+		log.info("장터 종료 후 상품 리스트 요청");
+		// 판매자 정보 가지고오기
+		String userid = principal.getName();
+		UserDTO userDto = mapper.read(userid);
+		List<ProductDTO> sellList = service.sellList(cri, userDto.getUserNo());
+		// 페이징
+		int total = service.sellTotal(userDto.getUserNo());
+		log.info("pageDTO : " + new PageDTO(cri, total));
+		model.addAttribute("user", userDto);
+		model.addAttribute("pageDto", new PageDTO(cri, total));
+		model.addAttribute("sellList",sellList);
+	}
 	
 	// 장터 종료 후 남은 상품 보여주기 상품 상태 == 4 
 	@GetMapping("/product_remain_list")
@@ -199,12 +200,13 @@ public class ProductController {
 		log.info("장터 종료 후 상품 리스트 요청");
 		// 판매자 정보 가지고오기
 		String userid = principal.getName();
+		log.info(userid);
 		UserDTO userDto = mapper.read(userid);
 		List<ProductDTO> remainList = service.remainList(cri, userDto.getUserNo());
 		// 페이징
 		int total = service.remainTotal(userDto.getUserNo());
 		log.info("pageDTO : " + new PageDTO(cri, total));
-		model.addAttribute("userNo", userDto.getUserNo());
+		model.addAttribute("user", userDto);
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("remainList",remainList);
 	}
@@ -220,7 +222,7 @@ public class ProductController {
 		// 페이징
 		int total = service.onlineTotal(userDto.getUserNo());
 		log.info("pageDTO : " + new PageDTO(cri, total));
-		model.addAttribute("userNo", userDto.getUserNo());
+		model.addAttribute("user", userDto);
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("onlineList",onlineList);
 	}
@@ -237,7 +239,7 @@ public class ProductController {
 		// 페이징
 		int total = service.ingMarketTotal(cri);
 		log.info("pageDTO : " + new PageDTO(cri, total));
-		model.addAttribute("userNo", userDto.getUserNo());
+		model.addAttribute("user", userDto);
 		model.addAttribute("pageDto", new PageDTO(cri, total));
 		model.addAttribute("ingMarketList", ingMarketList);
 	}
